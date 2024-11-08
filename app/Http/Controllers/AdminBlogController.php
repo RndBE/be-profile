@@ -20,7 +20,7 @@ class AdminBlogController extends Controller
             'blog' => Blog::get(),
             'content' => 'admin/blog/index'
         ];
-        return view('admin.layouts.wrapper', $data);
+        return view('admin.blog.index', $data);
     }
 
     /**

@@ -1,20 +1,22 @@
 <?php
 
-use App\Http\Controllers\AdminAboutController;
-use App\Http\Controllers\AdminAuthController;
-use App\Http\Controllers\AdminBannerController;
-use App\Http\Controllers\AdminBlogController;
-use App\Http\Controllers\AdminDashboardController;
-use App\Http\Controllers\AdminKategoriController;
-use App\Http\Controllers\AdminPesanController;
-use App\Http\Controllers\AdminProdukController;
-use App\Http\Controllers\AdminServiceController;
-use App\Http\Controllers\AdminUserController;
-use App\Http\Controllers\HomeBlogController;
-use App\Http\Controllers\HomeContactController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\HomeProdukController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\HomeBlogController;
+use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\AdminBlogController;
+use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\AdminAboutController;
+use App\Http\Controllers\AdminPesanController;
+use App\Http\Controllers\HomeProdukController;
+use App\Http\Controllers\AdminBannerController;
+use App\Http\Controllers\AdminProdukController;
+use App\Http\Controllers\HomeContactController;
+use App\Http\Controllers\AdminBerandaController;
+use App\Http\Controllers\AdminServiceController;
+use App\Http\Controllers\AdminKategoriController;
+use App\Http\Controllers\AdminDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +51,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::get('/logout', [AdminAuthController::class, 'logout']);
 
     Route::get('/dashboard', [AdminDashboardController::class, 'index']);
+    Route::resource('/beranda', AdminBerandaController::class);
     Route::get('/abaout', [AdminAboutController::class, 'index']);
     Route::put('/abaout/update', [AdminAboutController::class, 'update']);
 
@@ -58,6 +61,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     // Route::resource('/posts/kategori', AdminKategoriController::class);
 
     Route::resource('/pesan', AdminPesanController::class);
+
     Route::resource('/service', AdminServiceController::class);
     Route::resource('/banner', AdminBannerController::class);
     Route::resource('/user', AdminUserController::class);

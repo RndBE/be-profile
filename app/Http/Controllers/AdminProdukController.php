@@ -19,7 +19,7 @@ class AdminProdukController extends Controller
             'produk' => Produk::get(),
             'content' => 'admin/produk/index'
         ];
-        return view('admin.layouts.wrapper', $data);
+        return view('admin.produk.index', $data);
     }
 
     /**

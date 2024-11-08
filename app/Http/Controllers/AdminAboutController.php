@@ -13,11 +13,9 @@ class AdminAboutController extends Controller
     {
         //
         $data = [
-            'title' => 'Manajemen Abaout',
             'abaout' => Abaout::first(),
-            'content' => 'admin/abaout/index'
         ];
-        return view('admin.layouts.wrapper', $data);
+        return view('admin.abaout.index', $data);
     }
 
     public function update(Request $request)

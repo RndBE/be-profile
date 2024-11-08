@@ -18,9 +18,7 @@ class AdminDashboardController extends Controller
             'blog' => Blog::count(),
             'service' => Service::count(),
             'user' => User::count(),
-
-            'content' => 'admin/dashboard/index'
         ];
-        return view('admin.layouts.wrapper', $data);
+        return view('admin.dashboard.index', $data);
     }
 }

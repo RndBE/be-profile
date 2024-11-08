@@ -19,7 +19,7 @@ class AdminKategoriController extends Controller
             'kategori' => Kategori::get(),
             'content' => 'admin/kategori/index'
         ];
-        return view('admin.layouts.wrapper', $data);
+        return view('admin.kategori.index', $data);
     }
 
     /**

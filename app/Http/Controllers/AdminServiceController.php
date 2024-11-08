@@ -21,7 +21,7 @@ class AdminServiceController extends Controller
             'service' => Service::get(),
             'content' => 'admin/service/index'
         ];
-        return view('admin.layouts.wrapper', $data);
+        return view('admin.service.index', $data);
     }
 
     /**
