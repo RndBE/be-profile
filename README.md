@@ -1,14 +1,3 @@
-# Laravel 11 + AdminLTE 3
-
-AdminLTE 3 for Laravel 11.
-
-| Laravel Version | Branch |
-| :-------------: | :----: |
-|       11        |  main  |
-|       10        |  10.x  |
-|        9        |  9.x   |
-|        8        |  8.x   |
-
 ## Requirements
 
 -   PHP >= 8.2.0
