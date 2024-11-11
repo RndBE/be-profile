@@ -90,9 +90,29 @@
 
                 <li class="nav-item">
                     <a href="/admin/carousel" class="nav-link {{ Request::is('admin/carousel*') ?'active' : '' }}">
-                        <i class="nav-icon fas fa-envelope"></i>
+                        <i class="nav-icon fas fa-image"></i>
                         <p>
                         Carousel
+                            {{-- <span class="right badge badge-danger">New</span> --}}
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/admin/klien" class="nav-link {{ Request::is('admin/klien*') ?'active' : '' }}">
+                        <i class="nav-icon fas fa-address-card"></i>
+                        <p>
+                        Klien
+                            {{-- <span class="right badge badge-danger">New</span> --}}
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/admin/tag" class="nav-link {{ Request::is('admin/tag*') ?'active' : '' }}">
+                        <i class="nav-icon fas fa-tags"></i>
+                        <p>
+                        Tag
                             {{-- <span class="right badge badge-danger">New</span> --}}
                         </p>
                     </a>

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminTagController;
+use App\Http\Controllers\AdminKlienController;
 use App\Http\Controllers\AdminCarouselController;
 use App\Http\Controllers\AdminDashboardController;
 
@@ -26,18 +28,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 
     Route::resource('/dashboard', AdminDashboardController::class);
     Route::resource('/carousel', AdminCarouselController::class);
-    // Route::get('/abaout', [AdminAboutController::class, 'index']);
-    // Route::put('/abaout/update', [AdminAboutController::class, 'update']);
-
-    // Route::resource('/produk', AdminProdukController::class);
-
-    // Route::resource('/posts/blog', AdminBlogController::class);
-    // Route::resource('/posts/kategori', AdminKategoriController::class);
-
-    // Route::resource('/pesan', AdminPesanController::class);
-
-    // Route::resource('/service', AdminServiceController::class);
-    // Route::resource('/banner', AdminBannerController::class);
-    // Route::resource('/user', AdminUserController::class);
+    Route::resource('/klien', AdminKlienController::class);
+    Route::resource('/tag', AdminTagController::class);
 });
 

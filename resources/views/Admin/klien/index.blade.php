@@ -1,17 +1,17 @@
 @extends('adminlte.layouts.app')
-@section('title', 'Carousel | BE Profile')
+@section('title', 'Klien | BE Profile')
 @section('content')
     <div class="content-wrapper">
         <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Carousel</h1>
+                    <h1 class="m-0">Klien</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Carousel</li>
+                    <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Klien</li>
                     </ol>
                 </div>
             </div>
@@ -21,7 +21,7 @@
             <div class="container-fluid">
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800"></h1>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahModelCarousel">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahModelKlien">
                         Tambah
                     </button>
                 </div>
@@ -35,28 +35,26 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
-                                            <th scope="col">Judul</th>
-                                            <th scope="col">Sub Judul</th>
-                                            <th scope="col">Gambar</th>
+                                            <th scope="col">Nama Perusahaan</th>
+                                            <th scope="col">Logo</th>
                                             <th scope="col">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($carousels as $index => $item)
+                                        @forelse ($kliens as $index => $item)
                                             <tr>
-                                                <td>{{ $carousels->firstItem() + $index }}</td>
-                                                <td>{{ $item->judul }}</td>
-                                                <td>{{ $item->sub_judul }}</td>
+                                                <td>{{ $kliens->firstItem() + $index }}</td>
+                                                <td>{{ $item->nama_perusahaan }}</td>
                                                 <td>
-                                                    @if ($item->gambar)
-                                                        <img src="{{ asset('storage/' . $item->gambar) }}" alt="Image" style="width: 100px; height: auto;">
+                                                    @if ($item->logo)
+                                                        <img src="{{ asset('storage/' . $item->logo) }}" alt="Image" style="width: 100px; height: auto;">
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a type="button" class="btn btn-warning" data-toggle="modal" data-target="#editCarouselModal{{ $item->id }}">
+                                                    <a type="button" class="btn btn-warning" data-toggle="modal" data-target="#editKlienModal{{ $item->id }}">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
-                                                    <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteCarouselModal{{ $item->id }}">
+                                                    <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteKlienModal{{ $item->id }}">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
                                                 </td>
@@ -75,7 +73,7 @@
                                     </tbody>
                                 </table>
                                 <div class="px-6 py-4">
-                                    {{ $carousels->links('vendor.pagination.bootstrap-5') }}
+                                    {{ $kliens->links('vendor.pagination.bootstrap-5') }}
                                 </div>
                             </div>
                         </div>
@@ -84,7 +82,7 @@
             </div>
         </div>
     </div>
-    @include('Admin.carousel.create')
-    @include('Admin.carousel.edit')
-    @include('Admin.carousel.delete', ['carousels' => $carousels])
+    @include('Admin.klien.create')
+    @include('Admin.klien.edit')
+    @include('Admin.klien.delete', ['kliens' => $kliens])
 @endsection
