@@ -117,6 +117,16 @@
                         </p>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="/admin/kategori_projek" class="nav-link {{ Request::is('admin/kategori_projek*') ?'active' : '' }}">
+                        <i class="nav-icon fas fa-tags"></i>
+                        <p>
+                        Kategori Projek
+                            {{-- <span class="right badge badge-danger">New</span> --}}
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
