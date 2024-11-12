@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('nama_projek')->nullable();
             $table->foreignId('klien_id')->constrained('klien')->onUpdate('cascade');
             $table->foreignId('kategori_projek_id')->constrained('kategori_projek')->onUpdate('cascade');
-            $table->string('deskripsi')->nullable();
-            $table->int('waktu')->nullable();
+            $table->text('deskripsi')->nullable();
+            $table->integer('waktu')->nullable();
             $table->timestamps();
         });
     }

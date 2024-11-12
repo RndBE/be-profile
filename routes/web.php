@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminTagController;
 use App\Http\Controllers\AdminKlienController;
+use App\Http\Controllers\AdminProjekController;
 use App\Http\Controllers\AdminCarouselController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminKategoriProjekController;
@@ -32,5 +33,6 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::resource('/klien', AdminKlienController::class);
     Route::resource('/tag', AdminTagController::class);
     Route::resource('/kategori_projek', AdminKategoriProjekController::class);
+    Route::resource('/projek', AdminProjekController::class);
 });
 
