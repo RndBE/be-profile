@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Apakah Anda yakin ingin menghapus item projek <strong>{{ $item->nama }}</strong>?
+                Apakah Anda yakin ingin menghapus item projek <strong>{{ $item->nama_projek }}</strong>?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>

@@ -81,9 +81,9 @@ class AdminProjekController extends Controller
 
     public function destroy($id)
     {
-        $tag = Projek::findOrFail($id);
+        $projek = Projek::findOrFail($id);
 
-        $tag->delete();
+        $projek->delete();
 
         toast('Berhasil menghapus data!','success');
         return redirect()->back();
