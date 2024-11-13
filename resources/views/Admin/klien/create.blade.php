@@ -19,9 +19,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="logo" class="form-label">Logo</label>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="logo" id="logo" aria-describedby="inputGroupFileAddon04" accept=".png, .jpg, .jpeg">
-                            <label class="custom-file-label" for="logo">Choose file</label>
+                        <div class="input-group mb-1">
+                            <input type="file" class="form-control" name="logo" id="logo" aria-describedby="inputGroupFileAddon04" accept=".png, .jpg, .jpeg">
                         </div>
                         @error('logo')
                             <p class="text-red-500 text-sm mt-1 error-message">{{ $message }}</p>

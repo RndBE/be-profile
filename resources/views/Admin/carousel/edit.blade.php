@@ -33,9 +33,8 @@
                                 <img src="{{ asset('storage/' . $item->gambar) }}" alt="Image" style="width: 100px; height: auto;">
                             </div>
                         @endif
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="gambar" id="gambar{{ $item->id }}" accept=".png, .jpg, .jpeg">
-                            <label class="custom-file-label" for="gambar{{ $item->id }}">Choose file</label>
+                        <div class="input-group mb-1">
+                            <input type="file" class="form-control" name="gambar" id="gambar{{ $item->id }}" aria-describedby="inputGroupFileAddon04" accept=".png, .jpg, .jpeg">
                         </div>
                         @error('gambar')
                             <p class="text-danger text-sm mt-1">{{ $message }}</p>
