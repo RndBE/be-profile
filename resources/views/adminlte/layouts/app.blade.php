@@ -142,6 +142,16 @@
                         </p>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="/admin/testimoni" class="nav-link {{ Request::is('admin/testimoni*') ?'active' : '' }}">
+                        <i class="nav-icon fas fa-thumbs-up"></i>
+                        <p>
+                        Testimoni
+                            {{-- <span class="right badge badge-danger">New</span> --}}
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

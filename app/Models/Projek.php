@@ -26,4 +26,9 @@ class Projek extends Model
     {
         return $this->hasMany(GambarProjek::class);
     }
+
+    public function testimoni()
+    {
+        return $this->hasMany(Testimoni::class);
+    }
 }
