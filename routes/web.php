@@ -34,5 +34,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::resource('/tag', AdminTagController::class);
     Route::resource('/kategori_projek', AdminKategoriProjekController::class);
     Route::resource('/projek', AdminProjekController::class);
+    Route::delete('/projek/{id}/remove-image', [AdminProjekController::class, 'removeImage'])->name('projek.remove-image');
+
 });
 

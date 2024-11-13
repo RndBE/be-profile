@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a style="text-decoration: none;" href="/admin/dashboard">Dashboard</a></li>
                     <li class="breadcrumb-item active">Projek</li>
                     </ol>
                 </div>
@@ -32,6 +32,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
+                                            <th scope="col">Thumbnail</th>
                                             <th scope="col">Nama Projek</th>
                                             <th scope="col">Klien</th>
                                             <th scope="col">Kategori Projek</th>
@@ -44,9 +45,15 @@
                                         @forelse ($projeks as $index => $item)
                                             <tr>
                                                 <td>{{ $projeks->firstItem() + $index }}</td>
+                                                <td>
+                                                    @if ($item->thumbnail)
+                                                        <img src="{{ asset('storage/' . $item->thumbnail) }}" alt="Image" style="width: 100px; height: auto;">
+                                                    @endif
+                                                </td>
                                                 <td>{{ $item->nama_projek }}</td>
                                                 <td>{{ $item->klien->nama_perusahaan }}</td>
                                                 <td>{{ $item->kategoriProjek->nama }}</td>
+                                                {{-- <td>{!! $item->deskripsi!!}</td> --}}
                                                 <td>{{ Str::limit(strip_tags($item->deskripsi), 255, '...') }}</td>
                                                 <td>{{ $item->waktu }}</td>
 
@@ -69,14 +76,6 @@
                                                         class="btn btn-info">
                                                         <i class="fab fa-twitter"></i>
                                                     </a>
-                                                    {{-- Copy Link Button --}}
-                                                    <button onclick="copyToClipboard('{{ route('projek.index') }}', '{{ $item->nama_projek }}')"
-                                                        class="btn btn-secondary"
-                                                        data-toggle="tooltip"
-                                                        data-placement="top"
-                                                        title="Link copied to clipboard!">
-                                                        <i class="fas fa-copy"></i>
-                                                    </button>
 
                                                     <a type="button" class="btn btn-warning" href="{{ route('projek.edit', $item->id) }}">
                                                         <i class="fas fa-edit"></i>
@@ -112,23 +111,4 @@
     </div>
     @include('Admin.projek.delete', ['projeks' => $projeks])
 @endsection
-<script>
-    function copyToClipboard(url, projectName) {
-        const textToCopy = `Baca projek beacon engineering, "${projectName}" selengkapnya ${url}.`;
-        const tempInput = document.createElement('input');
-        tempInput.value = textToCopy;
-        document.body.appendChild(tempInput);
-        tempInput.select();
-        document.execCommand('copy');
-        document.body.removeChild(tempInput);
-        const button = event.currentTarget;
-        $(button).tooltip('show');
-        setTimeout(function () {
-            $(button).tooltip('hide');
-        }, 1500);
-    }
-    $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
-</script>
 
