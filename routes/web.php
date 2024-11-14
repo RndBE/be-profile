@@ -21,7 +21,7 @@ use App\Http\Controllers\AdminKategoriProjekController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('User.beranda.index');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

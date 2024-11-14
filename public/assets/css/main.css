@@ -18,7 +18,7 @@
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
+:root {
   --background-color: #ffffff; /* Background color for the entire website, including individual sections */
   --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #37517e; /* Color for headings, subheadings and title throughout the website */
@@ -568,26 +568,75 @@ h6 {
 
 .footer .footer-top {
   padding-top: 50px;
+  align-items: center;
 }
+
+
+.footer .information-links i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 30%;
+    border: 1px solid #000000;
+    font-size: 16px;
+    background-color: #fafafa; 
+    margin-right: 10px;
+    transition: 0.3s;
+    color: #B40404;
+}
+
+.footer .information-links .ul .li .i {
+    color: #B40404;
+    text-decoration: none;
+}
+
+
+
+
+
+  .footer .footer-top .row .footer-about{
+    padding-right: 100px;
+  }
+
+  .footer .footer-top .row .footer-links{
+    padding-right: 100px;
+  }
+.footer .social-links {
+    padding-top: 10px;
+  }
+
 
 .footer .social-links a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
-  font-size: 16px;
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
-  margin-right: 10px;
-  transition: 0.3s;
-}
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 30%;
+    border: 1px solid #B404041A;
+    font-size: 16px;
+    background-color: #B404041A; /* Red background */
+    margin-right: 10px;
+    transition: 0.3s;
+  }
 
-.footer .social-links a:hover {
-  color: var(--accent-color);
-  border-color: var(--accent-color);
-}
+  /* Change icon color to red */
+  .footer .social-links a i {
+    color: #B40404;
+; /* Icon color */
+  }
+
+  .footer .social-links a:hover {
+    background-color: #B40404;
+; /* Darker red on hover for the background */
+  }
+
+  .footer .social-links a:hover i {
+    color: white; /* Change icon color to white on hover */
+  }
+
 
 .footer h4 {
   font-size: 16px;
