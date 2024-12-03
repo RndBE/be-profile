@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminCarouselController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminTestimoniController;
 use App\Http\Controllers\AdminKategoriProjekController;
+use App\Http\Controllers\AdminSolusiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::resource('/projek', AdminProjekController::class);
     Route::delete('/projek/{id}/remove-image', [AdminProjekController::class, 'removeImage'])->name('projek.remove-image');
     Route::resource('/testimoni', AdminTestimoniController::class);
+    Route::resource('/solutions', AdminSolusiController::class);
 
 });
 

@@ -144,7 +144,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/admin/solusi" class="nav-link {{ Request::is('admin/solusi*') ?'active' : '' }}">
+                            <a href="/admin/solutions" class="nav-link {{ Request::is('admin/solutions*') ?'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Solusi</p>
                             </a>
@@ -152,7 +152,7 @@
                         <li class="nav-item">
                             <a href="/admin/kategori_produk" class="nav-link {{ Request::is('admin/kategori_produk*') ?'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Kategori Produk</p>
+                            <p>Sub Solusi</p>
                             </a>
                         </li>
                         <li class="nav-item">
