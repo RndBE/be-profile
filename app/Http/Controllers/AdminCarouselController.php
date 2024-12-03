@@ -11,7 +11,7 @@ class AdminCarouselController extends Controller
     public function index()
     {
         $data = [
-            'carousels' => BerandaCarousel::orderBy('created_at', 'desc')->paginate(10), // paginate the results
+            'carousels' => BerandaCarousel::orderBy('created_at', 'desc')->get(), // paginate the results
         ];
         return view('Admin.carousel.index', $data);
     }
@@ -20,8 +20,8 @@ class AdminCarouselController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'judul' => 'required|string|max:255',
-            'sub_judul' => 'required|string|max:255',
+            'judul' => 'required|string',
+            'sub_judul' => 'required|string',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
@@ -45,8 +45,8 @@ class AdminCarouselController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'judul' => 'required|string|max:255',
-            'sub_judul' => 'required|string|max:255',
+            'judul' => 'required|string',
+            'sub_judul' => 'required|string',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
         ]);
 

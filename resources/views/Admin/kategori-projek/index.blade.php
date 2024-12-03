@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a style="text-decoration: none;" href="/admin/dashboard">Dashboard</a></li>
                     <li class="breadcrumb-item active">Kategori Projek</li>
                     </ol>
                 </div>
@@ -21,7 +21,7 @@
             <div class="container-fluid">
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800"></h1>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahModelKategoriProjek">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahModelKategoriProjek">
                         Tambah
                     </button>
                 </div>
@@ -31,10 +31,10 @@
 
                         <div class="card">
                             <div class="card-body table-responsive">
-                                <table class="table">
+                                <table id="example" class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th scope="col">No</th>
+                                            <th scope="col" class="text-center">No</th>
                                             <th scope="col">Nama</th>
                                             <th scope="col">Aksi</th>
                                         </tr>
@@ -42,13 +42,13 @@
                                     <tbody>
                                         @forelse ($kategori_pojeks as $index => $item)
                                             <tr>
-                                                <td>{{ $kategori_pojeks->firstItem() + $index }}</td>
+                                                <td class="text-center">{{ $loop->iteration }}</td>
                                                 <td>{{ $item->nama }}</td>
                                                 <td>
-                                                    <a type="button" class="btn btn-warning" data-toggle="modal" data-target="#editKategoriProjekModal{{ $item->id }}">
+                                                    <a type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editKategoriProjekModal{{ $item->id }}">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
-                                                    <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteKategoriProjekModal{{ $item->id }}">
+                                                    <a type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteKategoriProjekModal{{ $item->id }}">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
                                                 </td>
@@ -66,9 +66,6 @@
                                         @endforelse
                                     </tbody>
                                 </table>
-                                <div class="px-6 py-4">
-                                    {{ $kategori_pojeks->links('vendor.pagination.bootstrap-5') }}
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -79,4 +76,16 @@
     @include('Admin.kategori-projek.create')
     @include('Admin.kategori-projek.edit')
     @include('Admin.kategori-projek.delete', ['kategori_pojeks' => $kategori_pojeks])
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                    paging: true,
+                    searching: true,
+                    ordering: true,
+                    info: true,
+                    lengthChange: true,
+                    pageLength: 10,
+                });
+            });
+    </script>
 @endsection

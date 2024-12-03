@@ -13,7 +13,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                <li class="breadcrumb-item"><a style="text-decoration: none;" href="#">Dashboard</a></li>
                 {{-- <li class="breadcrumb-item active">Starter Page</li> --}}
                 </ol>
             </div><!-- /.col -->

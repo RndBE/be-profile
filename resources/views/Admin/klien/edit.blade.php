@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="editKlienModalLabel{{ $item->id }}">Edit Klien</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -26,16 +26,15 @@
                                 <img src="{{ asset('storage/' . $item->logo) }}" alt="Image" style="width: 100px; height: auto;">
                             </div>
                         @endif
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="logo" id="logo{{ $item->id }}" accept=".png, .jpg, .jpeg">
-                            <label class="custom-file-label" for="logo{{ $item->id }}">Choose file</label>
+                        <div class="input-group mb-1">
+                            <input type="file" class="form-control" name="logo" id="logo{{ $item->id }}" aria-describedby="inputGroupFileAddon04" accept=".png, .jpg, .jpeg">
                         </div>
                         @error('logo')
                             <p class="text-danger text-sm mt-1">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                 </form>

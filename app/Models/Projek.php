@@ -21,4 +21,14 @@ class Projek extends Model
     {
         return $this->belongsTo(KategoriProjek::class);
     }
+
+    public function gambar()
+    {
+        return $this->hasMany(GambarProjek::class);
+    }
+
+    public function testimoni()
+    {
+        return $this->hasMany(Testimoni::class);
+    }
 }

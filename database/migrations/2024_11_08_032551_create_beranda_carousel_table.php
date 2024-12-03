@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('beranda_carousel', function (Blueprint $table) {
             $table->id();
-            $table->string('judul')->nullable();
-            $table->string('sub_judul')->nullable();
+            $table->text('judul')->nullable();
+            $table->text('sub_judul')->nullable();
             $table->string('gambar')->nullable();
             $table->timestamps();
         });
