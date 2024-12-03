@@ -21,7 +21,7 @@
             <div class="container-fluid">
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800"></h1>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahModelCarousel">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahModelCarousel">
                         Tambah
                     </button>
                 </div>
@@ -31,10 +31,10 @@
 
                         <div class="card">
                             <div class="card-body table-responsive">
-                                <table class="table">
+                                <table id="example" class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th scope="col">No</th>
+                                            <th scope="col" class="text-center">No</th>
                                             <th scope="col">Judul</th>
                                             <th scope="col">Sub Judul</th>
                                             <th scope="col">Gambar</th>
@@ -44,19 +44,19 @@
                                     <tbody>
                                         @forelse ($carousels as $index => $item)
                                             <tr>
-                                                <td>{{ $carousels->firstItem() + $index }}</td>
-                                                <td>{{ $item->judul }}</td>
-                                                <td>{{ $item->sub_judul }}</td>
+                                                <td class="text-center">{{ $loop->iteration }}</td>
+                                                <td>{!! $item->judul !!}</td>
+                                                <td>{!! $item->sub_judul !!}</td>
                                                 <td>
                                                     @if ($item->gambar)
                                                         <img src="{{ asset('storage/' . $item->gambar) }}" alt="Image" style="width: 100px; height: auto;">
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a type="button" class="btn btn-warning" data-toggle="modal" data-target="#editCarouselModal{{ $item->id }}">
+                                                    <a type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editCarouselModal{{ $item->id }}">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
-                                                    <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteCarouselModal{{ $item->id }}">
+                                                    <a type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteCarouselModal{{ $item->id }}">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
                                                 </td>
@@ -74,9 +74,6 @@
                                         @endforelse
                                     </tbody>
                                 </table>
-                                <div class="px-6 py-4">
-                                    {{ $carousels->links('vendor.pagination.bootstrap-5') }}
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -87,4 +84,16 @@
     @include('Admin.carousel.create')
     @include('Admin.carousel.edit')
     @include('Admin.carousel.delete', ['carousels' => $carousels])
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                    paging: true,
+                    searching: true,
+                    ordering: true,
+                    info: true,
+                    lengthChange: true,
+                    pageLength: 10,
+                });
+            });
+    </script>
 @endsection

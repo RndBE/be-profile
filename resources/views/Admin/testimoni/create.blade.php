@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="tambahModelTestimoniLabel">Tambah Tetimoni</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -24,7 +24,7 @@
                             <p class="text-red-500 text-sm mt-1 error-message">{{ $message }}</p>
                         @enderror
                     </div>
-                    
+
                     <label for="projek_id" class="form-label">Pilih Projek</label>
                     <div class="input-group mb-3">
                         <select name="projek_id" class="form-select" id="projek_id">
@@ -58,7 +58,7 @@
                         @enderror
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                 </form>

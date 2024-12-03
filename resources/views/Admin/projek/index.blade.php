@@ -28,10 +28,10 @@
                         @include('sweetalert::alert')
                         <div class="card">
                             <div class="card-body table-responsive">
-                                <table class="table">
+                                <table id="example" class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th scope="col">No</th>
+                                            <th scope="col" class="text-center">No</th>
                                             <th scope="col">Thumbnail</th>
                                             <th scope="col">Nama Projek</th>
                                             <th scope="col">Klien</th>
@@ -44,7 +44,7 @@
                                     <tbody>
                                         @forelse ($projeks as $index => $item)
                                             <tr>
-                                                <td>{{ $projeks->firstItem() + $index }}</td>
+                                                <td class="text-center">{{ $loop->iteration }}</td>
                                                 <td>
                                                     @if ($item->thumbnail)
                                                         <img src="{{ asset('storage/' . $item->thumbnail) }}" alt="Image" style="width: 100px; height: auto;">
@@ -53,8 +53,9 @@
                                                 <td>{{ $item->nama_projek }}</td>
                                                 <td>{{ $item->klien->nama_perusahaan }}</td>
                                                 <td>{{ $item->kategoriProjek->nama }}</td>
-                                                {{-- <td>{!! $item->deskripsi!!}</td> --}}
-                                                <td>{{ Str::limit(strip_tags($item->deskripsi), 255, '...') }}</td>
+                                                <td>{!! $item->deskripsi!!}</td>
+                                                {{-- <td id="deskripsi-{!! $item->id !!}">{!! $item->deskripsi !!}</td> --}}
+                                                {{-- <td>{{ Str::limit(strip_tags($item->deskripsi), 255, '...') }}</td> --}}
                                                 <td>{{ $item->waktu }}</td>
 
                                                 <td>
@@ -81,7 +82,7 @@
                                                         <i class="fas fa-edit"></i>
                                                     </a>
 
-                                                    <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteProjekModal{{ $item->id }}">
+                                                    <a type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProjekModal{{ $item->id }}">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
                                                 </td>
@@ -110,5 +111,18 @@
         </div>
     </div>
     @include('Admin.projek.delete', ['projeks' => $projeks])
+
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                    paging: true,
+                    searching: true,
+                    ordering: true,
+                    info: true,
+                    lengthChange: true,
+                    pageLength: 10,
+                });
+            });
+    </script>
 @endsection
 

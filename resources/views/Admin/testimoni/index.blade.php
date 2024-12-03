@@ -21,7 +21,7 @@
             <div class="container-fluid">
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800"></h1>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahModelTestimoni">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahModelTestimoni">
                         Tambah
                     </button>
                 </div>
@@ -31,10 +31,10 @@
 
                         <div class="card">
                             <div class="card-body table-responsive">
-                                <table class="table">
+                                <table id="example" class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th scope="col">No</th>
+                                            <th scope="col" class="text-center">No</th>
                                             <th scope="col">Nama User</th>
                                             <th scope="col">Projek</th>
                                             <th scope="col">Jabatan</th>
@@ -48,7 +48,7 @@
                                     <tbody>
                                         @forelse ($testimonis as $index => $item)
                                             <tr>
-                                                <td>{{ $testimonis->firstItem() + $index }}</td>
+                                                <td class="text-center">{{ $loop->iteration }}</td>
                                                 <td>{{ $item->nama_user }}</td>
                                                 <td>{{ $item->projek->nama_projek }}</td>
                                                 <td>{{ $item->jabatan }}</td>
@@ -67,10 +67,10 @@
                                                     <span>No file</span>
                                                 @endif</td>
                                                 <td>
-                                                    <a type="button" class="btn btn-warning" data-toggle="modal" data-target="#editTestimoniModal{{ $item->id }}">
+                                                    <a type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editTestimoniModal{{ $item->id }}">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
-                                                    <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteTestimoniModal{{ $item->id }}">
+                                                    <a type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteTestimoniModal{{ $item->id }}">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
                                                 </td>
@@ -88,9 +88,6 @@
                                         @endforelse
                                     </tbody>
                                 </table>
-                                <div class="px-6 py-4">
-                                    {{ $testimonis->links('vendor.pagination.bootstrap-5') }}
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -101,4 +98,16 @@
     @include('Admin.testimoni.create')
     @include('Admin.testimoni.edit')
     @include('Admin.testimoni.delete', ['testimonis' => $testimonis])
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                    paging: true,
+                    searching: true,
+                    ordering: true,
+                    info: true,
+                    lengthChange: true,
+                    pageLength: 10,
+                });
+            });
+    </script>
 @endsection

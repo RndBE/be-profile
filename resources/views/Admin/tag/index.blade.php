@@ -21,7 +21,7 @@
             <div class="container-fluid">
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800"></h1>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahModelTag">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahModelTag">
                         Tambah
                     </button>
                 </div>
@@ -31,10 +31,10 @@
 
                         <div class="card">
                             <div class="card-body table-responsive">
-                                <table class="table">
+                                <table id="example" class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th scope="col">No</th>
+                                            <th scope="col" class="text-center">No</th>
                                             <th scope="col">Nama</th>
                                             <th scope="col">Aksi</th>
                                         </tr>
@@ -42,13 +42,13 @@
                                     <tbody>
                                         @forelse ($tags as $index => $item)
                                             <tr>
-                                                <td>{{ $tags->firstItem() + $index }}</td>
+                                                <td class="text-center">{{ $loop->iteration }}</td>
                                                 <td>{{ $item->nama }}</td>
                                                 <td>
-                                                    <a type="button" class="btn btn-warning" data-toggle="modal" data-target="#editTagModal{{ $item->id }}">
+                                                    <a type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editTagModal{{ $item->id }}">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
-                                                    <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteTagModal{{ $item->id }}">
+                                                    <a type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteTagModal{{ $item->id }}">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
                                                 </td>
@@ -66,9 +66,6 @@
                                         @endforelse
                                     </tbody>
                                 </table>
-                                <div class="px-6 py-4">
-                                    {{ $tags->links('vendor.pagination.bootstrap-5') }}
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -79,4 +76,16 @@
     @include('Admin.tag.create')
     @include('Admin.tag.edit')
     @include('Admin.tag.delete', ['tags' => $tags])
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                    paging: true,
+                    searching: true,
+                    ordering: true,
+                    info: true,
+                    lengthChange: true,
+                    pageLength: 10,
+                });
+            });
+    </script>
 @endsection

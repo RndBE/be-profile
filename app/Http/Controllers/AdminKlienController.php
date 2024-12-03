@@ -11,7 +11,7 @@ class AdminKlienController extends Controller
     public function index()
     {
         $data = [
-            'kliens' => Klien::orderBy('created_at', 'desc')->paginate(10), // paginate the results
+            'kliens' => Klien::orderBy('created_at', 'desc')->get(), // paginate the results
         ];
         return view('Admin.klien.index', $data);
     }

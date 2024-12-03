@@ -11,7 +11,7 @@ class AdminTagController extends Controller
     public function index()
     {
         $data = [
-            'tags' => Tag::orderBy('created_at', 'desc')->paginate(10), // paginate the results
+            'tags' => Tag::orderBy('created_at', 'desc')->get(), // paginate the results
         ];
         return view('Admin.tag.index', $data);
     }

@@ -11,7 +11,7 @@ class AdminKategoriProjekController extends Controller
     public function index()
     {
         $data = [
-            'kategori_pojeks' => KategoriProjek::orderBy('created_at', 'desc')->paginate(10), // paginate the results
+            'kategori_pojeks' => KategoriProjek::orderBy('created_at', 'desc')->get(), // paginate the results
         ];
         return view('Admin.kategori-projek.index', $data);
     }

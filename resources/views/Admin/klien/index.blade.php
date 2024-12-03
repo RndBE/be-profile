@@ -21,7 +21,7 @@
             <div class="container-fluid">
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800"></h1>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahModelKlien">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahModelKlien">
                         Tambah
                     </button>
                 </div>
@@ -31,10 +31,10 @@
 
                         <div class="card">
                             <div class="card-body table-responsive">
-                                <table class="table">
+                                <table id="example" class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th scope="col">No</th>
+                                            <th scope="col" class="text-center">No</th>
                                             <th scope="col">Nama Perusahaan</th>
                                             <th scope="col">Logo</th>
                                             <th scope="col">Aksi</th>
@@ -43,7 +43,7 @@
                                     <tbody>
                                         @forelse ($kliens as $index => $item)
                                             <tr>
-                                                <td>{{ $kliens->firstItem() + $index }}</td>
+                                                <td class="text-center">{{ $loop->iteration }}</td>
                                                 <td>{{ $item->nama_perusahaan }}</td>
                                                 <td>
                                                     @if ($item->logo)
@@ -51,10 +51,10 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a type="button" class="btn btn-warning" data-toggle="modal" data-target="#editKlienModal{{ $item->id }}">
+                                                    <a type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editKlienModal{{ $item->id }}">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
-                                                    <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteKlienModal{{ $item->id }}">
+                                                    <a type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteKlienModal{{ $item->id }}">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
                                                 </td>
@@ -72,9 +72,6 @@
                                         @endforelse
                                     </tbody>
                                 </table>
-                                <div class="px-6 py-4">
-                                    {{ $kliens->links('vendor.pagination.bootstrap-5') }}
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -85,4 +82,16 @@
     @include('Admin.klien.create')
     @include('Admin.klien.edit')
     @include('Admin.klien.delete', ['kliens' => $kliens])
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                    paging: true,
+                    searching: true,
+                    ordering: true,
+                    info: true,
+                    lengthChange: true,
+                    pageLength: 10,
+                });
+            });
+    </script>
 @endsection
