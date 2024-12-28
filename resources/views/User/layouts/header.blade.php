@@ -1,22 +1,4 @@
 {{-- <header class="transparent-header"> --}}
-    {{-- <div class="tg-header__top">
-        <div class="container custom-container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <ul class="tg-header__top-info left-side list-wrap">
-                        <li><i class="flaticon-phone-call"></i><a href="tel:0123456789">+123 9898 500</a></li>
-                        <li><i class="flaticon-pin"></i>256 Avenue, Mark Street, NewYork City</li>
-                    </ul>
-                </div>
-                <div class="col-lg-6">
-                    <ul class="tg-header__top-right list-wrap">
-                        <li><i class="flaticon-envelope"></i><a href="mailto:info@apexa.com">info@apexa.com</a></li>
-                        <li><i class="flaticon-time"></i>Mon-Fri: 10:00am - 09:00pm</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div> --}}
     <div id="sticky-header" class="tg-header__area">
         <div class="container custom-container">
             <div class="row">
@@ -172,7 +154,7 @@
             <button><i class="far fa-window-close"></i></button>
         </div>
         <div class="offCanvas__logo mb-30">
-            <a href="index.html"><img src="asset/img/logo/logo.png" alt="Logo"></a>
+            <a href="index.html"><img src="{{ asset('asset/img/logo/logo.png') }}" alt="Logo"></a>
         </div>
         <div class="offCanvas__side-info mb-30">
             <div class="contact-list mb-30">

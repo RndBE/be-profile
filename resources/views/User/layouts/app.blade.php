@@ -30,28 +30,28 @@
         @include('User.layouts.footer')
     </footer>
     <!-- JS here -->
-    <script src="asset/js/vendor/jquery-3.6.0.min.js"></script>
-    <script src="asset/js/bootstrap.bundle.min.js"></script>
-    <script src="asset/js/jquery.magnific-popup.min.js"></script>
-    <script src="asset/js/jquery.odometer.min.js"></script>
-    <script src="asset/js/jquery.appear.js"></script>
-    <script src="asset/js/gsap.js"></script>
-    <script src="asset/js/ScrollTrigger.js"></script>
-    <script src="asset/js/SplitText.js"></script>
-    <script src="asset/js/gsap-animation.js"></script>
-    <script src="asset/js/jquery.parallaxScroll.min.js"></script>
-    <script src="asset/js/swiper-bundle.js"></script>
-    <script src="asset/js/ajax-form.js"></script>
-    <script src="asset/js/wow.min.js"></script>
-    <script src="asset/js/aos.js"></script>
-    <script src="asset/js/main.js"></script>
-    <script>
+    <script src="{{ asset('asset/js/vendor/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('asset/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('asset/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('asset/js/jquery.odometer.min.js') }}"></script>
+    <script src="{{ asset('asset/js/jquery.appear.js') }}"></script>
+    <script src="{{ asset('asset/js/gsap.js') }}"></script>
+    <script src="{{ asset('asset/js/ScrollTrigger.js') }}"></script>
+    <script src="{{ asset('asset/js/SplitText.js') }}"></script>
+    <script src="{{ asset('asset/js/gsap-animation.js') }}"></script>
+    <script src="{{ asset('asset/js/jquery.parallaxScroll.min.js') }}"></script>
+    <script src="{{ asset('asset/js/swiper-bundle.js') }}"></script>
+    <script src="{{ asset('asset/js/ajax-form.js') }}"></script>
+    <script src="{{ asset('asset/js/wow.min.js') }}"></script>
+    <script src="{{ asset('asset/js/aos.js') }}"></script>
+    <script src="{{ asset('asset/js/main.js') }}"></script>
+    {{-- <script>
         const text = document.querySelector('.circle');
         text.innerHTML = text.textContent.replace(/\S/g, "<span>$&</span>");
         const element = document.querySelectorAll('.circle span');
         for (let i = 0; i < element.length; i++) {
             element[i].style.transform = "rotate(" + i * 17 + "deg)"
         }
-    </script>
+    </script> --}}
 </body>
 </html>
