@@ -8,14 +8,17 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/dist/img/title.ico') }}">
     <!-- Place favicon.ico in the root directory -->
     <!-- CSS here -->
-    <link rel="stylesheet" href="asset/css/bootstrap.min.css">
-    <link rel="stylesheet" href="asset/css/animate.min.css">
-    <link rel="stylesheet" href="asset/css/magnific-popup.css">
-    <link rel="stylesheet" href="asset/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="asset/css/flaticon.css">
-    <link rel="stylesheet" href="asset/css/odometer.css">
-    <link rel="stylesheet" href="asset/css/swiper-bundle.css">
-    <link rel="stylesheet" href="asset/css/aos.css">
-    <link rel="stylesheet" href="asset/css/default.css">
-    <link rel="stylesheet" href="asset/css/main.css">
+    <link rel="stylesheet" href="{{ asset('asset/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/odometer.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/swiper-bundle.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/aos.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/default.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 {{-- </head> --}}

@@ -31,7 +31,10 @@ use App\Http\Controllers\AdminKategoriProjekController;
 
 Route::resource('/', UserBerandaController::class);
 
+Route::get('/proyek/{slug}', [UserProyekController::class, 'show'])->name('proyek.show');
 Route::resource('/proyek', UserProyekController::class);
+
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::prefix('/admin')->middleware('auth')->group(function () {

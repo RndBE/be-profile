@@ -165,9 +165,9 @@
             },
         });
 
-        fetchTestimonials();
+        // fetchTestimonials();
 
-        fetchBlogs();
+        // fetchBlogs();
 
         // fetchTestimonialImages();
 
@@ -177,14 +177,14 @@
     /*=============================================
         =          brand active              =
     =============================================*/
-    var swiper2 = new Swiper(".slider__active", {
-        spaceBetween: 0,
-        effect: "fade",
-        loop: true,
-        autoplay: {
-            delay: 6000,
-        },
-    });
+    // var swiper2 = new Swiper(".slider__active", {
+    //     spaceBetween: 0,
+    //     effect: "fade",
+    //     loop: true,
+    //     autoplay: {
+    //         delay: 6000,
+    //     },
+    // });
 
     // var swiper3 = new Swiper(".slider_baner__active", {
     //     spaceBetween: 0,
@@ -202,308 +202,308 @@
     //     },
     // });
 
-    var swiper4 = new Swiper(".slider_partners__active", {
-        spaceBetween: 0,
-        slidesPerView: "auto",
+    // var swiper4 = new Swiper(".slider_partners__active", {
+    //     spaceBetween: 0,
+    //     slidesPerView: "auto",
 
-        // effect: "fade",
-        loop: true,
-        autoplay: {
-            delay: 6000,
-        },
-        // Navigation arrows
-        navigation: {
-            nextEl: '.button-swiper-next',
-            prevEl: '.button-swiper-prev',
-        },
-    });
+    //     // effect: "fade",
+    //     loop: true,
+    //     autoplay: {
+    //         delay: 6000,
+    //     },
+    //     // Navigation arrows
+    //     navigation: {
+    //         nextEl: '.button-swiper-next',
+    //         prevEl: '.button-swiper-prev',
+    //     },
+    // });
 
-    var swiper3 = new Swiper(".slider-partners", {
-        spaceBetween: 0,
-        loop: true,
-        slidesPerView: 2,
-        speed: 3000,
-        autoplay: {
-            delay: 2000,
-        },
-        navigation: {
-            nextEl: '.project-button-next',
-            prevEl: '.project-button-prev',
-        },
-        pagination: {
-            el: '.swiper-pagination-partners',
-            clickable: true,
-        },
-    });
+    // var swiper3 = new Swiper(".slider-partners", {
+    //     spaceBetween: 0,
+    //     loop: true,
+    //     slidesPerView: 2,
+    //     speed: 3000,
+    //     autoplay: {
+    //         delay: 2000,
+    //     },
+    //     navigation: {
+    //         nextEl: '.project-button-next',
+    //         prevEl: '.project-button-prev',
+    //     },
+    //     pagination: {
+    //         el: '.swiper-pagination-partners',
+    //         clickable: true,
+    //     },
+    // });
 
 
     /*=============================================
         =          brand active              =
     =============================================*/
-    var slider = new Swiper('.brand-active', {
-        slidesPerView: 1,
-        spaceBetween: 30,
-        loop: true,
-        breakpoints: {
-            '1200': {
-                slidesPerView: 6,
-            },
-            '992': {
-                slidesPerView: 5,
-            },
-            '768': {
-                slidesPerView: 4,
-            },
-            '576': {
-                slidesPerView: 3,
-            },
-            '0': {
-                slidesPerView: 2,
-            },
-        },
-    });
+    // var slider = new Swiper('.brand-active', {
+    //     slidesPerView: 1,
+    //     spaceBetween: 30,
+    //     loop: true,
+    //     breakpoints: {
+    //         '1200': {
+    //             slidesPerView: 6,
+    //         },
+    //         '992': {
+    //             slidesPerView: 5,
+    //         },
+    //         '768': {
+    //             slidesPerView: 4,
+    //         },
+    //         '576': {
+    //             slidesPerView: 3,
+    //         },
+    //         '0': {
+    //             slidesPerView: 2,
+    //         },
+    //     },
+    // });
 
     /*=============================================
         =          testimonials active              =
     =============================================*/
-    var slider = new Swiper('.testiminials-active', {
-        slidesPerView: 3,
-        spaceBetween: 24,
-        loop: true,
-        breakpoints: {
-            '1200': {
-                slidesPerView: 3,
-            },
-            '992': {
-                slidesPerView: 3,
-            },
-            '768': {
-                slidesPerView: 2,
-            },
-            '576': {
-                slidesPerView: 1,
-            },
-            '0': {
-                slidesPerView: 1,
-            },
-        },
-    });
+    // var slider = new Swiper('.testiminials-active', {
+    //     slidesPerView: 3,
+    //     spaceBetween: 24,
+    //     loop: true,
+    //     breakpoints: {
+    //         '1200': {
+    //             slidesPerView: 3,
+    //         },
+    //         '992': {
+    //             slidesPerView: 3,
+    //         },
+    //         '768': {
+    //             slidesPerView: 2,
+    //         },
+    //         '576': {
+    //             slidesPerView: 1,
+    //         },
+    //         '0': {
+    //             slidesPerView: 1,
+    //         },
+    //     },
+    // });
 
-    var slider_test = new Swiper('.testiminials-active-2', {
-        slidesPerView: 2,
-        spaceBetween: 24,
-        loop: true,
-        navigation: {
-            nextEl: '.button-swiper-testimonial-next',
-            prevEl: '.button-swiper-testimonial-prev',
-        },
-        breakpoints: {
-            '1200': {
-                slidesPerView: 2,
-            },
-            '992': {
-                slidesPerView: 2,
-            },
-            '768': {
-                slidesPerView: 1,
-            },
-            '576': {
-                slidesPerView: 1,
-            },
-            '0': {
-                slidesPerView: 1,
-            },
-        },
-    });
+    // var slider_test = new Swiper('.testiminials-active-2', {
+    //     slidesPerView: 2,
+    //     spaceBetween: 24,
+    //     loop: true,
+    //     navigation: {
+    //         nextEl: '.button-swiper-testimonial-next',
+    //         prevEl: '.button-swiper-testimonial-prev',
+    //     },
+    //     breakpoints: {
+    //         '1200': {
+    //             slidesPerView: 2,
+    //         },
+    //         '992': {
+    //             slidesPerView: 2,
+    //         },
+    //         '768': {
+    //             slidesPerView: 1,
+    //         },
+    //         '576': {
+    //             slidesPerView: 1,
+    //         },
+    //         '0': {
+    //             slidesPerView: 1,
+    //         },
+    //     },
+    // });
 
     /*=============================================
         =          project active              =
     =============================================*/
-    var swiper2 = new Swiper(".project-active", {
-        spaceBetween: 0,
-        loop: true,
-        autoplay: {
-            delay: 6000,
-        },
-        thumbs: {
-            swiper: swiper,
-        },
-        // Navigation arrows
-        navigation: {
-            nextEl: '.project-button-next',
-            prevEl: '.project-button-prev',
-        },
-    });
+    // var swiper2 = new Swiper(".project-active", {
+    //     spaceBetween: 0,
+    //     loop: true,
+    //     autoplay: {
+    //         delay: 6000,
+    //     },
+    //     thumbs: {
+    //         swiper: swiper,
+    //     },
+    //     // Navigation arrows
+    //     navigation: {
+    //         nextEl: '.project-button-next',
+    //         prevEl: '.project-button-prev',
+    //     },
+    // });
 
 
     /*=============================================
         =          Testimonials             =
     =============================================*/
-    let testimonialsData;
-    async function fetchTestimonials() {
-        try {
-            const response = await fetch('https://hxcobackend-btbqasa5bxhbgagq.southeastasia-01.azurewebsites.net/readTestimonials/', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            });
-            if (response.ok) {
-                const data = await response.json();
-                console.log("testi data = ", data);
-                const testimonialsContainer = $('.testimonial-wrapper'); // Assuming the swiper container is a 'swiper-wrapper' class
-    
-                // Clear any existing content (optional)
-                testimonialsContainer.empty();
-                
-                // Iterate over the fetched testimonials and create the HTML structure for each
-                data.forEach(testimonial => {
-                    // Create the rating stars
-                    let starsHtml = '';
-                    for (let i = 0; i < testimonial.rating; i++) {
-                        starsHtml += '<i class="fas fa-star"></i>';
-                    }
-    
-                    // Create the testimonial slide
-                    const testimonialHtml = `
-                    <div class="swiper-slide">
-                      <div class="testimonial__item-three">
-                        <div class="testimonial__rating testimonial__rating-two">
-                          ${starsHtml}
-                        </div>
-                        <p>“ ${testimonial.text}</p>
-                        <div class="testimonial__bottom">
-                          <div class="testimonial__info-three">
-                            <h4 class="title">${testimonial.author}</h4>
-                            <span>${testimonial.designation}</span>
-                          </div>
-                          <div class="testimonial__icon">
-                            <img src="${testimonial.image ? testimonial.image : 'assets/img/icon/quote02.svg'}" alt="">
-                          </div>
-                        </div>
-                      </div>
-                    </div>`;
-    
-                    // Append the testimonial to the container
-                    testimonialsContainer.append(testimonialHtml);
-                });
-    
-                // Initialize the Swiper instance after appending all testimonials
-                var swiper3 = new Swiper(".testimonial-active-two", {
-                    loop: true,
-                    slidesPerView: 1,
-                    spaceBetween: 0,
-                    autoplay: {
-                        delay: 6000,
-                    },
-                    // Navigation arrows
-                    navigation: {
-                        nextEl: '.testimonial-button-next',
-                        prevEl: '.testimonial-button-prev',
-                    },
-                });
-            }
-            else {
-                throw new Error('Error getting testimonial data');
-            }
-        }
-        catch (error) {
-            console.error('Error:', error);
-        }
-    }
-    
+    // let testimonialsData;
+    // async function fetchTestimonials() {
+    //     try {
+    //         const response = await fetch('https://hxcobackend-btbqasa5bxhbgagq.southeastasia-01.azurewebsites.net/readTestimonials/', {
+    //             method: 'GET',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             }
+    //         });
+    //         if (response.ok) {
+    //             const data = await response.json();
+    //             console.log("testi data = ", data);
+    //             const testimonialsContainer = $('.testimonial-wrapper'); // Assuming the swiper container is a 'swiper-wrapper' class
+
+    //             // Clear any existing content (optional)
+    //             testimonialsContainer.empty();
+
+    //             // Iterate over the fetched testimonials and create the HTML structure for each
+    //             data.forEach(testimonial => {
+    //                 // Create the rating stars
+    //                 let starsHtml = '';
+    //                 for (let i = 0; i < testimonial.rating; i++) {
+    //                     starsHtml += '<i class="fas fa-star"></i>';
+    //                 }
+
+    //                 // Create the testimonial slide
+    //                 const testimonialHtml = `
+    //                 <div class="swiper-slide">
+    //                   <div class="testimonial__item-three">
+    //                     <div class="testimonial__rating testimonial__rating-two">
+    //                       ${starsHtml}
+    //                     </div>
+    //                     <p>“ ${testimonial.text}</p>
+    //                     <div class="testimonial__bottom">
+    //                       <div class="testimonial__info-three">
+    //                         <h4 class="title">${testimonial.author}</h4>
+    //                         <span>${testimonial.designation}</span>
+    //                       </div>
+    //                       <div class="testimonial__icon">
+    //                         <img src="${testimonial.image ? testimonial.image : 'assets/img/icon/quote02.svg'}" alt="">
+    //                       </div>
+    //                     </div>
+    //                   </div>
+    //                 </div>`;
+
+    //                 // Append the testimonial to the container
+    //                 testimonialsContainer.append(testimonialHtml);
+    //             });
+
+    //             // Initialize the Swiper instance after appending all testimonials
+    //             var swiper3 = new Swiper(".testimonial-active-two", {
+    //                 loop: true,
+    //                 slidesPerView: 1,
+    //                 spaceBetween: 0,
+    //                 autoplay: {
+    //                     delay: 6000,
+    //                 },
+    //                 // Navigation arrows
+    //                 navigation: {
+    //                     nextEl: '.testimonial-button-next',
+    //                     prevEl: '.testimonial-button-prev',
+    //                 },
+    //             });
+    //         }
+    //         else {
+    //             throw new Error('Error getting testimonial data');
+    //         }
+    //     }
+    //     catch (error) {
+    //         console.error('Error:', error);
+    //     }
+    // }
 
 
-    let blogsData;
 
-    async function fetchBlogs() {
-        try {
-            const response = await fetch('https://hxcobackend-btbqasa5bxhbgagq.southeastasia-01.azurewebsites.net/readBlogs/', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            });
-    
-            if (response.ok) {
-                const data = await response.json();
-                console.log("Blog data:", data);
-    
-                const blogContainer = document.querySelector('.blog-post-container');
-    
-                // Clear existing content
-                blogContainer.innerHTML = '';
-    
-                // Iterate over the fetched blogs and create the HTML structure for each
-                data.forEach(blog => {
-                    // Construct the full image URL
-                    const imageUrl = blog.image ? `https://hxcobackend-btbqasa5bxhbgagq.southeastasia-01.azurewebsites.net${blog.image}` : '#';
-    
-                    // Determine if the image container should be included
-                    const imageContainer = blog.image ? `
-                        <div class="blog__post-thumb-two col-lg-3 border-2">
-                            <a href="${blog.linkToPdf=='true' ? `https://hxcobackend-btbqasa5bxhbgagq.southeastasia-01.azurewebsites.net${blog.pdf}` : blog.url}" target="_blank">
-                                <img src="${imageUrl}" alt="${blog.title}">
-                            </a>
-                        </div>` : '';
-    
-                    // Check if linkToPdf is true and construct the PDF link
-                    const pdfLink = blog.linkToPdf ? `
-                        <p>
-                            <a href="https://hxcobackend-btbqasa5bxhbgagq.southeastasia-01.azurewebsites.net${blog.pdf}" target="_blank">Download PDF</a>
-                        </p>` : '';
-    
-                    const blogHtml = `
-                    <div class="col-lg-12 col-md-12">
-                        <div class="blog__post-two flex  sm-flex-row flex-col items-center justify-center px-10px">
-                            ${imageContainer}
-                            <div class="blog__post-content-two ${blog.image ? 'col-lg-8' : 'col-lg-12'}">
-                                <div class="blog-post-meta flex flex-col space-between">
-                                    <h2 class="title">
-                                        <a href="${blog.linkToPdf=='true' ? `https://hxcobackend-btbqasa5bxhbgagq.southeastasia-01.azurewebsites.net${blog.pdf}` : `${blog.url}`}" target="_blank">${blog.title}</a>
-                                    </h2>
-                                    <ul class="list-wrap">
-                                        <li><i class="fas fa-calendar-alt"></i>${blog.date}</li>
-                                    </ul>
-                                </div>
-                                <p>${blog.description}
-                                    <a href="${blog.linkToPdf=='true' ? `https://hxcobackend-btbqasa5bxhbgagq.southeastasia-01.azurewebsites.net${blog.pdf}` : `${blog.url}`}" target="_blank"> Read more</a>
-                                </p>
-                               
-                                <div class="blog-avatar">
-                                    <div class="avatar-content">
-                                        <p>By <a href="#">${blog.author}</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>`;
-    
-                    // Append the blog item to the container
-                    blogContainer.innerHTML += blogHtml;
-                });
-    
-            } else {
-                throw new Error('Error fetching blog data');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    }
-    
-    
-    
-    
+    // let blogsData;
+
+    // async function fetchBlogs() {
+    //     try {
+    //         const response = await fetch('https://hxcobackend-btbqasa5bxhbgagq.southeastasia-01.azurewebsites.net/readBlogs/', {
+    //             method: 'GET',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             }
+    //         });
+
+    //         if (response.ok) {
+    //             const data = await response.json();
+    //             console.log("Blog data:", data);
+
+    //             const blogContainer = document.querySelector('.blog-post-container');
+
+    //             // Clear existing content
+    //             blogContainer.innerHTML = '';
+
+    //             // Iterate over the fetched blogs and create the HTML structure for each
+    //             data.forEach(blog => {
+    //                 // Construct the full image URL
+    //                 const imageUrl = blog.image ? `https://hxcobackend-btbqasa5bxhbgagq.southeastasia-01.azurewebsites.net${blog.image}` : '#';
+
+    //                 // Determine if the image container should be included
+    //                 const imageContainer = blog.image ? `
+    //                     <div class="blog__post-thumb-two col-lg-3 border-2">
+    //                         <a href="${blog.linkToPdf=='true' ? `https://hxcobackend-btbqasa5bxhbgagq.southeastasia-01.azurewebsites.net${blog.pdf}` : blog.url}" target="_blank">
+    //                             <img src="${imageUrl}" alt="${blog.title}">
+    //                         </a>
+    //                     </div>` : '';
+
+    //                 // Check if linkToPdf is true and construct the PDF link
+    //                 const pdfLink = blog.linkToPdf ? `
+    //                     <p>
+    //                         <a href="https://hxcobackend-btbqasa5bxhbgagq.southeastasia-01.azurewebsites.net${blog.pdf}" target="_blank">Download PDF</a>
+    //                     </p>` : '';
+
+    //                 const blogHtml = `
+    //                 <div class="col-lg-12 col-md-12">
+    //                     <div class="blog__post-two flex  sm-flex-row flex-col items-center justify-center px-10px">
+    //                         ${imageContainer}
+    //                         <div class="blog__post-content-two ${blog.image ? 'col-lg-8' : 'col-lg-12'}">
+    //                             <div class="blog-post-meta flex flex-col space-between">
+    //                                 <h2 class="title">
+    //                                     <a href="${blog.linkToPdf=='true' ? `https://hxcobackend-btbqasa5bxhbgagq.southeastasia-01.azurewebsites.net${blog.pdf}` : `${blog.url}`}" target="_blank">${blog.title}</a>
+    //                                 </h2>
+    //                                 <ul class="list-wrap">
+    //                                     <li><i class="fas fa-calendar-alt"></i>${blog.date}</li>
+    //                                 </ul>
+    //                             </div>
+    //                             <p>${blog.description}
+    //                                 <a href="${blog.linkToPdf=='true' ? `https://hxcobackend-btbqasa5bxhbgagq.southeastasia-01.azurewebsites.net${blog.pdf}` : `${blog.url}`}" target="_blank"> Read more</a>
+    //                             </p>
+
+    //                             <div class="blog-avatar">
+    //                                 <div class="avatar-content">
+    //                                     <p>By <a href="#">${blog.author}</a></p>
+    //                                 </div>
+    //                             </div>
+    //                         </div>
+    //                     </div>
+    //                 </div>`;
+
+    //                 // Append the blog item to the container
+    //                 blogContainer.innerHTML += blogHtml;
+    //             });
+
+    //         } else {
+    //             throw new Error('Error fetching blog data');
+    //         }
+    //     } catch (error) {
+    //         console.error('Error:', error);
+    //     }
+    // }
+
+
+
+
     // Call the fetchBlogs function when the page loads
     // document.addEventListener('DOMContentLoaded', fetchBlogs);
-    
+
     /*=============================================
         =          Contact Us Form            =
     =============================================*/
 
     $('#contact-form').on('submit', function(e) {
         e.preventDefault(); // Prevent default form submission
-    
+
         // Collect form data
         var formData = {
             message: $('textarea[name="message"]').val(),
@@ -512,7 +512,7 @@
             phone: $('input[name="phone"]').val()
         };
         console.log("contact form data= ", formData);
-    
+
         // Send data using fetch
         fetch('https://hxcobackend-btbqasa5bxhbgagq.southeastasia-01.azurewebsites.net/saveContactData', {
             method: 'POST',
@@ -537,60 +537,60 @@
             $('.ajax-response').text('Something went wrong. Please try again later.');
         });
     });
-    
+
 
 
 
     /*=============================================
         =          brand active              =
     =============================================*/
-    var slider = new Swiper('.project-active-two', {
-        slidesPerView: 1,
-        spaceBetween: 5,
-        loop: true,
-        breakpoints: {
-            '1200': {
-                slidesPerView: 4,
-            },
-            '992': {
-                slidesPerView: 3,
-            },
-            '768': {
-                slidesPerView: 2,
-            },
-            '576': {
-                slidesPerView: 2,
-            },
-            '0': {
-                slidesPerView: 1,
-            },
-        },
-    });
+    // var slider = new Swiper('.project-active-two', {
+    //     slidesPerView: 1,
+    //     spaceBetween: 5,
+    //     loop: true,
+    //     breakpoints: {
+    //         '1200': {
+    //             slidesPerView: 4,
+    //         },
+    //         '992': {
+    //             slidesPerView: 3,
+    //         },
+    //         '768': {
+    //             slidesPerView: 2,
+    //         },
+    //         '576': {
+    //             slidesPerView: 2,
+    //         },
+    //         '0': {
+    //             slidesPerView: 1,
+    //         },
+    //     },
+    // });
 
 
 
     /*=============================================
         =          testimonial active              =
     =============================================*/
-    var swiper = new Swiper(".testimonial-nav", {
-        spaceBetween: 0,
-        slidesPerView: 4,
-    });
-    var swiper2 = new Swiper(".testimonial-active", {
-        spaceBetween: 0,
-        loop: true,
-        autoplay: {
-            delay: 6000,
-        },
-        thumbs: {
-            swiper: swiper,
-        },
-        // And if we need scrollbar
-        scrollbar: {
-            el: ".swiper-scrollbar",
-            draggable: !0,
-        },
-    });
+    // var swiper = new Swiper(".testimonial-nav", {
+    //     spaceBetween: 0,
+    //     slidesPerView: 4,
+    // });
+    // var swiper2 = new Swiper(".testimonial-active", {
+    //     spaceBetween: 0,
+    //     loop: true,
+    //     autoplay: {
+    //         delay: 6000,
+    //     },
+    //     thumbs: {
+    //         swiper: swiper,
+    //     },
+    //     // And if we need scrollbar
+    //     scrollbar: {
+    //         el: ".swiper-scrollbar",
+    //         draggable: !0,
+    //     },
+    // });
 
 
     /*=============================================
@@ -613,25 +613,25 @@
     /*=============================================
         =          testimonial active              =
     =============================================*/
-    var swiper = new Swiper(".testimonial__nav-three", {
-        spaceBetween: 0,
-        slidesPerView: 4,
-    });
-    var swiper2 = new Swiper(".testimonial-active-three", {
-        spaceBetween: 0,
-        loop: true,
-        autoplay: {
-            delay: 6000,
-        },
-        thumbs: {
-            swiper: swiper,
-        },
-        // Navigation arrows
-        navigation: {
-            nextEl: '.testimonial-two-button-next',
-            prevEl: '.testimonial-two-button-prev',
-        },
-    });
+    // var swiper = new Swiper(".testimonial__nav-three", {
+    //     spaceBetween: 0,
+    //     slidesPerView: 4,
+    // });
+    // var swiper2 = new Swiper(".testimonial-active-three", {
+    //     spaceBetween: 0,
+    //     loop: true,
+    //     autoplay: {
+    //         delay: 6000,
+    //     },
+    //     thumbs: {
+    //         swiper: swiper,
+    //     },
+    //     // Navigation arrows
+    //     navigation: {
+    //         nextEl: '.testimonial-two-button-next',
+    //         prevEl: '.testimonial-two-button-prev',
+    //     },
+    // });
 
     /*=============================================
         =        Team Social Active 	       =

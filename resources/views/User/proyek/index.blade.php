@@ -1,8 +1,8 @@
 @extends('User.layouts.app')
-{{-- @section('title', 'Testimoni | BE Profile') --}}
+@section('title', 'Galeri Proyek | BE Profile')
 @section('content')
-            <!-- breadcrumb-area -->
-        <section class="breadcrumb__area breadcrumb__bg" data-background="asset/img/project/bg.png">
+        <!-- breadcrumb-area -->
+        <section class="breadcrumb__area breadcrumb__bg" data-background="{{ asset('asset/img/project/bg.png') }}">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
@@ -18,13 +18,6 @@
                     </div>
                 </div>
             </div>
-            <div class="breadcrumb__shape">
-                <img src="asset/img/images/breadcrumb_shape01.png" alt="">
-                <img src="asset/img/images/breadcrumb_shape02.png" alt="" class="rightToLeft">
-                <img src="asset/img/images/breadcrumb_shape03.png" alt="">
-                <img src="asset/img/images/breadcrumb_shape04.png" alt="">
-                <img src="asset/img/images/breadcrumb_shape05.png" alt="" class="alltuchtopdown">
-            </div>
         </section>
         <!-- breadcrumb-area-end -->
         <!-- blog-area -->
@@ -38,7 +31,7 @@
                                     <div class="col-md-6">
                                         <div class="blog__post-two shine-animate-item">
                                             <div class="blog__post-thumb-two">
-                                                <a href="blog-details.html" class="shine-animate"><img src="asset/img/blog/h2_blog_post01.jpg" alt=""></a>
+                                                <a href="blog-details.html" class="shine-animate"><img src="{{ asset('asset/img/blog/h2_blog_post01.jpg') }}" alt=""></a>
                                             </div>
                                             <div class="blog__post-content-two">
                                                 <div class="blog-post-meta">
@@ -52,7 +45,7 @@
                                                 <h2 class="title"><a href="blog-details.html">Marketing your area business downturn now a days</a></h2>
                                                 <div class="blog-avatar">
                                                     <div class="avatar-thumb">
-                                                        <img src="asset/img/blog/blog_avatar01.png" alt="">
+                                                        <img src="{{ asset('asset/img/blog/blog_avatar01.png') }}" alt="">
                                                     </div>
                                                     <div class="avatar-content">
                                                         <p>By <a href="blog-details.html">Doman Smith</a></p>
@@ -64,7 +57,7 @@
                                     <div class="col-md-6">
                                         <div class="blog__post-two shine-animate-item">
                                             <div class="blog__post-thumb-two">
-                                                <a href="blog-details.html" class="shine-animate"><img src="asset/img/blog/h2_blog_post02.jpg" alt=""></a>
+                                                <a href="blog-details.html" class="shine-animate"><img src="{{ asset('asset/img/blog/h2_blog_post02.jpg') }}" alt=""></a>
                                             </div>
                                             <div class="blog__post-content-two">
                                                 <div class="blog-post-meta">
@@ -78,7 +71,7 @@
                                                 <h2 class="title"><a href="blog-details.html">Improving The Double Diamond Design Process</a></h2>
                                                 <div class="blog-avatar">
                                                     <div class="avatar-thumb">
-                                                        <img src="asset/img/blog/blog_avatar01.png" alt="">
+                                                        <img src="{{ asset('asset/img/blog/blog_avatar01.png') }}" alt="">
                                                     </div>
                                                     <div class="avatar-content">
                                                         <p>By <a href="blog-details.html">Doman Smith</a></p>
@@ -90,7 +83,7 @@
                                     <div class="col-md-6">
                                         <div class="blog__post-two shine-animate-item">
                                             <div class="blog__post-thumb-two">
-                                                <a href="blog-details.html" class="shine-animate"><img src="asset/img/blog/h2_blog_post03.jpg" alt=""></a>
+                                                <a href="blog-details.html" class="shine-animate"><img src="{{ asset('asset/img/blog/h2_blog_post03.jpg') }}" alt=""></a>
                                             </div>
                                             <div class="blog__post-content-two">
                                                 <div class="blog-post-meta">
@@ -104,7 +97,7 @@
                                                 <h2 class="title"><a href="blog-details.html">Revealing Images With CSS Mask Animations</a></h2>
                                                 <div class="blog-avatar">
                                                     <div class="avatar-thumb">
-                                                        <img src="asset/img/blog/blog_avatar01.png" alt="">
+                                                        <img src="{{ asset('asset/img/blog/blog_avatar01.png') }}" alt="">
                                                     </div>
                                                     <div class="avatar-content">
                                                         <p>By <a href="blog-details.html">Doman Smith</a></p>
@@ -116,7 +109,7 @@
                                     <div class="col-md-6">
                                         <div class="blog__post-two shine-animate-item">
                                             <div class="blog__post-thumb-two">
-                                                <a href="blog-details.html" class="shine-animate"><img src="asset/img/blog/h2_blog_post04.jpg" alt=""></a>
+                                                <a href="blog-details.html" class="shine-animate"><img src="{{ asset('asset/img/blog/h2_blog_post04.jpg') }}" alt=""></a>
                                             </div>
                                             <div class="blog__post-content-two">
                                                 <div class="blog-post-meta">
@@ -131,7 +124,7 @@
                                                         Design Process</a></h2>
                                                 <div class="blog-avatar">
                                                     <div class="avatar-thumb">
-                                                        <img src="asset/img/blog/blog_avatar01.png" alt="">
+                                                        <img src="{{ asset('asset/img/blog/blog_avatar01.png') }}" alt="">
                                                     </div>
                                                     <div class="avatar-content">
                                                         <p>By <a href="blog-details.html">Doman Smith</a></p>
@@ -143,7 +136,7 @@
                                     <div class="col-md-6">
                                         <div class="blog__post-two shine-animate-item">
                                             <div class="blog__post-thumb-two">
-                                                <a href="blog-details.html" class="shine-animate"><img src="asset/img/blog/h2_blog_post05.jpg" alt=""></a>
+                                                <a href="blog-details.html" class="shine-animate"><img src="{{ asset('asset/img/blog/h2_blog_post05.jpg') }}" alt=""></a>
                                             </div>
                                             <div class="blog__post-content-two">
                                                 <div class="blog-post-meta">
@@ -158,7 +151,7 @@
                                                         Of Color Spaces, Gamuts ...</a></h2>
                                                 <div class="blog-avatar">
                                                     <div class="avatar-thumb">
-                                                        <img src="asset/img/blog/blog_avatar01.png" alt="">
+                                                        <img src="{{ asset('asset/img/blog/blog_avatar01.png') }}" alt="">
                                                     </div>
                                                     <div class="avatar-content">
                                                         <p>By <a href="blog-details.html">Doman Smith</a></p>
@@ -170,7 +163,7 @@
                                     <div class="col-md-6">
                                         <div class="blog__post-two shine-animate-item">
                                             <div class="blog__post-thumb-two">
-                                                <a href="blog-details.html" class="shine-animate"><img src="asset/img/blog/h2_blog_post06.jpg" alt=""></a>
+                                                <a href="blog-details.html" class="shine-animate"><img src="{{ asset('asset/img/blog/h2_blog_post06.jpg') }}" alt=""></a>
                                             </div>
                                             <div class="blog__post-content-two">
                                                 <div class="blog-post-meta">
@@ -185,7 +178,7 @@
                                                         Triangles</a></h2>
                                                 <div class="blog-avatar">
                                                     <div class="avatar-thumb">
-                                                        <img src="asset/img/blog/blog_avatar01.png" alt="">
+                                                        <img src="{{ asset('asset/img/blog/blog_avatar01.png') }}" alt="">
                                                     </div>
                                                     <div class="avatar-content">
                                                         <p>By <a href="blog-details.html">Doman Smith</a></p>
@@ -254,7 +247,7 @@
                                     <div class="sidebar__post-list">
                                         <div class="sidebar__post-item">
                                             <div class="sidebar__post-thumb">
-                                                <a href="blog-details.html"><img src="asset/img/blog/sb_post01.jpg" alt=""></a>
+                                                <a href="blog-details.html"><img src="{{ asset('asset/img/blog/sb_post01.jpg') }}" alt=""></a>
                                             </div>
                                             <div class="sidebar__post-content">
                                                 <h5 class="title"><a href="blog-details.html">deno weuine easiure and praising</a></h5>
@@ -263,7 +256,7 @@
                                         </div>
                                         <div class="sidebar__post-item">
                                             <div class="sidebar__post-thumb">
-                                                <a href="blog-details.html"><img src="asset/img/blog/sb_post02.jpg" alt=""></a>
+                                                <a href="blog-details.html"><img src="{{ asset('asset/img/blog/sb_post02.jpg') }}" alt=""></a>
                                             </div>
                                             <div class="sidebar__post-content">
                                                 <h5 class="title"><a href="blog-details.html">know how to pursue pleasure rationally</a></h5>
@@ -272,7 +265,7 @@
                                         </div>
                                         <div class="sidebar__post-item">
                                             <div class="sidebar__post-thumb">
-                                                <a href="blog-details.html"><img src="asset/img/blog/sb_post03.jpg" alt=""></a>
+                                                <a href="blog-details.html"><img src="{{ asset('asset/img/blog/sb_post03.jpg') }}" alt=""></a>
                                             </div>
                                             <div class="sidebar__post-content">
                                                 <h5 class="title"><a href="blog-details.html">there anyone who loves</a></h5>
@@ -281,7 +274,7 @@
                                         </div>
                                         <div class="sidebar__post-item">
                                             <div class="sidebar__post-thumb">
-                                                <a href="blog-details.html"><img src="asset/img/blog/sb_post04.jpg" alt=""></a>
+                                                <a href="blog-details.html"><img src="{{ asset('asset/img/blog/sb_post04.jpg') }}" alt=""></a>
                                             </div>
                                             <div class="sidebar__post-content">
                                                 <h5 class="title"><a href="blog-details.html">deno weuine easiure and praising</a></h5>
