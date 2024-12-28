@@ -60,6 +60,15 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg">
+                    @if ($errors->any())
+                        <div class="alert alert-danger error-message" role="alert">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li class="text-danger">{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     @include('sweetalert::alert')
                     <div class="card">
                         <div class="card-body">
@@ -70,7 +79,7 @@
                                         <label for="nama_projek" class="form-label">Nama Projek</label>
                                         <input name="nama_projek" class="form-control mb-1" id="nama_projek" rows="3" {{ old('nama_projek') }}>
                                         @error('nama_projek')
-                                            <p class="text-red-500 text-sm mt-1 error-message">{{ $message }}</p>
+                                            <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
                                         @enderror
 
                                         <label for="klien_id" class="form-label">Klien</label>
@@ -81,10 +90,10 @@
                                                     <option value="{{ $klien->id }}" {{ old('klien_id') == $klien->id ? 'selected' : '' }}>{{ $klien->nama_perusahaan }}</option>
                                                 @endforeach
                                             </select>
-                                            @error('klien_id')
-                                                <p class="text-danger text-sm mt-1">{{ $message }}</p>
-                                            @enderror
                                         </div>
+                                        @error('klien_id')
+                                            <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
+                                        @enderror
 
                                         <label for="kategori_projek_id" class="form-label">Kategori Projek</label>
                                         <div class="input-group mb-1">
@@ -94,39 +103,42 @@
                                                     <option value="{{ $kategori->id }}" {{ old('kategori_projek_id') == $kategori->id ? 'selected' : '' }}>{{ $kategori->nama }}</option>
                                                 @endforeach
                                             </select>
-                                            @error('kategori_projek_id')
-                                                <p class="text-danger text-sm mt-1">{{ $message }}</p>
-                                            @enderror
                                         </div>
+                                        @error('kategori_projek_id')
+                                            <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
+                                        @enderror
 
                                         <label for="lokasi" class="form-label">Lokasi</label>
                                         <input name="lokasi" class="form-control mb-1" id="lokasi" rows="3" {{ old('lokasi') }}>
                                         @error('lokasi')
-                                            <p class="text-red-500 text-sm mt-1 error-message">{{ $message }}</p>
+                                            <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
                                         @enderror
 
                                         <label for="website" class="form-label">Website</label>
                                         <input name="website" class="form-control mb-1" id="website" rows="3" {{ old('website') }}>
                                         @error('website')
-                                            <p class="text-red-500 text-sm mt-1 error-message">{{ $message }}</p>
+                                            <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
                                         @enderror
 
                                         <label for="waktu" class="form-label">Waktu</label>
                                         <input name="waktu" type="number" class="form-control mb-1" id="waktu" rows="3" {{ old('waktu') }}>
                                         @error('waktu')
-                                            <p class="text-red-500 text-sm mt-1 error-message">{{ $message }}</p>
+                                            <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
                                         @enderror
 
                                         <label for="thumbnail" class="mr-3">Upload Thumbnail</label>
                                         <div class="input-group mb-1">
                                             <input type="file" class="form-control" name="thumbnail" id="thumbnail" accept=".png, .jpg, .jpeg">
                                         </div>
+                                        @error('thumbnail')
+                                            <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                     <div class="col-md-8 ml-auto">
                                         <label for="deskripsi" class="form-label">Deskripsi</label>
                                         <textarea class="ckeditor form-control" name="deskripsi" id="deskripsi" rows="3">{{ old('deskripsi') }}</textarea>
                                         @error('deskripsi')
-                                            <p class="text-red-500 text-sm mt-1 error-message">{{ $message }}</p>
+                                            <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
                                         @enderror
 
                                         <div class="form-group">
@@ -154,7 +166,6 @@
         </div>
     </div>
 </div>
-@endsection
 <script>
     setTimeout(function() {
         const errorMessages = document.querySelectorAll('.error-message');
@@ -219,4 +230,6 @@
         });
     });
 </script>
+@endsection
+
 

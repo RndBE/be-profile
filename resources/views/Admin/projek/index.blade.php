@@ -100,9 +100,9 @@
                                         @endforelse
                                     </tbody>
                                 </table>
-                                <div class="px-6 py-4">
+                                {{-- <div class="px-6 py-4">
                                     {{ $projeks->links('vendor.pagination.bootstrap-5') }}
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

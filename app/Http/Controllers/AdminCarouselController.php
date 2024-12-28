@@ -22,7 +22,7 @@ class AdminCarouselController extends Controller
         $request->validate([
             'judul' => 'required|string',
             'sub_judul' => 'required|string',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048'
         ]);
 
         $imageName = null;
@@ -47,7 +47,7 @@ class AdminCarouselController extends Controller
         $request->validate([
             'judul' => 'required|string',
             'sub_judul' => 'required|string',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048'
         ]);
 
         $carousel = BerandaCarousel::findOrFail($id);
