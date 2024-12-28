@@ -14,7 +14,7 @@ class AdminProjekController extends Controller
     public function index()
     {
         $data = [
-            'projeks' => Projek::orderBy('created_at', 'desc')->paginate(10),
+            'projeks' => Projek::orderBy('created_at', 'desc')->get(),
             'kliens' => Klien::all(),
             'kategoriProjeks' => KategoriProjek::all()
         ];

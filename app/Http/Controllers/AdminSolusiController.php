@@ -23,7 +23,7 @@ class AdminSolusiController extends Controller
         $request->validate([
             'nama' => 'required|string',
             'description' => 'required|string',
-            'icon' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'icon' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
@@ -66,7 +66,7 @@ class AdminSolusiController extends Controller
         $request->validate([
             'nama' => 'required|string',
             'description' => 'required|string',
-            'icon' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'icon' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
         ]);
         // Cari data yang akan diupdate berdasarkan ID

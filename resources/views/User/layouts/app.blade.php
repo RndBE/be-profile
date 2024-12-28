@@ -1,41 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html class="no-js" lang="en">
 <head>
     @include('User.layouts.head')
 </head>
-
-<body class="index-page">
-
-    <header id="header" class="header d-flex align-items-center fixed-top">
+<body>
+    <!--Preloader-->
+    <div id="preloader">
+        <div id="loader" class="loader">
+            <div class="loader-container">
+                <div class="loader-icon"><img src="{{ asset('assets/dist/img/title.ico') }}" alt="Preloader"></div>
+            </div>
+        </div>
+    </div>
+    <!--Preloader-end -->
+    <!-- Scroll-top -->
+    <button class="scroll__top scroll-to-target" data-target="html">
+        <i class="fas fa-angle-up"></i>
+    </button>
+    <!-- Scroll-top-end-->
+    <header class="transparent-header">
         @include('User.layouts.header')
     </header>
-
-    <main class="main">
+    <main class="fix">
         @yield('content')
     </main>
 
-    <footer id="footer" class="footer">
+
+    <footer>
         @include('User.layouts.footer')
     </footer>
-
-    <!-- Scroll Top -->
-    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-    <!-- Preloader -->
-    <div id="preloader"></div>
-
-    <!-- Vendor JS Files -->
-    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
-    <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
-    <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/waypoints/noframework.waypoints.js') }}"></script>
-    <script src="{{ asset('assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-
-    <!-- Main JS File -->
-    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <!-- JS here -->
+    <script src="asset/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="asset/js/bootstrap.bundle.min.js"></script>
+    <script src="asset/js/jquery.magnific-popup.min.js"></script>
+    <script src="asset/js/jquery.odometer.min.js"></script>
+    <script src="asset/js/jquery.appear.js"></script>
+    <script src="asset/js/gsap.js"></script>
+    <script src="asset/js/ScrollTrigger.js"></script>
+    <script src="asset/js/SplitText.js"></script>
+    <script src="asset/js/gsap-animation.js"></script>
+    <script src="asset/js/jquery.parallaxScroll.min.js"></script>
+    <script src="asset/js/swiper-bundle.js"></script>
+    <script src="asset/js/ajax-form.js"></script>
+    <script src="asset/js/wow.min.js"></script>
+    <script src="asset/js/aos.js"></script>
+    <script src="asset/js/main.js"></script>
+    <script>
+        const text = document.querySelector('.circle');
+        text.innerHTML = text.textContent.replace(/\S/g, "<span>$&</span>");
+        const element = document.querySelectorAll('.circle span');
+        for (let i = 0; i < element.length; i++) {
+            element[i].style.transform = "rotate(" + i * 17 + "deg)"
+        }
+    </script>
 </body>
 </html>

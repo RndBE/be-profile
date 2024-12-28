@@ -27,7 +27,7 @@
                     <div class="mb-3">
                         <label for="icon" class="form-label">Icon</label>
                         <div class="input-group mb-1">
-                            <input type="file" class="form-control" name="icon" id="icon" aria-describedby="inputGroupFileAddon04" accept=".png, .jpg, .jpeg">
+                            <input type="file" class="form-control" name="icon" id="icon" aria-describedby="inputGroupFileAddon04" accept=".png, .jpg, .jpeg, .svg">
                         </div>
                         @error('icon')
                             <p class="text-red-500 text-sm mt-1 error-message">{{ $message }}</p>

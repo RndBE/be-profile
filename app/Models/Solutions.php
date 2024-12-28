@@ -11,4 +11,11 @@ class Solutions extends Model
     protected $table = 'solution';
 
     protected $guarded = [];
+
+    public function subSolutions()
+    {
+        return $this->hasMany(SubSolutions::class, 'solution_id');
+    }
+
+
 }

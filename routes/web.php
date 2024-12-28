@@ -3,12 +3,16 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminTagController;
 use App\Http\Controllers\AdminKlienController;
+use App\Http\Controllers\UserProyekController;
 use App\Http\Controllers\AdminProjekController;
+use App\Http\Controllers\AdminSolusiController;
+use App\Http\Controllers\UserBerandaController;
 use App\Http\Controllers\AdminCarouselController;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\AdminSubSolusiController;
 use App\Http\Controllers\AdminTestimoniController;
+use App\Http\Controllers\AdminFiturSubSolusiController;
 use App\Http\Controllers\AdminKategoriProjekController;
-use App\Http\Controllers\AdminSolusiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +25,13 @@ use App\Http\Controllers\AdminSolusiController;
 |
 */
 
-Route::get('/', function () {
-    return view('User.beranda.index');
-});
+// Route::get('/', function () {
+//     return view('User.beranda.index');
+// });
+
+Route::resource('/', UserBerandaController::class);
+
+Route::resource('/proyek', UserProyekController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::prefix('/admin')->middleware('auth')->group(function () {
@@ -39,6 +47,8 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::delete('/projek/{id}/remove-image', [AdminProjekController::class, 'removeImage'])->name('projek.remove-image');
     Route::resource('/testimoni', AdminTestimoniController::class);
     Route::resource('/solutions', AdminSolusiController::class);
+    Route::resource('/sub-solutions', AdminSubSolusiController::class);
+    Route::resource('/fitur-sub-solutions', AdminFiturSubSolusiController::class);
 
 });
 
