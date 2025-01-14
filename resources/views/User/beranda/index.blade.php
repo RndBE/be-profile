@@ -312,8 +312,8 @@
         </div>
     </section>
     <!-- testimonial-area-end -->
-    <!-- blog-post-area -->
-    <section class="blog-post-area blog-post-bg" data-background="{{ asset('asset/img/bg/bg2.png') }}">
+    <!-- artikel-post-area -->
+    <section class="artikel-post-area artikel-post-bg" data-background="{{ asset('asset/img/bg/bg2.png') }}">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-6">
@@ -326,13 +326,13 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-xl-4 col-lg-6 col-md-10">
-                    <div class="blog-post-item shine-animate-item">
-                        <div class="blog-post-thumb">
-                            <a href="blog-details.html" class="shine-animate"><img src="{{ asset('asset/img/blog/artikel.jpeg') }}" alt=""></a>
+                    <div class="artikel-post-item shine-animate-item">
+                        <div class="artikel-post-thumb">
+                            <a href="artikel-details.html" class="shine-animate"><img src="{{ asset('asset/img/blog/artikel.jpeg') }}" alt=""></a>
                         </div>
-                        <div class="blog-post-content">
-                            <h2 class="title"><a href="blog-details.html">Telemetri 101: Pengertian, Sejarah, dan Perkembangannya</a></h2>
-                            <div class="blog-avatar">
+                        <div class="artikel-post-content">
+                            <h2 class="title"><a href="artikel-details.html">Telemetri 101: Pengertian, Sejarah, dan Perkembangannya</a></h2>
+                            <div class="artikel-avatar">
                                 <div class="avatar-thumb">
                                     <img src="{{ asset('asset/img/blog/calendar1.png') }}" alt="">
                                 </div>
@@ -340,9 +340,9 @@
                                     <p>Jumat, 25 Oktober 2024</p>
                                 </div>
                             </div>
-                            <div class="blog-post-meta">
+                            <div class="artikel-post-meta">
                                 <ul class="list-wrap">
-                                    <a href="blog-details.html" class="btn-two">Baca selengkapnya</a>
+                                    <a href="artikel-details.html" class="btn-two">Baca selengkapnya</a>
                                 </ul>
                             </div>
                         </div>
@@ -358,7 +358,7 @@
             </div>
         </div>
     </section>
-    <!-- blog-post-area-end -->
+    <!-- artikel-post-area-end -->
     <script>
         // Inisialisasi Swiper
         document.addEventListener('DOMContentLoaded', () => {

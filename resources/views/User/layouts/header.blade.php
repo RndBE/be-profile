@@ -12,26 +12,26 @@
                                 <ul class="navigation">
                                     <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="/">Beranda</a></li>
                                     <li class="menu-item-has-children">
-                                        <a href="#">Solution</a>
+                                        <a class="" href="">Solution</a>
                                         <ul class="sub-menu">
                                             @foreach($solutionss as $solution)
-                                            <li>
-                                                <a href="#">
-                                                    <img src="{{ asset('storage/' . $solution->icon) }}" alt="" style="width: 20px; height: 20px; margin-right: 5px;">
-                                                    {{ $solution->nama }}
-                                                </a>
-                                                @if($solution->subSolutions->count() > 0)
-                                                <ul class="sub-menu">
-                                                    @foreach($solution->subSolutions as $subSolution)
-                                                    <li>
-                                                        <a href="#">
-                                                            <img src="{{ asset('asset/img/images/mingcute_right-line.png') }}" alt=""> {{ $subSolution->nama }}
-                                                        </a>
-                                                    </li>
-                                                    @endforeach
-                                                </ul>
-                                                @endif
-                                            </li>
+                                                <li>
+                                                    <a href="{{ route('solusi.show', Str::slug($solution->nama)) }}">
+                                                        <img src="{{ asset('storage/' . $solution->icon) }}" alt="" style="width: 20px; height: 20px; margin-right: 5px;">
+                                                        {{ $solution->nama }}
+                                                    </a>
+                                                    @if($solution->subSolutions->count() > 0)
+                                                        <ul class="sub-menu">
+                                                            @foreach($solution->subSolutions as $subSolution)
+                                                                <li>
+                                                                    <a href="#">
+                                                                        <img src="{{ asset('asset/img/images/mingcute_right-line.png') }}" alt=""> {{ $subSolution->nama }}
+                                                                    </a>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    @endif
+                                                </li>
                                             @endforeach
                                         </ul>
                                     </li>
