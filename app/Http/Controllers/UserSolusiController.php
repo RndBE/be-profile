@@ -30,21 +30,42 @@ class UserSolusiController extends Controller
         return view('User.solusi.index', $data);
     }
 
-    public function show($slug)
+    public function show($slug, $subSlug = null)
     {
-        // Mengambil koleksi solusi, meskipun hanya satu
-        $solutionss = Solutions::whereRaw("LOWER(REPLACE(nama, ' ', '-')) = ?", [Str::lower($slug)])
-                                ->get(); // Ubah ke get() untuk mendapatkan koleksi
+        // Ambil solusi berdasarkan slug
+        $solution = Solutions::with('subSolutions')
+            ->whereRaw("LOWER(REPLACE(nama, ' ', '-')) = ?", [Str::lower($slug)])
+            ->firstOrFail();
 
+        // Jika $subSlug kosong, arahkan ke subSolution pertama
+        if (is_null($subSlug) && $solution->subSolutions->isNotEmpty()) {
+            $firstSubSolution = $solution->subSolutions->first();
+            return redirect()->route('solusi.show', [
+                Str::slug($solution->nama),
+                Str::slug($firstSubSolution->nama)
+            ]);
+        }
+
+        // Ambil subSolution berdasarkan slug
+        $subSolution = $solution->subSolutions()
+            ->whereRaw("LOWER(REPLACE(nama, ' ', '-')) = ?", [Str::lower($subSlug)])
+            ->with('fiturSubSolutions')
+            ->first();
+
+        // Siapkan data untuk view
         $data = [
+            'solution' => $solution,
+            'subSolution' => $subSolution,
             'kliens' => Klien::orderBy('created_at', 'desc')->get(),
             'carousels' => BerandaCarousel::orderBy('created_at', 'desc')->get(),
-            'solutionss' => $solutionss, // Pastikan mengirim koleksi
             'projeks' => Projek::orderBy('created_at', 'desc')->get(),
-            'testimonis' => Testimoni::orderBy('created_at', 'desc'),
+            'testimonis' => Testimoni::orderBy('created_at', 'desc')->paginate(10),
         ];
+
         return view('User.solusi.index', $data);
     }
+
+
 
 
 }

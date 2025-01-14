@@ -17,4 +17,9 @@ class SubSolutions extends Model
         return $this->belongsTo(Solutions::class, 'solution_id');
     }
 
+    public function fiturSubSolutions()
+    {
+        return $this->hasMany(FiturSubSolutions::class, 'sub_solution_id');
+    }
+
 }

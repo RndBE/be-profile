@@ -34,7 +34,10 @@ Route::resource('/', UserBerandaController::class);
 
 Route::get('/proyek/{slug}', [UserProyekController::class, 'show'])->name('proyek.show');
 Route::resource('/proyek', UserProyekController::class);
-Route::get('/solusi/{slug}', [UserSolusiController::class, 'show'])->name('solusi.show');
+Route::get('/solusi/{slug}/{subSlug?}', [UserSolusiController::class, 'show'])->name('solusi.show');
+// Route::get('/solusi/{slug}', [UserSolusiController::class, 'show'])->name('solusi.show');
+
+
 // Route::resource('/solusi', UserSolusiController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

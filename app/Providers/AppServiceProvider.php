@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Solutions;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        View::composer('*', function ($view) {
+            $view->with('solutionss', Solutions::with('subSolutions')->orderBy('created_at', 'asc')->get());
+        });
     }
 }

@@ -11,21 +11,22 @@
                             <div class="tgmenu__navbar-wrap tgmenu__main-menu d-none d-lg-flex">
                                 <ul class="navigation">
                                     <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="/">Beranda</a></li>
-                                    <li class="menu-item-has-children">
+                                    <li class="menu-item-has-children {{ Request::is('solusi*') ? 'active' : '' }}">
                                         <a class="" href="">Solution</a>
                                         <ul class="sub-menu">
                                             @foreach($solutionss as $solution)
-                                                <li>
-                                                    <a href="{{ route('solusi.show', Str::slug($solution->nama)) }}">
+                                                <li class="{{ Request::is('solusi/' . Str::slug($solution->nama) . '*') ? 'active' : '' }}">
+                                                    <a href="{{ route('solusi.show', Str::slug($solution->nama)) }}" class="{{ Request::is('solusi/' . Str::slug($solution->nama)) ? 'active' : '' }}">
                                                         <img src="{{ asset('storage/' . $solution->icon) }}" alt="" style="width: 20px; height: 20px; margin-right: 5px;">
                                                         {{ $solution->nama }}
                                                     </a>
                                                     @if($solution->subSolutions->count() > 0)
                                                         <ul class="sub-menu">
                                                             @foreach($solution->subSolutions as $subSolution)
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <img src="{{ asset('asset/img/images/mingcute_right-line.png') }}" alt=""> {{ $subSolution->nama }}
+                                                                <li class="{{ Request::is('solusi/' . Str::slug($solution->nama) . '/' . Str::slug($subSolution->nama)) ? 'active' : '' }}">
+                                                                    <a href="{{ route('solusi.show', [Str::slug($solution->nama), Str::slug($subSolution->nama)]) }}" class="{{ Request::is('solusi/' . Str::slug($solution->nama) . '/' . Str::slug($subSolution->nama)) ? 'active' : '' }}">
+                                                                        <img src="{{ asset('asset/img/images/mingcute_right-line.png') }}" alt="">
+                                                                        {{ $subSolution->nama }}
                                                                     </a>
                                                                 </li>
                                                             @endforeach
@@ -35,7 +36,6 @@
                                             @endforeach
                                         </ul>
                                     </li>
-
                                     <li class="{{ Request::is('proyek') ? 'active' : '' }}">
                                         <a href="/proyek">Proyek</a>
                                     </li>

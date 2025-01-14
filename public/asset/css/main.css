@@ -6278,8 +6278,8 @@ textarea {
   -ms-box-shadow: 0px 7px 15px 0px rgba(0, 0, 0, 0.05);
   -o-box-shadow: 0px 7px 15px 0px rgba(0, 0, 0, 0.05);
   box-shadow: 0px 7px 15px 0px rgba(0, 0, 0, 0.05);
-  background: #FFFBF4;
-  border: 1px solid #FBD58A;
+  background: rgba(180, 4, 4, 0.03);
+  border: 1px solid #B40404;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -o-border-radius: 10px;
@@ -6309,7 +6309,7 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--tg-theme-primary);
+  background: rgba(180, 4, 4, 0.9);
   color: var(--tg-color-white-default);
   line-height: 0;
   -webkit-border-radius: 50%;
@@ -6319,6 +6319,7 @@ textarea {
   border-radius: 50%;
   margin: 0 auto 30px;
   font-size: 40px;
+  padding: 20px;
 }
 .services__details-list-box-two .icon i {
   -webkit-transform: rotateY(0);
@@ -6334,7 +6335,7 @@ textarea {
 }
 .services__details-list-box-two .content .title {
   margin-bottom: 10px;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
 }
 @media (max-width: 1199.98px) {
@@ -6344,11 +6345,12 @@ textarea {
 }
 @media (max-width: 767.98px) {
   .services__details-list-box-two .content .title {
-    font-size: 22px;
+    font-size: 20px;
   }
 }
 .services__details-list-box-two .content p {
   margin-bottom: 0;
+  font-size: 15px;
 }
 .services__details-list-box-two:hover .icon i {
   -webkit-transform: rotateY(180deg);
@@ -6687,9 +6689,8 @@ textarea {
   -moz-border-radius: 4px;
   -o-border-radius: 4px;
   -ms-border-radius: 4px;
-  border-radius: 4px;
-  padding: 16px 20px;
-  font-size: 18px;
+  border-radius: 5px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--tg-body-color);
 }
@@ -6703,12 +6704,18 @@ textarea {
   transition: all 0.3s ease-out 0s;
 }
 .sidebar__cat-list-two .list-wrap li a:hover {
-  background: var(--tg-theme-secondary);
+  background: var(--tg-color-black-1);
   color: var(--tg-color-white-default);
-  border-color: var(--tg-theme-secondary);
+  border-color: var(--tg-color-black-1);
 }
+.sidebar__cat-list-two .list-wrap li a.active {
+    background: var(--tg-color-black-1);
+    color: var(--tg-color-white-default);
+    border-color: var(--tg-color-black-1);
+  }
+
 .sidebar__cat-list-two .list-wrap li a:hover i {
-  color: var(--tg-theme-primary);
+  color: var(--tg-color-white-default);
 }
 .sidebar__cat-list-two .list-wrap li:last-child {
   margin-bottom: 0;
@@ -6735,7 +6742,7 @@ textarea {
   padding: 15px 20px;
   font-size: 14px;
   font-weight: 500;
-  color: var(--tg-heading-color);
+  color: var(--tg-color-black-1);
   gap: 12px;
   margin-bottom: 10px;
 }
@@ -6743,7 +6750,7 @@ textarea {
   font-size: 18px;
 }
 .sidebar__brochure a:hover {
-  background: var(--tg-theme-secondary);
+  background: var(--tg-color-black-1);
   color: var(--tg-color-white-default);
 }
 .sidebar__brochure a:last-child {
@@ -6774,26 +6781,27 @@ textarea {
 }
 .sidebar__contact .title {
   color: var(--tg-color-white-default);
-  margin-bottom: 30px;
-  font-size: 24px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  font-size: 19px;
 }
 .sidebar__contact .btn {
   gap: 5px;
-  padding: 13px 24px;
+  padding: 6px 15px;
 }
 .sidebar__contact .btn i {
   font-size: 24px;
   line-height: 0;
 }
-.sidebar__contact .btn::after {
+/* .sidebar__contact .btn::after {
   display: none;
 }
 .sidebar__contact .btn::before {
   background: var(--tg-color-gray-3);
-}
-.sidebar__contact .btn:hover {
+} */
+/* .sidebar__contact .btn:hover {
   color: var(--tg-theme-secondary);
-}
+} */
 .sidebar__contact-two {
   background-size: cover;
   background-position: center;
@@ -6810,7 +6818,7 @@ textarea {
   }
 }
 .sidebar__contact-two .title {
-  color: var(--tg-theme-secondary);
+  color: var(--tg-body-color);
 }
 .sidebar__contact-two .btn {
   -webkit-border-radius: 30px;
@@ -6819,11 +6827,11 @@ textarea {
   -ms-border-radius: 30px;
   border-radius: 30px;
 }
-.sidebar__contact-two .btn::before {
+/* .sidebar__contact-two .btn::before {
   background: var(--tg-theme-secondary);
-}
+} */
 .sidebar__contact-two .btn:hover {
-  color: var(--tg-color-white-default);
+  color: var(--tg-color-red-1);
 }
 .sidebar__form form .form-grp {
   margin-bottom: 8px;
@@ -13668,7 +13676,7 @@ blockquote p {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 40px;
+  width: 45px;
   height: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;

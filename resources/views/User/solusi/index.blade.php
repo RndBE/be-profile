@@ -27,61 +27,48 @@
                     <div class="row">
                         <div class="col-70 order-0 order-lg-2">
                             <div class="services__details-content services__details-content-two">
-                                <h2 class="title">We help our clients identify their they area issues develop solutions and take action</h2>
-                                <p>eed a little help from our friends from time to time. Although we offer the one-stop convenience of annery integrated range of legal, financial services under one roof, there are occasions when our clients areaneed specia- list advice beyond the scope of our own expertise. That’s why we’ve developed close working relationships with a number of strategic partner.</p>
-                                <div class="services__details-thumb">
-                                    <img src="assets/img/services/services_details03.jpg" alt="">
-                                </div>
-                                <div class="services__details-inner-three">
-                                    <div class="row gutter-24 align-items-center">
-                                        <div class="col-md-5">
-                                            <div class="services__details-list-box-three">
-                                                <div class="icon">
-                                                    <i class="flaticon-investment"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title">Business Solutions</h4>
-                                                    <p>Semper egetuis kelly for tellus <br> urna area condition.</p>
-                                                </div>
+                                <div class="project__details-thumb swiper-container slider-project-banner">
+                                    <div class="swiper-wrapper">
+                                        {{-- @forelse($subSolution->gambar as $gambar) --}}
+                                            {{-- <div class="swiper-slide">
+                                                <img src="{{ asset('storage/' . $gambar->gambar) }}" alt="gambar">
+                                            </div> --}}
+                                        {{-- @empty --}}
+                                            <div class="swiper-slide">
+                                                <img style="width: 100%;height: 480px;" src="{{ asset('asset/img/images/no-image1.png') }}" alt="default">
                                             </div>
-                                            <div class="services__details-list-box-three">
-                                                <div class="icon">
-                                                    <i class="flaticon-investment-1"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title">Business Solutions</h4>
-                                                    <p>Semper egetuis kelly for tellus <br> urna area condition.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="services__details-inner-content-three">
-                                                <h3 class="title">Let’s Enroll Our Business Growth Management</h3>
-                                                <p>eed a little help from our friends from time to time. Although we offer the one-stop convenience of annery integrated range of legal, financial services under one roof, there are occasions.</p>
-                                            </div>
-                                        </div>
+                                        {{-- @endforelse --}}
                                     </div>
+                                    <div class="swiper-pagination swiper-pagination-project"></div>
                                 </div>
-                                <p>eed a little help from our friends from time to time. Although we offer the one-stop convenience of annery integrated range of legal, financial services under one roof, there are occasions when our clients areaneed specia- list advice beyond the scope of our own expertise. </p>
+                                @if($subSolution)
+                                    <p>{!! $subSolution->description1 !!}</p>
+                                    <p>{{ $subSolution->description2 }}</p>
+                                @else
+                                    <p>Sub-solusi tidak ditemukan.</p>
+                                @endif
+
                                 <div class="services__details-inner-two services__details-inner-four">
                                     <div class="row gutter-24 align-items-center">
-                                        <div class="col-48">
-                                            <div class="services__details-inner-img">
-                                                <img src="assets/img/services/services_details_inner03.jpg" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-52">
-                                            <div class="services__details-inner-content-two">
-                                                <h4 class="title">Our Corporate Business Planning</h4>
-                                                <p>when an unknown printer took a galley of type and scrambled it to make a type specimen bookhas survived not only five centuries.but also the leap into electronic typesetting, remaining.</p>
-                                                <div class="about__list-box about__list-box-three">
-                                                    <ul class="list-wrap">
-                                                        <li><i class="flaticon-arrow-button"></i>Business Growth</li>
-                                                        <li><i class="flaticon-arrow-button"></i>100% Secure</li>
-                                                        <li><i class="flaticon-arrow-button"></i>Research</li>
-                                                        <li><i class="flaticon-arrow-button"></i>100% Secure</li>
-                                                    </ul>
-                                                </div>
+                                        <div class="services__details-list-two">
+                                            <div class="row gutter-24">
+                                                @if($subSolution->fiturSubSolutions->isNotEmpty())
+                                                    @foreach($subSolution->fiturSubSolutions as $fitur)
+                                                        <div class="col-md-4">
+                                                            <div class="services__details-list-box-two">
+                                                                <div class="icon">
+                                                                    <img src="{{ asset('storage/' . $fitur->icon) }}" alt="icon">
+                                                                </div>
+                                                                <div class="content">
+                                                                    <h4 class="title">{{ $fitur->nama }}</h4>
+                                                                    <p>{{ $fitur->description }}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                @else
+                                                    <p>Fitur belum tersedia.</p>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -91,47 +78,33 @@
                         </div>
                         <div class="col-30">
                             <aside class="services__sidebar">
-                                <div class="sidebar__widget">
-                                    <div class="sidebar__cat-list-two sidebar__cat-list-three">
+                                <div class="sidebar__widget px-3 py-3">
+                                    <div class="sidebar__cat-list-two sidebar__cat-list-three ">
                                         <ul class="list-wrap">
-                                            <li><a href="services-details.html">Investment Planning <i class="flaticon-arrow-button"></i></a></li>
-                                            <li><a href="services-details.html">Strategic marketing <i class="flaticon-arrow-button"></i></a></li>
-                                            <li><a href="services-details.html">Insights & analytics <i class="flaticon-arrow-button"></i></a></li>
-                                            <li><a href="services-details.html">Business consulting <i class="flaticon-arrow-button"></i></a></li>
-                                            <li><a href="services-details.html">Financial Advisory <i class="flaticon-arrow-button"></i></a></li>
-                                            <li><a href="services-details.html">Market Research <i class="flaticon-arrow-button"></i></a></li>
+                                            @foreach($solution->subSolutions as $subSolution)
+                                            <li class="{{ Request::is('solusi/' . Str::slug($solution->nama) . '/' . Str::slug($subSolution->nama)) ? 'active' : '' }}">
+                                                <a href="{{ route('solusi.show', [Str::slug($solution->nama), Str::slug($subSolution->nama)]) }}"
+                                                    class="px-3 py-2 {{ Request::is('solusi/' . Str::slug($solution->nama) . '/' . Str::slug($subSolution->nama)) ? 'active' : '' }}">
+                                                    {{ $subSolution->nama }}
+                                                    <i class="flaticon-arrow-button"></i>
+                                                </a>
+                                            </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="sidebar__widget sidebar__widget-three">
-                                    <h4 class="sidebar__widget-title">Brochure</h4>
+                                    <h4 class="sidebar__widget-title">Unduh Brosur</h4>
                                     <div class="sidebar__brochure sidebar__brochure-two">
-                                        <p>when an unknown printer took ga lley offer typey anddey.</p>
-                                        <a href="assets/img/services/services_details01.jpg" target="_blank" download><i class="far fa-file-pdf"></i>PDF. Download</a>
-                                        <a href="assets/img/services/services_details01.jpg" target="_blank" download><i class="far fa-file-alt"></i>DOC. Download</a>
+                                        {{-- <p>when an unknown printer took ga lley offer typey anddey.</p> --}}
+                                        <a href="" target="_blank" download>Unduh PDF</a>
+                                        <a href="" target="_blank" download>Unduh TKDN</a>
                                     </div>
                                 </div>
                                 <div class="sidebar__widget sidebar__widget-two">
-                                    <div class="sidebar__contact sidebar__contact-two" data-background="assets/img/services/sidebar_contact_bg.jpg">
-                                        <h2 class="title">If You Need Any Help Contact With Us</h2>
+                                    <div class="sidebar__contact sidebar__contact-two" data-background="{{ asset('asset/img/services/sidebar_contact_bg.png') }}">
+                                        <h2 class="title">Konsultasi apa saja, kami siap membantu!</h2>
                                         <a href="tel:0123456789" class="btn"><i class="flaticon-phone-call"></i>+91 705 2101 786</a>
-                                    </div>
-                                </div>
-                                <div class="sidebar__widget sidebar__widget-three">
-                                    <h4 class="sidebar__widget-title">Send Us Message</h4>
-                                    <div class="sidebar__form">
-                                        <form action="#">
-                                            <div class="form-grp">
-                                                <input type="text" placeholder="Your Name">
-                                            </div>
-                                            <div class="form-grp">
-                                                <input type="email" placeholder="E-mail Address">
-                                            </div>
-                                            <div class="form-grp">
-                                                <textarea name="message" placeholder="Type Your Message"></textarea>
-                                            </div>
-                                            <button type="submit" class="btn btn-two">Send Message</button>
-                                        </form>
                                     </div>
                                 </div>
                             </aside>
