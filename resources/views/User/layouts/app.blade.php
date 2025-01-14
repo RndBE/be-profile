@@ -2,6 +2,7 @@
 <html class="no-js" lang="en">
 <head>
     @include('User.layouts.head')
+    @livewireStyles
 </head>
 <body>
     <!--Preloader-->
@@ -29,6 +30,7 @@
     <footer>
         @include('User.layouts.footer')
     </footer>
+    @livewireScripts
     <!-- JS here -->
     <script src="{{ asset('asset/js/vendor/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('asset/js/bootstrap.bundle.min.js') }}"></script>

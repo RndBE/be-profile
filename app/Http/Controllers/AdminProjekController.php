@@ -39,9 +39,12 @@ class AdminProjekController extends Controller
             'kategori_projek_id' => 'required|exists:kategori_projek,id',
             'lokasi' => 'nullable|string',
             'website' => 'nullable|string',
-            'deskripsi' => 'nullable|string',
+            'deskripsi1' => 'nullable|string',
+            'deskripsi2' => 'nullable|string',
             'waktu' => 'nullable|integer|min:0',
+            'white_paper' => 'nullable|string',
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'gambar_proyek' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'gambar' => 'nullable|array',
             'gambar.*' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
@@ -53,15 +56,25 @@ class AdminProjekController extends Controller
             $thumbnailName = 'projek_thumbnails/' . $fileName;
         }
 
+        $gambar_proyekName = null;
+        if ($request->hasFile('gambar_proyek')) {
+            $fileName = time() . '_' . $request->file('gambar_proyek')->getClientOriginalName();
+            $gambar_proyekPath = $request->file('gambar_proyek')->storeAs('public/projek_gambar_proyeks', $fileName);
+            $gambar_proyekName = 'projek_gambar_proyeks/' . $fileName;
+        }
+
         $projek = Projek::create([
             'nama_projek' => $request->input('nama_projek'),
             'klien_id' => $request->input('klien_id'),
             'kategori_projek_id' => $request->input('kategori_projek_id'),
             'lokasi' => $request->input('lokasi'),
             'website' => $request->input('website'),
-            'deskripsi' => $request->input('deskripsi'),
+            'deskripsi1' => $request->input('deskripsi1'),
+            'deskripsi2' => $request->input('deskripsi2'),
             'waktu' => $request->input('waktu'),
+            'white_paper' => $request->input('white_paper'),
             'thumbnail' => $thumbnailName,
+            'gambar_proyek' => $gambar_proyekName,
         ]);
 
         if ($request->hasFile('gambar')) {
@@ -104,13 +117,16 @@ class AdminProjekController extends Controller
             'lokasi' => 'nullable|string|max:255',
             'website' => 'nullable|url',
             'waktu' => 'nullable|numeric',
-            'deskripsi' => 'nullable|string',
+            'white_paper' => 'nullable|string',
+            'deskripsi1' => 'nullable|string',
+            'deskripsi2' => 'nullable|string',
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'gambar_proyek' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'gambar.*' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $projek->update($request->only([
-            'nama_projek', 'klien_id', 'kategori_projek_id', 'lokasi', 'website', 'waktu', 'deskripsi'
+            'nama_projek', 'klien_id', 'kategori_projek_id', 'lokasi', 'website', 'waktu', 'white_paper', 'deskripsi1', 'deskripsi2',
         ]));
 
         if ($request->hasFile('thumbnail')) {
@@ -119,6 +135,14 @@ class AdminProjekController extends Controller
             }
             $thumbnailPath = $request->file('thumbnail')->store('projek_thumbnails', 'public');
             $projek->thumbnail = $thumbnailPath;
+        }
+
+        if ($request->hasFile('gambar_proyek')) {
+            if ($projek->gambar_proyek) {
+                Storage::disk('public')->delete($projek->gambar_proyek);
+            }
+            $gambar_proyekPath = $request->file('gambar_proyek')->store('projek_gambar_proyeks', 'public');
+            $projek->gambar_proyek = $gambar_proyekPath;
         }
 
         if ($request->hasFile('gambar')) {

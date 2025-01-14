@@ -14,7 +14,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\BerandaCarousel;
 
-class UserProyekController extends Controller
+class UserSolusiController extends Controller
 {
     //
     function index()
@@ -27,23 +27,24 @@ class UserProyekController extends Controller
             'testimonis' => Testimoni::with('projek.klien')->orderBy('created_at', 'desc')->paginate(10)
         ];
 
-        return view('User.proyek.index', $data);
+        return view('User.solusi.index', $data);
     }
 
     public function show($slug)
     {
+        // Mengambil koleksi solusi, meskipun hanya satu
+        $solutionss = Solutions::whereRaw("LOWER(REPLACE(nama, ' ', '-')) = ?", [Str::lower($slug)])
+                                ->get(); // Ubah ke get() untuk mendapatkan koleksi
 
-        $projek = Projek::whereRaw("LOWER(REPLACE(nama_projek, ' ', '-')) = ?", [Str::lower($slug)])
-                    ->with('gambar')
-                    ->firstOrFail();
         $data = [
             'kliens' => Klien::orderBy('created_at', 'desc')->get(),
             'carousels' => BerandaCarousel::orderBy('created_at', 'desc')->get(),
-            'solutionss' => Solutions::with('subSolutions')->orderBy('created_at', 'asc')->get(),
-            'projek' => $projek,
-            'testimonis' => Testimoni::where('projek_id', $projek->id)->with('projek.klien')->orderBy('created_at', 'desc')->get(),
+            'solutionss' => $solutionss, // Pastikan mengirim koleksi
+            'projeks' => Projek::orderBy('created_at', 'desc')->get(),
+            'testimonis' => Testimoni::orderBy('created_at', 'desc'),
         ];
-        return view('User.proyek.show', $data);
+        return view('User.solusi.index', $data);
     }
+
 
 }

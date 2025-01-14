@@ -118,7 +118,7 @@
                                         @enderror
 
                                         <label for="website" class="form-label">Website</label>
-                                        <input name="website" class="form-control mb-1" id="website" value="{{ old('website', $projek->website) }}">
+                                        <input name="website" class="form-control mb-1" placeholder="https://example.com" id="website" value="{{ old('website', $projek->website) }}">
                                         @error('website')
                                             <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
                                         @enderror
@@ -141,11 +141,36 @@
                                         @error('thumbnail')
                                             <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
                                         @enderror
+
+                                        <label for="gambar_proyek" class="mr-3">Upload gambar proyek</label>
+                                        @if ($projek->gambar_proyek)
+                                            <div class="mb-2">
+                                                <img src="{{ asset('storage/' . $projek->gambar_proyek) }}" alt="Image" style="width: 100px; height: auto;">
+                                            </div>
+                                        @endif
+                                        <div class="input-group mb-1">
+                                            <input type="file" class="form-control" name="gambar_proyek" id="gambar_proyek" accept=".png, .jpg, .jpeg">
+                                        </div>
+                                        @error('gambar_proyek')
+                                            <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
+                                        @enderror
+
+                                        <label for="white_paper" class="form-label">White Paper</label>
+                                        <input name="white_paper" type="text" placeholder="https://example.com" class="form-control mb-1" id="white_paper" value="{{ old('white_paper', $projek->white_paper) }}">
+                                        @error('white_paper')
+                                            <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                     <div class="col-md-8 ml-auto">
-                                        <label for="deskripsi" class="form-label">Deskripsi</label>
-                                        <textarea class="ckeditor form-control" name="deskripsi" id="deskripsi" rows="3">{{ old('deskripsi', $projek->deskripsi) }}</textarea>
-                                        @error('deskripsi')
+                                        <label for="deskripsi1" class="form-label">Deskripsi 1</label>
+                                        <textarea class="ckeditor form-control" name="deskripsi1" id="deskripsi1" rows="3">{{ old('deskripsi1', $projek->deskripsi1) }}</textarea>
+                                        @error('deskripsi1')
+                                            <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
+                                        @enderror
+
+                                        <label for="deskripsi2" class="form-label">Deskripsi 2</label>
+                                        <textarea class="ckeditor form-control" name="deskripsi2" id="deskripsi2" rows="3">{{ old('deskripsi2', $projek->deskripsi2) }}</textarea>
+                                        @error('deskripsi2')
                                             <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
                                         @enderror
 
@@ -188,7 +213,7 @@
         </div>
     </div>
 </div>
-@endsection
+
 
 <script>
     setTimeout(function() {
@@ -291,7 +316,7 @@
         });
     });
 </script>
-
+@endsection
 
 
 

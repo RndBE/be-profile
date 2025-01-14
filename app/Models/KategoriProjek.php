@@ -11,4 +11,9 @@ class KategoriProjek extends Model
     protected $table = 'kategori_projek';
 
     protected $guarded = [];
+
+    public function projek()
+    {
+        return $this->hasMany(Projek::class, 'kategori_projek_id');
+    }
 }

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminTagController;
 use App\Http\Controllers\AdminKlienController;
 use App\Http\Controllers\UserProyekController;
+use App\Http\Controllers\UserSolusiController;
 use App\Http\Controllers\AdminProjekController;
 use App\Http\Controllers\AdminSolusiController;
 use App\Http\Controllers\UserBerandaController;
@@ -33,8 +34,8 @@ Route::resource('/', UserBerandaController::class);
 
 Route::get('/proyek/{slug}', [UserProyekController::class, 'show'])->name('proyek.show');
 Route::resource('/proyek', UserProyekController::class);
-
-
+Route::get('/solusi/{slug}', [UserSolusiController::class, 'show'])->name('solusi.show');
+// Route::resource('/solusi', UserSolusiController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::prefix('/admin')->middleware('auth')->group(function () {
@@ -46,8 +47,11 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::resource('/klien', AdminKlienController::class);
     Route::resource('/tag', AdminTagController::class);
     Route::resource('/kategori_projek', AdminKategoriProjekController::class);
+
     Route::resource('/projek', AdminProjekController::class);
     Route::delete('/projek/{id}/remove-image', [AdminProjekController::class, 'removeImage'])->name('projek.remove-image');
+
+
     Route::resource('/testimoni', AdminTestimoniController::class);
     Route::resource('/solutions', AdminSolusiController::class);
     Route::resource('/sub-solutions', AdminSubSolusiController::class);
