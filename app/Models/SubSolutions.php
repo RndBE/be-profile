@@ -22,4 +22,9 @@ class SubSolutions extends Model
         return $this->hasMany(FiturSubSolutions::class, 'sub_solution_id');
     }
 
+    public function gambar()
+    {
+        return $this->hasMany(GambarSubsolution::class, 'subsolution_id');
+    }
+
 }

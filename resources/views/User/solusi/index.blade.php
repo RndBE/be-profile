@@ -7,11 +7,26 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="breadcrumb__content">
-                            <h2 class="title">Solusi</h2>
+                            <h2 class="title">
+                                @if(isset($solution))
+                                    Solusi {{ $solution->nama }}
+                                @endif
+                            </h2>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="/">Beranda</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Solusi</li>
+                                    <li class="breadcrumb-item">Solusi</a></li>
+                                        @if(isset($solution)) <!-- Pastikan solusi ada -->
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                {{ $solution->nama }}
+                                            </li>
+                                        @endif
+
+                                        @if(isset($subSolution)) <!-- Jika sub-solusi ada -->
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                {{ $subSolution->nama }}
+                                            </li>
+                                        @endif
                                 </ol>
                             </nav>
                         </div>
@@ -29,21 +44,26 @@
                             <div class="services__details-content services__details-content-two">
                                 <div class="project__details-thumb swiper-container slider-project-banner">
                                     <div class="swiper-wrapper">
-                                        {{-- @forelse($subSolution->gambar as $gambar) --}}
-                                            {{-- <div class="swiper-slide">
-                                                <img src="{{ asset('storage/' . $gambar->gambar) }}" alt="gambar">
-                                            </div> --}}
-                                        {{-- @empty --}}
+                                        @if($subSolution && $subSolution->gambar)
+                                            @forelse($subSolution->gambar as $gambar)
+                                                <div class="swiper-slide">
+                                                    <img src="{{ asset('storage/' . $gambar->gambar) }}" alt="gambar">
+                                                </div>
+                                            @empty
+                                                <div class="swiper-slide">
+                                                    <img style="width: 100%;height: 600px;" src="{{ asset('asset/img/images/no-image1.png') }}" alt="default">
+                                                </div>
+                                            @endforelse
+                                        @else
                                             <div class="swiper-slide">
-                                                <img style="width: 100%;height: 480px;" src="{{ asset('asset/img/images/no-image1.png') }}" alt="default">
+                                                <img style="width: 100%;height: 600px;" src="{{ asset('asset/img/images/no-image1.png') }}" alt="default">
                                             </div>
-                                        {{-- @endforelse --}}
+                                        @endif
                                     </div>
                                     <div class="swiper-pagination swiper-pagination-project"></div>
                                 </div>
                                 @if($subSolution)
                                     <p>{!! $subSolution->description1 !!}</p>
-                                    <p>{{ $subSolution->description2 }}</p>
                                 @else
                                     <p>Sub-solusi tidak ditemukan.</p>
                                 @endif
@@ -52,7 +72,7 @@
                                     <div class="row gutter-24 align-items-center">
                                         <div class="services__details-list-two">
                                             <div class="row gutter-24">
-                                                @if($subSolution->fiturSubSolutions->isNotEmpty())
+                                                @if($subSolution && $subSolution->fiturSubSolutions->isNotEmpty())
                                                     @foreach($subSolution->fiturSubSolutions as $fitur)
                                                         <div class="col-md-4">
                                                             <div class="services__details-list-box-two">
@@ -73,7 +93,55 @@
                                         </div>
                                     </div>
                                 </div>
-                                <p class="last-info">when an unknown printer took a galley of type and scrambled it to make a type specimen bookhas survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchan galley of type and scrambled it to make a type specimen book.when an unknown printer took a galley of type and scrambled it to make a type specimen bookhas survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchan galle.</p>
+                                @if($subSolution)
+                                    <p>{!! $subSolution->description2 !!}</p>
+                                @else
+                                    <p>Sub-solusi tidak ditemukan.</p>
+                                @endif
+                                <div class="services__details-inner">
+                                    <div class="row gutter-24 align-items-top">
+                                        <div class="col-56">
+                                            <div class="project__details-inner-content" id="project-description">
+                                                @if($subSolution)
+                                                    <p>{!! $subSolution->description3 !!}</p>
+                                                @else
+                                                    <p>Sub-solusi tidak ditemukan.</p>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="col-44">
+                                            <div class="services__details-inner-img">
+                                                @if ($subSolution && $subSolution->video)
+                                                    @php
+                                                        // Ekstrak Video ID dari URL
+                                                        preg_match('/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:embed\/|watch\?v=)|youtu\.be\/)([^\&\?\/]+)/', $subSolution->video, $matches);
+                                                        $videoId = $matches[1] ?? null;
+                                                    @endphp
+                                                    @if ($videoId)
+                                                        <div class="video-thumbnail-wrapper" style="position: relative; display: inline-block;">
+                                                            <!-- Tampilkan Thumbnail Video -->
+                                                            <img
+                                                                src="https://img.youtube.com/vi/{{ $videoId }}/hqdefault.jpg"
+                                                                style="width: 100%; height: 305px;"
+                                                                alt="YouTube Video Thumbnail">
+
+                                                            <!-- Tombol Play -->
+                                                            <a
+                                                                href="{{ $subSolution->video }}"
+                                                                class="play-btn popup-video"
+                                                                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                                                                <i class="fas fa-play" style="font-size: 40px;"></i>
+                                                            </a>
+                                                        </div>
+                                                    @else
+                                                        <p>Invalid YouTube URL</p>
+                                                    @endif
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <div class="col-30">
@@ -93,14 +161,14 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="sidebar__widget sidebar__widget-three">
+                                {{-- <div class="sidebar__widget sidebar__widget-three">
                                     <h4 class="sidebar__widget-title">Unduh Brosur</h4>
                                     <div class="sidebar__brochure sidebar__brochure-two">
-                                        {{-- <p>when an unknown printer took ga lley offer typey anddey.</p> --}}
+                                        <p>when an unknown printer took ga lley offer typey anddey.</p>
                                         <a href="" target="_blank" download>Unduh PDF</a>
                                         <a href="" target="_blank" download>Unduh TKDN</a>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="sidebar__widget sidebar__widget-two">
                                     <div class="sidebar__contact sidebar__contact-two" data-background="{{ asset('asset/img/services/sidebar_contact_bg.png') }}">
                                         <h2 class="title">Konsultasi apa saja, kami siap membantu!</h2>
@@ -115,48 +183,123 @@
         </section>
         <!-- services-details-area-end -->
         <!-- brand-area -->
-        <div class="brand__area-six">
+        <section class="produk_expert__area_six">
             <div class="container">
-                <div class="swiper-container brand-active">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="brand-item">
-                                <img src="assets/img/brand/brand_img01.png" alt="">
-                            </div>
+                <div class="box-video-small">
+                    <div class="video-small-left-inner">
+                        <div class="video-small-left-1">
+                            <h2>Lihat Seri Produk</h2>
+                            <p>dan sesuaikan dengan kebutuhan!</p>
                         </div>
-                        <div class="swiper-slide">
-                            <div class="brand-item">
-                                <img src="assets/img/brand/brand_img02.png" alt="">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="brand-item">
-                                <img src="assets/img/brand/brand_img03.png" alt="">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="brand-item">
-                                <img src="assets/img/brand/brand_img04.png" alt="">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="brand-item">
-                                <img src="assets/img/brand/brand_img05.png" alt="">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="brand-item">
-                                <img src="assets/img/brand/brand_img06.png" alt="">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="brand-item">
-                                <img src="assets/img/brand/brand_img03.png" alt="">
+                    </div>
+                    <div class="produk-shape-wrap">
+                        <img src="{{ asset('asset/img/images/Komponen background.png') }}" alt="" data-aos="fade-right" data-aos-delay="400">
+                    </div>
+                </div>
+                <div class="box-video-small_right">
+                    <div class="swiper-container produk-slider">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="produk-item">
+                                    <div class="produk-thumb">
+                                        <a href="">
+                                            <img src="{{ asset('asset/img/produk/WLR.png') }}" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="produk-content">
+                                        <div class="left-side-content">
+                                            <h4 class="title">
+                                                <a href="">BE-WLR-100-U150</a>
+                                            </h4>
+                                            <ul>
+                                                <li>Data Logger BL-110.</li>
+                                                <li>Sensor ultrasonik dengan jangkauan baca data 15 meter.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="produk_expert-shape-wrap">
+                <img src="{{ asset('asset/img/images/Produkbackground.png') }}" alt="" data-aos="fade-right" data-aos-delay="400">
+            </div>
+        </section>
+        <section class="blog__post-area-four">
+            <div class="container">
+                <div class="row justify-content-center">
+
+                </div>
+                <div class="row justify-content-center">
+
+                </div>
+            </div>
+        </section>
         <!-- brand-area -->
+        <script>
+            // Inisialisasi Swiper
+            document.addEventListener('DOMContentLoaded', () => {
+                new Swiper('.produk-slider', {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                    loop: true,
+                    autoplay: {
+                        delay: 3000,
+                        disableOnInteraction: false,
+                    },
+                    breakpoints: {
+                        640: { slidesPerView: 1 },
+                        768: { slidesPerView: 1 },
+                        1024: { slidesPerView: 3 },
+                    }
+                });
+            });
+        </script>
+        <script>
+            // Wait for the document to fully load
+            document.addEventListener("DOMContentLoaded", function() {
+                // Get the description container
+                const descriptionElement = document.getElementById('project-description');
+
+                // Check if the description has any lists (either ordered or unordered)
+                const lists = descriptionElement.querySelectorAll('ul, ol');
+
+                // Loop through each list and replace list items
+                lists.forEach(function(list) {
+                    const listItems = list.querySelectorAll('li');
+
+                    listItems.forEach(function(item) {
+                        // Replace list items with the custom icon
+                        item.innerHTML = '<i class="flaticon-arrow-button"></i>' + item.innerHTML;
+                    });
+                });
+            });
+        </script>
+        <script>
+            // Inisialisasi Swiper
+            document.addEventListener('DOMContentLoaded', () => {
+                new Swiper('.slider-project-banner', {
+                    loop: true, // Loop untuk memutar gambar
+                    pagination: {
+                        el: '.swiper-pagination-project',
+                        clickable: true,
+                    },
+                    speed: 1000,
+                    autoplay: {
+                        delay: 3000,
+                    },
+                    slidesPerView: 1,
+                    breakpoints: {
+                        768: {
+                            slidesPerView: 1,
+                        },
+                        1024: {
+                            slidesPerView: 1,
+                        }
+                    }
+                });
+            });
+        </script>
 @endsection

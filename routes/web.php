@@ -58,6 +58,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::resource('/testimoni', AdminTestimoniController::class);
     Route::resource('/solutions', AdminSolusiController::class);
     Route::resource('/sub-solutions', AdminSubSolusiController::class);
+    Route::delete('/sub-solutions/{id}/remove-image', [AdminSubSolusiController::class, 'removeImage'])->name('sub-solutions.remove-image');
     Route::resource('/fitur-sub-solutions', AdminFiturSubSolusiController::class);
 
 });

@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sub_solution', function (Blueprint $table) {
+        Schema::create('gambar_subsolution', function (Blueprint $table) {
             $table->id();
-            $table->string('nama')->nullable();
-            $table->foreignId('solution_id')->constrained('solution')->onUpdate('cascade');
-            $table->text('description1')->nullable();
-            $table->text('description2')->nullable();
-            $table->string('video')->nullable();
+            $table->foreignId('subsolution_id')->constrained('sub_solution')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('gambar')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sub_solution');
+        Schema::dropIfExists('gambar_subsolution');
     }
 };
