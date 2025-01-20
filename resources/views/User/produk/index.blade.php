@@ -1,5 +1,5 @@
 @extends('User.layouts.app')
-@section('title', 'Porduk | BE Profile')
+@section('title', 'Detail Produk | BE Profile')
 @section('content')
         <!-- breadcrumb-area -->
         <section class="breadcrumb__area breadcrumb__bg" data-background="{{ asset('asset/img/project/bg.png') }}">
