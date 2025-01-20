@@ -169,7 +169,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-pagination swiper-pagination-testimonials"></div>
+                            <div class="swiper-pagination swiper-pagination-choose"></div>
                         </div>
                     </div>
                 </div>
@@ -402,9 +402,9 @@
     <script>
         // Inisialisasi Swiper
         document.addEventListener('DOMContentLoaded', () => {
-            new Swiper('.choose-list', {
+            new Swiper('.testimonial-active', {
                 slidesPerView: 1,
-                spaceBetween: 3,
+                spaceBetween: 20,
                 loop: true,
                 autoplay: {
                     delay: 5000,
@@ -422,28 +422,4 @@
             });
         });
     </script>
-
-<script>
-    // Inisialisasi Swiper
-    document.addEventListener('DOMContentLoaded', () => {
-        new Swiper('.testimonial-active', {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            breakpoints: {
-                640: { slidesPerView: 1 },
-                768: { slidesPerView: 1 },
-                1024: { slidesPerView: 1 },
-            }
-        });
-    });
-</script>
 @endsection

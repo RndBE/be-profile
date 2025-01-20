@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\AdminTagController;
 use App\Http\Controllers\AdminKlienController;
 use App\Http\Controllers\UserProyekController;
@@ -36,6 +37,7 @@ Route::get('/proyek/{slug}', [UserProyekController::class, 'show'])->name('proye
 Route::resource('/proyek', UserProyekController::class);
 Route::get('/solusi/{slug}/{subSlug?}', [UserSolusiController::class, 'show'])->name('solusi.show');
 // Route::get('/solusi/{slug}', [UserSolusiController::class, 'show'])->name('solusi.show');
+Route::resource('/produk', ProdukController::class);
 
 
 // Route::resource('/solusi', UserSolusiController::class);

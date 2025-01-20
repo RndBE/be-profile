@@ -164,16 +164,30 @@
                 clickable: true,
             },
         });
-
+        var swiper3 = new Swiper(".choose-list", {
+            spaceBetween: 0,
+            loop: true,
+            speed: 1000,
+            autoplay: {
+                delay: 3000,
+            },
+            navigation: {
+                nextEl: '.project-button-next',
+                prevEl: '.project-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination-choose',
+                clickable: true,
+            },
+        });
         // fetchTestimonials();
-
         // fetchBlogs();
-
         // fetchTestimonialImages();
-
-
-
     };
+    // window.onload = function () {
+        // Initialize the Swiper after everything has loaded
+
+    // };
     /*=============================================
         =          brand active              =
     =============================================*/
