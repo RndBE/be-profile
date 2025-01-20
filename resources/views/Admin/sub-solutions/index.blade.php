@@ -58,12 +58,12 @@
 
                                                         @if ($videoId)
                                                             <!-- Embed YouTube video -->
-                                                            <iframe width="200" height="113"
+                                                            {{-- <iframe width="200" height="113"
                                                                     src="https://www.youtube.com/embed/{{ $videoId }}"
                                                                     frameborder="0"
                                                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                                                     allowfullscreen>
-                                                            </iframe>
+                                                            </iframe> --}}
                                                             <iframe allow="autoplay;" allowfullscreen="" frameborder="0" height="360" src="https://www.youtube.com/embed/{{ $videoId }}" width="640"></iframe>
                                                         @else
                                                             Invalid YouTube URL

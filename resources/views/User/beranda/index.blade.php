@@ -66,19 +66,21 @@
                 <div class="row justify-content-center">
                     @foreach($solutionss as $solution)
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
-                        <div class="services-item shine-animate-item">
-                            <div class="services-thumb">
-                                <a href="services-details.html" class="shine-animate"><img src="{{ asset('storage/' . $solution->thumbnail) }}" alt=""></a>
-                            </div>
-                            <div class="services-content">
-                                <div class="icon">
-                                    <img src="{{ asset('storage/' . $solution->icon) }}" alt="">
+                        <a href="{{ route('solusi.show', Str::slug($solution->nama)) }}" class="services-link">
+                            <div class="services-item shine-animate-item">
+                                <div class="services-thumb">
+                                    <img src="{{ asset('storage/' . $solution->thumbnail) }}" alt="">
                                 </div>
-                                <h4 class="title">{{ $solution->nama }}</h4>
-                                <p>{{ $solution->description }}</p>
-                                <a href="services-details.html" class="btn">Pelajari</a>
+                                <div class="services-content">
+                                    <div class="icon">
+                                        <img src="{{ asset('storage/' . $solution->icon) }}" alt="">
+                                    </div>
+                                    <h4 class="title">{{ $solution->nama }}</h4>
+                                    <p>{{ $solution->description }}</p>
+                                    <span class="btn">Pelajari</span>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     @endforeach
                 </div>
@@ -167,7 +169,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-pagination swiper-pagination-testimonials"></div>
+                            <div class="swiper-pagination swiper-pagination-choose"></div>
                         </div>
                     </div>
                 </div>
@@ -400,9 +402,9 @@
     <script>
         // Inisialisasi Swiper
         document.addEventListener('DOMContentLoaded', () => {
-            new Swiper('.choose-list', {
+            new Swiper('.testimonial-active', {
                 slidesPerView: 1,
-                spaceBetween: 3,
+                spaceBetween: 20,
                 loop: true,
                 autoplay: {
                     delay: 5000,
@@ -420,28 +422,4 @@
             });
         });
     </script>
-
-<script>
-    // Inisialisasi Swiper
-    document.addEventListener('DOMContentLoaded', () => {
-        new Swiper('.testimonial-active', {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            breakpoints: {
-                640: { slidesPerView: 1 },
-                768: { slidesPerView: 1 },
-                1024: { slidesPerView: 1 },
-            }
-        });
-    });
-</script>
 @endsection
