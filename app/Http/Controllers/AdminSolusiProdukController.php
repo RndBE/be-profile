@@ -10,17 +10,17 @@ use App\Models\SubSolutions;
 use Illuminate\Http\Request;
 use App\Models\KategoriProjek;
 use App\Models\FiturSubSolutions;
+use App\Models\SolusiProduk;
 use Illuminate\Support\Facades\Storage;
 
-class AdminFiturSubSolusiController extends Controller
+class AdminSolusiProdukController extends Controller
 {
     public function index()
     {
         $data = [
-            'fitursubsolutionss' => FiturSubSolutions::orderBy('created_at', 'desc')->get(),
-            'subsolutions' => SubSolutions::all(),
+            'solusiproduks' => SolusiProduk::orderBy('created_at', 'desc')->get(),
         ];
-        return view('Admin.fitur-sub-solutions.index', $data);
+        return view('Admin.solusi-produk.index', $data);
     }
 
     // public function create()
@@ -34,25 +34,21 @@ class AdminFiturSubSolusiController extends Controller
     {
         $request->validate([
             'nama' => 'required|string',
-            'description' => 'required|string',
             'icon' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'sub_solution_id' => 'required|exists:sub_solution,id',
         ]);
 
         // Menangani Icon
         $iconPath = null;
         if ($request->hasFile('icon')) {
             $fileName = time() . '_' . $request->file('icon')->getClientOriginalName();
-            $filePath = $request->file('icon')->storeAs('public/solutions/icon-fitur-subsolution', $fileName);
-            $iconPath = 'solutions/icon-fitur-subsolution/' . $fileName;
+            $filePath = $request->file('icon')->storeAs('public/produk/solusi-produk', $fileName);
+            $iconPath = 'produk/solusi-produk/' . $fileName;
         }
 
         // Simpan data ke database
-        FiturSubSolutions::create([
+        SolusiProduk::create([
             'nama' => $request->nama,
-            'description' => $request->description,
             'icon' => $iconPath,
-            'sub_solution_id' => $request->sub_solution_id,
         ]);
 
         toast('Berhasil menambahkan data!', 'success');
@@ -73,23 +69,19 @@ class AdminFiturSubSolusiController extends Controller
     {
         $request->validate([
             'nama' => 'required|string',
-            'description' => 'required|string',
             'icon' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'sub_solution_id' => 'required|exists:sub_solution,id',
         ]);
-        $fitursubsolution = FiturSubSolutions::findOrFail($id);
+        $solusiproduk = SolusiProduk::findOrFail($id);
         if ($request->hasFile('icon')) {
-            if ($fitursubsolution->icon && Storage::exists('public/' . $fitursubsolution->icon)) {
-                Storage::delete('public/' . $fitursubsolution->icon);
+            if ($solusiproduk->icon && Storage::exists('public/' . $solusiproduk->icon)) {
+                Storage::delete('public/' . $solusiproduk->icon);
             }
             $fileName = time() . '_' . $request->file('icon')->getClientOriginalName();
-            $filePath = $request->file('icon')->storeAs('public/solutions/icon-fitur-subsolution', $fileName);
-            $fitursubsolution->icon = 'solutions/icon-fitur-subsolution/' . $fileName;
+            $filePath = $request->file('icon')->storeAs('public/produk/solusi-produk', $fileName);
+            $solusiproduk->icon = 'produk/solusi-produk/' . $fileName;
         }
-        $fitursubsolution->nama = $request->nama;
-        $fitursubsolution->description = $request->description;
-        $fitursubsolution->sub_solution_id = $request->sub_solution_id;
-        $fitursubsolution->save();
+        $solusiproduk->nama = $request->nama;
+        $solusiproduk->save();
 
         toast('Berhasil mengupdate data!', 'success');
         return redirect()->back();
@@ -97,11 +89,11 @@ class AdminFiturSubSolusiController extends Controller
 
     public function destroy($id)
     {
-        $fitursubSolution = FiturSubSolutions::findOrFail($id);
-        if ($fitursubSolution->icon) {
-            Storage::disk('public')->delete($fitursubSolution->icon);
+        $solusiproduk = SolusiProduk::findOrFail($id);
+        if ($solusiproduk->icon) {
+            Storage::disk('public')->delete($solusiproduk->icon);
         }
-        $fitursubSolution->delete();
+        $solusiproduk->delete();
         toast('Berhasil menghapus data!', 'success');
         return redirect()->back();
     }

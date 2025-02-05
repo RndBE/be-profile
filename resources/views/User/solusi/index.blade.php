@@ -199,25 +199,23 @@
                 <div class="box-video-small_right">
                     <div class="swiper-container produk-slider">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="produk-item">
-                                    <a href="{{ route('produk.index') }}" class="produk-item">
-                                        <div class="produk-thumb">
-                                            <img src="{{ asset('asset/img/produk/WLR.png') }}" alt="Produk WLR">
-                                        </div>
-                                        <div class="produk-content">
-                                            <div class="left-side-content">
-                                                <h4 class="title">BE-WLR-100-U150</h4>
-                                                <ul>
-                                                    <li>Data Logger BL-110.</li>
-                                                    <li>Sensor ultrasonik dengan jangkauan baca data 15 meter.</li>
-                                                </ul>
+                            @foreach ($produks as $item)
+                                <div class="swiper-slide">
+                                    <div>
+                                        <a href="{{ route('detail-produk.show', $item->slug) }}" class="produk-item">
+                                            <div class="produk-thumb">
+                                                <img src="{{ asset('storage/' . $item->gambar_thumbnail_produk) }}" alt="{{ $item->nama_produk }}">
                                             </div>
-                                        </div>
-                                    </a>
-
+                                            <div class="produk-content">
+                                                <h4 class="title">{{ $item->nama_produk }}</h4>
+                                                <div class="deskripsi-content">
+                                                    {!! $item->deskripsi_thumbnail !!}
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
                         <div class="box-button-slider-right">
                             <div class="produk__nav-four">
@@ -308,6 +306,25 @@
                             slidesPerView: 1,
                         }
                     }
+                });
+            });
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                let produkItems = document.querySelectorAll(".produk-item");
+                let maxHeight = 0;
+
+                // Cari tinggi maksimal dari semua produk-item
+                produkItems.forEach(item => {
+                    let height = item.offsetHeight;
+                    if (height > maxHeight) {
+                        maxHeight = height;
+                    }
+                });
+
+                // Terapkan tinggi maksimal ke semua produk-item
+                produkItems.forEach(item => {
+                    item.style.height = maxHeight + "px";
                 });
             });
         </script>

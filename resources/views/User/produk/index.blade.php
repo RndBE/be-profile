@@ -35,46 +35,52 @@
             </div>
         </section>
         <!-- breadcrumb-area-end -->
-        <!-- team-details-area -->
-        <section class="team__details-area produk__bg" data-background="{{ asset('asset/img/bg/bg_produk.png') }}">
+        <!-- produk-details-area -->
+        <section class="produk__details-area produk__bg" data-background="{{ asset('asset/img/bg/bg_produk.png') }}">
             <div class="container">
-                <div class="team__details-inner">
-                    <div class="row align-items-center">
-                        <div class="col-36">
-                            <div class="team__details-img">
-                                <img src="{{ asset('asset/img/produk/Logger.png') }}" alt="">
+                <div class="produk__details-inner">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
+                            <div class="produk__item-four shine-animate-item">
+                                <div class="produk__thumb-four shine-animate">
+                                    <img src="{{ asset('asset/img/produk/Logger.png') }}" alt="">
+                                </div>
+                                <div class="produk__content-four">
+                                    <span>AWLR BE-WLR-100-U150</span>
+                                </div>
                             </div>
                         </div>
                         <div class="col-64">
-                            <div class="team__details-content">
-                                {{-- <h2 class="title">Marker Stephen</h2>
-                                <span class="position">Finance Advisor</span> --}}
-                                <p>eed a little help from our friends from time to time. Although we offer the one-stop convenience of annery integrated range of legal, financial services under one roof there are occasions when our clients areaneed specia.eed a little help from our friends from time to time. Although we offer the one-stop onvenience of annery integrated of legal, financial services under one roofthere.</p>
-                                <div class="team__details-info">
-                                    {{-- <ul class="list-wrap">
+                            <div class="produk__details-content">
+                                <p>This device is ideal for use as a remote monitoring for water level measuring rainfall
+                                    levels.. BE Data Loggers offers accurate data recording measurement results specifically
+                                    for hydrological monitoring solutions. This device uses BL-11 series BE Data Logger which
+                                    is efficient and economical because it only measures one sensor (on location) which is
+                                    stored on the SD Card. The rainfall sensor uses a self-emptying tipping bucket with a
+                                    resolution of 0.2 mm, and uses high quality plastic material with a simple design for longterm use, outer shell is made from Styrosun material which makes the surface easy to
+                                    clean. The enclosure uses ABS material and has Ip65 rating which is resistant to weather effect
+                                    and and high temperature. This enclosure can make the electronic device inside be durable
+                                    and can protect the device from high temperatures due to UV exposure and keep the
+                                    humidity of the electronic device inside to avoid corrosion.
+                                    The battery in the data logger uses a type of Lead Acid with a Deep Cycle that can be
+                                    recharged and discharged many times. This battery is also resistant to high temperatures
+                                    and can be used for a long time.
+                                </p>
+                                <div class="produk__details-info">
+                                    <ul class="list-wrap">
                                         <li>
-                                            <i class="flaticon-phone-call"></i>
-                                            <a href="tel:0123456789">+123 8989 444</a>
+                                            <a class="btn" href="" target="_blank" download>Unduh Brosur</a>
+                                            <div class="dropdown-lkpp">
+                                                <button type="button" class="btn btn-group">
+                                                    Lihat di LKPP
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="#">Lokal</a></li>
+                                                    <li><a class="dropdown-item" href="#">Sektoral</a></li>
+                                                </ul>
+                                            </div>
                                         </li>
-                                        <li>
-                                            <i class="flaticon-mail"></i>
-                                            <a href="mailto:info@gmail.com">info@gmail.com</a>
-                                        </li>
-                                        <li>
-                                            <i class="flaticon-pin"></i>
-                                            256 Avenue, Mark Street, Newyork City
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-share-alt"></i>
-                                            <ul class="list-wrap team__details-social">
-                                                <li><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a></li>
-                                                <li><a href="javascript:void(0)"><i class="fab fa-twitter"></i></a></li>
-                                                <li><a href="javascript:void(0)"><i class="fab fa-pinterest-p"></i></a></li>
-                                                <li><a href="javascript:void(0)"><i class="fab fa-instagram"></i></a></li>
-                                                <li><a href="javascript:void(0)"><i class="fab fa-linkedin-in"></i></a></li>
-                                            </ul>
-                                        </li>
-                                    </ul> --}}
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -82,154 +88,132 @@
                 </div>
             </div>
         </section>
-        <!-- team-details-area-end -->
-        <!-- services-details-area -->
-        <section class="services__details-area">
+        <!-- produk-details-area-end -->
+        <!-- solusiproduk-area -->
+        <section class="solusiproduk-area">
             <div class="container">
-                <div class="services__details-wrap">
-                    <div class="row">
-                        <div class="col-70 order-0 order-lg-2">
-                            <div class="services__details-content services__details-content-two">
-                                {{-- <div class="project__details-thumb swiper-container slider-project-banner">
-                                    <div class="swiper-wrapper">
-                                        @if($subSolution && $subSolution->gambar)
-                                            @forelse($subSolution->gambar as $gambar)
-                                                <div class="swiper-slide">
-                                                    <img src="{{ asset('storage/' . $gambar->gambar) }}" alt="gambar">
-                                                </div>
-                                            @empty
-                                                <div class="swiper-slide">
-                                                    <img style="width: 100%;height: 600px;" src="{{ asset('asset/img/images/no-image1.png') }}" alt="default">
-                                                </div>
-                                            @endforelse
-                                        @else
-                                            <div class="swiper-slide">
-                                                <img style="width: 100%;height: 600px;" src="{{ asset('asset/img/images/no-image1.png') }}" alt="default">
-                                            </div>
-                                        @endif
-                                    </div>
-                                    <div class="swiper-pagination swiper-pagination-project"></div>
-                                </div>
-                                @if($subSolution)
-                                    <p>{!! $subSolution->description1 !!}</p>
-                                @else
-                                    <p>Sub-solusi tidak ditemukan.</p>
-                                @endif --}}
-
-                                <div class="services__details-inner-two services__details-inner-four">
-                                    <div class="row gutter-24 align-items-center">
-                                        <div class="services__details-list-two">
-                                            <div class="row gutter-24">
-                                                {{-- @if($subSolution && $subSolution->fiturSubSolutions->isNotEmpty())
-                                                    @foreach($subSolution->fiturSubSolutions as $fitur)
-                                                        <div class="col-md-4">
-                                                            <div class="services__details-list-box-two">
-                                                                <div class="icon">
-                                                                    <img src="{{ asset('storage/' . $fitur->icon) }}" alt="icon">
-                                                                </div>
-                                                                <div class="content">
-                                                                    <h4 class="title">{{ $fitur->nama }}</h4>
-                                                                    <p>{{ $fitur->description }}</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    @endforeach
-                                                @else
-                                                    <p>Fitur belum tersedia.</p>
-                                                @endif --}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- @if($subSolution)
-                                    <p>{!! $subSolution->description2 !!}</p>
-                                @else
-                                    <p>Sub-solusi tidak ditemukan.</p>
-                                @endif --}}
-                                <div class="services__details-inner">
-                                    <div class="row gutter-24 align-items-top">
-                                        <div class="col-56">
-                                            <div class="project__details-inner-content" id="project-description">
-                                                {{-- @if($subSolution)
-                                                    <p>{!! $subSolution->description3 !!}</p>
-                                                @else
-                                                    <p>Sub-solusi tidak ditemukan.</p>
-                                                @endif --}}
-                                            </div>
-                                        </div>
-                                        <div class="col-44">
-                                            <div class="services__details-inner-img">
-                                                {{-- @if ($subSolution && $subSolution->video)
-                                                    @php
-                                                        // Ekstrak Video ID dari URL
-                                                        preg_match('/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:embed\/|watch\?v=)|youtu\.be\/)([^\&\?\/]+)/', $subSolution->video, $matches);
-                                                        $videoId = $matches[1] ?? null;
-                                                    @endphp
-                                                    @if ($videoId)
-                                                        <div class="video-thumbnail-wrapper" style="position: relative; display: inline-block;">
-                                                            <!-- Tampilkan Thumbnail Video -->
-                                                            <img
-                                                                src="https://img.youtube.com/vi/{{ $videoId }}/hqdefault.jpg"
-                                                                style="width: 100%; height: 305px;"
-                                                                alt="YouTube Video Thumbnail">
-
-                                                            <!-- Tombol Play -->
-                                                            <a
-                                                                href="{{ $subSolution->video }}"
-                                                                class="play-btn popup-video"
-                                                                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                                                                <i class="fas fa-play" style="font-size: 40px;"></i>
-                                                            </a>
-                                                        </div>
-                                                    @else
-                                                        <p>Invalid YouTube URL</p>
-                                                    @endif
-                                                @endif --}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                <div class="row justify-content-center">
+                    <div class="col-xl-6 col-lg-8">
+                        <div class="section-title text-center mb-50 tg-heading-subheading animation-style3">
+                            <h2 class="title tg-element-title">Solusi tepat pemasangan di wilayah:</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center gutter-24">
+                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                        <div class="solusiproduk-item text-center">
+                            <div class="icon">
+                                <img src="{{ asset('asset/img/icon/water-waves 1.png') }}" alt="">
+                            </div>
+                            <div class="content">
+                                <p>Irigasi</p>
                             </div>
                         </div>
-                        <div class="col-30">
-                            <aside class="services__sidebar">
-                                <div class="sidebar__widget px-3 py-3">
-                                    <div class="sidebar__cat-list-two sidebar__cat-list-three ">
-                                        <ul class="list-wrap">
-                                            {{-- @foreach($solution->subSolutions as $subSolution)
-                                            <li class="{{ Request::is('solusi/' . Str::slug($solution->nama) . '/' . Str::slug($subSolution->nama)) ? 'active' : '' }}">
-                                                <a href="{{ route('solusi.show', [Str::slug($solution->nama), Str::slug($subSolution->nama)]) }}"
-                                                    class="px-3 py-2 {{ Request::is('solusi/' . Str::slug($solution->nama) . '/' . Str::slug($subSolution->nama)) ? 'active' : '' }}">
-                                                    {{ $subSolution->nama }}
-                                                    <i class="flaticon-arrow-button"></i>
-                                                </a>
-                                            </li>
-                                            @endforeach --}}
-                                        </ul>
-                                    </div>
-                                </div>
-                                {{-- <div class="sidebar__widget sidebar__widget-three">
-                                    <h4 class="sidebar__widget-title">Unduh Brosur</h4>
-                                    <div class="sidebar__brochure sidebar__brochure-two">
-                                        <p>when an unknown printer took ga lley offer typey anddey.</p>
-                                        <a href="" target="_blank" download>Unduh PDF</a>
-                                        <a href="" target="_blank" download>Unduh TKDN</a>
-                                    </div>
-                                </div> --}}
-                                <div class="sidebar__widget sidebar__widget-two">
-                                    <div class="sidebar__contact sidebar__contact-two" data-background="{{ asset('asset/img/services/sidebar_contact_bg.png') }}">
-                                        <h2 class="title">Konsultasi apa saja, kami siap membantu!</h2>
-                                        <a href="tel:0123456789" class="btn"><i class="flaticon-phone-call"></i>+91 705 2101 786</a>
-                                    </div>
-                                </div>
-                            </aside>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                        <div class="solusiproduk-item text-center">
+                            <div class="icon">
+                                <img src="{{ asset('asset/img/icon/water-waves 2.png') }}" alt="">
+                            </div>
+                            <div class="content">
+                                <p>Bendungan</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                        <div class="solusiproduk-item text-center">
+                            <div class="icon">
+                                <img src="{{ asset('asset/img/icon/water-waves 3.png') }}" alt="">
+                            </div>
+                            <div class="content">
+                                <p>Spillway</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                        <div class="solusiproduk-item text-center">
+                            <div class="icon">
+                                <img src="{{ asset('asset/img/icon/water-waves 4.png') }}" alt="">
+                            </div>
+                            <div class="content">
+                                <p>Drainase</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- services-details-area-end -->
+        <!-- solusiproduk-area-end -->
+        <!-- services-area -->
+        <section class="services__area-six services__bg-six">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="box-faq-right">
+                            <div class="choose__tab">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="komponen-tab" data-bs-toggle="tab" data-bs-target="#komponen-tab-pane" type="button" role="tab" aria-controls="komponen-tab-pane" aria-selected="true">Komponen</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="keunggulan-tab" data-bs-toggle="tab" data-bs-target="#keunggulan-tab-pane" type="button" role="tab" aria-controls="keunggulan-tab-pane" aria-selected="false">Keunggulan</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="spesifikasi-tab" data-bs-toggle="tab" data-bs-target="#spesifikasi-tab-pane" type="button" role="tab" aria-controls="spesifikasi-tab-pane" aria-selected="false">Spesifikasi</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="sertifikasi-tab" data-bs-toggle="tab" data-bs-target="#sertifikasi-tab-pane" type="button" role="tab" aria-controls="sertifikasi-tab-pane" aria-selected="false">Sertifikasi</button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="komponen-tab-pane" role="tabpanel" aria-labelledby="komponen-tab" tabindex="0">
+                                        <div class="choose__tab-content text-center">
+                                            <p class="fs-4 fw-bold">Apa saja komponen dalam perangkat <br> AWLR Seri <span style="color: #b40404;">BE-WLR-100-U150</span>?</p>
+                                            <img src="{{ asset('asset/img/produk/Skema produk Beacon AWLR 1 1.png') }}" alt="" class="img-fluid">
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="keunggulan-tab-pane" role="tabpanel" aria-labelledby="keunggulan-tab" tabindex="0">
+                                        <div class="choose__tab-content">
+                                            <p>longerty successfully cope with tasks of varying complexity provide area guarantees and regularly master new Practice.</p>
+                                            <ul class="list-wrap">
+                                                <li><i class="fas fa-check"></i>Save Money & Time</li>
+                                                <li><i class="fas fa-check"></i>100% Satisfaction</li>
+                                                <li><i class="fas fa-check"></i>Best For IT Consulting</li>
+                                                <li><i class="fas fa-check"></i>Our Vision, Our Mission</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="spesifikasi-tab-pane" role="tabpanel" aria-labelledby="spesifikasi-tab" tabindex="0">
+                                        <div class="choose__tab-content">
+                                            <p>spek.</p>
+                                            <ul class="list-wrap">
+                                                <li><i class="fas fa-check"></i>Save Money & Time</li>
+                                                <li><i class="fas fa-check"></i>100% Satisfaction</li>
+                                                <li><i class="fas fa-check"></i>Best For IT Consulting</li>
+                                                <li><i class="fas fa-check"></i>Our Vision, Our Mission</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="sertifikasi-tab-pane" role="tabpanel" aria-labelledby="sertifikasi-tab" tabindex="0">
+                                        <div class="choose__tab-content">
+                                            <p>sertifikasi.</p>
+                                            <ul class="list-wrap">
+                                                <li><i class="fas fa-check"></i>Save Money & Time</li>
+                                                <li><i class="fas fa-check"></i>100% Satisfaction</li>
+                                                <li><i class="fas fa-check"></i>Best For IT Consulting</li>
+                                                <li><i class="fas fa-check"></i>Our Vision, Our Mission</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- services-area-end -->
         <script>
             document.addEventListener('DOMContentLoaded', () => {
                 new Swiper('.produk-slider', {

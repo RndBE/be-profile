@@ -174,12 +174,19 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/admin/solutions" class="nav-link {{ Request::is('admin/solutions*') ?'active' : '' }}">
+                            <a href="/admin/produk" class="nav-link {{ Request::is('admin/produk*') ?'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Galeri</p>
+                            <p>Tambah Produk</p>
                             </a>
                         </li>
-
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admin/solusi-produk" class="nav-link {{ Request::is('admin/solusi-produk*') ?'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Solusi Pemasangan</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>

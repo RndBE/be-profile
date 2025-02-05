@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\AdminTagController;
 use App\Http\Controllers\AdminKlienController;
+use App\Http\Controllers\UserProdukController;
 use App\Http\Controllers\UserProyekController;
 use App\Http\Controllers\UserSolusiController;
+use App\Http\Controllers\AdminProdukController;
 use App\Http\Controllers\AdminProjekController;
 use App\Http\Controllers\AdminSolusiController;
 use App\Http\Controllers\UserBerandaController;
@@ -13,6 +15,7 @@ use App\Http\Controllers\AdminCarouselController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminSubSolusiController;
 use App\Http\Controllers\AdminTestimoniController;
+use App\Http\Controllers\AdminSolusiProdukController;
 use App\Http\Controllers\AdminFiturSubSolusiController;
 use App\Http\Controllers\AdminKategoriProjekController;
 
@@ -37,7 +40,7 @@ Route::get('/proyek/{slug}', [UserProyekController::class, 'show'])->name('proye
 Route::resource('/proyek', UserProyekController::class);
 Route::get('/solusi/{slug}/{subSlug?}', [UserSolusiController::class, 'show'])->name('solusi.show');
 // Route::get('/solusi/{slug}', [UserSolusiController::class, 'show'])->name('solusi.show');
-Route::resource('/produk', ProdukController::class);
+Route::get('/detail-produk/{slug}', [UserProdukController::class, 'show'])->name('detail-produk.show');
 
 
 // Route::resource('/solusi', UserSolusiController::class);
@@ -62,6 +65,9 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::resource('/sub-solutions', AdminSubSolusiController::class);
     Route::delete('/sub-solutions/{id}/remove-image', [AdminSubSolusiController::class, 'removeImage'])->name('sub-solutions.remove-image');
     Route::resource('/fitur-sub-solutions', AdminFiturSubSolusiController::class);
+
+    Route::resource('/produk', AdminProdukController::class);
+    Route::resource('/solusi-produk', AdminSolusiProdukController::class);
 
 });
 

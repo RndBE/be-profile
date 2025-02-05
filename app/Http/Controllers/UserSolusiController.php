@@ -6,6 +6,7 @@ use App\Models\Blog;
 use App\Models\User;
 use App\Models\Klien;
 use App\Models\Pesan;
+use App\Models\Produk;
 use App\Models\Projek;
 use App\Models\Service;
 use App\Models\Solutions;
@@ -24,7 +25,8 @@ class UserSolusiController extends Controller
             'carousels' => BerandaCarousel::orderBy('created_at', 'desc')->get(),
             'solutionss' => Solutions::with('subSolutions')->orderBy('created_at', 'asc')->get(),
             'projeks' => Projek::orderBy('created_at', 'desc')->get(),
-            'testimonis' => Testimoni::with('projek.klien')->orderBy('created_at', 'desc')->paginate(10)
+            'testimonis' => Testimoni::with('projek.klien')->orderBy('created_at', 'desc')->paginate(10),
+            'produks' => Produk::all()
         ];
 
         return view('User.solusi.index', $data);
@@ -60,6 +62,7 @@ class UserSolusiController extends Controller
             'carousels' => BerandaCarousel::orderBy('created_at', 'desc')->get(),
             'projeks' => Projek::orderBy('created_at', 'desc')->get(),
             'testimonis' => Testimoni::orderBy('created_at', 'desc')->paginate(10),
+            'produks' => Produk::all()
         ];
 
         return view('User.solusi.index', $data);
