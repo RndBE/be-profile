@@ -11,6 +11,7 @@ use App\Http\Controllers\UserSolusiController;
 use App\Http\Controllers\AdminProdukController;
 use App\Http\Controllers\AdminProjekController;
 use App\Http\Controllers\AdminSolusiController;
+use App\Http\Controllers\TentangKamiController;
 use App\Http\Controllers\UserBerandaController;
 use App\Http\Controllers\AdminCarouselController;
 use App\Http\Controllers\AdminDashboardController;
@@ -70,6 +71,8 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 
     Route::resource('/produk', AdminProdukController::class);
     Route::resource('/solusi-produk', AdminSolusiProdukController::class);
+
+    Route::resource('/tentang-kami', TentangKamiController::class);
 
 });
 

@@ -10,6 +10,7 @@ use App\Models\Projek;
 use App\Models\Service;
 use App\Models\Solutions;
 use App\Models\Testimoni;
+use App\Models\TentangKami;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\BerandaCarousel;
@@ -17,33 +18,11 @@ use App\Models\BerandaCarousel;
 class UserAboutController extends Controller
 {
     //
-    function index()
+    public function index()
     {
-        // $data = [
-        //     'kliens' => Klien::orderBy('created_at', 'desc')->get(),
-        //     'carousels' => BerandaCarousel::orderBy('created_at', 'desc')->get(),
-        //     'solutionss' => Solutions::with('subSolutions')->orderBy('created_at', 'asc')->get(),
-        //     'projeks' => Projek::orderBy('created_at', 'desc')->get(),
-        //     'testimonis' => Testimoni::with('projek.klien')->orderBy('created_at', 'desc')->paginate(10)
-        // ];
-
-        return view('User.tentang-kami.index');
+        $tentangKami = TentangKami::first(); // Ambil satu data terbaru
+        return view('User.tentang-kami.index', compact('tentangKami'));
     }
 
-    // public function show($slug)
-    // {
-
-    //     $projek = Projek::whereRaw("LOWER(REPLACE(nama_projek, ' ', '-')) = ?", [Str::lower($slug)])
-    //                 ->with('gambar')
-    //                 ->firstOrFail();
-    //     $data = [
-    //         'kliens' => Klien::orderBy('created_at', 'desc')->get(),
-    //         'carousels' => BerandaCarousel::orderBy('created_at', 'desc')->get(),
-    //         'solutionss' => Solutions::with('subSolutions')->orderBy('created_at', 'asc')->get(),
-    //         'projek' => $projek,
-    //         'testimonis' => Testimoni::where('projek_id', $projek->id)->with('projek.klien')->orderBy('created_at', 'desc')->get(),
-    //     ];
-    //     return view('User.proyek.show', $data);
-    // }
 
 }

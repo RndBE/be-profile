@@ -85,6 +85,16 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="/admin/tentang-kami" class="nav-link {{ Request::is('admin/tentang-kami*') ?'active' : '' }}">
+                        <i class="nav-icon fas fa-image"></i>
+                        <p>
+                        Tentang Kami
+                            {{-- <span class="right badge badge-danger">New</span> --}}
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="/admin/klien" class="nav-link {{ Request::is('admin/klien*') ?'active' : '' }}">
                         <i class="nav-icon fas fa-address-card"></i>
                         <p>

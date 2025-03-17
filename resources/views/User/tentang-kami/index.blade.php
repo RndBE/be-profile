@@ -27,8 +27,16 @@
                     <div class="col-lg-6 col-md-9">
                         <div class="choose__img-wrap-five">
                             <div class="icon">
-                                <img src="{{ asset('asset/img/images/h5_choose_img01.jpg') }}" alt="">
-                                <img src="{{ asset('asset/img/images/h5_choose_img02.jpg') }}" alt="">
+                                @if($tentangKami)
+                                    @if($tentangKami->gambar_satu)
+                                        <img src="{{ asset('storage/' . $tentangKami->gambar_satu) }}" alt="Gambar Satu">
+                                    @endif
+                                    @if($tentangKami->gambar_dua)
+                                        <img src="{{ asset('storage/' . $tentangKami->gambar_dua) }}" alt="Gambar Dua">
+                                    @endif
+                                @else
+                                    <p>Tidak ada gambar yang tersedia.</p>
+                                @endif
                             </div>
                             <div class="img-shape">
                                 <img src="{{ asset('asset/img/images/testimonial_shape1.png') }}" alt="">
@@ -155,7 +163,13 @@
                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
                             <div class="team__item-four shine-animate-item">
                                 <div class="team__thumb-four shine-animate">
-                                    <img src="{{ asset('asset/img/team/ari.png') }}" alt="">
+                                    @if($tentangKami)
+                                        @if($tentangKami->gambar_direktur)
+                                            <img src="{{ asset('storage/' . $tentangKami->gambar_direktur) }}" alt="Gambar Direktur">
+                                        @endif
+                                    @else
+                                        <p>Tidak ada gambar yang tersedia.</p>
+                                    @endif
                                 </div>
                                 <div class="team__content-four_direktur">
                                     <h2 class="title">SOFYAN ARIYANTO, S.T.</h2>
@@ -166,7 +180,13 @@
                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
                             <div class="team__item-four shine-animate-item">
                                 <div class="team__thumb-four shine-animate">
-                                    <img src="{{ asset('asset/img/team/yadi.png') }}" alt="">
+                                    @if($tentangKami)
+                                        @if($tentangKami->gambar_komisaris)
+                                            <img src="{{ asset('storage/' . $tentangKami->gambar_komisaris) }}" alt="Gambar Komisaris">
+                                        @endif
+                                    @else
+                                        <p>Tidak ada gambar yang tersedia.</p>
+                                    @endif
                                 </div>
                                 <div class="team__content-four_direktur">
                                     <h2 class="title">RADEN TARJADI</h2>
@@ -192,7 +212,13 @@
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
                         <div class="team__item-four shine-animate-item">
                             <div class="team__thumb-four shine-animate">
-                                <img src="{{ asset('asset/img/team/wahyu.png') }}" alt="">
+                                @if($tentangKami)
+                                    @if($tentangKami->gambar_administrasi)
+                                        <img src="{{ asset('storage/' . $tentangKami->gambar_administrasi) }}" alt="Gambar Manager Administrasi">
+                                    @endif
+                                @else
+                                    <p>Tidak ada gambar yang tersedia.</p>
+                                @endif
                             </div>
                             <div class="team__content-four">
                                 <h2 class="title">WAHYU N. H, S.T.</h2>
@@ -203,7 +229,13 @@
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
                         <div class="team__item-four shine-animate-item">
                             <div class="team__thumb-four shine-animate">
-                                <img src="{{ asset('asset/img/team/sonie.png') }}" class="" alt="">
+                                @if($tentangKami)
+                                    @if($tentangKami->gambar_marketing)
+                                        <img src="{{ asset('storage/' . $tentangKami->gambar_marketing) }}" alt="Gambar Manager Administrasi">
+                                    @endif
+                                @else
+                                    <p>Tidak ada gambar yang tersedia.</p>
+                                @endif
                             </div>
                             <div class="team__content-four">
                                 <h2 class="title">SONNIE TRIYONO, S.IP, MM.</h2>
@@ -214,7 +246,13 @@
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
                         <div class="team__item-four shine-animate-item">
                             <div class="team__thumb-four shine-animate">
-                                <img src="{{ asset('asset/img/team/barkah.png') }}" alt="">
+                                @if($tentangKami)
+                                    @if($tentangKami->gambar_hardware)
+                                        <img src="{{ asset('storage/' . $tentangKami->gambar_hardware) }}" alt="Gambar Manager Hardware">
+                                    @endif
+                                @else
+                                    <p>Tidak ada gambar yang tersedia.</p>
+                                @endif
                             </div>
                             <div class="team__content-four">
                                 <h2 class="title">M. SUBARKAH, S.T.</h2>
@@ -225,7 +263,13 @@
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
                         <div class="team__item-four shine-animate-item">
                             <div class="team__thumb-four shine-animate">
-                                <img src="{{ asset('asset/img/team/nofiyanto.png') }}" alt="">
+                                @if($tentangKami)
+                                    @if($tentangKami->gambar_software)
+                                        <img src="{{ asset('storage/' . $tentangKami->gambar_software) }}" alt="Gambar Manager Software">
+                                    @endif
+                                @else
+                                    <p>Tidak ada gambar yang tersedia.</p>
+                                @endif
                             </div>
                             <div class="team__content-four">
                                 <h2 class="title">NOFIYANTO, S.T.</h2>
