@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\AdminTagController;
+use App\Http\Controllers\UserAboutController;
 use App\Http\Controllers\AdminKlienController;
 use App\Http\Controllers\UserProdukController;
 use App\Http\Controllers\UserProyekController;
@@ -41,6 +42,7 @@ Route::resource('/proyek', UserProyekController::class);
 Route::get('/solusi/{slug}/{subSlug?}', [UserSolusiController::class, 'show'])->name('solusi.show');
 // Route::get('/solusi/{slug}', [UserSolusiController::class, 'show'])->name('solusi.show');
 Route::get('/detail-produk/{slug}', [UserProdukController::class, 'show'])->name('detail-produk.show');
+Route::resource('/tentang-kami', UserAboutController::class);
 
 
 // Route::resource('/solusi', UserSolusiController::class);

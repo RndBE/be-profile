@@ -94,7 +94,7 @@
                                             <img src="{{ asset('asset/img/images/location.png') }}" alt="">
                                         </div>
                                         <div class="content">
-                                            <p>Perum Pesona Bandara No. C-54, Cupuwatu I Purwomartani, Kec. Kalasan, Kabupaten Sleman, Daerah Istimewa Yogyakarta</p>
+                                            <a href="https://maps.app.goo.gl/iSEeHkWqByRoxwxA8" target="__blank">Kadirojo I, Purwomartani, Kec. Kalasan, Kabupaten Sleman, Daerah Istimewa Yogyakarta</a>
                                         </div>
                                     </li>
                                 </ul>

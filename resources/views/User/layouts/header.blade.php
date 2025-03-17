@@ -48,7 +48,14 @@
                                             <li><a href="about-4.html">Digital agency About</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="contact.html">Tentang Kami</a></li>
+                                    <li class="menu-item-has-children"><a href="#">Tentang Kami</a>
+                                        <ul class="sub-menu">
+                                            <li class="{{ Request::is('tentang-kami') ? 'active' : '' }}">
+                                                <a href="/tentang-kami">Tentang Beacon</a>
+                                            </li>
+                                            <li><a href="about-2.html">Sertifikasi</a></li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </div>
 
