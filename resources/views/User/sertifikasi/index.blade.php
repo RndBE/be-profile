@@ -27,19 +27,21 @@
                     <div class="col-lg-6">
                         <div class="choose__content-five-sertifikasi">
                             <div class="section-title mb-30 tg-heading-subheading animation-style3">
-                                {{-- <span class="sub-title" style="color: rgba(180, 4, 4, 0.75);">MENGENAL LEBIH JAUH BEACON ENGINEERING</span> --}}
-                                <h2 class="title tg-element-title">Sertifikasi adalah bentuk kepercayaan yang terbangun dan kualitas yang teruji. </h2>
+                                @if($sertifikasiAtas)
+                                    @if($sertifikasiAtas->header)
+                                        <h2 class="title tg-element-title">{{ $sertifikasiAtas->header }}</h2>
+                                    @endif
+                                @else
+                                    <p>Tidak ada detail yang tersedia.</p>
+                                @endif
                             </div>
-                            {{-- <div class="about__content-inner-five">
-                                <div class="about__list-box">
-                                    <ul class="list-wrap">
-                                        <li><i class="flaticon-arrow-button"></i>Menyajikan data akurasi tinggi</li>
-                                        <li><i class="flaticon-arrow-button"></i>Monitoring realtime 24 jam</li>
-                                        <li><i class="flaticon-arrow-button"></i>Akses data 100% online</li>
-                                    </ul>
-                                </div>
-                            </div> --}}
-                            <p style="text-align: justify;">Selain memprioritaskan dampak yang positif bagi masyakarat, Beacon Engineering juga menjadikan sertifikasi sebagai landasan untuk tetap mempertahankan kredibilitas dan integeritas.</p>
+                            @if($sertifikasiAtas)
+                                    @if($sertifikasiAtas->header)
+                                    <p style="text-align: justify;">{{ $sertifikasiAtas->sub_header }}</p>
+                                    @endif
+                                @else
+                                    <p>Tidak ada detail yang tersedia.</p>
+                                @endif
                             <div class="about-bottom">
                                 <a href="mailto:info@bejogja.com" class="btn btn-two" style="margin-top:50px;margin-bottom:50px;">
                                     Konsultasi Sekarang
@@ -50,8 +52,16 @@
                     <div class="col-lg-6 col-md-9">
                         <div class="choose__img-wrap-five-sertifikasi">
                             <div class="icon">
-                                <img src="{{ asset('asset/img/images/h5_choose_img01.jpg') }}" alt="">
-                                <img src="{{ asset('asset/img/images/h5_choose_img01.jpg') }}" alt="">
+                                @if($sertifikasiAtas)
+                                    @if($sertifikasiAtas->gambar_satu)
+                                        <img src="{{ asset('storage/' . $sertifikasiAtas->gambar_satu) }}" alt="Gambar Satu">
+                                    @endif
+                                    @if($sertifikasiAtas->gambar_dua)
+                                        <img src="{{ asset('storage/' . $sertifikasiAtas->gambar_dua) }}" alt="Gambar Dua">
+                                    @endif
+                                @else
+                                    <p>Tidak ada gambar yang tersedia.</p>
+                                @endif
                             </div>
                             <div class="img-shape">
                                 <img src="{{ asset('asset/img/images/testimonial_shape1.png') }}" alt="">
@@ -61,13 +71,7 @@
                         <div class="choose__list-sertifikasi">
                             <ul class="list-wrap">
                                 <li>
-                                    {{-- <div class="icon">
-                                        <img src="{{ asset('asset/img/icon/Online acess.png') }}" alt="">
-                                    </div>
-                                    <div class="content">
-                                        <h4 class="title">100%</h4>
-                                        <p>DATA ONLINE</p>
-                                    </div> --}}
+
                                 </li>
                                 <li>
                                     <div class="icon">
@@ -94,60 +98,32 @@
                             <h2 class="title tg-element-title mb-20">Sertifikasi ISO</h2>
                             <div class="sertifikasi-active swiper-container">
                                 <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <div class="content">
-                                            <img src="{{ asset('asset/img/iso/SERTIFIKASI ISO 90012015.jpg') }}" class="d-block w-100" alt="Sertifikasi 1">
+                                    @foreach ($sertifikasi as $item)
+                                        <div class="swiper-slide">
+                                            <div class="content">
+                                                <img src="{{ asset('storage/' . $item->gambar) }}" class="d-block w-100" alt="{{ $item->title }}">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="content">
-                                            <img src="{{ asset('asset/img/iso/SERTIFIKASI ISO 270012013.jpg') }}" class="d-block w-100" alt="Sertifikasi 2">
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="content">
-                                            <img src="{{ asset('asset/img/iso/SERTIFIKASI ISO 30141.jpg') }}" class="d-block w-100" alt="Sertifikasi 3">
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="komitmen__list">
+                            @foreach ($sertifikasi as $item)
                             <ul class="list-wrap">
                                 <li>
                                     <div class="icon">
-                                        <img src="{{ asset('asset/img/icon/sertifikasi1.png') }}" alt="">
+                                        <img src="{{ asset('storage/' . $item->icon) }}" alt="{{ $item->title }}">
                                     </div>
                                     <div class="content">
-                                        <h4 class="title">SERTIFIKASI ISO 9001:2015</h4>
-                                        <p>Menunjukkan level kompetensi tertinggi dalam proses dan prosedur perusahaan.</p>
+                                        <h4 class="title">{{ $item->title }}</h4>
+                                        <p style="text-align: justify;">{{ $item->sub_title }}</p>
                                     </div>
                                 </li>
                             </ul>
-                            <ul class="list-wrap">
-                                <li>
-                                    <div class="icon">
-                                        <img src="{{ asset('asset/img/icon/sertifikasi2.png') }}" alt="">
-                                    </div>
-                                    <div class="content">
-                                        <h4 class="title">SERTIFIKASI ISO 27001:2013</h4>
-                                        <p>Dedikasi melindungi aset informasi dan menjaga keamanan data para klien.</p>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="list-wrap">
-                                <li>
-                                    <div class="icon">
-                                        <img src="{{ asset('asset/img/icon/sertifikasi3.png') }}" alt="">
-                                    </div>
-                                    <div class="content">
-                                        <h4 class="title">SERTIFIKASI ISO 30141</h4>
-                                        <p>Menunjukkan kompetensi perusahaan dalam Internet of Things (IoT).</p>
-                                    </div>
-                                </li>
-                            </ul>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -166,12 +142,12 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-9">
                         <div class="sertifikasi__content-five">
-                            <img src="{{ asset('asset/img/iso/merek_belakang.png') }}" class="d-block w-100" alt="Sertifikasi 1">
+                            <img src="{{ asset('asset/img/iso/Sertifikat Merek BE_page-0001.jpg') }}" class="d-block w-100" alt="Sertifikasi 1">
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="sertifikasi__content-five">
-                            <img src="{{ asset('asset/img/iso/merek_depan.png') }}" class="d-block w-100" alt="Sertifikasi 1">
+                            <img src="{{ asset('asset/img/iso/Sertifikat Merek BE_page-0002.jpg') }}" class="d-block w-100" alt="Sertifikasi 1">
                         </div>
                     </div>
                 </div>

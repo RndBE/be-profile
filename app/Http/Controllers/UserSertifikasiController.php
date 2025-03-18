@@ -14,15 +14,17 @@ use App\Models\TentangKami;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\BerandaCarousel;
+use App\Models\Sertifikasi;
+use App\Models\SertifikasiAtas;
 
 class UserSertifikasiController extends Controller
 {
     //
     public function index()
     {
-        // $tentangKami = TentangKami::first(); // Ambil satu data terbaru
-        return view('User.sertifikasi.index');
+        $sertifikasi = Sertifikasi::orderBy('created_at', 'asc')->get();
+        $sertifikasiAtas = SertifikasiAtas::first();
+        return view('User.sertifikasi.index', compact('sertifikasi','sertifikasiAtas'));
     }
-
 
 }

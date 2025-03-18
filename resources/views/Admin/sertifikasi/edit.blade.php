@@ -1,28 +1,22 @@
-@foreach ($tentangkami as $item)
+@foreach ($sertifikasi as $item)
 <div class="modal fade" id="editTentangKamiModal{{ $item->id }}" tabindex="-1" aria-labelledby="editTentangKamiModalLabel{{ $item->id }}" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editTentangKamiModalLabel{{ $item->id }}">Edit Tentang Beacon</h5>
+                <h5 class="modal-title" id="editTentangKamiModalLabel{{ $item->id }}">Edit Sertifikasi</h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('tentang-kami.update', $item->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('sertifikasi.update', $item->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
                     @php
                         $gambarFields = [
-                            'gambar_satu' => 'Gambar Satu',
-                            'gambar_dua' => 'Gambar Dua',
-                            'gambar_direktur' => 'Gambar Direktur',
-                            'gambar_komisaris' => 'Gambar Komisaris',
-                            'gambar_administrasi' => 'Gambar Administrasi',
-                            'gambar_marketing' => 'Gambar Marketing',
-                            'gambar_hardware' => 'Gambar Hardware',
-                            'gambar_software' => 'Gambar Software'
+                            'gambar' => 'Gambar',
+                            'icon' => 'Icon',
                         ];
                     @endphp
 
@@ -42,6 +36,17 @@
                             @enderror
                         </div>
                     @endforeach
+                    <label for="title" class="form-label">Judul</label>
+                    <input name="title" class="form-control mb-1" id="title" value="{{ old('title', $item->title) }}">
+                    @error('title')
+                        <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
+                    @enderror
+
+                    <label for="sub_title" class="form-label">Sub Judul</label>
+                    <input name="sub_title" class="form-control mb-1" id="sub_title" value="{{ old('sub_title', $item->sub_title) }}">
+                    @error('sub_title')
+                        <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
+                    @enderror
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>

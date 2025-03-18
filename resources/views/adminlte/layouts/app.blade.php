@@ -85,16 +85,6 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="/admin/tentang-kami" class="nav-link {{ Request::is('admin/tentang-kami*') ?'active' : '' }}">
-                        <i class="nav-icon fas fa-image"></i>
-                        <p>
-                        Tentang Kami
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
                     <a href="/admin/klien" class="nav-link {{ Request::is('admin/klien*') ?'active' : '' }}">
                         <i class="nav-icon fas fa-address-card"></i>
                         <p>
@@ -195,6 +185,30 @@
                             <a href="/admin/solusi-produk" class="nav-link {{ Request::is('admin/solusi-produk*') ?'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Solusi Pemasangan</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-certificate"></i>
+                        <p>
+                            Tentang Kami
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admin/tentang-kami" class="nav-link {{ Request::is('admin/tentang-kami*') ?'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Tentang Beacon</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/sertifikasi" class="nav-link {{ Request::is('admin/sertifikasi*') ?'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Sertifikasi</p>
                             </a>
                         </li>
                     </ul>

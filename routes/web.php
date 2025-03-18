@@ -11,12 +11,14 @@ use App\Http\Controllers\UserSolusiController;
 use App\Http\Controllers\AdminProdukController;
 use App\Http\Controllers\AdminProjekController;
 use App\Http\Controllers\AdminSolusiController;
+use App\Http\Controllers\SertifikasiController;
 use App\Http\Controllers\TentangKamiController;
 use App\Http\Controllers\UserBerandaController;
 use App\Http\Controllers\AdminCarouselController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminSubSolusiController;
 use App\Http\Controllers\AdminTestimoniController;
+use App\Http\Controllers\SertifikasiAtasController;
 use App\Http\Controllers\UserSertifikasiController;
 use App\Http\Controllers\AdminSolusiProdukController;
 use App\Http\Controllers\AdminFiturSubSolusiController;
@@ -75,6 +77,8 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::resource('/solusi-produk', AdminSolusiProdukController::class);
 
     Route::resource('/tentang-kami', TentangKamiController::class);
+    Route::resource('/sertifikasi', SertifikasiController::class);
+    Route::resource('/sertifikasi-atas', SertifikasiAtasController::class);
 
 });
 

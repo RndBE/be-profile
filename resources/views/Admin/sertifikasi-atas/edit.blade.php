@@ -1,15 +1,15 @@
-@foreach ($tentangkami as $item)
-<div class="modal fade" id="editTentangKamiModal{{ $item->id }}" tabindex="-1" aria-labelledby="editTentangKamiModalLabel{{ $item->id }}" aria-hidden="true">
+@foreach ($sertifikasi_atas as $item)
+<div class="modal fade" id="editSertifikasiModal{{ $item->id }}" tabindex="-1" aria-labelledby="editSertifikasiModalLabel{{ $item->id }}" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editTentangKamiModalLabel{{ $item->id }}">Edit Tentang Beacon</h5>
+                <h5 class="modal-title" id="editSertifikasiModalLabel{{ $item->id }}">Edit Sertifikasi Atas</h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('tentang-kami.update', $item->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('sertifikasi-atas.update', $item->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -17,12 +17,6 @@
                         $gambarFields = [
                             'gambar_satu' => 'Gambar Satu',
                             'gambar_dua' => 'Gambar Dua',
-                            'gambar_direktur' => 'Gambar Direktur',
-                            'gambar_komisaris' => 'Gambar Komisaris',
-                            'gambar_administrasi' => 'Gambar Administrasi',
-                            'gambar_marketing' => 'Gambar Marketing',
-                            'gambar_hardware' => 'Gambar Hardware',
-                            'gambar_software' => 'Gambar Software'
                         ];
                     @endphp
 
@@ -42,6 +36,17 @@
                             @enderror
                         </div>
                     @endforeach
+                    <label for="header" class="form-label">Judul</label>
+                    <input name="header" class="form-control mb-1" id="header" value="{{ old('header', $item->header) }}">
+                    @error('header')
+                        <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
+                    @enderror
+
+                    <label for="sub_header" class="form-label">Sub Judul</label>
+                    <input name="sub_header" class="form-control mb-1" id="sub_header" value="{{ old('sub_header', $item->sub_header) }}">
+                    @error('sub_header')
+                        <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
+                    @enderror
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
