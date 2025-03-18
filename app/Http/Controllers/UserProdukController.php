@@ -12,6 +12,7 @@ use App\Models\Service;
 use App\Models\Solutions;
 use App\Models\Testimoni;
 use Illuminate\Support\Str;
+use App\Models\SolusiProduk;
 use Illuminate\Http\Request;
 use App\Models\BerandaCarousel;
 
@@ -19,10 +20,17 @@ class UserProdukController extends Controller
 {
     public function show($slug)
     {
-        $data = [
-            'produk' => Produk::where('slug', $slug)->firstOrFail(),
-        ];
-        return view('User.produk.index', $data);
+        $produk = Produk::where('slug', $slug)->firstOrFail();
+
+        // Konversi JSON ke array
+        $solusiProdukIds = json_decode($produk->solusi_produk_id, true) ?? [];
+
+        // Ambil data solusi produk berdasarkan ID
+        $solusiProduk = SolusiProduk::whereIn('id', $solusiProdukIds)->get();
+        // dd($produk);
+
+        return view('User.produk.index', compact('produk', 'solusiProduk'));
     }
+
 
 }

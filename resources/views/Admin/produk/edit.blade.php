@@ -144,6 +144,23 @@
                                         @error('gambar_produk')
                                             <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
                                         @enderror
+
+                                        <div class="form-group">
+                                            <label for="solusi_produk_id">Solusi Pemasangan</label>
+                                            <select name="solusi_produk_id[]" id="solusi_produk_id" class="form-control" multiple>
+                                                @foreach($solusiProduk as $solusi)
+                                                    <option value="{{ $solusi->id }}"
+                                                        {{ in_array($solusi->id, old('solusi_produk_id', $produk->solusi_produk_id ?? [])) ? 'selected' : '' }}>
+                                                        {{ $solusi->nama }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @error('solusi_produk_id')
+                                                <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
+                                            @enderror
+                                        </div>
+
+
                                     </div>
                                     <div class="col-md-8 ml-auto">
                                         <label for="deskripsi_thumbnail" class="form-label">Deskripsi Thumbnail</label>

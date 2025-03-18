@@ -99,12 +99,15 @@ class AdminProdukController extends Controller
         return redirect()->route('produk.index')->with('success', 'Produk berhasil ditambahkan.');
     }
 
-
     public function edit($id)
     {
         $produk = Produk::findOrFail($id);
         $subSolutions = SubSolutions::all();
-        return view('Admin.produk.edit', compact('produk', 'subSolutions'));
+        $solusiProduk = SolusiProduk::all();
+
+        $produk->solusi_produk_id = $produk->solusi_produk_id ? json_decode($produk->solusi_produk_id, true) : [];
+
+        return view('Admin.produk.edit', compact('produk', 'subSolutions', 'solusiProduk'));
     }
 
     public function update(Request $request, $id)
@@ -121,9 +124,14 @@ class AdminProdukController extends Controller
             'gambar_thumbnail_produk' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'gambar_produk' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'brosur' => 'nullable|mimes:pdf',
+            'solusi_produk_id' => 'nullable|array',
         ]);
 
         $slug = Str::slug($request->input('nama_produk'));
+
+        $produk->solusi_produk_id = $request->has('solusi_produk_id')
+        ? json_encode($request->input('solusi_produk_id'))
+        : null;
 
         $produk->update($request->only([
             'nama_produk', 'sub_solution_id', 'link_lkpp_lokal', 'link_lkpp_sektoral', 'deskripsi_thumbnail', 'deskripsi_produk',

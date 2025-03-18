@@ -8,25 +8,19 @@
                     <div class="col-lg-6">
                         <div class="breadcrumb__content">
                             <h2 class="title">
-                                {{-- @if(isset($solution)) --}}
-                                    Solusi
-                                {{-- @endif --}}
+                                @if(isset($produk))
+                                    {{ $produk->nama_produk }}
+                                @endif
                             </h2>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="/">Beranda</a></li>
-                                    <li class="breadcrumb-item">Solusi</a></li>
-                                        {{-- @if(isset($solution))  --}}
-                                            <li class="breadcrumb-item active" aria-current="page">
-                                                Water Security
-                                            </li>
-                                        {{-- @endif --}}
-
-                                        {{-- @if(isset($subSolution))  --}}
-                                            <li class="breadcrumb-item active" aria-current="page">
-                                                Automatic Water Level Recorder
-                                            </li>
-                                        {{-- @endif --}}
+                                    <li class="breadcrumb-item active">Detail Produk</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        @if(isset($produk))
+                                            {{ $produk->nama_produk }}
+                                        @endif
+                                    </li>
                                 </ol>
                             </nav>
                         </div>
@@ -40,43 +34,60 @@
             <div class="container">
                 <div class="produk__details-inner">
                     <div class="row justify-content-center align-items-center">
-                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
+                        <div class="col-lg-6 col-md-9">
                             <div class="produk__item-four shine-animate-item">
                                 <div class="produk__thumb-four shine-animate">
-                                    <img src="{{ asset('asset/img/produk/Logger.png') }}" alt="">
+                                    @if(isset($produk) && $produk->gambar_produk)
+                                        <img src="{{ asset('storage/' . $produk->gambar_produk) }}" alt="{{ $produk->nama_produk }}">
+                                    @else
+                                        <p>Deskripsi tidak tersedia</p>
+                                    @endif
                                 </div>
                                 <div class="produk__content-four">
-                                    <span>AWLR BE-WLR-100-U150</span>
+                                    @if(isset($produk) && $produk->nama_produk)
+                                        <span>{{ $produk->nama_produk }}</span>
+                                    @else
+                                        <span>Nama produk tidak tersedia</span>
+                                    @endif
                                 </div>
                             </div>
                         </div>
-                        <div class="col-64">
+                        <div class="col-lg-6">
                             <div class="produk__details-content">
-                                <p>This device is ideal for use as a remote monitoring for water level measuring rainfall
-                                    levels.. BE Data Loggers offers accurate data recording measurement results specifically
-                                    for hydrological monitoring solutions. This device uses BL-11 series BE Data Logger which
-                                    is efficient and economical because it only measures one sensor (on location) which is
-                                    stored on the SD Card. The rainfall sensor uses a self-emptying tipping bucket with a
-                                    resolution of 0.2 mm, and uses high quality plastic material with a simple design for longterm use, outer shell is made from Styrosun material which makes the surface easy to
-                                    clean. The enclosure uses ABS material and has Ip65 rating which is resistant to weather effect
-                                    and and high temperature. This enclosure can make the electronic device inside be durable
-                                    and can protect the device from high temperatures due to UV exposure and keep the
-                                    humidity of the electronic device inside to avoid corrosion.
-                                    The battery in the data logger uses a type of Lead Acid with a Deep Cycle that can be
-                                    recharged and discharged many times. This battery is also resistant to high temperatures
-                                    and can be used for a long time.
-                                </p>
+                                @if(isset($produk) && $produk->deskripsi_produk)
+                                    {!! $produk->deskripsi_produk !!}
+                                @else
+                                    <p>Deskripsi tidak tersedia</p>
+                                @endif
                                 <div class="produk__details-info">
                                     <ul class="list-wrap">
                                         <li>
-                                            <a class="btn" href="" target="_blank" download>Unduh Brosur</a>
+                                            @if(isset($produk) && $produk->brosur)
+                                                <a class="btn" href="{{ asset('storage/' . $produk->brosur) }}" target="_blank">
+                                                    Unduh Brosur
+                                                </a>
+                                            @else
+                                                <span class="btn">Brosur tidak tersedia</span>
+                                            @endif
                                             <div class="dropdown-lkpp">
                                                 <button type="button" class="btn btn-group">
                                                     Lihat di LKPP
                                                 </button>
                                                 <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="#">Lokal</a></li>
-                                                    <li><a class="dropdown-item" href="#">Sektoral</a></li>
+                                                    <li>
+                                                        @if(isset($produk) && $produk->link_lkpp_lokal)
+                                                        <a class="dropdown-item" href="{{ $produk->link_lkpp_lokal }}" target="_blank">Lokal</a>
+                                                        @else
+                                                            <a class="dropdown-item">Lokal tidak tersedia</a>
+                                                        @endif
+                                                    </li>
+                                                    <li>
+                                                        @if(isset($produk) && $produk->link_lkpp_sektoral)
+                                                        <a class="dropdown-item" href="{{ $produk->link_lkpp_sektoral }}" target="_blank">Sektoral</a>
+                                                        @else
+                                                            <a class="dropdown-item">Sektoral tidak tersedia</a>
+                                                        @endif
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </li>
@@ -100,46 +111,18 @@
                     </div>
                 </div>
                 <div class="row justify-content-center gutter-24">
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="solusiproduk-item text-center">
-                            <div class="icon">
-                                <img src="{{ asset('asset/img/icon/water-waves 1.png') }}" alt="">
-                            </div>
-                            <div class="content">
-                                <p>Irigasi</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="solusiproduk-item text-center">
-                            <div class="icon">
-                                <img src="{{ asset('asset/img/icon/water-waves 2.png') }}" alt="">
-                            </div>
-                            <div class="content">
-                                <p>Bendungan</p>
+                    @foreach($solusiProduk as $solusi)
+                        <div class="col-xl-3 col-lg-4 col-sm-6">
+                            <div class="solusiproduk-item text-center">
+                                <div class="icon">
+                                    <img src="{{ asset('storage/' . $solusi->icon) }}" alt="{{ $solusi->nama }}">
+                                </div>
+                                <div class="content">
+                                    <p>{{ $solusi->nama }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="solusiproduk-item text-center">
-                            <div class="icon">
-                                <img src="{{ asset('asset/img/icon/water-waves 3.png') }}" alt="">
-                            </div>
-                            <div class="content">
-                                <p>Spillway</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="solusiproduk-item text-center">
-                            <div class="icon">
-                                <img src="{{ asset('asset/img/icon/water-waves 4.png') }}" alt="">
-                            </div>
-                            <div class="content">
-                                <p>Drainase</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
