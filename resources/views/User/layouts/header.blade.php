@@ -53,7 +53,9 @@
                                             <li class="{{ Request::is('tentang-kami') ? 'active' : '' }}">
                                                 <a href="/tentang-kami">Tentang Beacon</a>
                                             </li>
-                                            <li><a href="about-2.html">Sertifikasi</a></li>
+                                            <li class="{{ Request::is('sertifikasi') ? 'active' : '' }}">
+                                                <a href="/sertifikasi">Sertifikasi</a>
+                                            </li>
                                         </ul>
                                     </li>
                                 </ul>

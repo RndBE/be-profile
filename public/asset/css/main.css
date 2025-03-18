@@ -7135,6 +7135,11 @@ textarea {
   position: relative;
   padding-right: 50px;
 }
+
+.choose__content-five-sertifikasi {
+    position: relative;
+    padding-right: 105px;
+  }
 .komitmen__content-five {
     display: flex;
     flex-direction: column;
@@ -7142,6 +7147,26 @@ textarea {
     padding-right: 50px;
     justify-content: center;
     text-align: left;
+    height: 100%;
+}
+
+.sertifikasi__content-five {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding-right: 50px; */
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+}
+
+.komitmen__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 50px;
+    justify-content: center;
+    text-align: center;
     height: 100%;
 }
 
@@ -7164,16 +7189,28 @@ textarea {
   .choose__content-five {
     padding-right: 0;
   }
+  .choose__content-five-sertifikasi {
+    padding-right: 0;
+  }
 }
 .choose__content-five > p {
   margin-bottom: 35px;
 }
+.choose__content-five-sertifikasi > p {
+    margin-bottom: 35px;
+  }
 .choose__content-five .shape img {
   position: absolute;
   z-index: -1;
   right: -20px;
   top: 0;
 }
+.choose__content-five-sertifikasi .shape img {
+    position: absolute;
+    z-index: -1;
+    right: -20px;
+    top: 0;
+  }
 .choose-list .row .content {
     display: -webkit-box;
     display: -moz-box;
@@ -7218,8 +7255,22 @@ textarea {
     max-width: 450px;
     align-items: top;
 }
+.sertifikasi-list .swiper-slide {
+    display: flex;
+    gap: 18px;
+    max-width: 450px;
+    align-items: top;
+}
 
 .choose-list .swiper-pagination {
+    position: absolute;
+    bottom: 10px;
+    padding-left: 107px;
+    z-index: 10;
+    text-align: left;
+    right: auto;
+}
+.sertifikasi-list .swiper-pagination {
     position: absolute;
     bottom: 10px;
     padding-left: 107px;
@@ -7247,6 +7298,9 @@ textarea {
 
 /* Konten di Slide */
 .choose-list .swiper-slide .content {
+    flex: 1;
+}
+.sertifikasi-list .swiper-slide .content {
     flex: 1;
 }
 
@@ -7673,15 +7727,32 @@ textarea {
   padding-bottom: 15px;
 }
 
+.choose__img-wrap-five-sertifikasi {
+    position: relative;
+    padding-bottom: 15px;
+  }
+
 .choose__img-wrap-five .img-shape img:nth-child(1) {
     position: absolute;
     right: 15%;
     bottom: 45%;
     z-index: -1;
 }
+.choose__img-wrap-five-sertifikasi .img-shape img:nth-child(1) {
+    position: absolute;
+    left: -18%;
+    top: 15%;
+    z-index: -1;
+}
 .choose__img-wrap-five .img-shape img:nth-child(2) {
     position: absolute;
     left: -11%;
+    bottom: 5%;
+    z-index: 1;
+}
+.choose__img-wrap-five-sertifikasi .img-shape img:nth-child(2) {
+    position: absolute;
+    right: 20%;
     bottom: 5%;
     z-index: 1;
 }
@@ -7691,6 +7762,18 @@ textarea {
 }
 
 .choose__list .list-wrap {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    margin: 0 -15px;
+    gap: 30px 0;
+    margin-bottom: 25px;
+  }
+
+  .choose__list-sertifikasi .list-wrap {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -7714,8 +7797,42 @@ textarea {
     align-items: center;
     gap: 15px;
   }
+  .choose__list-sertifikasi .list-wrap li {
+    padding: 0 15px;
+    width: 50%;
+    flex: 0 0 auto;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    max-width: 210px;
+  }
 
   .choose__list .list-wrap li .icon {
+    width: 70px;
+    height: 70px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(180, 0, 0, 0.1);
+    color: var(--tg-color-red-1);
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -o-border-radius: 8px;
+    -ms-border-radius: 8px;
+    border-radius: 8px;
+    flex: 0 0 auto;
+    font-size: 40px;
+    line-height: 0;
+  }
+  .choose__list-sertifikasi .list-wrap li .icon {
     width: 70px;
     height: 70px;
     display: -webkit-box;
@@ -7739,7 +7856,17 @@ textarea {
   .choose__list .list-wrap li .icon i {
     transition: 0.3s linear;
   }
+  .choose__list-sertifikasi .list-wrap li .icon i {
+    transition: 0.3s linear;
+  }
   .choose__list .list-wrap li:hover .icon i {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+  .choose__list-sertifikasi .list-wrap li:hover .icon i {
     -webkit-transform: rotateY(180deg);
     -moz-transform: rotateY(180deg);
     -ms-transform: rotateY(180deg);
@@ -7754,6 +7881,14 @@ textarea {
         text-align: left;
         height: 100%;
     }
+    .choose__list-sertifikasi .list-wrap li .content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        text-align: left;
+        height: 100%;
+    }
 
     .choose__list .list-wrap li .content p {
         margin-bottom: 0;
@@ -7761,7 +7896,18 @@ textarea {
         font-weight: 600;
         font-size: 12px;
     }
+    .choose__list-sertifikasi .list-wrap li .content p {
+        margin-bottom: 0;
+        letter-spacing: -0.5px;
+        font-weight: 600;
+        font-size: 12px;
+    }
   .choose__list .list-wrap li .content .title {
+    font-size: 20px;
+    margin-bottom: 5px;
+    font-weight: 700;
+  }
+  .choose__list-sertifikasi .list-wrap li .content .title {
     font-size: 20px;
     margin-bottom: 5px;
     font-weight: 700;
@@ -7851,6 +7997,12 @@ textarea {
         font-weight: var(--font-light);
         font-size: 18px;
     }
+    .choose__content-five-sertifikasi p {
+        margin-bottom: 0;
+        letter-spacing: -0.5px;
+        font-weight: var(--font-light);
+        font-size: 18px;
+    }
     .komitmen__list .list-wrap li .content .title {
         font-size: 20px;
         margin-bottom: 5px;
@@ -7873,6 +8025,24 @@ textarea {
   width: 100%; /* Perbesar ukuran */
   height: auto; /* Menjaga proporsi */
   max-width: 330px;
+}
+.choose__img-wrap-five-sertifikasi .icon img:nth-child(1) {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.choose__img-wrap-five-sertifikasi .icon img:nth-child(2) {
+    border: 15px solid var(--tg-color-white-default);
+    position: absolute;
+    left: -20%; /* Geser ke kiri */
+    bottom: -20%;
+    width: 100%;
+    height: auto;
+    max-width: 330px;
+    z-index: 2; /* Gambar kedua di depan */
 }
 
 .choose__img-wrap-five .icon img:nth-child(3) {
@@ -7906,7 +8076,23 @@ textarea {
       display: none;
     }
 
+    .choose__img-wrap-five-sertifikasi .icon img:nth-child(2) {
+        display: none;
+      }
+
+      .choose__img-wrap-five-sertifikasi .img-shape img:nth-child(1) {
+        display: none;
+      }
+
+      .choose__img-wrap-five-sertifikasi .img-shape img:nth-child(2) {
+        display: none;
+      }
+
     .choose__img-wrap-five {
+        text-align: center;
+      }
+
+      .choose__img-wrap-five-sertifikasi {
         text-align: center;
       }
   }
@@ -7914,6 +8100,18 @@ textarea {
     .choose__img-wrap-five .icon img:nth-child(2) {
       display: block;
     }
+
+    .choose__img-wrap-five-sertifikasi .icon img:nth-child(2) {
+        display: block;
+      }
+
+      .choose__img-wrap-five-sertifikasi .img-shape img:nth-child(1) {
+        display: none;
+      }
+
+      .choose__img-wrap-five-sertifikasi .img-shape img:nth-child(2) {
+        display: none;
+      }
   }
 
   @media (max-width: 991.98px) {
@@ -10603,6 +10801,25 @@ textarea {
     max-width: 900px;
     margin: 0 auto;
 }
+.sertifikasi-active {
+    max-width: 100%; /* Pastikan container maksimal sesuai layar */
+    margin: 0 auto;
+    overflow: hidden; /* Mencegah scroll horizontal */
+}
+
+.sertifikasi-active .swiper-slide {
+    display: flex;
+    justify-content: center; /* Pusatkan gambar */
+    align-items: center;
+    text-align: center;
+}
+
+.sertifikasi-active .swiper-slide img {
+    max-width: 100%; /* Sesuaikan dengan lebar layar */
+    height: auto; /* Pastikan proporsi gambar tetap */
+    object-fit: contain; /* Pastikan gambar tidak terpotong */
+}
+
 .testimonial-item {
     display: flex;
     width: 100%;

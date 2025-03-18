@@ -17,6 +17,7 @@ use App\Http\Controllers\AdminCarouselController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminSubSolusiController;
 use App\Http\Controllers\AdminTestimoniController;
+use App\Http\Controllers\UserSertifikasiController;
 use App\Http\Controllers\AdminSolusiProdukController;
 use App\Http\Controllers\AdminFiturSubSolusiController;
 use App\Http\Controllers\AdminKategoriProjekController;
@@ -44,6 +45,7 @@ Route::get('/solusi/{slug}/{subSlug?}', [UserSolusiController::class, 'show'])->
 // Route::get('/solusi/{slug}', [UserSolusiController::class, 'show'])->name('solusi.show');
 Route::get('/detail-produk/{slug}', [UserProdukController::class, 'show'])->name('detail-produk.show');
 Route::resource('/tentang-kami', UserAboutController::class);
+Route::resource('/sertifikasi', UserSertifikasiController::class);
 
 
 // Route::resource('/solusi', UserSolusiController::class);

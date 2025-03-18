@@ -72,7 +72,9 @@
                                     </ul>
                                 </div>
                             </div>
-                            <p>Dengan keunggulan tersebut, perangkat telemetri dapat membantu berbagai bidang mulai dari masalah keamanan air, klimatologi, hidrologi, irigasi, geothermal, hingga geoteknik.</p>
+                            <p style="text-align: justify;">
+                                Dengan keunggulan tersebut, perangkat telemetri dapat membantu berbagai bidang mulai dari masalah keamanan air, klimatologi, hidrologi, irigasi, geothermal, hingga geoteknik.
+                            </p>
                             <div class="about-bottom">
                                 <a href="mailto:info@bejogja.com" class="btn btn-two" style="margin-top:50px;">
                                     Kontak Kami
@@ -92,7 +94,7 @@
                             <span class="sub-title" style="color: rgba(180, 4, 4, 0.75);">KOMITMEN DAN TUJUAN KAMI</span>
                             <h2 class="title tg-element-title">Memberikan peran nyata dalam memajukan Indonesia</h2>
 
-                            <p>melalui upaya profesional dan kreatif dalam pengembangan teknologi telemetri pintar.</p>
+                            <p style="text-align: justify;">melalui upaya profesional dan kreatif dalam pengembangan teknologi telemetri pintar.</p>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -104,7 +106,7 @@
                                     </div>
                                     <div class="content">
                                         <h4 class="title">KUALITAS PRODUK TERBAIK</h4>
-                                        <p>Memberikan kualitas produk dan layanan terbaik, dengan harga bersaing.</p>
+                                        <p style="text-align: justify;">Memberikan kualitas produk dan layanan terbaik, dengan harga bersaing.</p>
                                     </div>
                                 </li>
                             </ul>
@@ -115,7 +117,7 @@
                                     </div>
                                     <div class="content">
                                         <h4 class="title">SUMBER DAYA MANUSIA UNGGUL</h4>
-                                        <p>Mengelola bisnis berdasarkan SDM yang unggul, menggunakan teknologi terkini, dan membangun kerja sama yang menguntungkan.</p>
+                                        <p style="text-align: justify;">Mengelola bisnis berdasarkan SDM yang unggul, menggunakan teknologi terkini, dan membangun kerja sama yang menguntungkan.</p>
                                     </div>
                                 </li>
                             </ul>
@@ -126,7 +128,7 @@
                                     </div>
                                     <div class="content">
                                         <h4 class="title">RISET DAN INOVASI BERKELANJUTAN</h4>
-                                        <p>Membangun riset dan inovasi berkelanjutan untuk menghasilkan produk yang sesuai dengan kebutuhan klien</p>
+                                        <p style="text-align: justify;">Membangun riset dan inovasi berkelanjutan untuk menghasilkan produk yang sesuai dengan kebutuhan klien</p>
                                     </div>
                                 </li>
                             </ul>
