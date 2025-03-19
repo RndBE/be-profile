@@ -36,7 +36,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('kategori_id')->constrained('kategori_spesifikasi')->onUpdate('cascade')->onDelete('cascade');
             $table->string('judul');
-            $table->text('deskripsi');
             $table->timestamps();
         });
 
@@ -45,6 +44,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('seri_perangkat_id')->constrained('seri_perangkat')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('spesifikasi_id')->constrained('spesifikasi')->onUpdate('cascade')->onDelete('cascade');
+            $table->text('deskripsi');
             $table->timestamps();
         });
     }

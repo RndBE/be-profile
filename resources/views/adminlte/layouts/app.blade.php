@@ -215,7 +215,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item ms-1">
-                                    <a href="/admin/seri-perangkat" class="nav-link {{ Request::is('admin/seri-perangkat*') ?'active' : '' }}">
+                                    <a href="/admin/seri-perangkat" class="nav-link {{ Request::is('admin/seri-perangkat') ?'active' : '' }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Seri Perangkat</p>
                                     </a>
@@ -226,6 +226,22 @@
                                     <a href="/admin/kategori-spesifikasi" class="nav-link {{ Request::is('admin/kategori-spesifikasi*') ?'active' : '' }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Kategori Spesifikasi</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item ms-1">
+                                    <a href="/admin/spesifikasi" class="nav-link {{ Request::is('admin/spesifikasi*') ?'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Spesifikasi</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item ms-1">
+                                    <a href="/admin/seri-perangkat-spesifikasi" class="nav-link {{ Request::is('admin/seri-perangkat-spesifikasi*') ?'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Seri Perangkat Spesifikasi</p>
                                     </a>
                                 </li>
                             </ul>

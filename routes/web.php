@@ -22,11 +22,13 @@ use App\Http\Controllers\AdminTestimoniController;
 use App\Http\Controllers\AdminKeunggulanController;
 use App\Http\Controllers\SertifikasiAtasController;
 use App\Http\Controllers\UserSertifikasiController;
+use App\Http\Controllers\AdminSpesifikasiController;
 use App\Http\Controllers\AdminSolusiProdukController;
 use App\Http\Controllers\AdminSeriPerangkatController;
 use App\Http\Controllers\AdminFiturSubSolusiController;
 use App\Http\Controllers\AdminKategoriProjekController;
 use App\Http\Controllers\AdminKategoriSpesifikasiController;
+use App\Http\Controllers\AdminSeriPerangkatSpesifikasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,6 +85,8 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::resource('/keunggulan', AdminKeunggulanController::class);
     Route::resource('/seri-perangkat', AdminSeriPerangkatController::class);
     Route::resource('/kategori-spesifikasi', AdminKategoriSpesifikasiController::class);
+    Route::resource('/spesifikasi', AdminSpesifikasiController::class);
+    Route::resource('/seri-perangkat-spesifikasi', AdminSeriPerangkatSpesifikasiController::class);
 
     Route::resource('/tentang-kami', TentangKamiController::class);
     Route::resource('/sertifikasi', SertifikasiController::class);
