@@ -9,6 +9,7 @@ use App\Models\Pesan;
 use App\Models\Produk;
 use App\Models\Projek;
 use App\Models\Service;
+use App\Models\Komponen;
 use App\Models\Solutions;
 use App\Models\Testimoni;
 use Illuminate\Support\Str;
@@ -28,8 +29,9 @@ class UserProdukController extends Controller
         // Ambil data solusi produk berdasarkan ID
         $solusiProduk = SolusiProduk::whereIn('id', $solusiProdukIds)->get();
         // dd($produk);
+        $komponen = Komponen::where('produk_id', $produk->id)->first();
 
-        return view('User.produk.index', compact('produk', 'solusiProduk'));
+        return view('User.produk.index', compact('produk', 'solusiProduk','komponen'));
     }
 
 
