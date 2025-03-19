@@ -17,6 +17,11 @@ class SeriPerangkatSpesifikasi extends Model
         return $this->belongsTo(Spesifikasi::class, 'spesifikasi_id');
     }
 
+    public function dataKategoriSpesifikasi()
+    {
+        return $this->belongsTo(KategoriSpesifikasi::class, 'kategori_id');
+    }
+
     public function dataSeriPerangkat()
     {
         return $this->belongsTo(SeriPerangkat::class, 'seri_perangkat_id');

@@ -17,6 +17,7 @@ use App\Models\Spesifikasi;
 use Illuminate\Support\Str;
 use App\Models\SolusiProduk;
 use Illuminate\Http\Request;
+use App\Models\SeriPerangkat;
 use App\Models\BerandaCarousel;
 
 class UserProdukController extends Controller
@@ -35,9 +36,11 @@ class UserProdukController extends Controller
 
         $keunggulan = Keunggulan::where('produk_id', $produk->id)->get();
 
-        $spesifikasi = Spesifikasi::where('produk_id', $produk->id)->get();
+        // $seriPerangkat = SeriPerangkat::where('id', $produk->seri_perangkat_id)->first();
 
-        return view('User.produk.index', compact('produk', 'solusiProduk','komponen','keunggulan','spesifikasi'));
+        $seriPerangkat = SeriPerangkat::with('spesifikasi.dataKategoriSpesifikasi')->where('id', $produk->seri_perangkat_id)->first();
+        
+        return view('User.produk.index', compact('produk', 'solusiProduk','komponen','keunggulan', 'seriPerangkat'));
     }
 
 

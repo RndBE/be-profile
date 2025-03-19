@@ -12,4 +12,10 @@ class SeriPerangkat extends Model
 
     protected $guarded = [];
 
+    public function spesifikasi()
+    {
+        return $this->hasMany(SeriPerangkatSpesifikasi::class, 'seri_perangkat_id')
+                    ->with('dataSpesifikasi.dataKategoriSpesifikasi');
+    }
+
 }
