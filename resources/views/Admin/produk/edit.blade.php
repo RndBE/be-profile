@@ -160,6 +160,11 @@
                                             @enderror
                                         </div>
 
+                                        <label for="link_tkdn" class="form-label">Link LKPP Lokal</label>
+                                        <input name="link_tkdn" class="form-control mb-1" placeholder="https://example.com" id="link_tkdn" value="{{ old('link_tkdn', $produk->link_tkdn) }}">
+                                        @error('link_tkdn')
+                                            <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
+                                        @enderror
 
                                     </div>
                                     <div class="col-md-8 ml-auto">

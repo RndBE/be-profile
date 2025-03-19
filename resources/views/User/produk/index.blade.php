@@ -149,7 +149,7 @@
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="komponen-tab-pane" role="tabpanel" aria-labelledby="komponen-tab" tabindex="0">
+                                    <div class="tab-pane fade " id="komponen-tab-pane" role="tabpanel" aria-labelledby="komponen-tab" tabindex="0">
                                         <div class="choose__tab-content text-center">
                                             @if ($komponen)
                                                 <div class="komponen-item text-center mt-4">
@@ -184,26 +184,75 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="spesifikasi-tab-pane" role="tabpanel" aria-labelledby="spesifikasi-tab" tabindex="0">
+                                    <div class="tab-pane fade show active" id="spesifikasi-tab-pane" role="tabpanel" aria-labelledby="spesifikasi-tab" tabindex="0">
                                         <div class="choose__tab-content">
-                                            <p>spek.</p>
-                                            <ul class="list-wrap">
-                                                <li><i class="fas fa-check"></i>Save Money & Time</li>
-                                                <li><i class="fas fa-check"></i>100% Satisfaction</li>
-                                                <li><i class="fas fa-check"></i>Best For IT Consulting</li>
-                                                <li><i class="fas fa-check"></i>Our Vision, Our Mission</li>
-                                            </ul>
+                                            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-1 g-4">
+                                                <div class="col">
+                                                    <div class="content-box">
+                                                        <h5>
+                                                            <i class="fas fa-check" style="background-color: #2E2E4D; color: white; padding: 8px; border-radius: 100%; font-size: 15px; font-weight: bold;"></i>
+                                                            Beacon Logger BL-110
+                                                        </h5>
+                                                        <div class="keunggulan-description">
+                                                            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 g-4">
+                                                                <div class="col">
+                                                                    <div class="content-box">
+                                                                        <img src="{{ asset('asset/img/spesifikasi/logger_spesifikasi.png') }}" alt="">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="content-box">
+                                                                        <img src="{{ asset('asset/img/spesifikasi/enclosure_spesifikasi.png') }}" alt="">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row row-cols-1 g-4" style="margin-right:5px;">
+                                                                <table class="table">
+                                                                    {{-- @php
+                                                                        // Daftar warna background kategori (gunakan format string)
+                                                                        $backgroundColors = ['rgba(46, 46, 77, 0.30)', 'rgb(210, 210, 219, 0.15)',];
+                                                                        $index = 0; // Indeks awal warna
+                                                                    @endphp
+                                                                    @foreach($spesifikasi->groupBy('kategori') as $kategori => $items)
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th colspan="2" scope="col" style="text-align: center; background-color: #2E2E4D; color: white;">
+                                                                                    {{ $kategori }}
+                                                                                </th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            @foreach($items as $item)
+                                                                                <tr>
+                                                                                    <td scope="row" style="background-color: {{ $backgroundColors[$index % count($backgroundColors)] }}; color: #2E2E4D; border-right: 2px solid rgb(46, 46, 77, 0.25);">
+                                                                                        {{ $item->judul }}
+                                                                                    </td>
+                                                                                    <td style="color: #2E2E4D; background-color: {{ $loop->odd ? 'transparent' : 'rgb(210, 210, 219, 0.30)' }}">
+                                                                                        {!! $item->deskripsi !!}
+                                                                                    </td>
+                                                                                </tr>
+                                                                                @php $index++; @endphp
+                                                                            @endforeach
+                                                                        </tbody>
+                                                                    @endforeach --}}
+                                                                </table>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="sertifikasi-tab-pane" role="tabpanel" aria-labelledby="sertifikasi-tab" tabindex="0">
                                         <div class="choose__tab-content">
-                                            <p>sertifikasi.</p>
-                                            <ul class="list-wrap">
-                                                <li><i class="fas fa-check"></i>Save Money & Time</li>
-                                                <li><i class="fas fa-check"></i>100% Satisfaction</li>
-                                                <li><i class="fas fa-check"></i>Best For IT Consulting</li>
-                                                <li><i class="fas fa-check"></i>Our Vision, Our Mission</li>
-                                            </ul>
+                                            @if(isset($produk))
+                                                @php
+                                                    $searchPatterns = ['/view?usp=sharing', '/view?usp=drive_link'];
+                                                    $previewLink = str_replace($searchPatterns, '/preview', $produk->link_tkdn);
+                                                @endphp
+                                                <iframe src="{{ $previewLink }}" style="width: 100%; height: 80vh; border: none;"></iframe>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

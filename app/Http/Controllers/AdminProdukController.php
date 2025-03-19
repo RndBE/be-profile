@@ -48,6 +48,7 @@ class AdminProdukController extends Controller
             'gambar_thumbnail_produk' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'gambar_produk' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'brosur' => 'nullable|mimes:pdf',
+            'link_tkdn' => 'nullable|string',
         ]);
 
         $thumbnailProdukPath = null;
@@ -93,6 +94,7 @@ class AdminProdukController extends Controller
             'gambar_thumbnail_produk' => $thumbnailProdukPath,
             'gambar_produk' => $produkPath,
             'brosur' => $brosurName,
+            'link_tkdn' => $request->input('link_tkdn'),
         ]);
 
         toast('Berhasil menambahkan data!', 'success');
@@ -125,6 +127,7 @@ class AdminProdukController extends Controller
             'gambar_produk' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'brosur' => 'nullable|mimes:pdf',
             'solusi_produk_id' => 'nullable|array',
+            'link_tkdn' => 'nullable|string',
         ]);
 
         $slug = Str::slug($request->input('nama_produk'));
@@ -134,7 +137,7 @@ class AdminProdukController extends Controller
         : null;
 
         $produk->update($request->only([
-            'nama_produk', 'sub_solution_id', 'link_lkpp_lokal', 'link_lkpp_sektoral', 'deskripsi_thumbnail', 'deskripsi_produk',
+            'nama_produk', 'sub_solution_id', 'link_lkpp_lokal', 'link_lkpp_sektoral', 'deskripsi_thumbnail', 'deskripsi_produk', 'link_tkdn',
         ]));
 
         if ($request->hasFile('gambar_thumbnail_produk')) {

@@ -146,6 +146,11 @@
                                             @enderror
                                         </div>
 
+                                        <label for="link_tkdn" class="form-label">Link TKDN</label>
+                                        <input name="link_tkdn" class="form-control mb-1" placeholder="https://example.com" id="link_tkdn" rows="3" {{ old('link_tkdn') }}>
+                                        @error('link_tkdn')
+                                            <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
+                                        @enderror
 
                                     </div>
                                     <div class="col-md-8 ml-auto">

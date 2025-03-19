@@ -13,6 +13,7 @@ use App\Models\Komponen;
 use App\Models\Solutions;
 use App\Models\Testimoni;
 use App\Models\Keunggulan;
+use App\Models\Spesifikasi;
 use Illuminate\Support\Str;
 use App\Models\SolusiProduk;
 use Illuminate\Http\Request;
@@ -34,7 +35,9 @@ class UserProdukController extends Controller
 
         $keunggulan = Keunggulan::where('produk_id', $produk->id)->get();
 
-        return view('User.produk.index', compact('produk', 'solusiProduk','komponen','keunggulan'));
+        $spesifikasi = Spesifikasi::where('produk_id', $produk->id)->get();
+
+        return view('User.produk.index', compact('produk', 'solusiProduk','komponen','keunggulan','spesifikasi'));
     }
 
 

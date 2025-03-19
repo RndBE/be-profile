@@ -204,6 +204,25 @@
                             </a>
                         </li>
                     </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Spesifikasi
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item ms-1">
+                                    <a href="/admin/seri-perangkat" class="nav-link {{ Request::is('admin/seri-perangkat*') ?'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Seri Perangkat</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="nav-item">
