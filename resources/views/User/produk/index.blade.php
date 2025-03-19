@@ -151,20 +151,37 @@
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active" id="komponen-tab-pane" role="tabpanel" aria-labelledby="komponen-tab" tabindex="0">
                                         <div class="choose__tab-content text-center">
-                                            <p class="fs-4 fw-bold">Apa saja komponen dalam perangkat <br> AWLR Seri <span style="color: #b40404;">BE-WLR-100-U150</span>?</p>
-                                            <img src="{{ asset('asset/img/produk/Skema produk Beacon AWLR 1 1.png') }}" alt="" class="img-fluid">
+                                            @if ($komponen)
+                                                <div class="komponen-item text-center mt-4">
+                                                    <p class="fs-4 fw-bold">{{ $komponen->description }} <span style="color: #b40404;">{{ $komponen->dataProduk->nama_produk }}</span>?</p>
+                                                    @if($komponen->gambar)
+                                                        <img src="{{ asset('storage/' . $komponen->gambar) }}" class="img-fluid mb-2" alt="Gambar Komponen">
+                                                    @endif
+
+                                                </div>
+                                            @else
+                                                <p class="text-muted">Tidak ada komponen tersedia.</p>
+                                            @endif
                                         </div>
                                     </div>
 
                                     <div class="tab-pane fade" id="keunggulan-tab-pane" role="tabpanel" aria-labelledby="keunggulan-tab" tabindex="0">
                                         <div class="choose__tab-content">
-                                            <p>longerty successfully cope with tasks of varying complexity provide area guarantees and regularly master new Practice.</p>
-                                            <ul class="list-wrap">
-                                                <li><i class="fas fa-check"></i>Save Money & Time</li>
-                                                <li><i class="fas fa-check"></i>100% Satisfaction</li>
-                                                <li><i class="fas fa-check"></i>Best For IT Consulting</li>
-                                                <li><i class="fas fa-check"></i>Our Vision, Our Mission</li>
-                                            </ul>
+                                            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 g-4">
+                                                @foreach($keunggulan as $item)
+                                                    <div class="col">
+                                                        <div class="content-box">
+                                                            <h4>
+                                                                <i class="fas fa-check" style="background-color: #2E2E4D; color: white; padding: 8px; border-radius: 100%; font-size: 18px; font-weight: bold;"></i>
+                                                                {{ $item->nama_keunggulan }}
+                                                            </h4>
+                                                            <div class="keunggulan-description">
+                                                                {!! $item->description !!}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="spesifikasi-tab-pane" role="tabpanel" aria-labelledby="spesifikasi-tab" tabindex="0">

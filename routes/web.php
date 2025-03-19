@@ -19,6 +19,7 @@ use App\Http\Controllers\AdminKomponenController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminSubSolusiController;
 use App\Http\Controllers\AdminTestimoniController;
+use App\Http\Controllers\AdminKeunggulanController;
 use App\Http\Controllers\SertifikasiAtasController;
 use App\Http\Controllers\UserSertifikasiController;
 use App\Http\Controllers\AdminSolusiProdukController;
@@ -77,6 +78,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::resource('/produk', AdminProdukController::class);
     Route::resource('/solusi-produk', AdminSolusiProdukController::class);
     Route::resource('/komponen', AdminKomponenController::class);
+    Route::resource('/keunggulan', AdminKeunggulanController::class);
 
     Route::resource('/tentang-kami', TentangKamiController::class);
     Route::resource('/sertifikasi', SertifikasiController::class);

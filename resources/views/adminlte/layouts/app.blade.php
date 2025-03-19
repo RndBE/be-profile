@@ -196,6 +196,14 @@
                             </a>
                         </li>
                     </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admin/keunggulan" class="nav-link {{ Request::is('admin/keunggulan*') ?'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Keunggulan</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="nav-item">

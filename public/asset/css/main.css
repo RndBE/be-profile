@@ -13575,6 +13575,21 @@ textarea {
     position: relative;
     z-index: 1;
   }
+
+  .keunggulan-description p {
+    margin-bottom: 10px; /* Atur jarak bawah antara paragraf dan daftar */
+}
+
+.keunggulan-description ul {
+    padding-top: 5px; /* Tambahkan sedikit jarak atas untuk daftar */
+}
+
+.keunggulan-description p,
+.keunggulan-description ul,
+.keunggulan-description li {
+    color: black;
+}
+
 .produk__details-area {
     padding: 130px 0;
   }
