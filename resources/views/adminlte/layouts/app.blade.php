@@ -221,6 +221,14 @@
                                     </a>
                                 </li>
                             </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item ms-1">
+                                    <a href="/admin/kategori-spesifikasi" class="nav-link {{ Request::is('admin/kategori-spesifikasi*') ?'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Kategori Spesifikasi</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </li>
