@@ -103,6 +103,16 @@
                                                 @enderror
                                             </div>
 
+                                            <div class="mb-3">
+                                                <label for="icon" class="form-label">Icon</label>
+                                                <div class="input-group mb-1">
+                                                    <input type="file" class="form-control" name="icon" id="icon" aria-describedby="inputGroupFileAddon04" accept=".png, .jpg, .jpeg, .svg">
+                                                </div>
+                                                @error('icon')
+                                                    <p class="text-red-500 text-sm mt-1 error-message">{{ $message }}</p>
+                                                @enderror
+                                            </div>
+
                                             <label for="description1" class="form-label">Deskripsi 1</label>
                                             <textarea class="ckeditor form-control" name="description1" id="description1" rows="3">{{ old('description1') }}</textarea>
                                             @error('description1')

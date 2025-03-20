@@ -32,6 +32,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col" class="text-center">No</th>
+                                            <th scope="col">Icon</th>
                                             <th scope="col">Nama</th>
                                             <th scope="col">Kategori Solusi</th>
                                             <th scope="col">Deskripsi 1</th>
@@ -44,6 +45,11 @@
                                         @foreach ($subsolutionss as $index => $item)
                                             <tr>
                                                 <td class="text-center">{{ $loop->iteration }}</td>
+                                                <td>
+                                                    @if ($item->icon)
+                                                        <img src="{{ asset('storage/' . $item->icon) }}" alt="Image" style="width: 100px; height: auto;">
+                                                    @endif
+                                                </td>
                                                 <td>{{ $item->nama }}</td>
                                                 <td>{{ $item->Solution?->nama }}</td>
                                                 <td>{!! $item->description1 !!}</td>

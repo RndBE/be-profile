@@ -54,6 +54,7 @@ class UserSolusiController extends Controller
             ->with('fiturSubSolutions')
             ->first();
 
+        $produks = Produk::where('sub_solution_id', $subSolution->id)->get();
         // Siapkan data untuk view
         $data = [
             'solution' => $solution,
@@ -62,7 +63,7 @@ class UserSolusiController extends Controller
             'carousels' => BerandaCarousel::orderBy('created_at', 'desc')->get(),
             'projeks' => Projek::orderBy('created_at', 'desc')->get(),
             'testimonis' => Testimoni::orderBy('created_at', 'desc')->paginate(10),
-            'produks' => Produk::all()
+            'produks' => $produks,
         ];
 
         return view('User.solusi.index', $data);

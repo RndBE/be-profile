@@ -21,7 +21,7 @@ return new class extends Migration
         });
 
         Schema::table('produk', function (Blueprint $table) {
-            $table->foreignId('seri_perangkat_id')->nullable()->constrained('seri_perangkat')->onUpdate('cascade')->onDelete('cascade');
+            $table->text('seri_perangkat_id')->nullable();
         });
 
         // Tabel Kategori Spesifikasi

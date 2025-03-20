@@ -41,7 +41,15 @@ class AdminSubSolusiController extends Controller
             'video' => 'nullable|string',
             'gambar' => 'nullable|array',
             'gambar.*' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'icon' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
         ]);
+
+        $iconPath = null;
+        if ($request->hasFile('icon')) {
+            $fileName = time() . '_' . $request->file('icon')->getClientOriginalName();
+            $filePath = $request->file('icon')->storeAs('public/subsolution_images/icon', $fileName);
+            $iconPath = 'subsolution_images/icon/' . $fileName;
+        }
 
         $subsolution = SubSolutions::create([
             'nama' => $request->input('nama'),
@@ -50,6 +58,7 @@ class AdminSubSolusiController extends Controller
             'description2' => $request->input('description2'),
             'description3' => $request->input('description3'),
             'video' => $request->input('video'),
+            'icon' => $iconPath,
         ]);
 
         if ($request->hasFile('gambar')) {
@@ -91,7 +100,19 @@ class AdminSubSolusiController extends Controller
             'description3' => 'nullable|string',
             'video' => 'nullable|string',
             'gambar.*' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'icon' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
         ]);
+
+        if ($request->hasFile('icon')) {
+            // Hapus icon lama jika ada
+            if ($subSolution->icon && Storage::exists('public/' . $subSolution->icon)) {
+                Storage::delete('public/' . $subSolution->icon);
+            }
+            // Simpan icon baru
+            $fileName = time() . '_' . $request->file('icon')->getClientOriginalName();
+            $filePath = $request->file('icon')->storeAs('public/subsolution_images/icon', $fileName);
+            $subSolution->icon = 'subsolution_images/icon/' . $fileName;
+        }
 
         $subSolution->update($request->only([
             'nama', 'solution_id', 'description1', 'description2', 'description3', 'video'
@@ -130,6 +151,11 @@ class AdminSubSolusiController extends Controller
     public function destroy($id)
     {
         $subSolution = SubSolutions::findOrFail($id);
+
+        if ($subSolution->icon && Storage::exists('public/' . $subSolution->icon)) {
+            Storage::delete('public/' . $subSolution->icon);
+        }
+
         foreach ($subSolution->gambar as $image) {
             if (Storage::disk('public')->exists($image->gambar)) {
                 Storage::disk('public')->delete($image->gambar);

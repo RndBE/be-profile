@@ -118,6 +118,21 @@
                                                 @enderror
                                             </div>
 
+                                            <div class="mb-3">
+                                                <label for="icon{{ $subSolution->id }}" class="form-label">Icon</label>
+                                                @if ($subSolution->icon)
+                                                    <div class="mb-2">
+                                                        <img src="{{ asset('storage/' . $subSolution->icon) }}" alt="Image" style="width: 100px; height: auto;">
+                                                    </div>
+                                                @endif
+                                                <div class="input-group mb-1">
+                                                    <input type="file" class="form-control" name="icon" id="icon{{ $subSolution->id }}" aria-describedby="inputGroupFileAddon04" accept=".png, .jpg, .jpeg">
+                                                </div>
+                                                @error('icon')
+                                                    <p class="text-danger text-sm mt-1">{{ $message }}</p>
+                                                @enderror
+                                            </div>
+
                                             <label for="description1" class="form-label">Deskripsi 1</label>
                                             <textarea class="ckeditor form-control" name="description1" id="description1" rows="3">{{ old('description1', $subSolution->description1) }}</textarea>
                                             @error('description1')
