@@ -152,7 +152,7 @@
                                             <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
                                         @enderror
 
-                                        <label for="seri_perangkat_id" class="form-label">Seri Perangkat</label>
+                                        <label for="seri_perangkat_id" class="form-label">Spesifikasi Perangkat</label>
                                         <div class="mb-1">
                                             <div class="row">
                                                 @foreach ($seriPerangkat as $perangkat)
