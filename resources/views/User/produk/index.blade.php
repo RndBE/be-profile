@@ -187,37 +187,37 @@
                                     <div class="tab-pane fade" id="spesifikasi-tab-pane" role="tabpanel" aria-labelledby="spesifikasi-tab" tabindex="0">
                                         <div class="choose__tab-content">
                                             <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-1 g-4">
-                                                @if($seriPerangkat)
-                                                    <div class="col">
-                                                        <div class="content-box">
-                                                            <h5>
-                                                                <i class="fas fa-check" style="background-color: #2E2E4D; color: white; padding: 8px; border-radius: 100%; font-size: 15px; font-weight: bold;"></i>
-                                                                {{ $seriPerangkat->seri_perangkat }}
-                                                            </h5>
-                                                            <div class="keunggulan-description">
-                                                                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 g-4">
-                                                                    <div class="col">
-                                                                        <div class="content-box">
-                                                                            <img src="{{ asset('storage/' . $seriPerangkat->gambar1) }}" alt="Gambar 1" class="img-fluid">
+                                                @if($seriPerangkat->isNotEmpty())
+                                                    @foreach($seriPerangkat as $perangkat)
+                                                        <div class="col">
+                                                            <div class="content-box">
+                                                                <h5>
+                                                                    <i class="fas fa-check" style="background-color: #2E2E4D; color: white; padding: 8px; border-radius: 100%; font-size: 15px; font-weight: bold;"></i>
+                                                                    {{ $perangkat->seri_perangkat }}
+                                                                </h5>
+                                                                <div class="keunggulan-description">
+                                                                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 g-4">
+                                                                        <div class="col">
+                                                                            <div class="content-box">
+                                                                                <img src="{{ asset('storage/' . $perangkat->gambar1) }}" alt="Gambar 1" class="img-fluid">
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <div class="content-box">
-                                                                            <img src="{{ asset('storage/' . $seriPerangkat->gambar2) }}" alt="Gambar 2" class="img-fluid">
+                                                                        <div class="col">
+                                                                            <div class="content-box">
+                                                                                <img src="{{ asset('storage/' . $perangkat->gambar2) }}" alt="Gambar 2" class="img-fluid">
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            @if($seriPerangkat && $seriPerangkat->spesifikasi->isNotEmpty())
+
+                                                                @if($perangkat->spesifikasi->isNotEmpty())
                                                                     <div class="row row-cols-1 g-4" style="margin-right:5px;">
                                                                         <table class="table">
                                                                             @php
-                                                                                // Daftar warna background kategori (gunakan format string)
                                                                                 $backgroundColors = ['rgba(46, 46, 77, 0.30)', 'rgb(210, 210, 219, 0.15)'];
-                                                                                $index = 0; // Indeks awal warna
+                                                                                $index = 0;
                                                                             @endphp
-
-                                                                            @foreach($seriPerangkat->spesifikasi->groupBy('dataSpesifikasi.dataKategoriSpesifikasi.nama_kategori') as $kategori => $items)
+                                                                            @foreach($perangkat->spesifikasi->groupBy('dataSpesifikasi.dataKategoriSpesifikasi.nama_kategori') as $kategori => $items)
                                                                                 <thead>
                                                                                     <tr>
                                                                                         <th colspan="2" scope="col" style="text-align: center; background-color: #2E2E4D; color: white;">
@@ -231,7 +231,7 @@
                                                                                             <td scope="row" style="background-color: {{ $backgroundColors[$index % count($backgroundColors)] }}; color: #2E2E4D; border-right: 2px solid rgb(46, 46, 77, 0.25);">
                                                                                                 {{ $item->dataSpesifikasi->judul }}
                                                                                             </td>
-                                                                                            <td style="color: #2E2E4D; background-color: {{ $loop->odd ? 'transparent' : 'rgb(210, 210, 219, 0.30)' }}">
+                                                                                            <td style="color: #2E2E4D; background-color: {{ $loop->odd ? 'transparent' : 'rgb(210, 210, 219, 0.30)' }};">
                                                                                                 {!! $item->deskripsi !!}
                                                                                             </td>
                                                                                         </tr>
@@ -244,9 +244,11 @@
                                                                 @else
                                                                     <p class="text-muted">Tidak ada spesifikasi untuk perangkat ini.</p>
                                                                 @endif
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    @endforeach
                                                 @endif
+
                                             </div>
                                         </div>
                                     </div>

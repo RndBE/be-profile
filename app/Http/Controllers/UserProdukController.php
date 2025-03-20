@@ -36,10 +36,13 @@ class UserProdukController extends Controller
 
         $keunggulan = Keunggulan::where('produk_id', $produk->id)->get();
 
-        // $seriPerangkat = SeriPerangkat::where('id', $produk->seri_perangkat_id)->first();
+        // $seriPerangkat = SeriPerangkat::with('spesifikasi.dataKategoriSpesifikasi')->where('id', $produk->seri_perangkat_id)->first();
 
-        $seriPerangkat = SeriPerangkat::with('spesifikasi.dataKategoriSpesifikasi')->where('id', $produk->seri_perangkat_id)->first();
-        
+        $seriPerangkatIds = json_decode($produk->seri_perangkat_id, true) ?? [];
+        $seriPerangkat = SeriPerangkat::with('spesifikasi.dataKategoriSpesifikasi')
+            ->whereIn('id', $seriPerangkatIds)
+            ->get();
+
         return view('User.produk.index', compact('produk', 'solusiProduk','komponen','keunggulan', 'seriPerangkat'));
     }
 
