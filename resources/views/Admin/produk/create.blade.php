@@ -152,6 +152,31 @@
                                             <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
                                         @enderror
 
+                                        <label for="seri_perangkat_id" class="form-label">Seri Perangkat</label>
+                                        <div class="mb-1">
+                                            <div class="row">
+                                                @foreach ($seriPerangkat as $perangkat)
+                                                    <div class="col-md-4">
+                                                        <div class="form-check">
+                                                            <input
+                                                                type="checkbox"
+                                                                name="seri_perangkat_id[]"
+                                                                value="{{ $perangkat->id }}"
+                                                                id="perangkat_{{ $perangkat->id }}"
+                                                                class="form-check-input"
+                                                                {{ in_array($perangkat->id, old('seri_perangkat_id', [])) ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="perangkat_{{ $perangkat->id }}">
+                                                                {{ $perangkat->seri_perangkat }}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+
+                                        @error('seri_perangkat_id')
+                                            <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                     <div class="col-md-8 ml-auto">
                                         <label for="deskripsi_thumbnail" class="form-label">Deskripsi Thumbnail</label>

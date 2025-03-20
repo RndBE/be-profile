@@ -10,6 +10,7 @@ use App\Models\GambarProjek;
 use App\Models\SubSolutions;
 use Illuminate\Http\Request;
 use App\Models\KategoriProjek;
+use App\Models\SeriPerangkat;
 use App\Models\SolusiProduk;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Laravel\Facades\Image;
@@ -30,6 +31,7 @@ class AdminProdukController extends Controller
     {
         return view('Admin.produk.create', [
             'subSolutions' => SubSolutions::all(),
+            'seriPerangkat' => SeriPerangkat::all(),
             'solusiProduk' => SolusiProduk::all()
         ]);
     }
@@ -49,6 +51,8 @@ class AdminProdukController extends Controller
             'gambar_produk' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'brosur' => 'nullable|mimes:pdf',
             'link_tkdn' => 'nullable|string',
+            'seri_perangkat_id' => 'nullable|array',
+            'seri_perangkat_id.*' => 'exists:seri_perangkat,id',
         ]);
 
         $thumbnailProdukPath = null;
@@ -87,6 +91,7 @@ class AdminProdukController extends Controller
             'slug' => $slug,
             'sub_solution_id' => $request->input('sub_solution_id'),
             'solusi_produk_id' => $request->input('solusi_produk_id') ? json_encode($request->input('solusi_produk_id')) : null,
+            'seri_perangkat_id' => $request->input('seri_perangkat_id') ? json_encode($request->input('seri_perangkat_id')) : null,
             'link_lkpp_lokal' => $request->input('link_lkpp_lokal'),
             'link_lkpp_sektoral' => $request->input('link_lkpp_sektoral'),
             'deskripsi_thumbnail' => $request->input('deskripsi_thumbnail'),
@@ -105,11 +110,13 @@ class AdminProdukController extends Controller
     {
         $produk = Produk::findOrFail($id);
         $subSolutions = SubSolutions::all();
+        $seriPerangkat = SeriPerangkat::all();
         $solusiProduk = SolusiProduk::all();
 
         $produk->solusi_produk_id = $produk->solusi_produk_id ? json_decode($produk->solusi_produk_id, true) : [];
+        $produk->seri_perangkat_id = $produk->seri_perangkat_id ? json_decode($produk->seri_perangkat_id, true) : [];
 
-        return view('Admin.produk.edit', compact('produk', 'subSolutions', 'solusiProduk'));
+        return view('Admin.produk.edit', compact('produk', 'subSolutions', 'solusiProduk', 'seriPerangkat'));
     }
 
     public function update(Request $request, $id)
@@ -128,12 +135,17 @@ class AdminProdukController extends Controller
             'brosur' => 'nullable|mimes:pdf',
             'solusi_produk_id' => 'nullable|array',
             'link_tkdn' => 'nullable|string',
+            'seri_perangkat_id' => 'nullable|array',
         ]);
 
         $slug = Str::slug($request->input('nama_produk'));
 
         $produk->solusi_produk_id = $request->has('solusi_produk_id')
         ? json_encode($request->input('solusi_produk_id'))
+        : null;
+
+        $produk->seri_perangkat_id = $request->has('seri_perangkat_id')
+        ? json_encode($request->input('seri_perangkat_id'))
         : null;
 
         $produk->update($request->only([
