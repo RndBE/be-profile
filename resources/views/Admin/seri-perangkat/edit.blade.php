@@ -20,7 +20,7 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="gambar1{{ $item->id }}" class="form-label">Gambar</label>
+                        <label for="gambar1{{ $item->id }}" class="form-label">Gambar 1</label>
                         @if ($item->gambar1)
                             <div class="mb-2" >
                                 <img src="{{ asset('storage/' . $item->gambar1) }}" alt="Image" style="max-width: 400px; height: auto;">
@@ -34,7 +34,7 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="gambar2{{ $item->id }}" class="form-label">Gambar</label>
+                        <label for="gambar2{{ $item->id }}" class="form-label">Gambar 2</label>
                         @if ($item->gambar2)
                             <div class="mb-2" >
                                 <img src="{{ asset('storage/' . $item->gambar2) }}" alt="Image" style="max-width: 400px; height: auto;">
