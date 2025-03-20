@@ -35,6 +35,7 @@
                                         <tr>
                                             <th scope="col" class="text-center">No</th>
                                             <th scope="col">Nama Perangkat</th>
+                                            <th scope="col">Jenis</th>
                                             <th scope="col">Gambar 1</th>
                                             <th scope="col">Gambar 2</th>
                                             <th scope="col">Aksi</th>
@@ -45,6 +46,7 @@
                                             <tr>
                                                 <td class="text-center">{{ $loop->iteration }}</td>
                                                 <td>{{ $item->seri_perangkat }}</td>
+                                                <td>{{ $item->jenis }}</td>
                                                 <td>
                                                     @if ($item->gambar1)
                                                         <img src="{{ asset('storage/' . $item->gambar1) }}" alt="Image">

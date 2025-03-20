@@ -20,6 +20,19 @@
                         @enderror
                     </div>
                     <div class="mb-3">
+                        <label for="jenis" class="form-label">Jenis</label>
+                        <div class="input-group mb-1">
+                            <select name="jenis" class="custom-select" id="jenis">
+                                <option disabled>Pilih Jenis...</option>
+                                <option value="Logger" {{ old('jenis', $item->jenis) == 'Logger' ? 'selected' : '' }}>Logger</option>
+                                <option value="Sensor" {{ old('jenis', $item->jenis) == 'Sensor' ? 'selected' : '' }}>Sensor</option>
+                            </select>
+                        </div>
+                        @error('jenis')
+                            <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
                         <label for="gambar1{{ $item->id }}" class="form-label">Gambar 1</label>
                         @if ($item->gambar1)
                             <div class="mb-2" >

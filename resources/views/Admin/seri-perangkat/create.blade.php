@@ -18,6 +18,19 @@
                         @enderror
                     </div>
                     <div class="mb-3">
+                        <label for="jenis" class="form-label">Jenis</label>
+                        <div class="input-group mb-1">
+                            <select name="jenis" class="custom-select" id="jenis">
+                                <option selected disabled>Pilih Jenis...</option>
+                                <option value="Logger" {{ old('jenis') ? 'selected' : '' }}>Logger</option>
+                                <option value="Sensor" {{ old('jenis') ? 'selected' : '' }}>Sensor</option>
+                            </select>
+                        </div>
+                        @error('jenis')
+                            <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
                         <label for="gambar1" class="form-label">Gambar 1</label>
                         <div class="input-group mb-1">
                             <input type="file" class="form-control" name="gambar1" id="gambar1" aria-describedby="inputGroupFileAddon04" accept=".png, .jpg, .jpeg">

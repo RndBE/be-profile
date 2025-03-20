@@ -30,6 +30,7 @@ class AdminSeriPerangkatController extends Controller
     {
         $request->validate([
             'seri_perangkat' => 'required|string',
+            'jenis' => 'nullable|string',
             'gambar1' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'gambar2' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
@@ -52,6 +53,7 @@ class AdminSeriPerangkatController extends Controller
         // Simpan data ke database
         SeriPerangkat::create([
             'seri_perangkat' => $request->seri_perangkat,
+            'jenis' => $request->jenis,
             'gambar1' => $gambar1Path,
             'gambar2' => $gambar2Path,
         ]);
@@ -64,6 +66,7 @@ class AdminSeriPerangkatController extends Controller
     {
         $request->validate([
             'seri_perangkat' => 'required|string',
+            'jenis' => 'nullable|string',
             'gambar1' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'gambar2' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
@@ -86,6 +89,7 @@ class AdminSeriPerangkatController extends Controller
             $seri_perangkat->gambar2 = 'seri_perangkat/gambar2/' . $fileName;
         }
         $seri_perangkat->seri_perangkat = $request->seri_perangkat;
+        $seri_perangkat->jenis = $request->jenis;
         $seri_perangkat->save();
 
         toast('Berhasil mengupdate data!', 'success');
