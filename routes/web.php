@@ -27,6 +27,7 @@ use App\Http\Controllers\AdminSolusiProdukController;
 use App\Http\Controllers\AdminSeriPerangkatController;
 use App\Http\Controllers\AdminFiturSubSolusiController;
 use App\Http\Controllers\AdminKategoriProjekController;
+use App\Http\Controllers\UserBandingkanPerangkatController;
 use App\Http\Controllers\AdminKategoriSpesifikasiController;
 use App\Http\Controllers\AdminSeriPerangkatSpesifikasiController;
 
@@ -54,6 +55,7 @@ Route::get('/solusi/{slug}/{subSlug?}', [UserSolusiController::class, 'show'])->
 Route::get('/detail-produk/{slug}', [UserProdukController::class, 'show'])->name('detail-produk.show');
 Route::resource('/tentang-kami', UserAboutController::class);
 Route::resource('/sertifikasi', UserSertifikasiController::class);
+Route::resource('/bandingkan-perangkat', UserBandingkanPerangkatController::class);
 
 
 // Route::resource('/solusi', UserSolusiController::class);

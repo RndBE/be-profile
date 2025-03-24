@@ -12,6 +12,11 @@ class SubSolutions extends Model
 
     protected $guarded = [];
 
+    public function produk()
+    {
+        return $this->hasMany(Produk::class, 'sub_solution_id', 'id');
+    }
+
     public function Solution()
     {
         return $this->belongsTo(Solutions::class, 'solution_id');

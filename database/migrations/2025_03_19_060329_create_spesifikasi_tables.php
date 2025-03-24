@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('seri_perangkat');
             $table->string('gambar1')->nullable();
             $table->string('gambar2')->nullable();
+            $table->string('jenis');
             $table->timestamps();
         });
 
@@ -36,6 +37,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('kategori_id')->constrained('kategori_spesifikasi')->onUpdate('cascade')->onDelete('cascade');
             $table->string('judul');
+            $table->string('jenis_kategori');
             $table->timestamps();
         });
 

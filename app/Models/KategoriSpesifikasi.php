@@ -12,4 +12,9 @@ class KategoriSpesifikasi extends Model
 
     protected $guarded = [];
 
+    public function spesifikasi()
+    {
+        return $this->hasMany(Spesifikasi::class, 'kategori_id');
+    }
+
 }

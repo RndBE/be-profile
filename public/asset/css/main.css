@@ -13579,7 +13579,15 @@ textarea {
   .keunggulan-description p {
     margin-bottom: 10px; /* Atur jarak bawah antara paragraf dan daftar */
 }
-
+.border-subsolusi::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #D2D2DB;
+    margin-top:100px;
+    margin-bottom:100px;
+}
 .keunggulan-description ul {
     padding-top: 5px; /* Tambahkan sedikit jarak atas untuk daftar */
 }
