@@ -33,12 +33,14 @@ class AdminSpesifikasiController extends Controller
     {
         $request->validate([
             'judul' => 'required|string',
+            'jenis_kategori' => 'required|string',
             'kategori_id' => 'required|exists:kategori_spesifikasi,id',
         ]);
 
         // Simpan data ke database
         Spesifikasi::create([
             'judul' => $request->judul,
+            'jenis_kategori' => $request->jenis_kategori,
             'kategori_id' => $request->kategori_id,
         ]);
 
@@ -50,12 +52,14 @@ class AdminSpesifikasiController extends Controller
     {
         $request->validate([
             'judul' => 'required|string',
+            'jenis_kategori' => 'required|string',
             'kategori_id' => 'required|exists:kategori_spesifikasi,id',
         ]);
 
         $Spesifikasi = Spesifikasi::findOrFail($id);
 
         $Spesifikasi->judul = $request->judul;
+        $Spesifikasi->jenis_kategori = $request->jenis_kategori;
         $Spesifikasi->kategori_id = $request->kategori_id;
         $Spesifikasi->save();
 

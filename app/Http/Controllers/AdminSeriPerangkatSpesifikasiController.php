@@ -23,9 +23,14 @@ class AdminSeriPerangkatSpesifikasiController extends Controller
     public function index()
     {
         $data = [
-            'seriPerangkatSpesifikasi' => SeriPerangkatSpesifikasi::orderBy('created_at', 'desc')->get(),
+            'seriPerangkatSpesifikasi' => SeriPerangkatSpesifikasi::with(['dataSpesifikasi.dataKategoriSpesifikasi'])
+            ->join('spesifikasi', 'seri_perangkat_spesifikasi.spesifikasi_id', '=', 'spesifikasi.id')
+            ->join('kategori_spesifikasi', 'spesifikasi.kategori_id', '=', 'kategori_spesifikasi.id')
+            ->orderBy('kategori_spesifikasi.nama_kategori', 'asc')
+            ->select('seri_perangkat_spesifikasi.*') // Pastikan hanya memilih kolom dari seri_perangkat_spesifikasi
+            ->get(),
             'Spesifikasi' => Spesifikasi::with('dataKategoriSpesifikasi')->get(),
-            'seriPerangkat' => SeriPerangkat::all(),
+            'seriPerangkatBahan' => SeriPerangkat::all(),
         ];
 
         return view('Admin.seri-perangkat-spesifikasi.index', $data);

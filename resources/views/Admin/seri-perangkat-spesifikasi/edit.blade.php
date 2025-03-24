@@ -17,7 +17,7 @@
                         <div class="input-group mb-1">
                             <select name="seri_perangkat_id" class="custom-select" id="seri_perangkat_id">
                                 <option selected disabled>Pilih Perangkat</option>
-                                @foreach ($seriPerangkat as $perangkat)
+                                @foreach ($seriPerangkatBahan as $perangkat)
                                     <option value="{{ $perangkat->id }}" {{ old('seri_perangkat_id', $item->seri_perangkat_id) == $perangkat->id ? 'selected' : '' }}>{{ $perangkat->seri_perangkat }}</option>
                                 @endforeach
                             </select>
