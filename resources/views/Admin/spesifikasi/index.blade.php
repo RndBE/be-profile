@@ -36,6 +36,7 @@
                                             <th scope="col" class="text-center">No</th>
                                             <th scope="col">Kategori Spesifikasi</th>
                                             <th scope="col">Spesifikasi</th>
+                                            <th scope="col">Jenis Kategori</th>
                                             <th scope="col">Aksi</th>
                                         </tr>
                                     </thead>
@@ -45,6 +46,7 @@
                                                 <td class="text-center">{{ $loop->iteration }}</td>
                                                 <td>{{ $item->dataKategoriSpesifikasi?->nama_kategori }}</td>
                                                 <td>{{ $item->judul }}</td>
+                                                <td>{{ $item->jenis_kategori }}</td>
                                                 <td>
                                                     <a type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editSpesifikasiModal{{ $item->id }}">
                                                         <i class="fas fa-edit"></i>

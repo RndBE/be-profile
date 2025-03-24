@@ -34,6 +34,20 @@
                         @enderror
                     </div>
 
+                    <div class="mb-3">
+                        <label for="jenis_kategori" class="form-label">Jenis Kategori</label>
+                        <div class="input-group mb-1">
+                            <select name="jenis_kategori" class="custom-select" id="jenis_kategori">
+                                <option disabled>Pilih Jenis...</option>
+                                <option value="Logger" {{ old('jenis_kategori', $item->jenis_kategori) == 'Logger' ? 'selected' : '' }}>Logger</option>
+                                <option value="Sensor" {{ old('jenis_kategori', $item->jenis_kategori) == 'Sensor' ? 'selected' : '' }}>Sensor</option>
+                            </select>
+                        </div>
+                        @error('jenis_kategori')
+                            <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
+                        @enderror
+                    </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                         <button type="submit" class="btn btn-primary">Simpan</button>
