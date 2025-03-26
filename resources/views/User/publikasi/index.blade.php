@@ -56,14 +56,14 @@
                             @if ($artikel_terbaru)
                                 <div class="blog__post-two shine-animate-item w-100">
                                     <div class="blog__post-thumb-two">
-                                        <a href="#" class="shine-animate">
+                                        <a href="{{ route('publikasi.show', $artikel_terbaru->slug) }}" class="shine-animate">
                                             <img src="{{ asset('storage/' . $artikel_terbaru->thumbnail) }}" alt="{{ $artikel_terbaru->judul }}">
                                         </a>
                                     </div>
                                     <div class="blog__post-content-two">
                                         <div class="blog-post-meta">
                                             <ul class="list-wrap">
-                                                <li><a href="blog.html" class="blog__post-tag-two">
+                                                <li><a href="#" class="blog__post-tag-two">
                                                     {{ $artikel_terbaru->kategoriTopik->nama ?? 'Uncategorized' }}
                                                 </a></li>
                                                 <li><img src="{{ asset('asset/img/icon/Calendar.png') }}" alt="">
@@ -72,7 +72,7 @@
                                             </ul>
                                         </div>
                                         <h2 class="title">
-                                            <a href="#">{{ $artikel_terbaru->judul }}</a>
+                                            <a href="{{ route('publikasi.show', $artikel_terbaru->slug) }}">{{ $artikel_terbaru->judul }}</a>
                                         </h2>
                                     </div>
                                 </div>
@@ -88,7 +88,7 @@
                                                 <div class="sidebar__post-content">
                                                     <div class="blog-post-meta">
                                                         <ul class="list-wrap">
-                                                            <li><a href="blog.html" class="blog-publikasi__post-tag-two">
+                                                            <li><a href="#" class="blog-publikasi__post-tag-two">
                                                                 {{ $artikel->kategoriTopik->nama ?? 'Uncategorized' }}
                                                             </a></li>
                                                             <li><img src="{{ asset('asset/img/icon/Calendar.png') }}" alt="">
@@ -97,7 +97,7 @@
                                                         </ul>
                                                     </div>
                                                     <h2 class="title">
-                                                        <a href="#">{{ $artikel->judul }}</a>
+                                                        <a href="{{ route('publikasi.show', $artikel->slug) }}">{{ $artikel->judul }}</a>
                                                     </h2>
                                                 </div>
                                             </div>
@@ -138,7 +138,7 @@
                                             <div class="swiper-slide">
                                                 <div class="blog__post-two shine-animate-item w-100">
                                                     <div class="blog-artikel__post-thumb-two">
-                                                        <a href="#" class="shine-animate">
+                                                        <a href="{{ route('publikasi.show', $artikel->slug) }}" class="shine-animate">
                                                             <img src="{{ asset('storage/' . $artikel->thumbnail) }}" alt="{{ $artikel->judul }}">
                                                         </a>
                                                     </div>
@@ -157,7 +157,7 @@
                                                             </ul>
                                                         </div>
                                                         <h2 class="title">
-                                                            <a href="#">{{ $artikel->judul }}</a>
+                                                            <a href="{{ route('publikasi.show', $artikel->slug) }}">{{ $artikel->judul }}</a>
                                                         </h2>
                                                     </div>
                                                 </div>

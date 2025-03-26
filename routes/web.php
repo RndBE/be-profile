@@ -61,6 +61,7 @@ Route::resource('/tentang-kami', UserAboutController::class);
 Route::resource('/sertifikasi', UserSertifikasiController::class);
 Route::resource('/bandingkan-perangkat', UserBandingkanPerangkatController::class);
 Route::resource('/publikasi', UserPublikasiController::class);
+Route::get('/publikasi/{slug}', [UserPublikasiController::class, 'show'])->name('publikasi.show');
 
 
 // Route::resource('/solusi', UserSolusiController::class);

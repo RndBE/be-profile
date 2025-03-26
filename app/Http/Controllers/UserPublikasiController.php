@@ -37,17 +37,18 @@ class UserPublikasiController extends Controller
     public function show($slug)
     {
 
-        $projek = Projek::whereRaw("LOWER(REPLACE(nama_projek, ' ', '-')) = ?", [Str::lower($slug)])
-                    ->with('gambar')
-                    ->firstOrFail();
+        $artikel = Artikel::where('slug', $slug)->with('gambar')->where('status', 'published')->first();
+
         $data = [
-            'kliens' => Klien::orderBy('created_at', 'desc')->get(),
-            'carousels' => BerandaCarousel::orderBy('created_at', 'desc')->get(),
-            'solutionss' => Solutions::with('subSolutions')->orderBy('created_at', 'asc')->get(),
-            'projek' => $projek,
-            'testimonis' => Testimoni::where('projek_id', $projek->id)->with('projek.klien')->orderBy('created_at', 'desc')->get(),
+            'kategori_topiks' => KategoriTopik::all(),
+            'artikel' => $artikel,
+            'artikels_list' => Artikel::where('status', 'published')->where('kategori_topik_id', $artikel->kategori_topik_id)->where('id', '!=', $artikel->id)->latest()->take(3)->get(),
+            'artikel_terbaru' => Artikel::where('status', 'published')->latest()->first(),
+            'halaman_artikel_atas' => Iklan::where('posisi', 'halaman_artikel_atas')->where('status', 'aktif')->latest()->first(),
+            'halaman_artikel_bawah' => Iklan::where('posisi', 'halaman_artikel_bawah')->where('status', 'aktif')->latest()->first(),
         ];
-        return view('User.proyek.show', $data);
+
+        return view('User.publikasi.show', $data);
     }
 
 }

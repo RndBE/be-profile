@@ -11,7 +11,7 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="/">Beranda</a></li>
-                                <li class="breadcrumb-item"><a href="/proyek">Proyek</a></li>
+                                <li class="breadcrumb-item"><a href="/publikasi">Publikasi</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Detail Artikel</li>
                             </ol>
                         </nav>
@@ -20,4 +20,220 @@
             </div>
         </div>
     </section>
+
+    <section class="project__details-area">
+        <div class="container">
+            <div class="services__details-wrap">
+                <div class="row">
+                    <div class="col-30 order-0 order-lg-2">
+                        <aside class="services__sidebar">
+                            <div class="sidebar__widget px-3 py-3">
+                                <h4 class="sidebar-publikasi__widget-title">Terkait</h4>
+                                <div class="sidebar__post-list">
+                                    @foreach ($artikels_list as $artikellist)
+                                        <div class="sidebar__post-item">
+                                            <div class="sidebar__post-content">
+                                                <div class="blog-post-meta">
+                                                    <ul class="list-wrap">
+                                                        <li><a href="#" class="blog-artikel__post-tag-two">
+                                                            {{ $artikellist->kategoriTopik->nama ?? 'Uncategorized' }}
+                                                        </a></li>
+                                                        <li style="font-size: 13px"><img src="{{ asset('asset/img/icon/Calendar.png') }}" alt="" style="width: 16px; height: 16px;">
+                                                            {{ \Carbon\Carbon::parse($artikellist->tanggal_publikasi)->locale('id')->translatedFormat('l, d F Y') }}
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <h2 class="title">
+                                                    <a href="{{ route('publikasi.show', $artikellist->slug) }}">{{ $artikellist->judul }}</a>
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="col-70">
+                        <div class="services__details-content services__details-content-two">
+                            <div class="project__details-thumb swiper-container slider-project-banner">
+                                <div class="swiper-wrapper">
+                                    @forelse($artikel->gambar as $gambar)
+                                        <div class="swiper-slide">
+                                            <img src="{{ asset('storage/' . $gambar->gambar) }}" alt="gambar">
+                                        </div>
+                                    @empty
+                                        <div class="swiper-slide">
+                                            <img style="width: 100%;height: 600px;" src="{{ asset('asset/img/images/no-image1.png') }}" alt="default">
+                                        </div>
+                                    @endforelse
+                                </div>
+                                <div class="swiper-pagination swiper-pagination-project"></div>
+                            </div>
+                            <div class="blog__details-content">
+                                <h2 class="title">{{ $artikel->judul ?? null }}</h2>
+                                <div class="blog-post-meta">
+                                    <ul class="list-wrap" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+                                        <li>
+                                            <a href="#" class="blog__post-tag-two">{{ $artikel->kategoriTopik->nama ?? null }}</a>
+                                        </li>
+                                        <li style="display: flex; align-items: center;">
+                                            <img src="{{ asset('asset/img/icon/Calendar.png') }}" alt="Calendar Icon" style="margin-right: 5px;">
+                                            {{ \Carbon\Carbon::parse($artikel->tanggal_publikasi)->locale('id')->translatedFormat('l, d F Y') }}
+                                        </li>
+                                        <li style="display: flex; align-items: center; margin-left: auto;">
+                                            <div style="display: flex; align-items: center;">
+                                                <span style="margin-right: 10px;">Bagikan:</span>
+                                                <a href="https://api.whatsapp.com/send?text={{ urlencode(route('artikel.show', $artikel->slug)) }}" target="_blank">
+                                                    <img src="{{ asset('asset/img/icon/WhatsApp.png') }}" alt="Bagikan ke WhatsApp">
+                                                </a>
+                                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('artikel.show', $artikel->slug)) }}" target="_blank">
+                                                    <img src="{{ asset('asset/img/icon/Facebook.png') }}" alt="Bagikan ke Facebook">
+                                                </a>
+                                                <a id="copyButton" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to copy URL" class="copy-link" data-link="{{ route('artikel.show', $artikel->slug) }}">
+                                                    <img src="{{ asset('asset/img/icon/Link.png') }}" alt="Salin Link">
+                                                </a>
+                                                <span class="copy-message" style="display: none; color: green; font-size: 14px;">Link disalin!</span>
+
+                                                {{-- <script>
+                                                    document.addEventListener("DOMContentLoaded", function () {
+                                                        document.querySelectorAll(".copy-link").forEach(button => {
+                                                            button.addEventListener("click", function (event) {
+                                                                event.preventDefault();
+
+                                                                // Ambil link dari atribut data-link
+                                                                let link = this.getAttribute("data-link");
+
+                                                                // Buat elemen input sementara
+                                                                let tempInput = document.createElement("input");
+                                                                tempInput.value = link;
+                                                                document.body.appendChild(tempInput);
+
+                                                                // Pilih dan salin teks
+                                                                tempInput.select();
+                                                                document.execCommand("copy");
+                                                                document.body.removeChild(tempInput);
+
+                                                                // Tampilkan pesan sukses
+                                                                let message = this.nextElementSibling;
+                                                                message.style.display = "inline";
+
+                                                                // Sembunyikan pesan setelah 2 detik
+                                                                setTimeout(() => {
+                                                                    message.style.display = "none";
+                                                                }, 2000);
+                                                            });
+                                                        });
+                                                    });
+                                                </script> --}}
+
+
+
+
+
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <div class="project-artikel__details-inner-content">
+                                {!! $artikel->konten !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize tooltip
+        var tooltipTriggerList = [].slice.call(
+          document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        );
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+
+        // Copy URL to clipboard
+        var copyButton = document.getElementById("copyButton");
+        copyButton.addEventListener("click", function () {
+          var url = window.location.href;
+
+          var clipboard = new ClipboardJS(copyButton, {
+            text: function () {
+              return url;
+            },
+          });
+
+          clipboard.on("success", function (e) {
+            e.clearSelection();
+            copyButton.setAttribute("data-bs-original-title", "URL copied!");
+            var tooltip = bootstrap.Tooltip.getInstance(copyButton);
+            tooltip.update();
+            tooltip.show();
+            clipboard.destroy();
+
+            // メッセージの表示時間を設定
+            setTimeout(function () {
+              copyButton.setAttribute(
+                "data-bs-original-title",
+                "Click to copy URL"
+              );
+              tooltip.update();
+              tooltip.hide();
+            }, 2000);
+          });
+
+          clipboard.on("error", function () {
+            copyButton.setAttribute(
+              "data-bs-original-title",
+              "Failed to copy URL. Please manually copy the URL."
+            );
+            var tooltip = bootstrap.Tooltip.getInstance(copyButton);
+            tooltip.update();
+            tooltip.show();
+            clipboard.destroy();
+
+            // メッセージの表示時間を設定
+            setTimeout(function () {
+              copyButton.setAttribute(
+                "data-bs-original-title",
+                "Click to copy URL"
+              );
+              tooltip.update();
+              tooltip.hide();
+            }, 2000);
+          });
+
+          clipboard.onClick(event);
+        });
+      });
+    </script>
+    <script>
+        // Inisialisasi Swiper
+        document.addEventListener('DOMContentLoaded', () => {
+            new Swiper('.slider-project-banner', {
+                loop: true, // Loop untuk memutar gambar
+                pagination: {
+                    el: '.swiper-pagination-project',
+                    clickable: true,
+                },
+                speed: 1000,
+                autoplay: {
+                    delay: 3000,
+                },
+                slidesPerView: 1,
+                breakpoints: {
+                    768: {
+                        slidesPerView: 1,
+                    },
+                    1024: {
+                        slidesPerView: 1,
+                    }
+                }
+            });
+        });
+    </script>
 @endsection

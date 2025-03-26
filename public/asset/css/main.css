@@ -4462,6 +4462,13 @@ textarea {
     margin-bottom: 10px;
 }
 
+.project-artikel__details-inner-content p{
+    font-size: 16px;
+    font-weight: 400;
+    color: #2E2E4D;
+    text-align: justify;
+}
+
 .about__list-box .list-wrap li {
   display: -webkit-box;
   display: -moz-box;
