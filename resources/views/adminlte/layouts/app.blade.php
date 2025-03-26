@@ -295,9 +295,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/fitur-sub-solutions" class="nav-link {{ Request::is('admin/fitur-sub-solutions*') ?'active' : '' }}">
+                            <a href="/admin/iklan" class="nav-link {{ Request::is('admin/iklan*') ?'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Fitur Sub Solusi</p>
+                            <p>Poster Iklan</p>
                             </a>
                         </li>
                     </ul>

@@ -130,7 +130,7 @@
                                                 <label for="status" class="form-label">Status Upload</label>
                                                 <div class="input-group mb-1">
                                                     <select name="status" class="custom-select" id="status">
-                                                        <option disabled>Pilih Jenis...</option>
+                                                        <option disabled>Pilih Status...</option>
                                                         <option value="draft" {{ old('status', $artikels->status) == 'draft' ? 'selected' : '' }}>Draft</option>
                                                         <option value="published" {{ old('status', $artikels->status) == 'published' ? 'selected' : '' }}>Published</option>
                                                         <option value="archived" {{ old('status', $artikels->status) == 'archived' ? 'selected' : '' }}>Archived</option>

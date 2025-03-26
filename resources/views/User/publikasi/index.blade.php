@@ -49,9 +49,76 @@
         </section>
         <section class="blog__area">
             <div class="container">
-                @livewire('publikasi-index')
+                {{-- @livewire('publikasi-index') --}}
+                <div class="blog__inner-wrap">
+                    <div class="row">
+                        <div class="col-md-6 d-flex align-items-stretch">
+                            @if ($artikel_terbaru)
+                                <div class="blog__post-two shine-animate-item w-100">
+                                    <div class="blog__post-thumb-two">
+                                        <a href="#" class="shine-animate">
+                                            <img src="{{ asset('storage/' . $artikel_terbaru->thumbnail) }}" alt="{{ $artikel_terbaru->judul }}">
+                                        </a>
+                                    </div>
+                                    <div class="blog__post-content-two">
+                                        <div class="blog-post-meta">
+                                            <ul class="list-wrap">
+                                                <li><a href="blog.html" class="blog__post-tag-two">
+                                                    {{ $artikel_terbaru->kategoriTopik->nama ?? 'Uncategorized' }}
+                                                </a></li>
+                                                <li><img src="{{ asset('asset/img/icon/Calendar.png') }}" alt="">
+                                                    {{ \Carbon\Carbon::parse($artikel_terbaru->tanggal_publikasi)->locale('id')->translatedFormat('l, d F Y') }}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <h2 class="title">
+                                            <a href="#">{{ $artikel_terbaru->judul }}</a>
+                                        </h2>
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+                        <div class="col-md-6 d-flex align-items-stretch">
+                            <div class="blog-publikasi__post-two w-100">
+                                <div class="sidebar-publikasi__widget">
+                                    <h4 class="sidebar-publikasi__widget-title">Featured</h4>
+                                    <div class="sidebar__post-list">
+                                        @foreach ($artikels_list as $artikel)
+                                            <div class="sidebar__post-item">
+                                                <div class="sidebar__post-content">
+                                                    <div class="blog-post-meta">
+                                                        <ul class="list-wrap">
+                                                            <li><a href="blog.html" class="blog-publikasi__post-tag-two">
+                                                                {{ $artikel->kategoriTopik->nama ?? 'Uncategorized' }}
+                                                            </a></li>
+                                                            <li><img src="{{ asset('asset/img/icon/Calendar.png') }}" alt="">
+                                                                {{ \Carbon\Carbon::parse($artikel->tanggal_publikasi)->locale('id')->translatedFormat('l, d F Y') }}
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <h2 class="title">
+                                                        <a href="#">{{ $artikel->judul }}</a>
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    @if ($halaman_artikel_atas)
+                                        <div class="poster__post-item">
+                                            <a href="{{ $halaman_artikel_atas->url ?? '#' }}" target="_blank">
+                                                <img src="{{ asset('storage/' . $halaman_artikel_atas->gambar) }}" alt="{{ $halaman_artikel_atas->judul }}">
+                                            </a>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
+
+        {{-- Artikel Terbary --}}
         <section class="artikel-publikasi-area">
             <div class="container">
                 <div class="row">
@@ -62,35 +129,51 @@
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="col-md-12 d-flex align-items-stretch">
+                    <div class="col-md-12">
                         <div class="project-item-wrap">
                             <div class="container custom-container-two">
                                 <div class="swiper-container artikel-publikasi-slider">
                                     <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="blog__post-two shine-animate-item w-100">
-                                                <div class="blog__post-thumb-two">
-                                                    <a href="blog-details.html" class="shine-animate">
-                                                        <img src="asset/img/images/Rectangle 101 (1).png" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="blog-artikel__post-content-two">
-                                                    <div class="blog-artikel-post-meta">
-                                                        <ul class="list-wrap">
-                                                            <li><a href="blog.html" class="blog-artikel__post-tag-two">Beacon Update</a></li>
-                                                            <li><img src="asset/img/icon/Calendar.png" alt="">Sabtu, 7 Februari 2025</li>
-                                                        </ul>
+                                        @foreach ($artikels as $artikel)
+                                            <div class="swiper-slide">
+                                                <div class="blog__post-two shine-animate-item w-100">
+                                                    <div class="blog-artikel__post-thumb-two">
+                                                        <a href="#" class="shine-animate">
+                                                            <img src="{{ asset('storage/' . $artikel->thumbnail) }}" alt="{{ $artikel->judul }}">
+                                                        </a>
                                                     </div>
-                                                    <h2 class="title"><a href="blog-details.html">Gathering Beacon Engineering di Kopeng Treetop Magelang Tahun 2025</a></h2>
+                                                    <div class="blog-artikel__post-content-two">
+                                                        <div class="blog-artikel-post-meta">
+                                                            <ul class="list-wrap">
+                                                                <li>
+                                                                    <a href="#" class="blog-artikel__post-tag-two">
+                                                                        {{ $artikel->kategoriTopik->nama ?? 'Uncategorized' }}
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <img src="{{ asset('asset/img/icon/Calendar.png') }}" alt="Calendar Icon">
+                                                                    {{ \Carbon\Carbon::parse($artikel->tanggal_publikasi)->locale('id')->translatedFormat('l, d F Y') }}
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <h2 class="title">
+                                                            <a href="#">{{ $artikel->judul }}</a>
+                                                        </h2>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endforeach
                                     </div>
+
                                 </div>
                                 <div class="row justify-content-center">
-                                    <div class="col-12 poster-artikel">
-                                        <img src="asset/img/bg/breadcrumb_bg.jpg" alt="">
-                                    </div>
+                                    @if ($halaman_artikel_bawah)
+                                        <div class="col-12 poster-artikel">
+                                            <a href="{{ $halaman_artikel_bawah->url ?? '#' }}" target="_blank">
+                                                <img src="{{ asset('storage/' . $halaman_artikel_bawah->gambar) }}" alt="{{ $halaman_artikel_bawah->judul }}">
+                                            </a>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -99,6 +182,7 @@
             </div>
         </section>
 
+        {{-- Topik Khusus --}}
         <section class="services-area topik-bg">
             <div class="container">
                 <div class="row">

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IklanController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\AdminTagController;
 use App\Http\Controllers\UserAboutController;
@@ -101,6 +102,8 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::resource('/artikel', AdminPublikasiController::class);
     Route::delete('/artikel/{id}/remove-image', [AdminPublikasiController::class, 'removeImage'])->name('artikel.remove-image');
     Route::resource('/kategori-topik', AdminKategoriTopikController::class);
+
+    Route::resource('/iklan', IklanController::class);
 
 });
 
