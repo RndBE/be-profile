@@ -272,6 +272,36 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fa-solid fa-link"></i>
+                        <p>
+                            Publikasi
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admin/kategori-topik" class="nav-link {{ Request::is('admin/kategori-topik*') ?'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Kategori Topik</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/sub-solutions" class="nav-link {{ Request::is('admin/sub-solutions*') ?'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Sub Solusi</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/fitur-sub-solutions" class="nav-link {{ Request::is('admin/fitur-sub-solutions*') ?'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Fitur Sub Solusi</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
