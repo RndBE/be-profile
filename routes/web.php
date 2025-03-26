@@ -16,6 +16,7 @@ use App\Http\Controllers\TentangKamiController;
 use App\Http\Controllers\UserBerandaController;
 use App\Http\Controllers\AdminCarouselController;
 use App\Http\Controllers\AdminKomponenController;
+use App\Http\Controllers\UserPublikasiController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminSubSolusiController;
 use App\Http\Controllers\AdminTestimoniController;
@@ -56,6 +57,7 @@ Route::get('/detail-produk/{slug}', [UserProdukController::class, 'show'])->name
 Route::resource('/tentang-kami', UserAboutController::class);
 Route::resource('/sertifikasi', UserSertifikasiController::class);
 Route::resource('/bandingkan-perangkat', UserBandingkanPerangkatController::class);
+Route::resource('/publikasi', UserPublikasiController::class);
 
 
 // Route::resource('/solusi', UserSolusiController::class);

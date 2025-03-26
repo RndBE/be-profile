@@ -42,7 +42,10 @@
                                     <li class="{{ Request::is('proyek') ? 'active' : '' }}">
                                         <a href="/proyek">Proyek</a>
                                     </li>
-                                    <li class="menu-item-has-children"><a href="#">Publikasi</a>
+                                    <li class="{{ Request::is('publikasi') ? 'active' : '' }}">
+                                        <a href="/publikasi">Publikasi</a>
+                                    </li>
+                                    {{-- <li class="menu-item-has-children"><a href="#">Publikasi</a>
                                         <ul class="sub-menu">
                                             <li><a href="about.html">Business About</a></li>
                                             <li><a href="about-2.html">Finance About</a></li>
@@ -50,7 +53,7 @@
                                             <li><a href="about-3.html">Insurance About</a></li>
                                             <li><a href="about-4.html">Digital agency About</a></li>
                                         </ul>
-                                    </li>
+                                    </li> --}}
                                     <li class="menu-item-has-children"><a href="#">Tentang Kami</a>
                                         <ul class="sub-menu">
                                             <li class="{{ Request::is('tentang-kami') ? 'active' : '' }}">

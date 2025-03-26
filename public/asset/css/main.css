@@ -5278,6 +5278,10 @@ textarea {
   background-size: cover;
   padding: 120px 0;
 }
+.topik-bg {
+    background-size: cover;
+    padding: 80px 0;
+  }
 @media (max-width: 991px) {
     .services-bg {
       background-size: cover;
@@ -5378,6 +5382,9 @@ textarea {
 .services-item-wrap .row {
   --bs-gutter-x: 30px;
 }
+.services-link {
+    height: 30px;
+  }
 .services-item {
     background: var(--tg-color-white-default);
     box-shadow: 0px 35px 30px 0px #cfdee4a1;
@@ -5387,12 +5394,33 @@ textarea {
     transform: scale(1);
 
   }
+  .topik-artikel-item {
+    background: var(--tg-color-white-default);
+    /* box-shadow: 0px 35px 30px 0px #cfdee4a1; */
+    border-radius: 40px;
+    transition: all 0.3s ease-out;
+    margin-bottom: 30px;
+    transform: scale(1);
+    position: relative;
+
+    /* Tambahkan border */
+    border: 2px solid var(--tg-border-color, #D2D2DB); /* Warna default abu-abu */
+}
+
   .services-item .title {
+    color: var(--tg-color-black-1);
+    font-weight: var(--font-semibold);
+  }
+  .topik-artikel-item .title {
     color: var(--tg-color-black-1);
     font-weight: var(--font-semibold);
   }
 
   .services-item p {
+    color: var(--tg-color-black-1);
+    font-weight: var(--font-light);
+  }
+  .topik-artikel-item p {
     color: var(--tg-color-black-1);
     font-weight: var(--font-light);
   }
@@ -5402,18 +5430,44 @@ textarea {
     transform: scale(1.1);
     transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
   }
+  .topik-artikel-item:hover {
+    /* box-shadow: 0px 0px 40px 0px rgba(180, 0, 0, 0.658); */
+    transform: scale(1.1);
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    background: var(--tg-color-black-1);
+  }
 
   .services-item:hover .services-content .icon {
     background: var(--tg-color-red-1);
     transition: background 0.3s ease-out;
+  }
+  .topik-artikel-item:hover .services-topik-content .icon {
+    /* background: var(--tg-color-red-1); */
+    transition: background 0.3s ease-out;
+    border: 2px solid white;
   }
 
   .services-item:hover .services-content .icon img {
     filter: brightness(0) invert(1);
     transition: filter 0.3s ease-out;
   }
+  .topik-artikel-item:hover .services-topik-content .icon img {
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease-out;
+  }
+
+  .topik-artikel-item:hover .services-topik-content .title, p{
+    color: white;
+  }
+  .topik-artikel-item:hover .services-topik-content p{
+    color: white;
+  }
 
   .services-item .services-content .icon img {
+    min-width: 30px;
+    min-height: 30px;
+  }
+  .topik-artikel-item .services-topik-content .icon img {
     min-width: 30px;
     min-height: 30px;
   }
@@ -5421,6 +5475,35 @@ textarea {
   .services-item .services-thumb {
     position: relative;
   }
+
+  .topik-artikel-item .topik-thumb {
+    text-align: right;
+    padding-bottom: 100px;
+}
+  .topik-artikel-item .topik-thumb img{
+    position: relative;
+    width: 300px;
+    height: 300px;
+
+    border-radius: 100% 22% 100% 100%;
+}
+
+@media (max-width: 768px) { /* Tablet & Mobile */
+    .topik-artikel-item .topik-thumb img {
+        width: 250px;  /* Perkecil gambar */
+        height: 250px;
+        border-radius: 100% 25% 100% 100%; /* Sesuaikan jika perlu */
+    }
+}
+
+@media (max-width: 480px) { /* Mobile kecil */
+    .topik-artikel-item .topik-thumb img {
+        width: 200px;
+        height: 200px;
+        border-radius: 100% 30% 100% 100%;
+    }
+}
+
 
   .services-item .services-thumb::after {
     content: "";
@@ -5434,8 +5517,23 @@ textarea {
     opacity: 0;
     transition: opacity 0.3s ease-out;
   }
+  /* .services-item .topik-thumb::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 0, 0, 0.2);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+  } */
 
   .services-item .services-thumb img {
+    transition: transform 0.3s ease-out;
+  }
+  .topik-artikel-item .topik-thumb img {
     transition: transform 0.3s ease-out;
   }
 
@@ -5443,6 +5541,10 @@ textarea {
   transform: scale(1.1);
   border: 3px solid rgba(255, 0, 0, 0.3);
 }
+/* .topik-artikel-item:hover .topik-thumb img {
+    transform: scale(1.1);
+    border: 3px solid rgba(255, 0, 0, 0.3);
+  } */
 
   .services-item:hover .services-content .btn {
     transform: scale(1.1);
@@ -5452,6 +5554,9 @@ textarea {
   .services-item:hover .services-thumb::after {
     opacity: 1;
   }
+  /* .services-item:hover .topik-thumb::after {
+    opacity: 1;
+  } */
 
 .services__item-two {
   border: 2px solid #282B7C;
@@ -5602,6 +5707,14 @@ textarea {
   overflow: hidden;
   position: relative;
 }
+
+
+.topik-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Agar gambar tetap proporsional */
+}
+
 .services-thumb img {
   height: 200px;
   object-fit: cover;
@@ -5745,6 +5858,10 @@ textarea {
   padding: 30px 30px 30px;
   position: relative;
 }
+.services-topik-content {
+    padding: 30px 50px 50px;
+    position: relative;
+  }
 .services-content .icon {
   width: 70px;
   height: 70px;
@@ -5775,26 +5892,85 @@ textarea {
   -o-transition: all 0.4s ease-out 0s;
   transition: all 0.4s ease-out 0s;
 }
+.services-topik-content .icon {
+    width: 70px;
+    height: 70px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    line-height: 0;
+    color: var(--tg-theme-secondary);
+    border: 1px solid #2E2E4D;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    position: absolute;
+    left: 50px;
+    top: -55px;
+    z-index: 2;
+    -webkit-transition: all 0.4s ease-out 0s;
+    -moz-transition: all 0.4s ease-out 0s;
+    -ms-transition: all 0.4s ease-out 0s;
+    -o-transition: all 0.4s ease-out 0s;
+    transition: all 0.4s ease-out 0s;
+  }
 .services-content .title {
   font-size: 20px;
   font-weight: 500;
   margin-bottom: 10px;
 }
+.services-topik-content .title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
 .services-content .title a:hover {
   color: var(--tg-theme-primary);
 }
+.services-topik-content .title a:hover {
+    color: var(--tg-theme-primary);
+  }
 .services-content p {
   margin-bottom: 22px;
 }
+.services-topik-content p {
+    margin-bottom: 22px;
+  }
 .services-content .btn {
   background: var(--tg-color-gray-3);
   color: var(--tg-color-gray-4);
   padding: 8px 10px;
 }
+.services-topik-content .btn {
+    /* background: var(--tg-color-gray-3); */
+    background-color: transparent;
+    border: 2px solid #2E2E4D;
+    color: #2E2E4D;
+    padding: 8px 10px;
+  }
+
+  .topik-artikel-item:hover .services-topik-content .btn {
+    /* background: var(--tg-color-gray-3); */
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 8px 10px;
+  }
 .services-content .btn:hover {
   color: var(--tg-color-white-default);
   background: var(--tg-color-red-1);
 }
+.services-topik-content .btn:hover {
+    color: var(--tg-color-white-default);
+    background: var(--tg-color-red-1);
+  }
 .services__content-two .title {
   color: var(--tg-color-white-default);
   margin-bottom: 15px;
@@ -8459,8 +8635,15 @@ textarea {
   padding: 120px 0 120px;
   position: relative;
 }
+.artikel-publikasi-area {
+    padding: 0px 0 10px;
+    position: relative;
+  }
 @media (max-width: 767.98px) {
   .project-area {
+    padding: 100px 0;
+  }
+  .artikel-publikasi-area {
     padding: 100px 0;
   }
 }
@@ -14305,6 +14488,11 @@ textarea {
   background: var(--tg-color-white-default);
   margin-bottom: 30px;
 }
+.blog-publikasi__post-two {
+    border-left: 2px solid #D9D9D9;
+    background: var(--tg-color-white-default);
+    margin-bottom: 30px;
+  }
 .blog__post-four {
   background: var(--tg-color-white-default);
   -webkit-border-radius: 15px;
@@ -14353,8 +14541,14 @@ textarea {
 .blog__post-content-two {
   padding: 30px 30px;
 }
+.blog-artikel__post-content-two {
+    padding: 30px 30px;
+  }
 @media (max-width: 1199.98px) {
   .blog__post-content-two {
+    padding: 30px 22px;
+  }
+  .blog-artikel__post-content-two {
     padding: 30px 22px;
   }
 }
@@ -14362,14 +14556,23 @@ textarea {
   .blog__post-content-two {
     padding: 30px 30px;
   }
+  .blog-artikel__post-content-two {
+    padding: 30px 30px;
+  }
 }
 @media (max-width: 767.98px) {
   .blog__post-content-two {
     padding: 25px 20px;
   }
+  .blog-artikel__post-content-two {
+    padding: 25px 20px;
+  }
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .blog__post-content-two {
+    padding: 30px 30px;
+  }
+  .blog-artikel__post-content-two {
     padding: 30px 30px;
   }
 }
@@ -14379,17 +14582,68 @@ textarea {
   font-weight: var(--tg-fw-semi-bold);
   text-transform: capitalize;
 }
+.blog-artikel__post-content-two .title {
+    margin-bottom: 10px;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: var(--tg-fw-semi-bold);
+    text-transform: capitalize;
+  }
+
+  /* .artikel-publikasi-slider .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  } */
+
+  .poster-artikel img {
+    width: 100%;        /* Menyesuaikan dengan lebar parent */
+    max-width: 1500px;  /* Batasi panjang maksimum gambar */
+    height: auto;       /* Biarkan tinggi menyesuaikan proporsi */
+    display: block;
+    max-height: 30vh;
+    object-fit: cover;  /* Menyesuaikan gambar dengan elemen */
+    border-radius: 8px; /* Opsional: Tambahkan sudut membulat */
+    margin-top: 50px;
+}
+
+
+@media (max-width: 768px) {
+    .poster-artikel img {
+        max-width: 85vw;  /* Maksimum 90% dari lebar layar */
+    }
+}
+
+@media (max-width: 480px) {
+    .poster-artikel img {
+        max-width: 85vw;  /* Lebih besar sedikit agar tetap terlihat */
+    }
+}
+
+
+
+
 @media (max-width: 767.98px) {
   .blog__post-content-two .title {
+    font-size: 22px;
+  }
+  .blog-artikel__post-content-two .title {
     font-size: 22px;
   }
 }
 .blog__post-content-two .blog-post-meta {
   margin-bottom: 22px;
 }
+.blog-artikel__post-content-two .blog-post-meta {
+    margin-bottom: 22px;
+  }
 .blog__post-content-two .blog-avatar {
   margin-bottom: 0;
 }
+.blog-artikel__post-content-two .blog-avatar {
+    margin-bottom: 0;
+  }
 .blog__post-content-three {
   position: relative;
 }
@@ -14439,22 +14693,74 @@ textarea {
 .blog__post-tag-two {
   font-size: 14px;
   font-weight: 500;
-  color: var(--tg-body-color);
-  border: 1px solid var(--tg-color-gray-2);
+  color: #2E2E4D;
+  border: 1px solid #2E2E4D;
   display: inline-block;
   line-height: 1;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -o-border-radius: 4px;
   -ms-border-radius: 4px;
-  border-radius: 4px;
-  padding: 7px 10px;
+  border-radius: 8px;
+  padding: 10px 10px;
 }
+.blog-artikel__post-tag-two {
+    font-size: 10px;
+    font-weight: 500;
+    color: #2E2E4D;
+    border: 1px solid #2E2E4D;
+    display: inline-block;
+    line-height: 1;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 8px;
+    padding: 10px 10px;
+  }
+.blog-publikasi__post-tag-two {
+    font-size: 14px;
+    font-weight: 500;
+    color: #2E2E4D;
+    border: 1px solid #2E2E4D;
+    display: inline-block;
+    line-height: 1;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 8px;
+    padding: 7px 10px;
+  }
 .blog__post-tag-two:hover {
-  border-color: var(--tg-theme-primary);
-  background: var(--tg-theme-primary);
+  border-color: var(--tg-color-red-1);
+  background: var(--tg-color-red-1);
   color: var(--tg-color-white-default);
 }
+.blog-artikel__post-tag-two:hover {
+    border-color: var(--tg-color-red-1);
+    background: var(--tg-color-red-1);
+    color: var(--tg-color-white-default);
+  }
+.blog-publikasi__post-tag-two:hover {
+    border-color: var(--tg-color-red-1);
+  background: var(--tg-color-red-1);
+  color: var(--tg-color-white-default);
+  }
+
+  .poster__post-item {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .poster__post-item img {
+    width: 600px;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+
+
 .blog__post-tag-three {
   font-size: 14px;
   font-weight: 500;
@@ -14500,6 +14806,7 @@ textarea {
   gap: 15px 20px;
   flex-wrap: wrap;
 }
+
 .blog-post-meta .list-wrap li {
   display: -webkit-box;
   display: -moz-box;
@@ -14520,6 +14827,28 @@ textarea {
     border-radius: 8px;
     font-weight: var(--font-medium);
   }
+
+  .blog-artikel-post-meta ul {
+    list-style: none; /* Hilangkan bullet list */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Jadikan sejajar horizontal */
+    align-items: center; /* Rata tengah vertikal */
+    gap: 10px; /* Jarak antar item */
+  }
+
+  .blog-artikel-post-meta li {
+    font-size: 12px; /* Perkecil ukuran teks */
+    display: flex;
+    align-items: center; /* Sejajarkan teks dan gambar */
+    gap: 5px; /* Jarak antara ikon dan teks */
+  }
+
+  .blog-artikel-post-meta img {
+    width: 14px; /* Perkecil ikon */
+    height: auto; /* Menyesuaikan proporsi */
+  }
+
 
 .blog-post-meta-two .list-wrap li {
   color: #9798AB;
@@ -14968,6 +15297,12 @@ blockquote p {
   border-radius: 10px;
   margin-bottom: 40px;
 }
+
+.sidebar-publikasi__widget {
+    padding: 0px 30px 0px;
+    margin-bottom: 0px;
+  }
+
 @media (max-width: 1199.98px) {
   .sidebar__widget {
     padding: 26px 20px 30px;
@@ -15048,6 +15383,69 @@ blockquote p {
 .sidebar__search form button:hover {
   background: var(--tg-color-red-1);
 }
+
+
+.publikasi__search form {
+    position: relative;
+  }
+  .publikasi__search form input {
+    width: 100%;
+    border: 1px solid var(--tg-border-6);
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -o-border-radius: 6px;
+    -ms-border-radius: 6px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--tg-color-black-1);
+    padding: 14px 60px 14px 20px;
+    height: 55px;
+  }
+  .publikasi__search form input::placeholder {
+    color: #D9D9D9;
+    font-size: 15px;
+    font-weight: 400px;
+  }
+  .publikasi__search form button {
+    border: none;
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #D2D2DB;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -o-border-radius: 6px;
+    -ms-border-radius: 6px;
+    border-radius: 6px;
+  }
+  .publikasi__search form button svg {
+    width: 20px;
+    color: var(--tg-color-black-1);
+  }
+  .publikasi__search form button:hover svg {
+      width: 20px;
+      color: var(--tg-color-white-default);
+    }
+  .publikasi__search form button:hover {
+    background: var(--tg-color-red-1);
+  }
+
+
+
 .sidebar__widget-title {
   font-size: 22px;
   font-weight: 600;
@@ -15055,6 +15453,13 @@ blockquote p {
   padding-bottom: 12px;
   position: relative;
 }
+.sidebar-publikasi__widget-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 22px;
+    padding-bottom: 12px;
+    position: relative;
+  }
 .sidebar__widget-title::before {
   content: "";
   position: absolute;
@@ -15139,6 +15544,30 @@ blockquote p {
   -ms-border-radius: 4px;
   border-radius: 4px;
 }
+.sidebar__post-content {
+    border-bottom: 2px solid #D9D9D9; /* Tambahkan border bawah */
+    padding-bottom: 15px; /* Tambahkan padding di bawah */
+    margin-bottom: 15px; /* Jarak antar post */
+  }
+  .blog-post-meta ul.list-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Jarak antara item dalam list */
+    padding-bottom: 8px; /* Jarak antara meta dan judul */
+    color: #2E2E4D;
+    font-size: var(--font-regular);
+  }
+
+  .blog-post-meta ul.list-wrap li {
+    margin-right: 15px; /* Jarak antara elemen <li> */
+  }
+
+  .sidebar__post-content h2.title {
+    margin-top: 10px; /* Jarak antara meta dan judul */
+    line-height: 1.4; /* Meningkatkan keterbacaan */
+  }
+
+
 .sidebar__post-content .title {
   font-size: 17px;
   margin-bottom: 10px;
