@@ -81,7 +81,7 @@
                                                                 </div>
                                                                 <div class="content">
                                                                     <h4 class="title">{{ $fitur->nama }}</h4>
-                                                                    <p>{{ $fitur->description }}</p>
+                                                                    <p style="color: #2E2E4D">{{ $fitur->description }}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
