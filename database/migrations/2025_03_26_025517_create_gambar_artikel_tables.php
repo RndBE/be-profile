@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kategori_topik', function (Blueprint $table) {
+        Schema::create('gambar_artikel', function (Blueprint $table) {
             $table->id();
-            $table->string('nama')->nullable();
-            $table->string('description')->nullable();
-            $table->string('thumbnail')->nullable();
-            $table->string('icon')->nullable();
+            $table->foreignId('artikel_id')->constrained('detail_artikel')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('gambar')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kategori_topik');
+        Schema::dropIfExists('gambar_artikel');
     }
 };

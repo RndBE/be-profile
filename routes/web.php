@@ -98,7 +98,8 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::resource('/sertifikasi', SertifikasiController::class);
     Route::resource('/sertifikasi-atas', SertifikasiAtasController::class);
 
-    Route::resource('/admin-publikasi', AdminPublikasiController::class);
+    Route::resource('/artikel', AdminPublikasiController::class);
+    Route::delete('/artikel/{id}/remove-image', [AdminPublikasiController::class, 'removeImage'])->name('artikel.remove-image');
     Route::resource('/kategori-topik', AdminKategoriTopikController::class);
 
 });

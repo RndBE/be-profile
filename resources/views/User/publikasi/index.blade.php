@@ -110,57 +110,25 @@
                 </div>
                 <div class="services-item-wrap">
                     <div class="row justify-content-center">
-                        <div class="col-xl-4 col-md-4">
-                            <a href="#" class="services-link">
-                                <div class="topik-artikel-item shine-animate-item">
-                                    <div class="topik-thumb">
-                                        <img src="http://192.168.12.53:8000/storage/solutions/thumbnail/1733215995.webp" alt="">
-                                    </div>
-                                    <div class="services-topik-content">
-                                        <div class="icon">
-                                            <img src="http://192.168.12.53:8000/storage/solutions/icon/1734658091_cloud-sun-fill.svg" alt="">
+                        @foreach($kategori_topiks as $kategori)
+                            <div class="col-xl-4 col-md-4">
+                                <a href="#" class="services-link">
+                                    <div class="topik-artikel-item shine-animate-item">
+                                        <div class="topik-thumb">
+                                            <img src="{{ asset('storage/' . $kategori->thumbnail) }}" alt="{{ $kategori->nama }}">
                                         </div>
-                                        <h3 class="title">Edu Telemetri</h3>
-                                        <p>Artikel edukasi yang membahas telemetri dan teknologi terkini.</p>
-                                        <span class="btn">Cari tahu sekarang</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xl-4 col-md-4">
-                            <a href="#" class="services-link">
-                                <div class="topik-artikel-item shine-animate-item">
-                                    <div class="topik-thumb">
-                                        <img src="http://192.168.12.53:8000/storage/solutions/thumbnail/1733215995.webp" alt="">
-                                    </div>
-                                    <div class="services-topik-content">
-                                        <div class="icon">
-                                            <img src="http://192.168.12.53:8000/storage/solutions/icon/1734658091_cloud-sun-fill.svg" alt="">
+                                        <div class="services-topik-content">
+                                            <div class="icon">
+                                                <img src="{{ asset('storage/' . $kategori->icon) }}" alt="Icon {{ $kategori->nama }}">
+                                            </div>
+                                            <h4 class="title">{{ $kategori->nama }}</h4>
+                                            <p>{{ $kategori->description }}</p>
+                                            <span class="btn">Cari tahu sekarang</span>
                                         </div>
-                                        <h4 class="title">Edu Telemetri</h4>
-                                        <p>Artikel edukasi yang membahas telemetri dan teknologi terkini.</p>
-                                        <span class="btn">Cari tahu sekarang</span>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xl-4 col-md-4">
-                            <a href="#" class="services-link">
-                                <div class="topik-artikel-item shine-animate-item">
-                                    <div class="topik-thumb">
-                                        <img src="http://192.168.12.53:8000/storage/solutions/thumbnail/1733215995.webp" alt="">
-                                    </div>
-                                    <div class="services-topik-content">
-                                        <div class="icon">
-                                            <img src="http://192.168.12.53:8000/storage/solutions/icon/1734658091_cloud-sun-fill.svg" alt="">
-                                        </div>
-                                        <h4 class="title">Edu Telemetri</h4>
-                                        <p>Artikel edukasi yang membahas telemetri dan teknologi terkini.</p>
-                                        <span class="btn">Cari tahu sekarang</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

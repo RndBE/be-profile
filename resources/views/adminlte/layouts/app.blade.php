@@ -289,9 +289,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/sub-solutions" class="nav-link {{ Request::is('admin/sub-solutions*') ?'active' : '' }}">
+                            <a href="/admin/artikel" class="nav-link {{ Request::is('admin/artikel*') ?'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Sub Solusi</p>
+                            <p>Artikel</p>
                             </a>
                         </li>
                         <li class="nav-item">
