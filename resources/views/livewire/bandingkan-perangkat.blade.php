@@ -19,6 +19,9 @@
         .swiper-slide.active-slide {
             background-color: #ECECEC; /* Background aktif saat dipilih */
         }
+        .deskripsi-bandingkanperangkat p{
+            color: #2E2E4D;
+        }
     </style>
     <div class="" style="text-align: center;padding-bottom:100px">
         <h2 class="title">Temukan <span style="color: rgba(180, 4, 4, 0.75);">spesifikasi</span> terbaik <br>
@@ -135,7 +138,7 @@
                                                         }
                                                     }
                                                 @endphp
-                                                {!! $deskripsi !!}
+                                                <div class="deskripsi-bandingkanperangkat">{!! $deskripsi !!}</div>
                                             @else
                                                 -
                                             @endif
@@ -145,7 +148,6 @@
                             @endforeach
                         @endforeach
                     </tbody>
-
                     <tr style="border-style:none;">
                         <td colspan="2" style="border: 0px solid black;"><h4>Spesifikasi Sensor</h4></td>
                     </tr>
@@ -189,7 +191,7 @@
                                                         }
                                                     }
                                                 @endphp
-                                                {!! $deskripsi !!}
+                                                <div class="deskripsi-bandingkanperangkat">{!! $deskripsi !!}</div>
                                             @else
                                                 -
                                             @endif

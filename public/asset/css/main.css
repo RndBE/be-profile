@@ -5230,7 +5230,7 @@ textarea {
 
 .service-mask{
     /* width: 60rem; */
-    background-color: var(--tg-theme-primary);
+    background-color: var(--tg-color-red-1);
     /* border-radius: 10%; */
     display: flex;
     justify-content: center;
@@ -5586,6 +5586,7 @@ textarea {
 .services__item-three {
   background: var(--tg-color-white-default);
   padding: 40px 40px;
+  border: 2px solid var(--tg-border-1);
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   -o-border-radius: 15px;
@@ -6008,9 +6009,12 @@ textarea {
 .services__content-three p {
   margin-bottom: 25px;
 }
+.services__content-three p{
+    color: var(--tg-color-black-2);
+  }
 .services__content-three .btn {
-  background: var(--tg-color-yellow-light);
-  color: var(--tg-theme-primary);
+  background: var(--tg-color-white-default);
+  color: var(--tg-color-black-2);
 }
 .services__content-three .btn:hover {
   color: var(--tg-color-white-default);
@@ -6873,6 +6877,7 @@ textarea {
 }
 .services__sidebar {
   margin-right: 20px;
+  margin-bottom: 20px;
 }
 @media (max-width: 1199.98px) {
   .services__sidebar {
@@ -8995,13 +9000,34 @@ textarea {
   gap: 40px;
   margin-top: 40px;
 }
+.searchall-content-bottom {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    gap: 40px;
+    margin-top: 40px;
+  }
 .project-content-bottom .btn-two {
     background: none;
     color: var(--tg-color-red-1);
     padding: 8px 10px;
     border: 2px solid var(--tg-color-red-1);
   }
+  .searchall-content-bottom .btn-two {
+    background: none;
+    color: var(--tg-color-red-1);
+    padding: 8px 10px;
+    border: 2px solid var(--tg-color-red-1);
+  }
   .project-content-bottom .btn-two:hover {
+    color: var(--tg-color-white-default);
+    background: var(--tg-color-red-1);
+  }
+  .searchall-content-bottom .btn-two:hover {
     color: var(--tg-color-white-default);
     background: var(--tg-color-red-1);
   }
@@ -9012,12 +9038,22 @@ textarea {
     flex-wrap: wrap;
     text-align: center;
   }
+  .searchall-content-bottom {
+    gap: 30px;
+    flex-wrap: wrap;
+    text-align: center;
+  }
 }
 .project-content-bottom p {
   margin-bottom: 0;
   font-weight: 500;
   color: var(--tg-heading-color);
 }
+.searchall-content-bottom p {
+    margin-bottom: 0;
+    font-weight: 500;
+    color: var(--tg-heading-color);
+  }
 .project__content-two {
   text-align: center;
   position: absolute;
@@ -14753,21 +14789,21 @@ textarea {
     border-radius: 8px;
     padding: 7px 10px;
   }
-.blog__post-tag-two:hover {
+/* .blog__post-tag-two:hover {
   border-color: var(--tg-color-red-1);
   background: var(--tg-color-red-1);
   color: var(--tg-color-white-default);
-}
-.blog-artikel__post-tag-two:hover {
+} */
+/* .blog-artikel__post-tag-two:hover {
     border-color: var(--tg-color-red-1);
     background: var(--tg-color-red-1);
     color: var(--tg-color-white-default);
-  }
-.blog-publikasi__post-tag-two:hover {
+  } */
+/* .blog-publikasi__post-tag-two:hover {
     border-color: var(--tg-color-red-1);
   background: var(--tg-color-red-1);
   color: var(--tg-color-white-default);
-  }
+  } */
 
   .poster__post-item {
     width: 100%;

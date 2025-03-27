@@ -37,7 +37,7 @@
                             </div>
                             @if($sertifikasiAtas)
                                     @if($sertifikasiAtas->header)
-                                    <p style="text-align: justify;">{{ $sertifikasiAtas->sub_header }}</p>
+                                    <p style="text-align: justify;color:#2E2E4D">{{ $sertifikasiAtas->sub_header }}</p>
                                     @endif
                                 @else
                                     <p>Tidak ada detail yang tersedia.</p>
@@ -79,7 +79,7 @@
                                     </div>
                                     <div class="content">
                                         <h4 class="title">100%</h4>
-                                        <p>Resmi & Teruji</p>
+                                        <p style="color:#2E2E4D">Resmi & Teruji</p>
                                     </div>
                                 </li>
                             </ul>
@@ -119,7 +119,7 @@
                                     </div>
                                     <div class="content">
                                         <h4 class="title">{{ $item->title }}</h4>
-                                        <p style="text-align: justify;">{{ $item->sub_title }}</p>
+                                        <p style="text-align: justify;color:#2E2E4D">{{ $item->sub_title }}</p>
                                     </div>
                                 </li>
                             </ul>

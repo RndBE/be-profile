@@ -51,4 +51,22 @@ class UserPublikasiController extends Controller
         return view('User.publikasi.show', $data);
     }
 
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $artikels = Artikel::where('status', 'published')
+                    ->where(function ($q) use ($query) {
+                        $q->where('judul', 'like', '%' . $query . '%')
+                        ->orWhere('konten', 'like', '%' . $query . '%')
+                        ->orWhereHas('kategoriTopik', function ($k) use ($query) {
+                            $k->where('nama', 'like', '%' . $query . '%');
+                        });
+                    })
+                    ->latest()->paginate(1);
+
+        return view('User.publikasi.searchall', compact('artikels', 'query'));
+    }
+
+
 }

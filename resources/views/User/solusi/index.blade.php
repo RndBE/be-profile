@@ -63,9 +63,9 @@
                                     <div class="swiper-pagination swiper-pagination-project"></div>
                                 </div>
                                 @if($subSolution)
-                                    <p>{!! $subSolution->description1 !!}</p>
+                                <span class="project-artikel__details-inner-content">{!! $subSolution->description1 !!}</p>
                                 @else
-                                    <p>Sub-solusi tidak ditemukan.</p>
+                                <span class="project-artikel__details-inner-content">Sub-solusi tidak ditemukan.</p>
                                 @endif
 
                                 <div class="services__details-inner-two services__details-inner-four">
@@ -87,25 +87,25 @@
                                                         </div>
                                                     @endforeach
                                                 @else
-                                                    <p>Fitur belum tersedia.</p>
+                                                <span class="project-artikel__details-inner-content">Fitur belum tersedia.</span>
                                                 @endif
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 @if($subSolution)
-                                    <p>{!! $subSolution->description2 !!}</p>
+                                <span class="project-artikel__details-inner-content">{!! $subSolution->description2 !!}</span>
                                 @else
-                                    <p>Sub-solusi tidak ditemukan.</p>
+                                <span class="project-artikel__details-inner-content">Sub-solusi tidak ditemukan.</span>
                                 @endif
                                 <div class="services__details-inner">
                                     <div class="row gutter-24 align-items-top">
                                         <div class="col-56">
                                             <div class="project__details-inner-content" id="project-description">
                                                 @if($subSolution)
-                                                    <p>{!! $subSolution->description3 !!}</p>
+                                                <span class="project-artikel__details-inner-content">{!! $subSolution->description3 !!}</span>
                                                 @else
-                                                    <p>Sub-solusi tidak ditemukan.</p>
+                                                <span class="project-artikel__details-inner-content">Sub-solusi tidak ditemukan.</span>
                                                 @endif
                                             </div>
                                         </div>
@@ -134,7 +134,7 @@
                                                             </a>
                                                         </div>
                                                     @else
-                                                        <p>Invalid YouTube URL</p>
+                                                    <span class="project-artikel__details-inner-content">Invalid YouTube URL</span>
                                                     @endif
                                                 @endif
                                             </div>

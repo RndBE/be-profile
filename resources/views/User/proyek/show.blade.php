@@ -88,7 +88,7 @@
                             </div>
                         </div>
                         <div class="project__details-content">
-                            <div class="project__details-inner-content">
+                            <div class="project-artikel__details-inner-content">
                                 {!! $projek->deskripsi1!!}
                             </div>
                             <div class="project__details-inner">
@@ -100,7 +100,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="project__details-inner-content" id="project-description">
-                                            {!! $projek->deskripsi2!!}
+                                            <span class="project-artikel__details-inner-content">{!! $projek->deskripsi2!!}</span>
                                             <p><a class="simple-button-plugin" href="{{ $projek->white_paper }}" style="" target="_blank">Download White Paper</a></p>
                                         </div>
                                     </div>

@@ -34,8 +34,8 @@
                 <div class="services-item-wrap">
                     <div class="row justify-content-center">
                         <div class="publikasi__search">
-                            <form action="#">
-                                <input type="text" wire:model.live="search" placeholder="Cari artikel atau kata kunci soal IT dan Telemetri">
+                            <form action="{{ route('searchall') }}" method="GET">
+                                <input type="text" name="query" placeholder="Cari artikel atau kata kunci soal IT dan Telemetri" required>
                                 <button type="submit">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
                                         <path d="M19.0002 19.0002L14.6572 14.6572M14.6572 14.6572C15.4001 13.9143 15.9894 13.0324 16.3914 12.0618C16.7935 11.0911 17.0004 10.0508 17.0004 9.00021C17.0004 7.9496 16.7935 6.90929 16.3914 5.93866C15.9894 4.96803 15.4001 4.08609 14.6572 3.34321C13.9143 2.60032 13.0324 2.01103 12.0618 1.60898C11.0911 1.20693 10.0508 1 9.00021 1C7.9496 1 6.90929 1.20693 5.93866 1.60898C4.96803 2.01103 4.08609 2.60032 3.34321 3.34321C1.84288 4.84354 1 6.87842 1 9.00021C1 11.122 1.84288 13.1569 3.34321 14.6572C4.84354 16.1575 6.87842 17.0004 9.00021 17.0004C11.122 17.0004 13.1569 16.1575 14.6572 14.6572Z" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -54,7 +54,8 @@
                     <div class="row">
                         <div class="col-md-6 d-flex align-items-stretch">
                             @if ($artikel_terbaru)
-                                <div class="blog__post-two shine-animate-item w-100">
+                                <div class="blog__post-two shine-animate-item w-100" onclick="window.location='{{ route('publikasi.show', $artikel_terbaru->slug) }}'"
+                                    style="cursor: pointer;">
                                     <div class="blog__post-thumb-two">
                                         <a href="{{ route('publikasi.show', $artikel_terbaru->slug) }}" class="shine-animate">
                                             <img src="{{ asset('storage/' . $artikel_terbaru->thumbnail) }}" alt="{{ $artikel_terbaru->judul }}">
@@ -63,9 +64,9 @@
                                     <div class="blog__post-content-two">
                                         <div class="blog-post-meta">
                                             <ul class="list-wrap">
-                                                <li><a href="#" class="blog__post-tag-two">
+                                                <li><span class="blog__post-tag-two">
                                                     {{ $artikel_terbaru->kategoriTopik->nama ?? 'Uncategorized' }}
-                                                </a></li>
+                                                </span></li>
                                                 <li><img src="{{ asset('asset/img/icon/Calendar.png') }}" alt="">
                                                     {{ \Carbon\Carbon::parse($artikel_terbaru->tanggal_publikasi)->locale('id')->translatedFormat('l, d F Y') }}
                                                 </li>
@@ -84,13 +85,14 @@
                                     <h4 class="sidebar-publikasi__widget-title">Featured</h4>
                                     <div class="sidebar__post-list">
                                         @foreach ($artikels_list as $artikel)
-                                            <div class="sidebar__post-item">
+                                            <div class="sidebar__post-item" onclick="window.location='{{ route('publikasi.show', $artikel->slug) }}'"
+                                                style="cursor: pointer;">
                                                 <div class="sidebar__post-content">
                                                     <div class="blog-post-meta">
                                                         <ul class="list-wrap">
-                                                            <li><a href="#" class="blog-publikasi__post-tag-two">
+                                                            <li><span class="blog-publikasi__post-tag-two">
                                                                 {{ $artikel->kategoriTopik->nama ?? 'Uncategorized' }}
-                                                            </a></li>
+                                                            </span></li>
                                                             <li><img src="{{ asset('asset/img/icon/Calendar.png') }}" alt="">
                                                                 {{ \Carbon\Carbon::parse($artikel->tanggal_publikasi)->locale('id')->translatedFormat('l, d F Y') }}
                                                             </li>
@@ -135,7 +137,8 @@
                                 <div class="swiper-container artikel-publikasi-slider">
                                     <div class="swiper-wrapper">
                                         @foreach ($artikels as $artikel)
-                                            <div class="swiper-slide">
+                                            <div class="swiper-slide" onclick="window.location='{{ route('publikasi.show', $artikel->slug) }}'"
+                                                style="cursor: pointer;">
                                                 <div class="blog__post-two shine-animate-item w-100">
                                                     <div class="blog-artikel__post-thumb-two">
                                                         <a href="{{ route('publikasi.show', $artikel->slug) }}" class="shine-animate">
@@ -146,9 +149,9 @@
                                                         <div class="blog-artikel-post-meta">
                                                             <ul class="list-wrap">
                                                                 <li>
-                                                                    <a href="#" class="blog-artikel__post-tag-two">
+                                                                    <span class="blog-artikel__post-tag-two">
                                                                         {{ $artikel->kategoriTopik->nama ?? 'Uncategorized' }}
-                                                                    </a>
+                                                                    </span>
                                                                 </li>
                                                                 <li>
                                                                     <img src="{{ asset('asset/img/icon/Calendar.png') }}" alt="Calendar Icon">
@@ -196,7 +199,7 @@
                     <div class="row justify-content-center">
                         @foreach($kategori_topiks as $kategori)
                             <div class="col-xl-4 col-md-4">
-                                <a href="#" class="services-link">
+                                <a href="{{ route('searchall', ['query' => $kategori->nama]) }}" class="services-link">
                                     <div class="topik-artikel-item shine-animate-item">
                                         <div class="topik-thumb">
                                             <img src="{{ asset('storage/' . $kategori->thumbnail) }}" alt="{{ $kategori->nama }}">

@@ -55,9 +55,9 @@
                         <div class="col-lg-6">
                             <div class="produk__details-content">
                                 @if(isset($produk) && $produk->deskripsi_produk)
-                                    {!! $produk->deskripsi_produk !!}
+                                <span class="project-artikel__details-inner-content">{!! $produk->deskripsi_produk !!}</span>
                                 @else
-                                    <p>Deskripsi tidak tersedia</p>
+                                <span class="project-artikel__details-inner-content">Deskripsi tidak tersedia</span>
                                 @endif
                                 <div class="produk__details-info">
                                     <ul class="list-wrap">
@@ -118,7 +118,7 @@
                                     <img src="{{ asset('storage/' . $solusi->icon) }}" alt="{{ $solusi->nama }}">
                                 </div>
                                 <div class="content">
-                                    <p>{{ $solusi->nama }}</p>
+                                    <span class="project-artikel__details-inner-content">{{ $solusi->nama }}</span>
                                 </div>
                             </div>
                         </div>
@@ -153,7 +153,7 @@
                                         <div class="choose__tab-content text-center">
                                             @if ($komponen)
                                                 <div class="komponen-item text-center mt-4">
-                                                    <p class="fs-4 fw-bold">{{ $komponen->description }} <span style="color: #b40404;">{{ $komponen->dataProduk->nama_produk }}</span>?</p>
+                                                    <p class="fs-4 fw-bold" style="color: #2E2E4D">{{ $komponen->description }} <span style="color: #b40404;">{{ $komponen->dataProduk->nama_produk }}</span>?</p>
                                                     @if($komponen->gambar)
                                                         <img src="{{ asset('storage/' . $komponen->gambar) }}" class="img-fluid mb-2" alt="Gambar Komponen">
                                                     @endif
@@ -232,7 +232,7 @@
                                                                                                 {{ $item->dataSpesifikasi->judul }}
                                                                                             </td>
                                                                                             <td style="color: #2E2E4D; background-color: {{ $loop->odd ? 'transparent' : 'rgb(210, 210, 219, 0.30)' }};">
-                                                                                                {!! $item->deskripsi !!}
+                                                                                                <span class="project-artikel__details-inner-content">{!! $item->deskripsi !!}</span>
                                                                                             </td>
                                                                                         </tr>
                                                                                         @php $index++; @endphp
