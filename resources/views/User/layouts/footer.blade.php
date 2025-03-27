@@ -13,21 +13,22 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="call-back-form">
-                        <form action="#">
+                        <form id="whatsappForm" action="{{ route('send.whatsapp') }}" method="POST">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-grp">
-                                        <input type="text" placeholder="*Nama lengkap">
+                                        <input type="text" id="nama" name="nama" placeholder="*Nama lengkap" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-grp">
-                                        <input type="number" placeholder="*No.telp">
+                                        <input type="number" id="phone" name="phone" placeholder="*No. Telp" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-grp">
-                                        <input type="text" placeholder="*Pertanyaan">
+                                        <input type="text" id="question" name="question" placeholder="*Pertanyaan" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -35,6 +36,7 @@
                                 </div>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>
@@ -58,11 +60,8 @@
                                 <p>PT Arta Teknologi Comunindo dengan merk dagang Beacon Engineering merupakan perusahaan yang bergerak dibidang produksi dan pengadaan perangkat telemetri.</p>
                                 <div class="footer-social">
                                     <ul class="list-wrap">
-                                        {{-- <li><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a></li> --}}
-                                        {{-- <li><a href="javascript:void(0)"><i class="fab fa-twitter"></i></a></li> --}}
-                                        <li><a href="javascript:void(0)"><i class="fab fa-instagram"></i></a></li>
-                                        {{-- <li><a href="javascript:void(0)"><i class="fab fa-pinterest-p"></i></a></li> --}}
-                                        <li><a href="javascript:void(0)"><i class="fab fa-youtube"></i></a></li>
+                                        <li><a href="https://www.youtube.com/@beacon_engineering" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a></li>
+                                        <li><a href="https://www.instagram.com/beacon_engineering" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a></li>
                                     </ul>
                                 </div>
                             </div>

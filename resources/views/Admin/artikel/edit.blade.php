@@ -160,6 +160,14 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.ckeditor.com/4.20.0/full/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('konten', {
+        filebrowserUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token() ]) }}",
+        filebrowserUploadMethod: 'form'
+    });
+</script>
+
     <script>
         setTimeout(function() {
             const errorMessages = document.querySelectorAll('.error-message');

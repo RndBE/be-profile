@@ -5,6 +5,7 @@ use App\Http\Controllers\IklanController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\AdminTagController;
 use App\Http\Controllers\CKEditorController;
+use App\Http\Controllers\WhatsappController;
 use App\Http\Controllers\UserAboutController;
 use App\Http\Controllers\AdminKlienController;
 use App\Http\Controllers\UserProdukController;
@@ -65,6 +66,8 @@ Route::resource('/publikasi', UserPublikasiController::class);
 Route::get('/publikasi/{slug}', [UserPublikasiController::class, 'show'])->name('publikasi.show');
 Route::get('/search/searchall', [UserPublikasiController::class, 'search'])->name('searchall');
 
+Route::post('/send-whatsapp', [WhatsappController::class, 'sendMessage'])->name('send.whatsapp');
+
 
 
 // Route::resource('/solusi', UserSolusiController::class);
@@ -104,7 +107,8 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::resource('/sertifikasi-atas', SertifikasiAtasController::class);
 
     Route::resource('/artikel', AdminPublikasiController::class);
-    Route::post('/upload-ckeditor', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
+    // Route::post('/upload-ckeditor', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
+    Route::post('/ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
 
     Route::delete('/artikel/{id}/remove-image', [AdminPublikasiController::class, 'removeImage'])->name('artikel.remove-image');
     Route::resource('/kategori-topik', AdminKategoriTopikController::class);

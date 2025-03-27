@@ -1,5 +1,6 @@
 @extends('User.layouts.app')
 {{-- @section('title', 'Testimoni | BE Profile') --}}
+
 @section('content')
     <!-- banner-area -->
     <section class="w-screen" id="home">
@@ -17,7 +18,7 @@
                                                 <span class="sub-title" data-aos="fade-up" data-aos-delay="0">Selamat datang di Beacon Engineering!</span>
                                                 <h2 class="title" data-aos="fade-up" data-aos-delay="200">{!! $carousel->judul !!}</h2>
                                                 <p class="sub_judul" data-aos="fade-up" data-aos-delay="400">{{ $carousel->sub_judul }}</p>
-                                                <a href="about.html" class="btn" data-aos="fade-up" data-aos-delay="600">Pelajari selengkapnya!</a>
+                                                <a href="#services" class="btn" data-aos="fade-up" data-aos-delay="600">Pelajari selengkapnya!</a>
                                             </div>
                                         </div>
                                     </div>
@@ -52,7 +53,7 @@
     </div>
     <!-- brand-area -->
     <!-- services-area -->
-    <section class="services-area services-bg" data-background="{{ asset('asset/img/bg/bg1.png') }}">
+    <section id="services" class="services-area services-bg" data-background="{{ asset('asset/img/bg/bg1.png') }}">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-8">
@@ -105,7 +106,7 @@
                         </div>
                         <p>Semua perangkat telemetri Beacon Engineering terintegrasi dengan aplikasi STESY Smart Telemetry System. Monitoring lebih mudah, tepat, dan cepat.</p>
                         <div class="about-bottom">
-                            <a href="about.html" class="btn btn-two">Lihat STESY</a>
+                            <a href="https://www.youtube.com/watch?v=qD1ePHATQ4o" target="__blank" class="btn btn-two">Lihat STESY</a>
                         </div>
                     </div>
                 </div>
@@ -327,34 +328,41 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-xl-4 col-lg-6 col-md-10">
-                    <div class="artikel-post-item shine-animate-item">
-                        <div class="artikel-post-thumb">
-                            <a href="artikel-details.html" class="shine-animate"><img src="{{ asset('asset/img/blog/artikel.jpeg') }}" alt=""></a>
-                        </div>
-                        <div class="artikel-post-content">
-                            <h2 class="title"><a href="artikel-details.html">Telemetri 101: Pengertian, Sejarah, dan Perkembangannya</a></h2>
-                            <div class="artikel-avatar">
-                                <div class="avatar-thumb">
-                                    <img src="{{ asset('asset/img/blog/calendar1.png') }}" alt="">
-                                </div>
-                                <div class="avatar-content">
-                                    <p>Jumat, 25 Oktober 2024</p>
-                                </div>
+                @foreach($artikels_terbaru as $artikel)
+                    <div class="col-xl-4 col-lg-6 col-md-10">
+                        <div class="artikel-post-item shine-animate-item" onclick="window.location='{{ route('publikasi.show', $artikel->slug) }}'"
+                            style="cursor: pointer;">
+                            <div class="artikel-post-thumb">
+                                <a href="{{ route('publikasi.show', $artikel->slug) }}" class="shine-animate">
+                                    <img src="{{ asset('storage/' . $artikel->thumbnail) }}" alt="{{ $artikel->judul }}">
+                                </a>
                             </div>
-                            <div class="artikel-post-meta">
-                                <ul class="list-wrap">
-                                    <a href="artikel-details.html" class="btn-two">Baca selengkapnya</a>
-                                </ul>
+                            <div class="artikel-post-content">
+                                <h2 class="title">
+                                    <a href="{{ route('publikasi.show', $artikel->slug) }}">{{ $artikel->judul }}</a>
+                                </h2>
+                                <div class="artikel-avatar">
+                                    <div class="avatar-thumb">
+                                        <img src="{{ asset('asset/img/blog/calendar1.png') }}" alt="">
+                                    </div>
+                                    <div class="avatar-content">
+                                        <p>{{ $artikel->created_at->translatedFormat('l, d F Y') }}</p>
+                                    </div>
+                                </div>
+                                <div class="artikel-post-meta">
+                                    <ul class="list-wrap">
+                                        <a href="{{ route('publikasi.show', $artikel->slug) }}" class="btn-two">Baca selengkapnya</a>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
             <div class="row justify-content-center">
                 <div class="col-12">
                     <div class="project-content-bottom">
-                        <a href="project-details.html" class="btn btn-two">Cari tahu lebih banyak</a>
+                        <a href="{{ route('publikasi.index') }}" class="btn btn-two">Cari tahu lebih banyak</a>
                     </div>
                 </div>
             </div>

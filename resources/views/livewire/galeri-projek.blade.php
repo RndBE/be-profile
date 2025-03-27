@@ -79,7 +79,7 @@
                             </div>
                         </div>
                         <div class="sidebar__widget">
-                            <h4 class="sidebar__widget-title">Tags</h4>
+                            <h4 class="sidebar__widget-title">Kata Kunci</h4>
                             <div class="sidebar__tag-list">
                                 <ul class="list-wrap">
                                     @foreach($popularTags as $tag)
