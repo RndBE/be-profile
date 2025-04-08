@@ -118,7 +118,7 @@
                                     <img src="{{ asset('storage/' . $solusi->icon) }}" alt="{{ $solusi->nama }}">
                                 </div>
                                 <div class="content">
-                                    <span class="project-artikel__details-inner-content">{{ $solusi->nama }}</span>
+                                    <span class="project-artikel__details-inner-content" style="color: #2E2E4D">{{ $solusi->nama }}</span>
                                 </div>
                             </div>
                         </div>
