@@ -76,7 +76,7 @@
                                 Dengan keunggulan tersebut, perangkat telemetri dapat membantu berbagai bidang mulai dari masalah keamanan air, klimatologi, hidrologi, irigasi, geothermal, hingga geoteknik.
                             </p>
                             <div class="about-bottom">
-                                <a href="mailto:info@bejogja.com" class="btn btn-two" style="margin-top:50px;">
+                                <a href="https://wa.me/628112632151" target="_blank" class="btn btn-two" style="margin-top:50px;">
                                     Kontak Kami
                                 </a>
                             </div>
@@ -282,7 +282,7 @@
                 </div>
             </div>
             <div class="about-bottom" style="justify-content: center">
-                <a href="mailto:info@bejogja.com" class="btn btn-two" style="margin-top:100px;">
+                <a href="https://wa.me/628112632151" target="_blank" class="btn btn-two" style="margin-top:100px;">
                     Konsultasi gratis sekarang!
                 </a>
             </div>

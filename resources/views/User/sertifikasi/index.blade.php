@@ -43,7 +43,7 @@
                                     <p>Tidak ada detail yang tersedia.</p>
                                 @endif
                             <div class="about-bottom">
-                                <a href="mailto:info@bejogja.com" class="btn btn-two" style="margin-top:50px;margin-bottom:50px;">
+                                <a href="https://wa.me/628112632151" target="_blank" class="btn btn-two" style="margin-top:50px;margin-bottom:50px;">
                                     Konsultasi Sekarang
                                 </a>
                             </div>
