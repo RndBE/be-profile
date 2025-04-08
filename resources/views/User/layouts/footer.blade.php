@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="call-back-form">
+                    {{-- <div class="call-back-form">
                         <form id="whatsappForm" action="{{ route('send.whatsapp') }}" method="POST">
                             @csrf
                             <div class="row">
@@ -37,6 +37,37 @@
                             </div>
                         </form>
 
+                    </div> --}}
+                    <div class="contact__form-wrap">
+                        <form id="contact-form" method="POST" action="{{ route('contact.send') }}">
+                            @csrf
+                            <div class="form-grp">
+                                <textarea style="color: #2e2e4d" name="message" placeholder="Message" required></textarea>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-grp">
+                                        <input style="color: #2e2e4d" type="text" name="name" placeholder="Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-grp">
+                                        <input style="color: #2e2e4d" type="email" name="email" placeholder="Email" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-grp">
+                                        <input style="color: #2e2e4d" type="number" name="phone" placeholder="Phone" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn">Submit</button>
+                        </form>
+                        @if(session('success'))
+                            <div class="alert alert-success mt-3" id="success-alert">
+                                {{ session('success') }}
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -150,3 +181,24 @@
         </div> --}}
     </div>
 {{-- </footer> --}}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const successAlert = document.getElementById('success-alert');
+        const form = document.getElementById('contact-form');
+
+        console.log('successAlert:', successAlert); // cek apakah alert ditemukan
+
+        if (successAlert) {
+            setTimeout(() => {
+                successAlert.style.display = 'none';
+            }, 3000);
+
+            if (form) {
+                form.reset();
+            }
+        }
+    });
+</script>
+
+
+

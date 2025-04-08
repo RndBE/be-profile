@@ -16004,8 +16004,8 @@ blockquote p {
   color: var(--tg-theme-primary);
 }
 .contact__form-wrap {
-  background: var(--tg-color-gray-3);
-  border: 1px solid var(--tg-border-1);
+  /* background: var(--tg-color-gray-3); */
+  /* border: 1px solid var(--tg-border-1); */
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   -o-border-radius: 8px;
@@ -16013,7 +16013,13 @@ blockquote p {
   border-radius: 8px;
   padding: 35px 40px 40px;
   margin-left: 30px;
+  color: #2e2e4d;
 }
+.contact__form-wrap input::placeholder,
+.contact__form-wrap textarea::placeholder {
+  color: #2e2e4d;
+}
+
 @media (max-width: 1199.98px) {
   .contact__form-wrap {
     padding: 35px 20px 40px;

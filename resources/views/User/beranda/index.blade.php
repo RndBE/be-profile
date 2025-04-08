@@ -228,7 +228,7 @@
                 <div class="row justify-content-center">
                     <div class="col-12">
                         <div class="project-content-bottom">
-                            <p>Cari tahu sejauh mana Beacon Engineering<br> berkontribusi di Indonesia!</p>
+                            <p style="color: #2e2e4d;">Cari tahu sejauh mana Beacon Engineering<br> berkontribusi di Indonesia!</p>
                             <a href="/proyek" class="btn btn-two">Lihat semua proyek</a>
                         </div>
                     </div>

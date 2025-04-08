@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IklanController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminTagController;
 use App\Http\Controllers\CKEditorController;
 use App\Http\Controllers\WhatsappController;
@@ -67,6 +68,8 @@ Route::get('/publikasi/{slug}', [UserPublikasiController::class, 'show'])->name(
 Route::get('/search/searchall', [UserPublikasiController::class, 'search'])->name('searchall');
 
 Route::post('/send-whatsapp', [WhatsappController::class, 'sendMessage'])->name('send.whatsapp');
+Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
+
 
 
 
