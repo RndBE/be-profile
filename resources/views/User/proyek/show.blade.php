@@ -76,9 +76,9 @@
                                                 <li class="colon">:</li>
                                                 <li>
                                                     <ul class="list-wrap project-social">
-                                                        <li><a href="https://api.whatsapp.com/send?text={{ urlencode("Cari tahu $projek->nama_projek sekarang juga! \n\n". route('proyek.show', Str::slug($projek->nama_projek))) }}"><i class="fab fa-whatsapp"></i></a></li>
+                                                        <li><a href="https://api.whatsapp.com/send?text={{ urlencode("Cari tahu $projek->nama_projek sekarang juga! \n\n". route('proyek.show', Str::slug($projek->nama_projek))) }}" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
                                                         {{-- <li><a href="https://www.instagram.com/?url={{ urlencode(route('proyek.show', Str::slug($projek->nama_projek))) }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a></li> --}}
-                                                        <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('proyek.show', Str::slug($projek->nama_projek))) }}&quote={{ urlencode('Cari tahu Proyek ' . $projek->nama_projek . ' sekarang juga!') }}"><i class="fab fa-facebook-f"></i></a></li>
+                                                        <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('proyek.show', Str::slug($projek->nama_projek))) }}&quote={{ urlencode('Cari tahu Proyek ' . $projek->nama_projek . ' sekarang juga!') }}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
                                                     </ul>
                                                 </li>
                                             </ul>

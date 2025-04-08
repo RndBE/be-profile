@@ -225,7 +225,7 @@
             // Inisialisasi Swiper
             document.addEventListener('DOMContentLoaded', () => {
                 new Swiper('.artikel-publikasi-slider', {
-                    slidesPerView: 3,
+                    slidesPerView: 1,
                     spaceBetween: 50,
                     loop: true,
                     autoplay: {

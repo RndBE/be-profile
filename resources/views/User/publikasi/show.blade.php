@@ -96,12 +96,14 @@
                                         <li style="display: flex; align-items: center; margin-left: auto;">
                                             <div style="display: flex; align-items: center;">
                                                 <span style="margin-right: 10px;">Bagikan:</span>
-                                                <a href="https://api.whatsapp.com/send?text={{ urlencode(route('artikel.show', $artikel->slug)) }}" target="_blank">
+                                                <a href="https://api.whatsapp.com/send?text={{ urlencode("*".$artikel->judul."*" . "\n\nKlik untuk baca: \n" . route('artikel.show', $artikel->slug)) }}" target="_blank">
                                                     <img src="{{ asset('asset/img/icon/WhatsApp.png') }}" alt="Bagikan ke WhatsApp">
                                                 </a>
+
                                                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('artikel.show', $artikel->slug)) }}" target="_blank">
                                                     <img src="{{ asset('asset/img/icon/Facebook.png') }}" alt="Bagikan ke Facebook">
                                                 </a>
+
                                                 <a id="copyButton" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to copy URL" class="copy-link" data-link="{{ route('artikel.show', $artikel->slug) }}">
                                                     <img src="{{ asset('asset/img/icon/Link.png') }}" alt="Salin Link">
                                                 </a>
