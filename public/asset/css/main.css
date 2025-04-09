@@ -17226,8 +17226,9 @@ blockquote p {
   width: 85px;
   height: 85px;
   object-fit: cover;
-  mix-blend-mode: luminosity;
-  border-radius: 10px;
+  /* mix-blend-mode: luminosity; */
+  border: 1px solid #2e2e4d;
+  border-radius: 5px;
 }
 .footer-bottom {
   background: var(--tg-color-white-default);

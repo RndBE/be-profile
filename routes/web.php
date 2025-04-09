@@ -21,6 +21,7 @@ use App\Http\Controllers\TentangKamiController;
 use App\Http\Controllers\UserBerandaController;
 use App\Http\Controllers\AdminCarouselController;
 use App\Http\Controllers\AdminKomponenController;
+use App\Http\Controllers\InstagramFeedController;
 use App\Http\Controllers\UserPublikasiController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminPublikasiController;
@@ -69,7 +70,7 @@ Route::get('/search/searchall', [UserPublikasiController::class, 'search'])->nam
 Route::post('/send-whatsapp', [WhatsappController::class, 'sendMessage'])->name('send.whatsapp');
 Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
 // Route::get('/home', [HomeController::class, 'index'])->name('home');
-
+// Route::get('/instagram-feed', [InstagramFeedController::class, 'index']);
 
 Route::get('/login', function () {
     return redirect('/');

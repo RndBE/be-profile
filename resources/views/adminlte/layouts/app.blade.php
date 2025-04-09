@@ -319,6 +319,24 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fa-solid fa-link"></i>
+                        <p>
+                            Footer
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admin/kategori-topik" class="nav-link {{ Request::is('admin/kategori-topik*') ?'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Instagram</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

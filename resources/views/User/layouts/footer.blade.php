@@ -150,12 +150,18 @@
                             <h4 class="fw-title">Instagram Posts</h4>
                             <div class="footer-instagram">
                                 <ul class="list-wrap">
-                                    <li><a href="javascript:void(0)"><img src="{{ asset('asset/img/images/footer_insta01.jpg') }}" alt=""></a></li>
-                                    <li><a href="javascript:void(0)"><img src="{{ asset('asset/img/images/footer_insta02.jpg') }}" alt=""></a></li>
-                                    <li><a href="javascript:void(0)"><img src="{{ asset('asset/img/images/footer_insta03.jpg') }}" alt=""></a></li>
-                                    <li><a href="javascript:void(0)"><img src="{{ asset('asset/img/images/footer_insta04.jpg') }}" alt=""></a></li>
-                                    <li><a href="javascript:void(0)"><img src="{{ asset('asset/img/images/footer_insta05.jpg') }}" alt=""></a></li>
-                                    <li><a href="javascript:void(0)"><img src="{{ asset('asset/img/images/footer_insta06.jpg') }}" alt=""></a></li>
+                                    @foreach ($instagramFeeds ?? [] as $feed)
+                                        @php
+                                            $imageUrl = $feed['media_type'] === 'VIDEO'
+                                                ? ($feed['thumbnail_url'] ?? $feed['media_url']) // fallback ke media_url kalau thumbnail gak ada
+                                                : $feed['media_url'];
+                                        @endphp
+                                        <li>
+                                            <a href="{{ $feed['permalink'] }}" target="_blank" rel="noopener noreferrer">
+                                                <img src="{{ $imageUrl }}" alt="Instagram Feed" loading="lazy">
+                                            </a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
