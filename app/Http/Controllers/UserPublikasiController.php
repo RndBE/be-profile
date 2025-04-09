@@ -63,7 +63,7 @@ class UserPublikasiController extends Controller
                             $k->where('nama', 'like', '%' . $query . '%');
                         });
                     })
-                    ->latest()->paginate(1);
+                    ->latest()->paginate(15);
 
         return view('User.publikasi.searchall', compact('artikels', 'query'));
     }
