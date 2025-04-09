@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IklanController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ContactController;
@@ -29,6 +30,7 @@ use App\Http\Controllers\AdminKeunggulanController;
 use App\Http\Controllers\SertifikasiAtasController;
 use App\Http\Controllers\UserSertifikasiController;
 use App\Http\Controllers\AdminSpesifikasiController;
+use App\Http\Controllers\Auth\CustomLoginController;
 use App\Http\Controllers\AdminSolusiProdukController;
 use App\Http\Controllers\AdminKategoriTopikController;
 use App\Http\Controllers\AdminSeriPerangkatController;
@@ -54,11 +56,9 @@ use App\Http\Controllers\AdminSeriPerangkatSpesifikasiController;
 // });
 
 Route::resource('/', UserBerandaController::class);
-
 Route::get('/proyek/{slug}', [UserProyekController::class, 'show'])->name('proyek.show');
 Route::resource('/proyek', UserProyekController::class);
 Route::get('/solusi/{slug}/{subSlug?}', [UserSolusiController::class, 'show'])->name('solusi.show');
-// Route::get('/solusi/{slug}', [UserSolusiController::class, 'show'])->name('solusi.show');
 Route::get('/detail-produk/{slug}', [UserProdukController::class, 'show'])->name('detail-produk.show');
 Route::resource('/tentang-kami', UserAboutController::class);
 Route::resource('/sertifikasi', UserSertifikasiController::class);
@@ -66,20 +66,20 @@ Route::resource('/bandingkan-perangkat', UserBandingkanPerangkatController::clas
 Route::resource('/publikasi', UserPublikasiController::class);
 Route::get('/publikasi/{slug}', [UserPublikasiController::class, 'show'])->name('publikasi.show');
 Route::get('/search/searchall', [UserPublikasiController::class, 'search'])->name('searchall');
-
 Route::post('/send-whatsapp', [WhatsappController::class, 'sendMessage'])->name('send.whatsapp');
 Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
+Route::get('/login', function () {
+    return redirect('/');
+});
 
+Route::get('/openbeacon', [CustomLoginController::class, 'showLoginForm'])->name('openbeacon');
+Route::post('/openbeacon', [CustomLoginController::class, 'login'])->name('login');
+Route::post('/logout', [CustomLoginController::class, 'logout'])->name('logout');
 
-// Route::resource('/solusi', UserSolusiController::class);
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::prefix('/admin')->middleware('auth')->group(function () {
-
-    // Route::get('/logout', [AdminAuthController::class, 'logout']);
-
     Route::resource('/dashboard', AdminDashboardController::class);
     Route::resource('/carousel', AdminCarouselController::class);
     Route::resource('/klien', AdminKlienController::class);
@@ -110,7 +110,6 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::resource('/sertifikasi-atas', SertifikasiAtasController::class);
 
     Route::resource('/artikel', AdminPublikasiController::class);
-    // Route::post('/upload-ckeditor', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
     Route::post('/ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
 
     Route::delete('/artikel/{id}/remove-image', [AdminPublikasiController::class, 'removeImage'])->name('artikel.remove-image');
@@ -118,5 +117,9 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 
     Route::resource('/iklan', IklanController::class);
 
+});
+
+Route::fallback(function () {
+    return redirect()->back();
 });
 

@@ -23,9 +23,6 @@
 <script src="https://cdn.datatables.net/select/2.1.0/js/dataTables.select.js"></script>
 <script src="https://cdn.datatables.net/select/2.1.0/js/select.bootstrap5.js"></script>
 
-<!-- jQuery -->
-{{-- <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script> --}}
-<!-- Bootstrap 4 -->
-{{-- <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script> --}}
 <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
 <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+
