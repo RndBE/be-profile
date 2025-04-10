@@ -322,7 +322,7 @@
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="fa-solid fa-link"></i>
+                        <i class="fa-solid fa-shoe-prints"></i>
                         <p>
                             Footer
                             <i class="right fas fa-angle-left"></i>
@@ -330,7 +330,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/admin/kategori-topik" class="nav-link {{ Request::is('admin/kategori-topik*') ?'active' : '' }}">
+                            <a href="/admin/instagram-token" class="nav-link {{ Request::is('admin/instagram-token*') ?'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Instagram</p>
                             </a>

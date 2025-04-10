@@ -27,6 +27,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminPublikasiController;
 use App\Http\Controllers\AdminSubSolusiController;
 use App\Http\Controllers\AdminTestimoniController;
+use App\Http\Controllers\InstagramTokenController;
 use App\Http\Controllers\AdminKeunggulanController;
 use App\Http\Controllers\SertifikasiAtasController;
 use App\Http\Controllers\UserSertifikasiController;
@@ -117,6 +118,9 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::resource('/kategori-topik', AdminKategoriTopikController::class);
 
     Route::resource('/iklan', IklanController::class);
+
+    Route::resource('/instagram-token', InstagramTokenController::class);
+
 
 });
 

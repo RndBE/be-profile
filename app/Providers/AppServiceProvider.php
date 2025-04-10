@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Solutions;
+use App\Models\InstagramToken;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -30,17 +31,27 @@ class AppServiceProvider extends ServiceProvider
             $view->with('solutionss', Solutions::with('subSolutions')->orderBy('created_at', 'asc')->get());
 
             // Instagram Feed
-            $accessToken = 'IGAAYUdMfrv05BZAFB0TWpwdF9PT1BMajFKWHJkU3lyc09SVXFMYjhMSHgtdnZARMDFFWmFCazQ4WUpud2lIbGRfWWtRT0pVTi1NblF3NmRJM2h5djJwNUlPZAzRpLVU4azA2U2x5MnZAqS3oydjFyaE1xRnJvbmtmVEppbWNuSnA1RQZDZD';
+            $latestToken = InstagramToken::latest()->first();
 
-            $response = Http::withOptions(['verify' => false])->get('https://graph.instagram.com/me/media', [
-                'fields' => 'id,media_type,media_url,permalink,thumbnail_url',
-                'access_token' => $accessToken,
-            ]);
+            $accessToken = $latestToken?->access_token;
 
             $feeds = [];
-            if ($response->successful()) {
-                $feeds = collect($response->json()['data'] ?? [])
-                            ->take(6);
+
+            if ($accessToken) {
+                $response = Http::withOptions(['verify' => false])->get('https://graph.instagram.com/me/media', [
+                    'fields' => 'id,media_type,media_url,permalink,thumbnail_url',
+                    'access_token' => $accessToken,
+                ]);
+
+                if ($response->successful()) {
+                    $feeds = collect($response->json()['data'] ?? [])->map(function ($item) {
+                        // Jika tipe video, ganti media_url dengan thumbnail_url
+                        if ($item['media_type'] === 'VIDEO') {
+                            $item['media_url'] = $item['thumbnail_url'] ?? $item['media_url'];
+                        }
+                        return $item;
+                    })->take(6);
+                }
             }
 
             $view->with('instagramFeeds', $feeds);
