@@ -62,8 +62,8 @@ class AdminKategoriTopikController extends Controller
         $thumbnailPath = null;
         if ($request->hasFile('thumbnail')) {
             $fileName = time() . '_' . $request->file('thumbnail')->getClientOriginalName();
-            $filePath = $request->file('thumbnail')->storeAs('public/kategori-topik/thumbnail', $fileName);
-            $thumbnailPath = 'kategori-topik/thumbnail/' . $fileName;
+            $filePath = $request->file('thumbnail')->storeAs('public/kategori-topik/icon', $fileName);
+            $thumbnailPath = 'kategori-topik/icon/' . $fileName;
         }
 
 
