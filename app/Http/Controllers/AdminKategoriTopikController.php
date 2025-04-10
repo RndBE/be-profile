@@ -47,16 +47,25 @@ class AdminKategoriTopikController extends Controller
         }
 
         // Menangani Thumbnail
+        // $thumbnailPath = null;
+        // if ($request->hasFile('thumbnail')) {
+        //     $fileName = time() . '.webp';
+        //     $thumbnailPath = 'kategori-topik/thumbnail/' . $fileName;
+        //     Storage::makeDirectory('public/kategori-topik/thumbnail');
+        //     $imageFromStorage = $request->file('thumbnail')->getRealPath();
+        //     Image::read($imageFromStorage)
+        //         ->toWebp()
+        //         ->save(Storage::path('public/' . $thumbnailPath));
+        // }
+
+        // Menangani Thumbnail
         $thumbnailPath = null;
         if ($request->hasFile('thumbnail')) {
-            $fileName = time() . '.webp';
+            $fileName = time() . '_' . $request->file('thumbnail')->getClientOriginalName();
+            $filePath = $request->file('thumbnail')->storeAs('public/kategori-topik/thumbnail', $fileName);
             $thumbnailPath = 'kategori-topik/thumbnail/' . $fileName;
-            Storage::makeDirectory('public/kategori-topik/thumbnail');
-            $imageFromStorage = $request->file('thumbnail')->getRealPath();
-            Image::read($imageFromStorage)
-                ->toWebp()
-                ->save(Storage::path('public/' . $thumbnailPath));
         }
+
 
         // Simpan data ke database
         KategoriTopik::create([
