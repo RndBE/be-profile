@@ -45,7 +45,13 @@ class AdminKategoriTopikController extends Controller
             $filePath = $request->file('icon')->storeAs('public/kategori-topik/icon', $fileName);
             $iconPath = 'kategori-topik/icon/' . $fileName;
         }
-
+        // Menangani Thumbnail
+        $thumbnailPath = null;
+        if ($request->hasFile('thumbnail')) {
+            $fileName = time() . '_' . $request->file('thumbnail')->getClientOriginalName();
+            $filePath = $request->file('thumbnail')->storeAs('public/kategori-topik/icon', $fileName);
+            $thumbnailPath = 'kategori-topik/icon/' . $fileName;
+        }
         // Menangani Thumbnail
         // $thumbnailPath = null;
         // if ($request->hasFile('thumbnail')) {
@@ -58,13 +64,7 @@ class AdminKategoriTopikController extends Controller
         //         ->save(Storage::path('public/' . $thumbnailPath));
         // }
 
-        // Menangani Thumbnail
-        $thumbnailPath = null;
-        if ($request->hasFile('thumbnail')) {
-            $fileName = time() . '_' . $request->file('thumbnail')->getClientOriginalName();
-            $filePath = $request->file('thumbnail')->storeAs('public/kategori-topik/icon', $fileName);
-            $thumbnailPath = 'kategori-topik/icon/' . $fileName;
-        }
+
 
 
         // Simpan data ke database
