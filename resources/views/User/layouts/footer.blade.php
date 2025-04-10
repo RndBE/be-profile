@@ -173,8 +173,8 @@
             <div class="container">
                 <div class="row align-items-center justify-content-center">
                     <div class="copyright-text text-center">
-                        <p>Copyright © <a href="index.html">Beacon Engineering</a> | All Right Reserved</p>
-                        <a href="contact.html">Support Terms & Conditions Privacy Policy.</a>
+                        <p>Copyright © <a href="#">Beacon Engineering</a> | All Right Reserved</p>
+                        <a href="#">Support Terms & Conditions Privacy Policy.</a>
                     </div>
                 </div>
             </div>
