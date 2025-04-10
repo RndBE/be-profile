@@ -117,16 +117,22 @@ class AdminKategoriTopikController extends Controller
             if ($kategori_topiks->thumbnail && Storage::exists('public/' . $kategori_topiks->thumbnail)) {
                 Storage::delete('public/' . $kategori_topiks->thumbnail);
             }
+
             // Simpan thumbnail baru
-            $fileName = time() . '.webp';
+            $originalName = $request->file('thumbnail')->getClientOriginalName();
+            $fileName = time() . '_' . $originalName;
             $thumbnailPath = 'kategori-topik/icon/' . $fileName;
+
+            // Pastikan folder ada
             Storage::makeDirectory('public/kategori-topik/icon');
-            $imageFromStorage = $request->file('thumbnail')->getRealPath();
-            Image::read($imageFromStorage)
-                ->toWebp()
-                ->save(Storage::path('public/' . $thumbnailPath));
+
+            // Simpan file asli tanpa konversi
+            $request->file('thumbnail')->storeAs('public/kategori-topik/icon', $fileName);
+
+            // Simpan path ke database
             $kategori_topiks->thumbnail = $thumbnailPath;
         }
+
         // Update data ke database
         $kategori_topiks->nama = $request->nama;
         $kategori_topiks->description = $request->description;
