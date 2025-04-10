@@ -156,25 +156,15 @@ class AdminProdukController extends Controller
             if ($produk->gambar_thumbnail_produk && Storage::exists('public/' . $produk->gambar_thumbnail_produk)) {
                 Storage::delete('public/' . $produk->gambar_thumbnail_produk);
             }
-
-            // Ambil nama file asli
-            $originalName = $request->file('gambar_thumbnail_produk')->getClientOriginalName();
-
-            // Optional: Untuk menghindari nama ganda, kamu bisa menambahkan timestamp
-            $fileName = time() . '_' . $originalName;
-
+            $fileName = time() . '.webp';
             $gambar_thumbnail_produkPath = 'produk/gambar_thumbnail_produk/' . $fileName;
-
-            // Pastikan direktori ada
             Storage::makeDirectory('public/produk/gambar_thumbnail_produk');
-
-            // Simpan file ke storage tanpa konversi
-            $request->file('gambar_thumbnail_produk')->storeAs('public/produk/gambar_thumbnail_produk', $fileName);
-
-            // Simpan path ke database
+            $imageFromStorage = $request->file('gambar_thumbnail_produk')->getRealPath();
+            Image::read($imageFromStorage)
+                ->toWebp()
+                ->save(Storage::path('public/' . $gambar_thumbnail_produkPath));
             $produk->gambar_thumbnail_produk = $gambar_thumbnail_produkPath;
         }
-
 
         if ($request->hasFile('gambar_produk')) {
             if ($produk->gambar_produk && Storage::exists('public/' . $produk->gambar_produk)) {
