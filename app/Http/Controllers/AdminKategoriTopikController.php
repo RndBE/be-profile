@@ -119,8 +119,8 @@ class AdminKategoriTopikController extends Controller
             }
             // Simpan thumbnail baru
             $fileName = time() . '.webp';
-            $thumbnailPath = 'kategori-topik/thumbnail/' . $fileName;
-            Storage::makeDirectory('public/kategori-topik/thumbnail');
+            $thumbnailPath = 'kategori-topik/icon/' . $fileName;
+            Storage::makeDirectory('public/kategori-topik/icon');
             $imageFromStorage = $request->file('thumbnail')->getRealPath();
             Image::read($imageFromStorage)
                 ->toWebp()
