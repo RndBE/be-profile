@@ -70,11 +70,11 @@
                         <a href="{{ route('solusi.show', Str::slug($solution->nama)) }}" class="services-link">
                             <div class="services-item shine-animate-item">
                                 <div class="services-thumb">
-                                    <img src="{{ asset('storage/' . $solution->thumbnail) }}" alt="">
+                                    <img src="{{ asset($solution->thumbnail) }}" alt="">
                                 </div>
                                 <div class="services-content">
                                     <div class="icon">
-                                        <img src="{{ asset('storage/' . $solution->icon) }}" alt="">
+                                        <img src="{{ asset($solution->icon) }}" alt="">
                                     </div>
                                     <h4 class="title">{{ $solution->nama }}</h4>
                                     <p>{{ $solution->description }}</p>

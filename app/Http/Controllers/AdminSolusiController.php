@@ -31,21 +31,38 @@ class AdminSolusiController extends Controller
         $iconPath = null;
         if ($request->hasFile('icon')) {
             $fileName = time() . '_' . $request->file('icon')->getClientOriginalName();
-            $filePath = $request->file('icon')->storeAs('public/solutions/icon', $fileName);
-            $iconPath = 'solutions/icon/' . $fileName;
+            $destinationPath = public_path('konten/solutions/icon');
+
+            // Pastikan folder ada
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            $request->file('icon')->move($destinationPath, $fileName);
+            $iconPath = 'konten/solutions/icon/' . $fileName;
         }
 
         // Menangani Thumbnail
         $thumbnailPath = null;
         if ($request->hasFile('thumbnail')) {
             $fileName = time() . '.webp';
-            $thumbnailPath = 'solutions/thumbnail/' . $fileName;
-            Storage::makeDirectory('public/solutions/thumbnail');
+            $destinationPath = public_path('konten/solutions/thumbnail');
+
+            // Pastikan folder ada
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
             $imageFromStorage = $request->file('thumbnail')->getRealPath();
+            $fullPath = $destinationPath . '/' . $fileName;
+
             Image::read($imageFromStorage)
                 ->toWebp()
-                ->save(Storage::path('public/' . $thumbnailPath));
+                ->save($fullPath);
+
+            $thumbnailPath = 'konten/solutions/thumbnail/' . $fileName;
         }
+
 
         // Simpan data ke database
         Solutions::create([
