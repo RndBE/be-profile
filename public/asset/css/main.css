@@ -16011,7 +16011,7 @@ blockquote p {
   -o-border-radius: 8px;
   -ms-border-radius: 8px;
   border-radius: 8px;
-  padding: 35px 40px 40px;
+  /* padding: 35px 40px 40px; */
   margin-left: 30px;
   color: #2e2e4d;
 }
@@ -16022,7 +16022,7 @@ blockquote p {
 
 @media (max-width: 1199.98px) {
   .contact__form-wrap {
-    padding: 35px 20px 40px;
+    /* padding: 35px 20px 40px; */
     margin-left: 0;
   }
 }
