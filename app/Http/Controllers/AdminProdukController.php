@@ -169,43 +169,79 @@ class AdminProdukController extends Controller
             'nama_produk', 'sub_solution_id', 'link_lkpp_lokal', 'link_lkpp_sektoral', 'deskripsi_thumbnail', 'deskripsi_produk', 'link_tkdn',
         ]));
 
+        // Update Thumbnail Produk
         if ($request->hasFile('gambar_thumbnail_produk')) {
-            if ($produk->gambar_thumbnail_produk && Storage::exists('public/' . $produk->gambar_thumbnail_produk)) {
-                Storage::delete('public/' . $produk->gambar_thumbnail_produk);
+            // Hapus file lama
+            if ($produk->gambar_thumbnail_produk) {
+                $oldPath = base_path('../public_html/' . $produk->gambar_thumbnail_produk);
+                if (file_exists($oldPath)) {
+                    unlink($oldPath);
+                }
             }
+
             $fileName = time() . '.webp';
-            $gambar_thumbnail_produkPath = 'produk/gambar_thumbnail_produk/' . $fileName;
-            Storage::makeDirectory('public/produk/gambar_thumbnail_produk');
+            $gambar_thumbnail_produkPath = 'konten/produk/gambar_thumbnail_produk/' . $fileName;
+            $destinationPath = base_path('../public_html/' . dirname($gambar_thumbnail_produkPath));
+
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
             $imageFromStorage = $request->file('gambar_thumbnail_produk')->getRealPath();
             Image::read($imageFromStorage)
                 ->toWebp()
-                ->save(Storage::path('public/' . $gambar_thumbnail_produkPath));
+                ->save(base_path('../public_html/' . $gambar_thumbnail_produkPath));
+
             $produk->gambar_thumbnail_produk = $gambar_thumbnail_produkPath;
         }
 
+        // Update Gambar Produk
         if ($request->hasFile('gambar_produk')) {
-            if ($produk->gambar_produk && Storage::exists('public/' . $produk->gambar_produk)) {
-                Storage::delete('public/' . $produk->gambar_produk);
+            if ($produk->gambar_produk) {
+                $oldPath = base_path('../public_html/' . $produk->gambar_produk);
+                if (file_exists($oldPath)) {
+                    unlink($oldPath);
+                }
             }
+
             $fileName = time() . '.webp';
-            $gambar_produkPath = 'produk/gambar_produk/' . $fileName;
-            Storage::makeDirectory('public/produk/gambar_produk');
+            $gambar_produkPath = 'konten/produk/gambar_produk/' . $fileName;
+            $destinationPath = base_path('../public_html/' . dirname($gambar_produkPath));
+
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
             $imageFromStorage = $request->file('gambar_produk')->getRealPath();
             Image::read($imageFromStorage)
                 ->toWebp()
-                ->save(Storage::path('public/' . $gambar_produkPath));
+                ->save(base_path('../public_html/' . $gambar_produkPath));
+
             $produk->gambar_produk = $gambar_produkPath;
         }
 
+        // Update Brosur
         if ($request->hasFile('brosur')) {
             if ($produk->brosur) {
-                Storage::disk('public')->delete($produk->brosur);
+                $oldPath = base_path('../public_html/' . $produk->brosur);
+                if (file_exists($oldPath)) {
+                    unlink($oldPath);
+                }
             }
+
             $fileName = time() . '_' . $request->file('brosur')->getClientOriginalName();
-            $brosurPath = $request->file('brosur')->storeAs('public/produk/brosur/', $fileName);
-            $brosurName = 'produk/brosur/' . $fileName;
-            $produk->brosur = $brosurName;
+            $brosurPath = 'konten/produk/brosur/' . $fileName;
+            $destinationPath = base_path('../public_html/' . dirname($brosurPath));
+
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            $request->file('brosur')->move($destinationPath, $fileName);
+
+            $produk->brosur = $brosurPath;
         }
+
         $produk->slug = $slug;
         $produk->save();
 
@@ -216,15 +252,30 @@ class AdminProdukController extends Controller
     public function destroy($id)
     {
         $produk = Produk::findOrFail($id);
+        // Hapus gambar_thumbnail_produk jika ada
         if ($produk->gambar_thumbnail_produk) {
-            Storage::disk('public')->delete($produk->gambar_thumbnail_produk);
+            $path = base_path('../public_html/' . $produk->gambar_thumbnail_produk);
+            if (file_exists($path)) {
+                unlink($path);
+            }
         }
+
+        // Hapus gambar_produk jika ada
         if ($produk->gambar_produk) {
-            Storage::disk('public')->delete($produk->gambar_produk);
+            $path = base_path('../public_html/' . $produk->gambar_produk);
+            if (file_exists($path)) {
+                unlink($path);
+            }
         }
+
+        // Hapus brosur jika ada
         if ($produk->brosur) {
-            Storage::disk('public')->delete($produk->brosur);
+            $path = base_path('../public_html/' . $produk->brosur);
+            if (file_exists($path)) {
+                unlink($path);
+            }
         }
+
         $produk->delete();
         toast('Berhasil menghapus data!', 'success');
         return redirect()->back();

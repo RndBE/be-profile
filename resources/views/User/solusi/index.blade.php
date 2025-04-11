@@ -204,7 +204,7 @@
                                     <div>
                                         <a href="{{ route('detail-produk.show', $item->slug) }}" class="produk-item">
                                             <div class="produk-thumb">
-                                                <img src="{{ asset('storage/' . $item->gambar_thumbnail_produk) }}" alt="{{ $item->nama_produk }}">
+                                                <img src="{{ asset($item->gambar_thumbnail_produk) }}" alt="{{ $item->nama_produk }}">
                                             </div>
                                             <div class="produk-content">
                                                 <h4 class="title">{{ $item->nama_produk }}</h4>
