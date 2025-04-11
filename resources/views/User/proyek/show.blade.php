@@ -67,12 +67,9 @@
                                             <ul class="horizontal-list">
                                                 <li>Website</li>
                                                 <li class="colon">:</li>
-                                                <li class="value">
-                                                    <a href="{{ $projek->website }}" target="_blank" rel="noopener noreferrer" class="limit-link">
-                                                        {{ $projek->website }}
-                                                    </a>
-                                                </li>
-
+                                                <li class="value"><a href="{{ $projek->website }}" target="_blank" rel="noopener noreferrer">
+                                                    {{ $projek->website }}
+                                                </a></li>
                                             </ul>
                                             <ul class="horizontal-list">
                                                 <li>Share</li>

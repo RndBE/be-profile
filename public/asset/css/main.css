@@ -9526,39 +9526,39 @@ textarea {
   border-radius: 4px;
 }
 .project__details-info > .list-wrap > .horizontal-list {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
     font-size: 16px;
     font-weight: 500;
     font-family: var(--tg-heading-font-family);
     color: var(--tg-color-white-default);
-    padding-bottom: 10px;
-    padding-left: 0;
+    padding: 10px 0;
     list-style-type: none;
-    padding-top: 10px;
     margin: 0;
     border-bottom: 1px solid #d2d2db;
 }
 .project__details-info > .list-wrap > .horizontal-list > li {
-  font-weight: 400;
-  color: rgba(210, 210, 219, 0.8);
-  min-width: 70px;
+    font-weight: 400;
+    color: rgba(210, 210, 219, 0.8);
+    min-width: 70px;
+    word-break: break-word; /* biar teks panjang bisa pecah */
 }
 .project__details-info > .list-wrap > .horizontal-list > li.colon {
     min-width: auto;
     margin-right: 10px;
 }
 .project__details-info > .list-wrap > .horizontal-list > li.value {
+    flex: 1; /* Biar menyesuaikan ruang kosong */
     font-weight: 600;
     color: rgba(210, 210, 219);
+    word-break: break-word; /* Pecah teks jika panjang */
 }
-.project__details-info > .list-wrap > .horizontal-list > li.value a{
-    font-weight: 600;
+
+.project__details-info > .list-wrap > .horizontal-list > li.value a {
     color: rgba(210, 210, 219);
+    text-decoration: underline;
+    word-break: break-word;
 }
 
 .project__details-info > .list-wrap > .horizontal-list > li.value a:hover{
@@ -16003,15 +16003,6 @@ blockquote p {
 .contact__info .list-wrap li .content a:hover {
   color: var(--tg-theme-primary);
 }
-.limit-link {
-    display: inline-block;
-    max-width: 250px; /* Sesuaikan lebar maksimum */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    vertical-align: middle;
-}
-
 .contact__form-wrap {
   /* background: var(--tg-color-gray-3); */
   /* border: 1px solid var(--tg-border-1); */
