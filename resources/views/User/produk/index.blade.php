@@ -38,7 +38,7 @@
                             <div class="produk__item-four shine-animate-item">
                                 <div class="produk__thumb-four shine-animate">
                                     @if(isset($produk) && $produk->gambar_produk)
-                                        <img src="{{ asset('storage/' . $produk->gambar_produk) }}" alt="{{ $produk->nama_produk }}">
+                                        <img src="{{ asset($produk->gambar_produk) }}" alt="{{ $produk->nama_produk }}">
                                     @else
                                         <p>Deskripsi tidak tersedia</p>
                                     @endif
@@ -63,7 +63,7 @@
                                     <ul class="list-wrap">
                                         <li>
                                             @if(isset($produk) && $produk->brosur)
-                                                <a class="btn" href="{{ asset('storage/' . $produk->brosur) }}" target="_blank">
+                                                <a class="btn" href="{{ asset($produk->brosur) }}" target="_blank">
                                                     Unduh Brosur
                                                 </a>
                                             @else
