@@ -38,33 +38,47 @@ class AdminKategoriTopikController extends Controller
         ]);
 
 
+        // Path dasar ke public_html/konten (di luar folder Laravel project)
+        $basePublicPath = base_path('../public_html/konten');
+
         // Menangani Icon
         $iconPath = null;
         if ($request->hasFile('icon')) {
             $fileName = time() . '_' . $request->file('icon')->getClientOriginalName();
-            $filePath = $request->file('icon')->storeAs('public/kategori-topik/icon', $fileName);
-            $iconPath = 'kategori-topik/icon/' . $fileName;
+            $destinationPath = $basePublicPath . '/kategori-topik/icon';
+
+            // Pastikan foldernya ada
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            // Simpan file
+            $request->file('icon')->move($destinationPath, $fileName);
+
+            // Simpan path relatif ke database
+            $iconPath = 'konten/kategori-topik/icon/' . $fileName;
         }
+
         // Menangani Thumbnail
         $thumbnailPath = null;
         if ($request->hasFile('thumbnail')) {
-            $fileName = time() . '_' . $request->file('thumbnail')->getClientOriginalName();
-            $filePath = $request->file('thumbnail')->storeAs('public/kategori-topik/icon', $fileName);
-            $thumbnailPath = 'kategori-topik/icon/' . $fileName;
+            $fileName = time() . '.webp';
+            $destinationPath = $basePublicPath . '/kategori-topik/thumbnail';
+
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            $imageFromStorage = $request->file('thumbnail')->getRealPath();
+
+            // Simpan sebagai .webp langsung ke public_html/konten
+            Image::read($imageFromStorage)
+                ->toWebp()
+                ->save($destinationPath . '/' . $fileName);
+
+            // Simpan path relatif ke database
+            $thumbnailPath = 'konten/kategori-topik/thumbnail/' . $fileName;
         }
-        // Menangani Thumbnail
-        // $thumbnailPath = null;
-        // if ($request->hasFile('thumbnail')) {
-        //     $fileName = time() . '.webp';
-        //     $thumbnailPath = 'kategori-topik/thumbnail/' . $fileName;
-        //     Storage::makeDirectory('public/kategori-topik/thumbnail');
-        //     $imageFromStorage = $request->file('thumbnail')->getRealPath();
-        //     Image::read($imageFromStorage)
-        //         ->toWebp()
-        //         ->save(Storage::path('public/' . $thumbnailPath));
-        // }
-
-
 
 
         // Simpan data ke database
@@ -101,36 +115,51 @@ class AdminKategoriTopikController extends Controller
         // Cari data yang akan diupdate berdasarkan ID
         $kategori_topiks = KategoriTopik::findOrFail($id);
         // Menangani Icon
+        $basePublicPath = base_path('../public_html/konten');
+
         if ($request->hasFile('icon')) {
             // Hapus icon lama jika ada
-            if ($kategori_topiks->icon && Storage::exists('public/' . $kategori_topiks->icon)) {
-                Storage::delete('public/' . $kategori_topiks->icon);
+            $oldIconPath = base_path('../public_html/' . $kategori_topiks->icon);
+            if ($kategori_topiks->icon && file_exists($oldIconPath)) {
+                unlink($oldIconPath);
             }
+
             // Simpan icon baru
             $fileName = time() . '_' . $request->file('icon')->getClientOriginalName();
-            $filePath = $request->file('icon')->storeAs('public/kategori-topik/icon', $fileName);
-            $kategori_topiks->icon = 'kategori-topik/icon/' . $fileName;
-        }
-        // Menangani Thumbnail
-        if ($request->hasFile('thumbnail')) {
-            // Hapus thumbnail lama jika ada
-            if ($kategori_topiks->thumbnail && Storage::exists('public/' . $kategori_topiks->thumbnail)) {
-                Storage::delete('public/' . $kategori_topiks->thumbnail);
+            $destinationPath = $basePublicPath . '/kategori-topik/icon';
+
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
             }
 
-            // Simpan thumbnail baru
-            $originalName = $request->file('thumbnail')->getClientOriginalName();
-            $fileName = time() . '_' . $originalName;
-            $thumbnailPath = 'kategori-topik/icon/' . $fileName;
+            $request->file('icon')->move($destinationPath, $fileName);
+            $kategori_topiks->icon = 'konten/kategori-topik/icon/' . $fileName;
+        }
 
-            // Pastikan folder ada
-            Storage::makeDirectory('public/kategori-topik/icon');
+        if ($request->hasFile('thumbnail')) {
+            // Hapus thumbnail lama jika ada
+            $oldThumbPath = base_path('../public_html/' . $kategori_topiks->thumbnail);
+            if ($kategori_topiks->thumbnail && file_exists($oldThumbPath)) {
+                unlink($oldThumbPath);
+            }
 
-            // Simpan file asli tanpa konversi
-            $request->file('thumbnail')->storeAs('public/kategori-topik/icon', $fileName);
+            // Konversi thumbnail ke webp
+            $fileName = time() . '.webp';
+            $destinationPath = $basePublicPath . '/kategori-topik/thumbnail';
 
-            // Simpan path ke database
-            $kategori_topiks->thumbnail = $thumbnailPath;
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            $webpFullPath = $destinationPath . '/' . $fileName;
+            $imageFromStorage = $request->file('thumbnail')->getRealPath();
+
+            Image::read($imageFromStorage)
+                ->toWebp(90) // optional: kualitas 90%
+                ->save($webpFullPath);
+
+            // Simpan path di database
+            $kategori_topiks->thumbnail = 'konten/kategori-topik/thumbnail/' . $fileName;
         }
 
         // Update data ke database
@@ -149,13 +178,21 @@ class AdminKategoriTopikController extends Controller
         // Cari data yang akan dihapus berdasarkan ID
         $kategori_topiks = KategoriTopik::findOrFail($id);
         // Hapus icon jika ada
-        if ($kategori_topiks->icon && Storage::exists('public/' . $kategori_topiks->icon)) {
-            Storage::delete('public/' . $kategori_topiks->icon);
+        if ($kategori_topiks->icon) {
+            $iconPath = base_path('../public_html/' . $kategori_topiks->icon);
+            if (file_exists($iconPath)) {
+                unlink($iconPath);
+            }
         }
+
         // Hapus thumbnail jika ada
-        if ($kategori_topiks->thumbnail && Storage::exists('public/' . $kategori_topiks->thumbnail)) {
-            Storage::delete('public/' . $kategori_topiks->thumbnail);
+        if ($kategori_topiks->thumbnail) {
+            $thumbnailPath = base_path('../public_html/' . $kategori_topiks->thumbnail);
+            if (file_exists($thumbnailPath)) {
+                unlink($thumbnailPath);
+            }
         }
+
         // Hapus data dari database
         $kategori_topiks->delete();
         // Tampilkan notifikasi berhasil

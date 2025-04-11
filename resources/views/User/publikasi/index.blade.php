@@ -202,11 +202,11 @@
                                 <a href="{{ route('searchall', ['query' => $kategori->nama]) }}" class="services-link">
                                     <div class="topik-artikel-item shine-animate-item">
                                         <div class="topik-thumb">
-                                            <img src="{{ asset('storage/' . $kategori->thumbnail) }}" alt="{{ $kategori->nama }}">
+                                            <img src="{{ asset($kategori->thumbnail) }}" alt="{{ $kategori->nama }}">
                                         </div>
                                         <div class="services-topik-content">
                                             <div class="icon">
-                                                <img src="{{ asset('storage/' . $kategori->icon) }}" alt="Icon {{ $kategori->nama }}">
+                                                <img src="{{ asset($kategori->icon) }}" alt="Icon {{ $kategori->nama }}">
                                             </div>
                                             <h4 class="title">{{ $kategori->nama }}</h4>
                                             <p>{{ $kategori->description }}</p>
