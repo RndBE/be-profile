@@ -94,30 +94,50 @@ class AdminSolusiController extends Controller
         // Menangani Icon
         if ($request->hasFile('icon')) {
             // Hapus icon lama jika ada
-            if ($solution->icon && Storage::exists('public/' . $solution->icon)) {
-                Storage::delete('public/' . $solution->icon);
+            if ($solution->icon) {
+                $oldIconPath = base_path('../public_html/' . $solution->icon);
+                if (file_exists($oldIconPath)) {
+                    unlink($oldIconPath);
+                }
             }
+
             // Simpan icon baru
             $fileName = time() . '_' . $request->file('icon')->getClientOriginalName();
-            $filePath = $request->file('icon')->storeAs('public/solutions/icon', $fileName);
-            $solution->icon = 'solutions/icon/' . $fileName;
+            $destinationPath = base_path('../public_html/konten/solutions/icon');
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+            $request->file('icon')->move($destinationPath, $fileName);
+            $solution->icon = 'konten/solutions/icon/' . $fileName;
         }
-        // Menangani Thumbnail
+
+        // Menangani thumbnail
         if ($request->hasFile('thumbnail')) {
             // Hapus thumbnail lama jika ada
-            if ($solution->thumbnail && Storage::exists('public/' . $solution->thumbnail)) {
-                Storage::delete('public/' . $solution->thumbnail);
+            if ($solution->thumbnail) {
+                $oldThumbPath = base_path('../public_html/' . $solution->thumbnail);
+                if (file_exists($oldThumbPath)) {
+                    unlink($oldThumbPath);
+                }
             }
-            // Simpan thumbnail baru
+
+            // Simpan thumbnail baru (konversi ke .webp)
             $fileName = time() . '.webp';
-            $thumbnailPath = 'solutions/thumbnail/' . $fileName;
-            Storage::makeDirectory('public/solutions/thumbnail');
+            $thumbnailPath = 'konten/solutions/thumbnail/' . $fileName;
+            $fullSavePath = base_path('../public_html/' . $thumbnailPath);
+            $thumbDir = dirname($fullSavePath);
+            if (!file_exists($thumbDir)) {
+                mkdir($thumbDir, 0755, true);
+            }
+
             $imageFromStorage = $request->file('thumbnail')->getRealPath();
             Image::read($imageFromStorage)
                 ->toWebp()
-                ->save(Storage::path('public/' . $thumbnailPath));
+                ->save($fullSavePath);
+
             $solution->thumbnail = $thumbnailPath;
         }
+
         // Update data ke database
         $solution->nama = $request->nama;
         $solution->description = $request->description;
@@ -131,22 +151,25 @@ class AdminSolusiController extends Controller
 
     public function destroy($id)
     {
-        // Cari data yang akan dihapus berdasarkan ID
         $solution = Solutions::findOrFail($id);
         // Hapus icon jika ada
-        if ($solution->icon && Storage::exists('public/' . $solution->icon)) {
-            Storage::delete('public/' . $solution->icon);
+        if ($solution->icon) {
+            $iconPath = base_path('../public_html/' . $solution->icon);
+            if (file_exists($iconPath)) {
+                unlink($iconPath);
+            }
         }
         // Hapus thumbnail jika ada
-        if ($solution->thumbnail && Storage::exists('public/' . $solution->thumbnail)) {
-            Storage::delete('public/' . $solution->thumbnail);
+        if ($solution->thumbnail) {
+            $thumbnailPath = base_path('../public_html/' . $solution->thumbnail);
+            if (file_exists($thumbnailPath)) {
+                unlink($thumbnailPath);
+            }
         }
         // Hapus data dari database
         $solution->delete();
-        // Tampilkan notifikasi berhasil
         toast('Berhasil menghapus data!', 'success');
         return redirect()->back();
     }
-
 
 }
