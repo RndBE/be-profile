@@ -17,7 +17,7 @@
                                             @foreach($solutionss as $solution)
                                                 <li class="{{ Request::is('solusi/' . Str::slug($solution->nama) . '*') ? 'active' : '' }}">
                                                     <a href="{{ route('solusi.show', Str::slug($solution->nama)) }}" class="{{ Request::is('solusi/' . Str::slug($solution->nama)) ? 'active' : '' }}">
-                                                        <img src="{{ asset('storage/' . $solution->icon) }}" alt="" style="width: 20px; height: 20px; margin-right: 5px;">
+                                                        <img src="{{ asset($solution->icon) }}" alt="" style="width: 20px; height: 20px; margin-right: 5px;">
                                                         {{ $solution->nama }}
                                                     </a>
                                                     @if($solution->subSolutions->count() > 0)
