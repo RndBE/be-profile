@@ -115,7 +115,7 @@
                             </div>
                             <div class="project-artikel__details-inner-content">
                                 {!! $artikel->konten !!}
-                                <img src="{{ asset('storage/uploads/nama_gambar.jpg') }}">
+                                {{-- <img src="{{ asset('storage/uploads/nama_gambar.jpg') }}"> --}}
                             </div>
                         </div>
                     </div>

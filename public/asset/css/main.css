@@ -16003,6 +16003,15 @@ blockquote p {
 .contact__info .list-wrap li .content a:hover {
   color: var(--tg-theme-primary);
 }
+.limit-link {
+    display: inline-block;
+    max-width: 250px; /* Sesuaikan lebar maksimum */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+
 .contact__form-wrap {
   /* background: var(--tg-color-gray-3); */
   /* border: 1px solid var(--tg-border-1); */
