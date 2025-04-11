@@ -31,14 +31,17 @@ class AdminSolusiController extends Controller
         $iconPath = null;
         if ($request->hasFile('icon')) {
             $fileName = time() . '_' . $request->file('icon')->getClientOriginalName();
-            $destinationPath = public_path('konten/solutions/icon');
 
-            // Pastikan folder ada
+            // Arahkan ke public_html (keluar dari Laravel folder)
+            $destinationPath = base_path('../public_html/konten/solutions/icon');
+
             if (!file_exists($destinationPath)) {
                 mkdir($destinationPath, 0755, true);
             }
 
             $request->file('icon')->move($destinationPath, $fileName);
+
+            // URL relatif dari domain (akses via browser)
             $iconPath = 'konten/solutions/icon/' . $fileName;
         }
 
@@ -46,9 +49,8 @@ class AdminSolusiController extends Controller
         $thumbnailPath = null;
         if ($request->hasFile('thumbnail')) {
             $fileName = time() . '.webp';
-            $destinationPath = public_path('konten/solutions/thumbnail');
+            $destinationPath = base_path('../public_html/konten/solutions/thumbnail');
 
-            // Pastikan folder ada
             if (!file_exists($destinationPath)) {
                 mkdir($destinationPath, 0755, true);
             }
@@ -62,6 +64,7 @@ class AdminSolusiController extends Controller
 
             $thumbnailPath = 'konten/solutions/thumbnail/' . $fileName;
         }
+
 
 
         // Simpan data ke database
