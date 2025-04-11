@@ -58,31 +58,48 @@ class AdminProdukController extends Controller
         $thumbnailProdukPath = null;
         if ($request->hasFile('gambar_thumbnail_produk')) {
             $fileName = time() . '.webp';
-            $thumbnailProdukPath = 'produk/gambar_thumbnail_produk/' . $fileName;
-            Storage::makeDirectory('public/produk/gambar_thumbnail_produk');
+            $thumbnailProdukPath = 'konten/produk/gambar_thumbnail_produk/' . $fileName;
+            $destinationPath = base_path('../public_html/' . dirname($thumbnailProdukPath));
+
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
             $imageFromStorage = $request->file('gambar_thumbnail_produk')->getRealPath();
             Image::read($imageFromStorage)
                 ->toWebp()
-                ->save(Storage::path('public/' . $thumbnailProdukPath));
+                ->save(base_path('../public_html/' . $thumbnailProdukPath));
         }
 
         $produkPath = null;
         if ($request->hasFile('gambar_produk')) {
             $fileName = time() . '.webp';
-            $produkPath = 'produk/gambar_produk/' . $fileName;
-            Storage::makeDirectory('public/produk/gambar_produk');
+            $produkPath = 'konten/produk/gambar_produk/' . $fileName;
+            $destinationPath = base_path('../public_html/' . dirname($produkPath));
+
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
             $imageFromStorage = $request->file('gambar_produk')->getRealPath();
             Image::read($imageFromStorage)
                 ->toWebp()
-                ->save(Storage::path('public/' . $produkPath));
+                ->save(base_path('../public_html/' . $produkPath));
         }
 
         $brosurName = null;
         if ($request->hasFile('brosur')) {
             $fileName = time() . '_' . $request->file('brosur')->getClientOriginalName();
-            $brosurPath = $request->file('brosur')->storeAs('public/produk/brosur', $fileName);
-            $brosurName = 'produk/brosur/' . $fileName;
+            $brosurName = 'konten/produk/brosur/' . $fileName;
+            $destinationPath = base_path('../public_html/konten/produk/brosur');
+
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            $request->file('brosur')->move($destinationPath, $fileName);
         }
+
 
         $slug = Str::slug($request->input('nama_produk'));
 
