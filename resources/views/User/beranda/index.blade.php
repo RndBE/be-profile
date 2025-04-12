@@ -40,7 +40,7 @@
                     @foreach ($kliens as $klien)
                         <div class="swiper-slide">
                             <div class="brand-item">
-                                <img src="{{ asset('storage/' . $klien->logo) }}" alt="{{ $klien->nama }}">
+                                <img loading="lazy" src="{{ asset('storage/' . $klien->logo) }}" alt="{{ $klien->nama }}">
                             </div>
                             <div>
                                 <p>{{ $klien->nama_perusahaan }}</p>
@@ -70,11 +70,11 @@
                         <a href="{{ route('solusi.show', Str::slug($solution->nama)) }}" class="services-link">
                             <div class="services-item shine-animate-item">
                                 <div class="services-thumb">
-                                    <img src="{{ asset($solution->thumbnail) }}" alt="">
+                                    <img loading="lazy" src="{{ asset($solution->thumbnail) }}" alt="">
                                 </div>
                                 <div class="services-content">
                                     <div class="icon">
-                                        <img src="{{ asset($solution->icon) }}" alt="">
+                                        <img loading="lazy" src="{{ asset($solution->icon) }}" alt="">
                                     </div>
                                     <h4 class="title">{{ $solution->nama }}</h4>
                                     <p>{{ $solution->description }}</p>
@@ -95,7 +95,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-8">
                     <div class="about-img-wrap">
-                            <img src="{{ asset('asset/img/images/Topologi.png') }}" alt="">
+                            <img loading="lazy" src="{{ asset('asset/img/images/Topologi.png') }}" alt="">
                     </div>
                 </div>
                 <div class="col-sm-4">
@@ -120,8 +120,8 @@
             <div class="row align-items-center">
                 <div class="col-lg-4 order-0 order-lg-2">
                     <div class="choose-img-wrap">
-                        <img src="{{ asset('asset/img/images/teknisi.jpeg') }}" alt="">
-                        <img src="{{ asset('asset/img/images/Group 34.png') }}" class="shadow-image" alt="" data-parallax='{"x" : 50 }'>
+                        <img loading="lazy" src="{{ asset('asset/img/images/teknisi.jpeg') }}" alt="">
+                        <img loading="lazy" src="{{ asset('asset/img/images/Group 34.png') }}" class="shadow-image" alt="" data-parallax='{"x" : 50 }'>
                     </div>
                 </div>
                 <div class="col-lg-8">
@@ -135,7 +135,7 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div class="icon">
-                                        <img src="{{ asset('asset/img/icon/AI.png') }}" alt="">
+                                        <img loading="lazy" src="{{ asset('asset/img/icon/AI.png') }}" alt="">
                                     </div>
                                     <div class="content">
                                         <h4 class="title">Telemetri Berbasis AI</h4>
@@ -144,7 +144,7 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="icon">
-                                        <img src="{{ asset('asset/img/icon/GARANSI.png') }}" alt="">
+                                        <img loading="lazy" src="{{ asset('asset/img/icon/GARANSI.png') }}" alt="">
                                     </div>
                                     <div class="content">
                                         <h4 class="title">Garansi Maintenance</h4>
@@ -153,7 +153,7 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="icon">
-                                        <img src="{{ asset('asset/img/icon/MONITORING.png') }}" alt="">
+                                        <img loading="lazy" src="{{ asset('asset/img/icon/MONITORING.png') }}" alt="">
                                     </div>
                                     <div class="content">
                                         <h4 class="title">Monitoring Terintegrasi</h4>
@@ -162,7 +162,7 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="icon">
-                                        <img src="{{ asset('asset/img/icon/LAYANAN.png') }}" alt="">
+                                        <img loading="lazy" src="{{ asset('asset/img/icon/LAYANAN.png') }}" alt="">
                                     </div>
                                     <div class="content">
                                         <h4 class="title">Layanan Konsultasi</h4>
@@ -177,7 +177,7 @@
             </div>
         </div>
         <div class="choose-shape-wrap">
-            <img src="{{ asset('asset/img/images/blog_shape031.png') }}" alt="" data-aos="fade-left" data-aos-delay="400">
+            <img loading="lazy" src="{{ asset('asset/img/images/blog_shape031.png') }}" alt="" data-aos="fade-left" data-aos-delay="400">
         </div>
     </section>
     <!-- choose-area-end -->
@@ -202,7 +202,7 @@
                             <div class="project-item">
                                 <div class="project-thumb">
                                     <a href="{{ route('proyek.show', Str::slug($projek->nama_projek)) }}">
-                                        <img src="{{ asset('storage/' . $projek->thumbnail) }}" alt="">
+                                        <img loading="lazy" src="{{ asset('storage/' . $projek->thumbnail) }}" alt="">
                                     </a>
                                 </div>
                                 <div class="project-content">
@@ -255,10 +255,10 @@
                             </div>
                         </div>
                         <div class="consulting-img shine-animate">
-                            <img src="{{ asset('asset/img/images/valveIKN.jpeg') }}" alt="">
+                            <img loading="lazy" src="{{ asset('asset/img/images/valveIKN.jpeg') }}" alt="">
                         </div>
                         <div class="consulting-shape">
-                            {{-- <img src="{{ asset('asset/img/images/consulting_shape.png') }}" alt=""> --}}
+                            {{-- <img loading="lazy" src="{{ asset('asset/img/images/consulting_shape.png') }}" alt=""> --}}
                         </div>
                     </div>
                 </div>
@@ -278,7 +278,7 @@
                                 <div class="testimonial-item">
                                     <div class="testimonial-info">
                                         <div class="icon">
-                                            <img src="{{ asset('storage/' . $testimoni->projek->klien->logo ) }}" alt="Logo" class="user-image">
+                                            <img loading="lazy" src="{{ asset('storage/' . $testimoni->projek->klien->logo ) }}" alt="Logo" class="user-image">
                                         </div>
                                         <div class="text-info">
                                             <h4 class="title">{{ $testimoni->nama_user }}</h4>
@@ -287,7 +287,7 @@
                                     </div>
                                     <div class="testimonial-content">
                                         <p>“{{ $testimoni->testimoni }}”</p>
-                                        <div class="icon"><img src="{{ asset('asset/img/images/petik.png') }}" alt=""></div>
+                                        <div class="icon"><img loading="lazy" src="{{ asset('asset/img/images/petik.png') }}" alt=""></div>
                                     </div>
                                     <div class="testimonial-content1">
                                         <div class="icon1">{{ $testimoni->projek->nama_projek }}</div>
@@ -301,13 +301,13 @@
                 <div class="col-lg-6 col-md-8 kolom-widya">
                     <div class="testimonial-img-wrap">
                         <div class="icon">
-                            <img src="{{ asset('asset/img/images/widya1.png') }}" alt="">
+                            <img loading="lazy" src="{{ asset('asset/img/images/widya1.png') }}" alt="">
                         </div>
                         <div class="img-shape">
-                            <img src="{{ asset('asset/img/images/testimonial_bgwidya1.png') }}" class="bgwidya" alt="">
-                            <img src="" alt="" class="rightToLeft">
-                            <img src="{{ asset('asset/img/images/testimonial_shape1.png') }}" alt="" data-parallax='{"y" : 80 }'>
-                            <img src="{{ asset('asset/img/images/testimonial_shape2.png') }}" alt="" class="alltuchtopdown">
+                            <img loading="lazy" src="{{ asset('asset/img/images/testimonial_bgwidya1.png') }}" class="bgwidya" alt="">
+                            <img loading="lazy" src="" alt="" class="rightToLeft">
+                            <img loading="lazy" src="{{ asset('asset/img/images/testimonial_shape1.png') }}" alt="" data-parallax='{"y" : 80 }'>
+                            <img loading="lazy" src="{{ asset('asset/img/images/testimonial_shape2.png') }}" alt="" class="alltuchtopdown">
                         </div>
                     </div>
                 </div>
@@ -334,7 +334,7 @@
                             style="cursor: pointer;">
                             <div class="artikel-post-thumb">
                                 <a href="{{ route('publikasi.show', $artikel->slug) }}" class="shine-animate">
-                                    <img src="{{ asset('storage/' . $artikel->thumbnail) }}" alt="{{ $artikel->judul }}">
+                                    <img loading="lazy" src="{{ asset('storage/' . $artikel->thumbnail) }}" alt="{{ $artikel->judul }}">
                                 </a>
                             </div>
                             <div class="artikel-post-content">
@@ -343,7 +343,7 @@
                                 </h2>
                                 <div class="artikel-avatar">
                                     <div class="avatar-thumb">
-                                        <img src="{{ asset('asset/img/blog/calendar1.png') }}" alt="">
+                                        <img loading="lazy" src="{{ asset('asset/img/blog/calendar1.png') }}" alt="">
                                     </div>
                                     <div class="avatar-content">
                                         <p>{{ $artikel->created_at->translatedFormat('l, d F Y') }}</p>
