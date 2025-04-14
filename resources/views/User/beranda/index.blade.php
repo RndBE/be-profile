@@ -120,7 +120,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-4 order-0 order-lg-2">
                     <div class="choose-img-wrap">
-                        <img loading="lazy" src="{{ asset('asset/img/images/teknisi.jpeg') }}" alt="">
+                        <img loading="lazy" src="{{ asset('asset/img/images/Foto Harapan.png') }}" alt="">
                         <img loading="lazy" src="{{ asset('asset/img/images/Group 34.png') }}" class="shadow-image" alt="" data-parallax='{"x" : 50 }'>
                     </div>
                 </div>
