@@ -20,7 +20,7 @@ class UserBerandaController extends Controller
     function index()
     {
         $data = [
-            'kliens' => Klien::orderBy('created_at', 'desc')->get(),
+            'kliens' => Klien::orderBy('id', 'desc')->get(),
             'carousels' => BerandaCarousel::orderBy('created_at', 'desc')->get(),
             'solutionss' => Solutions::with('subSolutions')->orderBy('created_at', 'asc')->get(),
             'projeks' => Projek::orderBy('created_at', 'desc')->get(),
