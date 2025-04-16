@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Klien;
 use App\Models\Projek;
+use Illuminate\Support\Str;
 use App\Models\GambarProjek;
 use Illuminate\Http\Request;
 use App\Models\KategoriProjek;
@@ -63,8 +64,18 @@ class AdminProjekController extends Controller
             $gambar_proyekName = 'projek_gambar_proyeks/' . $fileName;
         }
 
+        // Buat slug berdasarkan nama_projek
+        $slug = Str::slug($request->nama_projek);
+
+        // Cek apakah slug sudah ada, jika ada tambahkan angka
+        $count = Projek::where('slug', 'LIKE', "{$slug}%")->count();
+        if ($count > 0) {
+            $slug = $slug . '-' . ($count + 1);
+        }
+
         $projek = Projek::create([
             'nama_projek' => $request->input('nama_projek'),
+            'slug' => $slug,
             'klien_id' => $request->input('klien_id'),
             'kategori_projek_id' => $request->input('kategori_projek_id'),
             'lokasi' => $request->input('lokasi'),
@@ -125,6 +136,18 @@ class AdminProjekController extends Controller
             'gambar.*' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
+        if ($request->input('nama_projek') !== $projek->nama_projek) {
+            $slug = Str::slug($request->input('nama_projek'));
+
+            // Cek apakah slug sudah ada di database
+            $count = Projek::where('slug', 'LIKE', "{$slug}%")->where('id', '!=', $id)->count();
+            if ($count > 0) {
+                $slug = $slug . '-' . ($count + 2);
+            }
+        } else {
+            $slug = $projek->slug; // Gunakan slug lama jika nama_projek tidak berubah
+        }
+
         $projek->update($request->only([
             'nama_projek', 'klien_id', 'kategori_projek_id', 'lokasi', 'website', 'waktu', 'white_paper', 'deskripsi1', 'deskripsi2',
         ]));
@@ -156,6 +179,7 @@ class AdminProjekController extends Controller
             }
         }
 
+        $projek->slug = $slug;
         $projek->save();
 
         toast('Berhasil mengubah data!', 'success');
