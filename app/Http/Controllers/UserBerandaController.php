@@ -23,7 +23,7 @@ class UserBerandaController extends Controller
             'kliens' => Klien::orderBy('id', 'desc')->get(),
             'carousels' => BerandaCarousel::orderBy('created_at', 'desc')->get(),
             'solutionss' => Solutions::with('subSolutions')->orderBy('created_at', 'asc')->get(),
-            'projeks' => Projek::orderBy('created_at', 'desc')->get(),
+            'projeks' => Projek::orderBy('waktu', 'desc')->get(),
             'testimonis' => Testimoni::with('projek.klien')->orderBy('created_at', 'desc')->paginate(10),
             'artikels_terbaru' => Artikel::where('status', 'published')->latest()->take(3)->get()
         ];
