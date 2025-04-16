@@ -59,7 +59,7 @@ use App\Http\Controllers\AdminSeriPerangkatSpesifikasiController;
 
 Route::resource('/', UserBerandaController::class);
 Route::get('/proyek/{slug}', [UserProyekController::class, 'show'])->name('proyek.show');
-Route::resource('/proyek', UserProyekController::class);
+Route::resource('/proyek', UserProyekController::class)->except(['show']);
 Route::get('/solusi/{slug}/{subSlug?}', [UserSolusiController::class, 'show'])->name('solusi.show');
 Route::get('/detail-produk/{slug}', [UserProdukController::class, 'show'])->name('detail-produk.show');
 Route::resource('/tentang-kami', UserAboutController::class);

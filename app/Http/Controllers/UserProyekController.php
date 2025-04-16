@@ -33,9 +33,8 @@ class UserProyekController extends Controller
     public function show($slug)
     {
 
-        $projek = Projek::whereRaw("LOWER(REPLACE(nama_projek, ' ', '-')) = ?", [Str::lower($slug)])
-                    ->with('gambar')
-                    ->firstOrFail();
+        $projek = Projek::where('slug', $slug)->with('gambar')->firstOrFail();
+
         $data = [
             'kliens' => Klien::orderBy('created_at', 'desc')->get(),
             'carousels' => BerandaCarousel::orderBy('created_at', 'desc')->get(),
