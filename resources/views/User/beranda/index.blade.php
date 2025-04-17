@@ -873,7 +873,6 @@
             }
         }
     </style>
-    </style>
 
     <!-- about-area -->
     <section id="about" class="about-area pt-120 pb-120">
