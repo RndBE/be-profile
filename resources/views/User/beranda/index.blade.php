@@ -64,27 +64,29 @@
                 </div>
             </div>
             <div class="services-item-wrap">
-                <div class="row justify-content-center">
-                    @foreach($solutionss as $solution)
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
-                        <a href="{{ route('solusi.show', Str::slug($solution->nama)) }}" class="services-link">
-                            <div class="services-item shine-animate-item">
-                                <div class="services-thumb">
-                                    <img loading="lazy" src="{{ asset('asset/img/images/Topologi.png') }}" alt="">
-                                </div>
-                                <div class="services-content">
-                                    <div class="icon">
-                                        <img loading="lazy" src="{{ asset('asset/img/images/Topologi.png') }}" alt="">
+                @foreach($solutionss->chunk(3) as $chunk)
+                    <div class="row justify-content-center">
+                        @foreach($chunk as $solution)
+                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                                <a href="{{ route('solusi.show', Str::slug($solution->nama)) }}" class="services-link">
+                                    <div class="services-item equal-box shine-animate-item">
+                                        <div class="services-thumb">
+                                            <img loading="lazy" src="{{ asset('asset/img/images/Topologi.png') }}" alt="">
+                                        </div>
+                                        <div class="services-content">
+                                            <div class="icon">
+                                                <img loading="lazy" src="{{ asset('asset/img/images/Topologi.png') }}" alt="">
+                                            </div>
+                                            <h4 class="title">{{ $solution->nama }}</h4>
+                                            <p>{{ $solution->description }}</p>
+                                            <span class="btn">Pelajari</span>
+                                        </div>
                                     </div>
-                                    <h4 class="title">{{ $solution->nama }}</h4>
-                                    <p>{{ $solution->description }}</p>
-                                    <span class="btn">Pelajari</span>
-                                </div>
+                                </a>
                             </div>
-                        </a>
+                        @endforeach
                     </div>
-                    @endforeach
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

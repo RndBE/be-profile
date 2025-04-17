@@ -5863,8 +5863,13 @@ textarea {
   color: var(--tg-theme-primary);
 }
 .services-content {
-  padding: 30px 30px 30px;
+  padding: 30px 10px 30px 20px;
   position: relative;
+}
+.equal-box {
+    height: 95%;
+    min-height: 100px;
+    min-width: 290px;
 }
 .services-topik-content {
     padding: 30px 50px 50px;
