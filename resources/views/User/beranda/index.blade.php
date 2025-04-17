@@ -112,7 +112,23 @@
             list-style: none;
             padding: 0;
         }
-        .devices li {
+        .devices li{
+            background: #2e2e4d;
+            color: #fff;
+            padding: 8px 12px;
+            margin: 12px 0;
+            border-radius: 6px;
+            font-size: 12px;
+            position: relative;
+            height: 70px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .devices li a{
             background: #2e2e4d;
             color: #fff;
             padding: 8px 12px;
@@ -884,11 +900,31 @@
                             <div class="devices left">
                                 <div class="arrow-up"></div>
                                 <ul>
-                                    <li>AUTOMATIC WATER LEVEL RECORDER <strong>(AWLR)</strong></li>
-                                    <li>AUTOMATIC WEATHER RECORDER <strong>(AWR)</strong></li>
-                                    <li>AUTOMATIC RAIN RECORDER <strong>(ARR)</strong></li>
-                                    <li>AUTOMATIC GEOTHERMAL RECORDER <strong>(AGR)</strong></li>
-                                    <li>AUTOMATIC DEFORMATION RECORDER <strong>(ADR)</strong></li>
+                                    <li>
+                                        <a href="https://be-jogja.com/solusi/water-security/automatic-water-level-recorder">
+                                            AUTOMATIC WATER LEVEL RECORDER <strong>(AWLR)</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://be-jogja.com/solusi/weather-forecast/automatic-weather-recorder">
+                                            AUTOMATIC WEATHER RECORDER <strong>(AWR)</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://be-jogja.com/solusi/weather-forecast/automatic-rain-recorder">
+                                            AUTOMATIC RAIN RECORDER <strong>(ARR)</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            AUTOMATIC GEOTHERMAL RECORDER <strong>(AGR)</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://be-jogja.com/solusi/water-security/automatic-deformation-recorder">
+                                            AUTOMATIC DEFORMATION RECORDER <strong>(ADR)</strong>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
 
@@ -900,11 +936,31 @@
                             <div class="devices right">
                                 <div class="arrow-up"></div>
                                 <ul>
-                                    <li>AUTOMATIC WATER GATE CONTROLLER <strong>(AWGC)</strong></li>
-                                    <li>AUTOMATIC WATER QUALITY RECORDER <strong>(AWQR)</strong></li>
-                                    <li>AUTOMATIC FLOW METER RECORDER <strong>(AFMR)</strong></li>
-                                    <li>AUTOMATIC VIBRATING WIRE RECORDER <strong>(AVWR)</strong></li>
-                                    <li>EARLY WARNING SYSTEM <strong>(EWS)</strong></li>
+                                    <li>
+                                        <a href="https://be-jogja.com/solusi/water-security/automatic-water-gate-controller">
+                                            AUTOMATIC WATER GATE CONTROLLER <strong>(AWGC)</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://be-jogja.com/solusi/water-security/automatic-water-quality-recorder">
+                                            AUTOMATIC WATER QUALITY RECORDER <strong>(AWQR)</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://be-jogja.com/solusi/water-security/automatic-flow-meter-recorder">
+                                            AUTOMATIC FLOW METER RECORDER <strong>(AFMR)</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://be-jogja.com/solusi/water-security/automatic-vibrating-wire-recorder">
+                                            AUTOMATIC VIBRATING WIRE RECORDER <strong>(AVWR)</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://be-jogja.com/solusi/early-warning-system/early-warning-system">
+                                            EARLY WARNING SYSTEM <strong>(EWS)</strong>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
