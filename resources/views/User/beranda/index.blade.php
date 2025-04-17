@@ -70,11 +70,11 @@
                         <a href="{{ route('solusi.show', Str::slug($solution->nama)) }}" class="services-link">
                             <div class="services-item shine-animate-item">
                                 <div class="services-thumb">
-                                    <img loading="lazy" src="{{ asset($solution->thumbnail) }}" alt="">
+                                    <img loading="lazy" src="{{ asset('asset/img/images/Topologi.png') }}" alt="">
                                 </div>
                                 <div class="services-content">
                                     <div class="icon">
-                                        <img loading="lazy" src="{{ asset($solution->icon) }}" alt="">
+                                        <img loading="lazy" src="{{ asset('asset/img/images/Topologi.png') }}" alt="">
                                     </div>
                                     <h4 class="title">{{ $solution->nama }}</h4>
                                     <p>{{ $solution->description }}</p>
@@ -89,13 +89,836 @@
         </div>
     </section>
     <!-- services-area-end -->
+    <style>
+        .topology-diagram {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #2b2b2b;
+            position: relative;
+        }
+        .cloud-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            position: relative;
+            flex-wrap: wrap;
+        }
+        .devices {
+            width: 25%;
+            position: relative;
+        }
+        .devices ul {
+            list-style: none;
+            padding: 0;
+        }
+        .devices li {
+            background: #2e2e4d;
+            color: #fff;
+            padding: 8px 12px;
+            margin: 12px 0;
+            border-radius: 6px;
+            font-size: 12px;
+            position: relative;
+            height: 70px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .cloud {
+            width: 35%;
+            position: relative;
+        }
+        .cloud img {
+            max-width: 100%;
+            height: auto;
+        }
+        .monitoring img {
+            max-width: 20%;
+            height: auto;
+        }
+        .desc {
+            font-size: 13px;
+            max-width: 700px;
+            margin: 0px auto;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .devices.left {
+            position: relative;
+        }
+
+        .devices.left::before {
+            content: "";
+            position: absolute;
+            top: 20px;
+            right: -40px;
+            width: 2px;
+            height: 79%;
+            background-color: #2e2e4d;
+            z-index: -1;
+        }
+
+        .devices.left::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: -58px;
+            width: 20px;
+            height: 20px;
+            border-bottom: 2px solid #2e2e4d;
+            border-right: 2px solid #2e2e4d;
+            border-bottom-right-radius: 20px;
+            background: none;
+            z-index: -1;
+            transform: rotate(-90deg) scaleY(-1);
+        }
+
+        .devices.left .arrow-up {
+            content: "";
+            position: absolute;
+            top: -2px;
+            right: -65px;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 6px solid #2e2e4d;
+            z-index: -1;
+            transform: rotate(90deg)
+        }
+
+        .devices.left li::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -10px;
+            width: 10px;
+            height: 10px;
+            background-color: #2e2e4d;
+            border-radius: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+        .devices.left li::after {
+            content: "";
+            position: absolute;
+            top: 38%;
+            right: -40px;
+            width: 40px;
+            height: 20px;
+            background: none;
+            border-top: 2px solid #2e2e4d;
+            border-right: 2px solid #2e2e4d;
+            border-top-right-radius: 20px;
+            transform: translateY(-50%) scaleY(-1);
+        }
+
+        .devices.right {
+            position: relative;
+        }
+
+        .devices.right::before {
+            content: "";
+            position: absolute;
+            top: 20px;
+            left: -40px;
+            width: 2px;
+            height: 80%;
+            background-color: #2e2e4d;
+            z-index: -1;
+        }
+
+        .devices.right::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -58px;
+            width: 20px;
+            height: 20px;
+            border-bottom: 2px solid #2e2e4d;
+            border-left: 2px solid #2e2e4d;
+            border-bottom-left-radius: 20px;
+            background: none;
+            z-index: -1;
+            transform: rotate(90deg) scaleY(-1);
+        }
+
+        .devices.right .arrow-up {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -65px;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 6px solid #2e2e4d;
+            z-index: -1;
+            transform: rotate(90deg);
+        }
+
+        .devices.right li::before {
+            content: "";
+            position: absolute;
+            top: 55%;
+            left: -10px;
+            width: 10px;
+            height: 10px;
+            background-color: #2e2e4d;
+            border-radius: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .devices.right li::after {
+            content: "";
+            position: absolute;
+            top: 40%;
+            left: -40px;
+            width: 40px;
+            height: 20px;
+            background: none;
+            border-top: 2px solid #2e2e4d;
+            border-left: 2px solid #2e2e4d;
+            border-top-left-radius: 20px;
+            transform: translateY(-50%) scaleY(-1);
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 834px) {
+            .cloud-section {
+                flex-direction: column-reverse;
+            }
+
+            .devices, .cloud {
+                width: 90%;
+            }
+
+            .cloud img {
+                max-width: 50%;
+                height: auto;
+            }
+
+            .cloud {
+                order: 0; /* tampilkan cloud di atas */
+            }
+
+            .devices.left {
+                order: -1; /* di bawah cloud */
+            }
+
+            .devices.right {
+                order: -1; /* paling bawah */
+            }
+
+            .monitoring img {
+                max-width: 40%;
+                height: auto;
+            }
+
+            .devices.left {
+                position: relative;
+            }
+
+            .devices.left::before {
+                content: "";
+                position: absolute;
+                top: -880px;
+                right: -20px;
+                width: 2px;
+                height: 1240px;
+                background-color: #2e2e4d;
+                z-index: -1;
+            }
+
+            .devices.left::after {
+                content: "";
+                position: absolute;
+                top: -898px;
+                right: -20px;
+                width: 20px;
+                height: 20px;
+                border-bottom: 2px solid #2e2e4d;
+                border-right: 2px solid #2e2e4d;
+                border-bottom-right-radius: 20px;
+                background: none;
+                z-index: -1;
+                transform: rotate(-90deg) scaleY(1);
+            }
+
+            .devices.left .arrow-up {
+                content: "";
+                position: absolute;
+                top: -899px;
+                right: -5px;
+                width: 0;
+                height: 0;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-bottom: 6px solid #2e2e4d;
+                z-index: -1;
+                transform: rotate(-90deg);
+            }
+
+            .devices.left li::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                right: -10px;
+                width: 10px;
+                height: 10px;
+                background-color: #2e2e4d;
+                border-radius: 50%;
+                transform: translateY(-50%);
+                z-index: 1;
+            }
+            .devices.left li::after {
+                content: "";
+                position: absolute;
+                top: 38%;
+                right: -20px;
+                width: 20px;
+                height: 20px;
+                background: none;
+                border-top: 2px solid #2e2e4d;
+                border-right: 2px solid #2e2e4d;
+                border-top-right-radius: 20px;
+                transform: translateY(-50%) scaleY(-1);
+            }
+
+            .devices.right {
+                position: relative;
+            }
+
+            .devices.right::before {
+                content: "";
+                position: absolute;
+                top: -450px;
+                left: -20px;
+                width: 2px;
+                height: 815px;
+                background-color: #2e2e4d;
+                z-index: -1;
+            }
+
+            .devices.right::after {
+                content: "";
+                position: absolute;
+                top: -470px;
+                left: -20px;
+                width: 20px;
+                height: 20px;
+                border-bottom: 2px solid #2e2e4d;
+                border-left: 2px solid #2e2e4d;
+                border-bottom-left-radius: 20px;
+                background: none;
+                z-index: -1;
+                transform: rotate(90deg) scaleY(1);
+            }
+
+            .devices.right .arrow-up {
+                content: "";
+                position: absolute;
+                top: -472px;
+                left: -5px;
+                width: 0;
+                height: 0;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 6px solid #2e2e4d;
+                z-index: -1;
+                transform: rotate(-90deg);
+            }
+
+            .devices.right li::before {
+                content: "";
+                position: absolute;
+                top: 55%;
+                left: -10px;
+                width: 10px;
+                height: 10px;
+                background-color: #2e2e4d;
+                border-radius: 50%;
+                transform: translateY(-50%);
+                z-index: 1;
+            }
+
+            .devices.right li::after {
+                content: "";
+                position: absolute;
+                top: 45%;
+                left: -20px;
+                width: 20px;
+                height: 20px;
+                background: none;
+                border-top: 2px solid #2e2e4d;
+                border-left: 2px solid #2e2e4d;
+                border-top-left-radius: 20px;
+                transform: translateY(-50%) scaleY(-1);
+            }
+        }
+
+        @media (max-width: 440px) {
+            .devices.left::before {
+                content: "";
+                position: absolute;
+                top: -670px;
+                right: -20px;
+                width: 2px;
+                height: 1028px;
+                background-color: #2e2e4d;
+                z-index: -1;
+            }
+
+            .devices.left::after {
+                content: "";
+                position: absolute;
+                top: -690px;
+                right: -20px;
+                width: 20px;
+                height: 20px;
+                border-bottom: 2px solid #2e2e4d;
+                border-right: 2px solid #2e2e4d;
+                border-bottom-right-radius: 20px;
+                background: none;
+                z-index: -1;
+                transform: rotate(-90deg) scaleY(1);
+            }
+
+            .devices.left .arrow-up {
+                content: "";
+                position: absolute;
+                top: -692px;
+                right: -5px;
+                width: 0;
+                height: 0;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-bottom: 6px solid #2e2e4d;
+                z-index: -1;
+                transform: rotate(-90deg);
+            }
+
+            .devices.right::before {
+                content: "";
+                position: absolute;
+                top: -245px;
+                left: -20px;
+                width: 2px;
+                height: 610px;
+                background-color: #2e2e4d;
+                z-index: -1;
+            }
+
+            .devices.right::after {
+                content: "";
+                position: absolute;
+                top: -265px;
+                left: -20px;
+                width: 20px;
+                height: 20px;
+                border-bottom: 2px solid #2e2e4d;
+                border-left: 2px solid #2e2e4d;
+                border-bottom-left-radius: 20px;
+                background: none;
+                z-index: -1;
+                transform: rotate(90deg) scaleY(1);
+            }
+
+            .devices.right .arrow-up {
+                content: "";
+                position: absolute;
+                top: -266px;
+                left: -5px;
+                width: 0;
+                height: 0;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 6px solid #2e2e4d;
+                z-index: -1;
+                transform: rotate(-90deg);
+            }
+        }
+
+        @media (max-width: 375px) {
+            .devices.left::before {
+                content: "";
+                position: absolute;
+                top: -645px;
+                right: -20px;
+                width: 2px;
+                height: 1005px;
+                background-color: #2e2e4d;
+                z-index: -1;
+            }
+
+            .devices.left::after {
+                content: "";
+                position: absolute;
+                top: -665px;
+                right: -20px;
+                width: 20px;
+                height: 20px;
+                border-bottom: 2px solid #2e2e4d;
+                border-right: 2px solid #2e2e4d;
+                border-bottom-right-radius: 20px;
+                background: none;
+                z-index: -1;
+                transform: rotate(-90deg) scaleY(1);
+            }
+
+            .devices.left .arrow-up {
+                content: "";
+                position: absolute;
+                top: -667px;
+                right: -5px;
+                width: 0;
+                height: 0;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-bottom: 6px solid #2e2e4d;
+                z-index: -1;
+                transform: rotate(-90deg);
+            }
+
+            .devices.right::before {
+                content: "";
+                position: absolute;
+                top: -220px;
+                left: -20px;
+                width: 2px;
+                height: 582px;
+                background-color: #2e2e4d;
+                z-index: -1;
+            }
+
+            .devices.right::after {
+                content: "";
+                position: absolute;
+                top: -240px;
+                left: -20px;
+                width: 20px;
+                height: 20px;
+                border-bottom: 2px solid #2e2e4d;
+                border-left: 2px solid #2e2e4d;
+                border-bottom-left-radius: 20px;
+                background: none;
+                z-index: -1;
+                transform: rotate(90deg) scaleY(1);
+            }
+
+            .devices.right .arrow-up {
+                content: "";
+                position: absolute;
+                top: -242px;
+                left: -5px;
+                width: 0;
+                height: 0;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 6px solid #2e2e4d;
+                z-index: -1;
+                transform: rotate(-90deg);
+            }
+        }
+
+        @media (max-width: 320px) {
+            .devices.left::before {
+                content: "";
+                position: absolute;
+                top: -615px;
+                right: -20px;
+                width: 2px;
+                height: 975px;
+                background-color: #2e2e4d;
+                z-index: -1;
+            }
+
+            .devices.left::after {
+                content: "";
+                position: absolute;
+                top: -635px;
+                right: -20px;
+                width: 20px;
+                height: 20px;
+                border-bottom: 2px solid #2e2e4d;
+                border-right: 2px solid #2e2e4d;
+                border-bottom-right-radius: 20px;
+                background: none;
+                z-index: -1;
+                transform: rotate(-90deg) scaleY(1);
+            }
+
+            .devices.left .arrow-up {
+                content: "";
+                position: absolute;
+                top: -637px;
+                right: -5px;
+                width: 0;
+                height: 0;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-bottom: 6px solid #2e2e4d;
+                z-index: -1;
+                transform: rotate(-90deg);
+            }
+
+            .devices.right::before {
+                content: "";
+                position: absolute;
+                top: -190px;
+                left: -20px;
+                width: 2px;
+                height: 555px;
+                background-color: #2e2e4d;
+                z-index: -1;
+            }
+
+            .devices.right::after {
+                content: "";
+                position: absolute;
+                top: -210px;
+                left: -20px;
+                width: 20px;
+                height: 20px;
+                border-bottom: 2px solid #2e2e4d;
+                border-left: 2px solid #2e2e4d;
+                border-bottom-left-radius: 20px;
+                background: none;
+                z-index: -1;
+                transform: rotate(90deg) scaleY(1);
+            }
+
+            .devices.right .arrow-up {
+                content: "";
+                position: absolute;
+                top: -212px;
+                left: -5px;
+                width: 0;
+                height: 0;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 6px solid #2e2e4d;
+                z-index: -1;
+                transform: rotate(-90deg);
+            }
+        }
+
+        @media (max-width: 1114px) and (min-width: 835px) {
+            .devices {
+                width: 22%;
+                position: relative;
+            }
+
+            .devices li {
+                background: #2e2e4d;
+                color: #fff;
+                padding: 8px 12px;
+                margin: 12px 0;
+                border-radius: 6px;
+                font-size: 8px;
+                position: relative;
+                height: 55px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .devices.left {
+                position: relative;
+            }
+
+            .devices.left::before {
+                content: "";
+                position: absolute;
+                bottom: 0px;
+                right: -40px;
+                width: 2px;
+                height: 78%;
+                background-color: #2e2e4d;
+                z-index: -1;
+            }
+
+            .devices.left::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: -58px;
+                width: 20px;
+                height: 20px;
+                border-bottom: 2px solid #2e2e4d;
+                border-right: 2px solid #2e2e4d;
+                border-bottom-right-radius: 20px;
+                background: none;
+                z-index: -1;
+                transform: rotate(-90deg) scaleY(-1);
+            }
+
+            .devices.left .arrow-up {
+                content: "";
+                position: absolute;
+                top: -2px;
+                right: -65px;
+                width: 0;
+                height: 0;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-bottom: 6px solid #2e2e4d;
+                z-index: -1;
+                transform: rotate(90deg)
+            }
+
+            .devices.left li::before {
+                content: "";
+                position: absolute;
+                top: 55%;
+                right: -10px;
+                width: 10px;
+                height: 10px;
+                background-color: #2e2e4d;
+                border-radius: 50%;
+                transform: translateY(-50%);
+                z-index: 1;
+            }
+            .devices.left li::after {
+                content: "";
+                position: absolute;
+                top: 38%;
+                right: -40px;
+                width: 40px;
+                height: 20px;
+                background: none;
+                border-top: 2px solid #2e2e4d;
+                border-right: 2px solid #2e2e4d;
+                border-top-right-radius: 20px;
+                transform: translateY(-50%) scaleY(-1);
+            }
+
+            .devices.right {
+                position: relative;
+            }
+
+            .devices.right::before {
+                content: "";
+                position: absolute;
+                bottom: 0px;
+                left: -40px;
+                width: 2px;
+                height: 78%;
+                background-color: #2e2e4d;
+                z-index: -1;
+            }
+
+            .devices.right::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -58px;
+                width: 20px;
+                height: 20px;
+                border-bottom: 2px solid #2e2e4d;
+                border-left: 2px solid #2e2e4d;
+                border-bottom-left-radius: 20px;
+                background: none;
+                z-index: -1;
+                transform: rotate(90deg) scaleY(-1);
+            }
+
+            .devices.right .arrow-up {
+                content: "";
+                position: absolute;
+                top: -2px;
+                left: -65px;
+                width: 0;
+                height: 0;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 6px solid #2e2e4d;
+                z-index: -1;
+                transform: rotate(90deg);
+            }
+
+            .devices.right li::before {
+                content: "";
+                position: absolute;
+                top: 55%;
+                left: -10px;
+                width: 10px;
+                height: 10px;
+                background-color: #2e2e4d;
+                border-radius: 50%;
+                transform: translateY(-50%);
+                z-index: 1;
+            }
+
+            .devices.right li::after {
+                content: "";
+                position: absolute;
+                top: 40%;
+                left: -40px;
+                width: 40px;
+                height: 20px;
+                background: none;
+                border-top: 2px solid #2e2e4d;
+                border-left: 2px solid #2e2e4d;
+                border-top-left-radius: 20px;
+                transform: translateY(-50%) scaleY(-1);
+            }
+        }
+    </style>
+    </style>
+
     <!-- about-area -->
     <section id="about" class="about-area pt-120 pb-120">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8">
-                    <div class="about-img-wrap">
-                            <img loading="lazy" src="{{ asset('asset/img/images/Topologi.png') }}" alt="">
+                    <div class="topology-diagram">
+                        <div class="cloud-section">
+                            <div class="devices left">
+                                <div class="arrow-up"></div>
+                                <ul>
+                                    <li>AUTOMATIC WATER LEVEL RECORDER <strong>(AWLR)</strong></li>
+                                    <li>AUTOMATIC WEATHER RECORDER <strong>(AWR)</strong></li>
+                                    <li>AUTOMATIC RAIN RECORDER <strong>(ARR)</strong></li>
+                                    <li>AUTOMATIC GEOTHERMAL RECORDER <strong>(AGR)</strong></li>
+                                    <li>AUTOMATIC DEFORMATION RECORDER <strong>(ADR)</strong></li>
+                                </ul>
+                            </div>
+
+                            <div class="cloud">
+                                <img loading="lazy" src="{{ asset('asset/img/images/cloud.png') }}" alt="Cloud">
+                                <img loading="lazy" src="{{ asset('asset/img/images/sistem monitoring.png') }}" alt="Sistem Monitoring">
+                            </div>
+
+                            <div class="devices right">
+                                <div class="arrow-up"></div>
+                                <ul>
+                                    <li>AUTOMATIC WATER GATE CONTROLLER <strong>(AWGC)</strong></li>
+                                    <li>AUTOMATIC WATER QUALITY RECORDER <strong>(AWQR)</strong></li>
+                                    <li>AUTOMATIC FLOW METER RECORDER <strong>(AFMR)</strong></li>
+                                    <li>AUTOMATIC VIBRATING WIRE RECORDER <strong>(AVWR)</strong></li>
+                                    <li>EARLY WARNING SYSTEM <strong>(EWS)</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="monitoring">
+                            <img loading="lazy" src="{{ asset('asset/img/images/App.png') }}" alt="App">
+                            <p class="desc">
+                                Seluruh sistem monitoring dan kontrol perangkat telemetri <strong>BEACON ENGINEERING</strong>
+                                telah dirancang untuk beroperasi secara optimal di berbagai platform, termasuk
+                                <strong>Windows, macOS, iOS,</strong> dan <strong>Android</strong>, memastikan aksesibilitas dan kemudahan
+                                penggunaan bagi pengguna di berbagai perangkat.
+                            </p>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-4">
@@ -201,19 +1024,19 @@
                         <div class="swiper-slide">
                             <div class="project-item">
                                 <div class="project-thumb">
-                                    <a href="{{ route('proyek.show', Str::slug($projek->nama_projek)) }}">
+                                    <a href="{{ route('proyek.show', $projek->slug) }}">
                                         <img loading="lazy" src="{{ asset('storage/' . $projek->thumbnail) }}" alt="">
                                     </a>
                                 </div>
                                 <div class="project-content">
                                     <div class="left-side-content">
                                         <h4 class="title">
-                                            <a href="{{ route('proyek.show', Str::slug($projek->nama_projek)) }}">{{ $projek->nama_projek }}</a>
+                                            <a href="{{ route('proyek.show', $projek->slug) }}">{{ $projek->nama_projek }}</a>
                                         </h4>
                                         <span>Tahun {{ $projek->waktu }}</span>
                                     </div>
                                     <div class="link-arrow">
-                                        <a href="{{ route('proyek.show', Str::slug($projek->nama_projek)) }}">
+                                        <a href="{{ route('proyek.show', $projek->slug) }}">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 15" fill="none">
                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M17.6293 3.27957C17.7117 2.80341 17.4427 2.34763 17.0096 2.17812C16.9477 2.15385 16.8824 2.13552 16.8144 2.12376L6.96081 0.419152C6.41654 0.325049 5.89911 0.689856 5.80491 1.23411C5.71079 1.77829 6.07564 2.29578 6.61982 2.38993L14.0946 3.68295L1.36574 12.6573C0.914365 12.9756 0.806424 13.5995 1.12467 14.0509C1.44292 14.5022 2.06682 14.6102 2.51819 14.2919L15.247 5.31753L13.954 12.7923C13.8598 13.3365 14.2247 13.854 14.7689 13.9482C15.3131 14.0422 15.8305 13.6774 15.9248 13.1332L17.6293 3.27957Z" fill="currentcolor" />
                                             </svg>
