@@ -918,8 +918,8 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            AUTOMATIC GEOTHERMAL RECORDER <strong>(AGR)</strong>
+                                        <a href="https://be-jogja.com/solusi/geothermal-measurement/automatic-pressure-level-recorder">
+                                            AUTOMATIC PRESSURE LEVEL RECORDER <strong>(APLR)</strong>
                                         </a>
                                     </li>
                                     <li>
