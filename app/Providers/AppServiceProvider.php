@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('*', function ($view) {
-            $view->with('solutionss', Solutions::with('subSolutions')->orderBy('created_at', 'asc')->get());
+            $view->with('solutionss', Solutions::with('subSolutions')->orderBy('id', 'asc')->get());
 
             // Instagram Feed
             $latestToken = InstagramToken::latest()->first();
