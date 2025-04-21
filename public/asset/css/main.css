@@ -18881,6 +18881,7 @@ blockquote p {
 }
 
 .produk-item .produk-content .deskripsi-content {
+    padding-top: 15px;
     font-size: 14px;
     line-height: 1.5;
     overflow: hidden;
@@ -18898,10 +18899,10 @@ blockquote p {
 }
 
 
-.produk-item .produk-content span {
+/* .produk-item .produk-content span {
     font-size: 14px;
     color: var(--tg-color-red-1);
-}
+} */
 
 .produk-item .produk-content ul {
     font-size: 14px;
