@@ -172,7 +172,8 @@
                                 <div class="sidebar__widget sidebar__widget-two">
                                     <div class="sidebar__contact sidebar__contact-two" data-background="{{ asset('asset/img/services/sidebar_contact_bg.png') }}">
                                         <h2 class="title">Konsultasi apa saja, kami siap membantu!</h2>
-                                        <a href="tel:0123456789" class="btn"><i class="flaticon-phone-call"></i>+91 705 2101 786</a>
+                                        {{-- <a href="tel:0123456789" class="btn"><i class="flaticon-phone-call"></i>+91 705 2101 786</a> --}}
+                                        <a href="https://wa.me/628112632151" target="_blank" class="btn"><i class="flaticon-phone-call"></i>+62 811 2632 151</a>
                                     </div>
                                 </div>
                             </aside>
