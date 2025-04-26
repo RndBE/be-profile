@@ -242,27 +242,73 @@
             </div>
         </section>
         <!-- brand-area -->
+        <!--<script>-->
+        <!--    document.addEventListener('DOMContentLoaded', () => {-->
+        <!--        new Swiper('.produk-slider', {-->
+        <!--            slidesPerView: 1,-->
+        <!--            spaceBetween: 20,-->
+        <!--            loop: true,-->
+        <!--            autoplay: {-->
+        <!--                delay: 3000,-->
+        <!--                disableOnInteraction: false,-->
+        <!--            },-->
+        <!--            navigation: {-->
+        <!--                prevEl: '.button-swiper-prev',-->
+        <!--                nextEl: '.button-swiper-next',-->
+        <!--            },-->
+        <!--            breakpoints: {-->
+        <!--                640: { slidesPerView: 1 },-->
+        <!--                992: { slidesPerView: 1 },-->
+        <!--                1024: { slidesPerView: 2 },-->
+        <!--                1500: { slidesPerView: 3 },-->
+        <!--            },-->
+        <!--        });-->
+        <!--    });-->
+        <!--</script>-->
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                new Swiper('.produk-slider', {
-                    slidesPerView: 1,
-                    spaceBetween: 20,
-                    loop: true,
-                    autoplay: {
-                        delay: 3000,
-                        disableOnInteraction: false,
-                    },
-                    navigation: {
-                        prevEl: '.button-swiper-prev',
-                        nextEl: '.button-swiper-next',
-                    },
-                    breakpoints: {
-                        640: { slidesPerView: 1 },
-                        992: { slidesPerView: 1 },
-                        1024: { slidesPerView: 2 },
-                        1500: { slidesPerView: 3 },
-                    },
-                });
+                const swiperContainer = document.querySelector('.produk-slider');
+                const slides = swiperContainer.querySelectorAll('.swiper-slide');
+                const slideCount = slides.length;
+                const navButtons = document.querySelector('.produk__nav-four');
+                const screenWidth = window.innerWidth;
+
+                // Default nilai
+                let slidesPerView = 1;
+
+                if (screenWidth >= 1500) {
+                    slidesPerView = Math.min(3, slideCount);
+                } else if (screenWidth >= 1024) {
+                    slidesPerView = Math.min(2, slideCount);
+                } else {
+                    slidesPerView = 1;
+                }
+
+                if (slideCount >= slidesPerView) {
+                    // Inisialisasi Swiper hanya jika slide lebih banyak dari yang bisa ditampilkan
+                    new Swiper('.produk-slider', {
+                        slidesPerView: slidesPerView,
+                        spaceBetween: 20,
+                        loop: true,
+                        autoplay: {
+                            delay: 3000,
+                            disableOnInteraction: false,
+                        },
+                        navigation: {
+                            prevEl: '.button-swiper-prev',
+                            nextEl: '.button-swiper-next',
+                        },
+                        breakpoints: {
+                            640: { slidesPerView: Math.min(1, slideCount) },
+                            992: { slidesPerView: Math.min(1, slideCount) },
+                            1024: { slidesPerView: Math.min(2, slideCount) },
+                            1500: { slidesPerView: Math.min(3, slideCount) },
+                        },
+                    });
+                } else {
+                    // Jika tidak pakai slider, sembunyikan tombol navigasi
+                    // navButtons?.classList.add('d-none');
+                }
             });
         </script>
         <script>
