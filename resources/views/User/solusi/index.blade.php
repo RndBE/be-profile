@@ -275,25 +275,29 @@
 
                 // Default nilai
                 let slidesPerView = 1;
+                let loopMode = false; // <- Default loop: OFF
 
                 if (screenWidth >= 1500) {
                     slidesPerView = Math.min(3, slideCount);
+                    loopMode = slideCount > 3; // Loop hanya kalau slide lebih dari 3
                 } else if (screenWidth >= 1024) {
                     slidesPerView = Math.min(2, slideCount);
+                    loopMode = slideCount > 2; // Boleh diatur juga kalau mau
                 } else {
                     slidesPerView = 1;
+                    loopMode = slideCount > 1;
                 }
 
                 if (slideCount >= slidesPerView) {
-                    // Inisialisasi Swiper hanya jika slide lebih banyak dari yang bisa ditampilkan
+                    // Inisialisasi Swiper
                     new Swiper('.produk-slider', {
                         slidesPerView: slidesPerView,
                         spaceBetween: 20,
-                        loop: true,
-                        autoplay: {
+                        loop: loopMode,   // 🛠️ Loop aktif atau tidak tergantung jumlah
+                        autoplay: loopMode ? {   // 🛠️ Autoplay juga nyala hanya kalau loop nyala
                             delay: 3000,
                             disableOnInteraction: false,
-                        },
+                        } : false,
                         navigation: {
                             prevEl: '.button-swiper-prev',
                             nextEl: '.button-swiper-next',
@@ -306,7 +310,7 @@
                         },
                     });
                 } else {
-                    // Jika tidak pakai slider, sembunyikan tombol navigasi
+                    // Kalau tidak pakai slider
                     // navButtons?.classList.add('d-none');
                 }
             });
