@@ -93,12 +93,12 @@
                             </div>
                             <div class="project__details-inner">
                                 <div class="row">
-                                    <div class="col-lg-6 order-0 order-lg-2">
+                                    <div class="col-lg-4 order-0 order-lg-2">
                                         <div class="project__details-inner-img">
                                             <img src="{{ asset('storage/' . $projek->gambar_proyek) }}" alt="gambar proyek">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-8">
                                         <div class="project__details-inner-content" id="project-description">
                                             <span class="project-artikel__details-inner-content">{!! $projek->deskripsi2!!}</span>
                                             <p><a class="simple-button-plugin" href="{{ $projek->white_paper }}" style="" target="_blank">Download White Paper</a></p>

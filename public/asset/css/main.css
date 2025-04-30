@@ -9689,12 +9689,14 @@ textarea {
   }
 }
 .project__details-inner-img img {
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  -o-border-radius: 8px;
-  -ms-border-radius: 8px;
-  border-radius: 8px;
-}
+    border-radius: 8px;
+    object-fit: cover;
+    width: auto;
+    height: 400px; /* atau sesuai kebutuhan */
+    aspect-ratio: 510 / 436; /* Rasio portrait */
+    display: block;
+  }
+
 
 .link-arrow a {
   width: 50px;
