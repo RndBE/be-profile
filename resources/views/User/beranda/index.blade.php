@@ -1181,7 +1181,7 @@
                 <div class="col-lg-6 col-md-8 kolom-widya">
                     <div class="testimonial-img-wrap">
                         <div class="icon">
-                            <img loading="lazy" src="{{ asset('asset/img/images/widya1.png') }}" alt="">
+                            <img loading="lazy" src="{{ asset('asset/img/images/Foto Pendapat Mitra.png') }}" alt="">
                         </div>
                         <div class="img-shape">
                             <img loading="lazy" src="{{ asset('asset/img/images/testimonial_bgwidya1.png') }}" class="bgwidya" alt="">
