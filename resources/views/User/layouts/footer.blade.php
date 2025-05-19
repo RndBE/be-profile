@@ -85,7 +85,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="footer-widget">
                             <div class="fw-logo mb-25">
-                                <a href="index.html"><img src="{{ asset('assets/dist/img/logo_be2.png') }}" alt=""></a>
+                                <a href="#"><img src="{{ asset('assets/dist/img/logo_be2.png') }}" alt=""></a>
                             </div>
                             <div class="footer-content">
                                 <p>PT Arta Teknologi Comunindo dengan merk dagang Beacon Engineering merupakan perusahaan yang bergerak dibidang produksi dan pengadaan perangkat telemetri.</p>
@@ -192,7 +192,7 @@
         const successAlert = document.getElementById('success-alert');
         const form = document.getElementById('contact-form');
 
-        console.log('successAlert:', successAlert); // cek apakah alert ditemukan
+        // console.log('successAlert:', successAlert); // cek apakah alert ditemukan
 
         if (successAlert) {
             setTimeout(() => {

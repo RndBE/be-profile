@@ -47,6 +47,13 @@
     <script src="{{ asset('asset/js/wow.min.js') }}"></script>
     <script src="{{ asset('asset/js/aos.js') }}"></script>
     <script src="{{ asset('asset/js/main.js') }}"></script>
+    <script>
+        document.addEventListener('contextmenu', function (e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+    </script>
     {{-- <script>
         const text = document.querySelector('.circle');
         text.innerHTML = text.textContent.replace(/\S/g, "<span>$&</span>");
