@@ -20,7 +20,7 @@
                     <div class="mb-3">
                         <label for="logo" class="form-label">Logo</label>
                         <div class="input-group mb-1">
-                            <input type="file" class="form-control" name="logo" id="logo" aria-describedby="inputGroupFileAddon04" accept=".png, .jpg, .jpeg">
+                            <input type="file" class="form-control" name="logo" id="logo" aria-describedby="inputGroupFileAddon04" accept=".png, .jpg, .jpeg, .webp">
                         </div>
                         @error('logo')
                             <p class="text-red-500 text-sm mt-1 error-message">{{ $message }}</p>

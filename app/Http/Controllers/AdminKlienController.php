@@ -21,7 +21,7 @@ class AdminKlienController extends Controller
     {
         $request->validate([
             'nama_perusahaan' => 'required|string|max:255',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048'
         ]);
 
         $imageName = null;
@@ -44,7 +44,7 @@ class AdminKlienController extends Controller
     {
         $request->validate([
             'nama_perusahaan' => 'required|string|max:255',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048'
         ]);
 
         $klien = Klien::findOrFail($id);
