@@ -8,11 +8,8 @@
         $('#preloader').delay(0).fadeOut();
     };
 
-    $(window).on('load', function () {
+    $(document).ready(function () {
         preloader();
-        wowAnimation();
-        aosAnimation();
-        tg_title_animation();
     });
 
 

@@ -32,21 +32,21 @@
     </footer>
     @livewireScripts
     <!-- JS here -->
-    <script src="{{ asset('asset/js/vendor/jquery-3.6.0.min.js') }}"></script>
-    <script src="{{ asset('asset/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('asset/js/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('asset/js/jquery.odometer.min.js') }}"></script>
-    <script src="{{ asset('asset/js/jquery.appear.js') }}"></script>
-    <script src="{{ asset('asset/js/gsap.js') }}"></script>
-    <script src="{{ asset('asset/js/ScrollTrigger.js') }}"></script>
-    <script src="{{ asset('asset/js/SplitText.js') }}"></script>
-    <script src="{{ asset('asset/js/gsap-animation.js') }}"></script>
-    <script src="{{ asset('asset/js/jquery.parallaxScroll.min.js') }}"></script>
-    <script src="{{ asset('asset/js/swiper-bundle.js') }}"></script>
-    <script src="{{ asset('asset/js/ajax-form.js') }}"></script>
-    <script src="{{ asset('asset/js/wow.min.js') }}"></script>
-    <script src="{{ asset('asset/js/aos.js') }}"></script>
-    <script src="{{ asset('asset/js/main.js') }}"></script>
+    <script src="{{ asset('asset/js/vendor/jquery-3.6.0.min.js') }}" async></script>
+    <script src="{{ asset('asset/js/bootstrap.bundle.min.js') }}" async></script>
+    <script src="{{ asset('asset/js/jquery.magnific-popup.min.js') }}" async></script>
+    <script src="{{ asset('asset/js/jquery.odometer.min.js') }}" async></script>
+    <script src="{{ asset('asset/js/jquery.appear.js') }}" async></script>
+    <script src="{{ asset('asset/js/gsap.js') }}" async></script>
+    <script src="{{ asset('asset/js/ScrollTrigger.js') }}" async></script>
+    <script src="{{ asset('asset/js/SplitText.js') }}" async></script>
+    <script src="{{ asset('asset/js/gsap-animation.js') }}" async></script>
+    <script src="{{ asset('asset/js/jquery.parallaxScroll.min.js') }}" async></script>
+    <script src="{{ asset('asset/js/swiper-bundle.js') }}" async></script>
+    <script src="{{ asset('asset/js/ajax-form.js') }}" async></script>
+    <script src="{{ asset('asset/js/wow.min.js') }}" async></script>
+    <script src="{{ asset('asset/js/aos.js') }}" async></script>
+    <script src="{{ asset('asset/js/main.js') }}" async></script>
     <script>
         document.addEventListener('contextmenu', function (e) {
             if (e.target.tagName === 'IMG') {
