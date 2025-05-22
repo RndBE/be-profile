@@ -1000,8 +1000,8 @@
             <div class="row align-items-center">
                 <div class="col-lg-4 order-0 order-lg-2">
                     <div class="choose-img-wrap">
-                        <img loading="lazy" src="{{ asset('asset/img/images/Foto Harapan.png') }}" alt="">
-                        <img loading="lazy" src="{{ asset('asset/img/images/Group 34.png') }}" class="shadow-image" alt="" data-parallax='{"x" : 50 }'>
+                        <img loading="lazy" src="{{ asset('asset/img/images/Foto-Harapan.webp') }}" alt="">
+                        <img loading="lazy" src="{{ asset('asset/img/images/Group-34.webp') }}" class="shadow-image" alt="" data-parallax='{"x" : 50 }'>
                     </div>
                 </div>
                 <div class="col-lg-8">
@@ -1015,7 +1015,7 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div class="icon">
-                                        <img loading="lazy" src="{{ asset('asset/img/icon/AI.png') }}" alt="">
+                                        <img loading="lazy" src="{{ asset('asset/img/icon/AI.webp') }}" alt="Telemetri Berbasis AI">
                                     </div>
                                     <div class="content">
                                         <h4 class="title">Telemetri Berbasis AI</h4>
@@ -1024,7 +1024,7 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="icon">
-                                        <img loading="lazy" src="{{ asset('asset/img/icon/GARANSI.png') }}" alt="">
+                                        <img loading="lazy" src="{{ asset('asset/img/icon/GARANSI.webp') }}" alt="Garansi Maintenance">
                                     </div>
                                     <div class="content">
                                         <h4 class="title">Garansi Maintenance</h4>
@@ -1033,7 +1033,7 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="icon">
-                                        <img loading="lazy" src="{{ asset('asset/img/icon/MONITORING.png') }}" alt="">
+                                        <img loading="lazy" src="{{ asset('asset/img/icon/MONITORING.webp') }}" alt="Monitoring Terintegrasi">
                                     </div>
                                     <div class="content">
                                         <h4 class="title">Monitoring Terintegrasi</h4>
@@ -1042,7 +1042,7 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="icon">
-                                        <img loading="lazy" src="{{ asset('asset/img/icon/LAYANAN.png') }}" alt="">
+                                        <img loading="lazy" src="{{ asset('asset/img/icon/LAYANAN.webp') }}" alt="Layanan Konsultasi">
                                     </div>
                                     <div class="content">
                                         <h4 class="title">Layanan Konsultasi</h4>
@@ -1057,7 +1057,7 @@
             </div>
         </div>
         <div class="choose-shape-wrap">
-            <img loading="lazy" src="{{ asset('asset/img/images/blog_shape031.png') }}" alt="" data-aos="fade-left" data-aos-delay="400">
+            <img loading="lazy" src="{{ asset('asset/img/images/blog_shape031.webp') }}" alt="" data-aos="fade-left" data-aos-delay="400">
         </div>
     </section>
     <!-- choose-area-end -->
