@@ -34,7 +34,7 @@
                             </div>
                         @endif
                         <div class="input-group mb-1">
-                            <input type="file" class="form-control" name="gambar" id="gambar{{ $item->id }}" aria-describedby="inputGroupFileAddon04" accept=".png, .jpg, .jpeg">
+                            <input type="file" class="form-control" name="gambar" id="gambar{{ $item->id }}" aria-describedby="inputGroupFileAddon04" accept=".png, .jpg, .jpeg, .webp">
                         </div>
                         @error('gambar')
                             <p class="text-danger text-sm mt-1">{{ $message }}</p>
