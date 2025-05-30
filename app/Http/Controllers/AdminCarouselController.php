@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\BerandaCarousel;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Laravel\Facades\Image;
 
 class AdminCarouselController extends Controller
 {
@@ -27,9 +28,22 @@ class AdminCarouselController extends Controller
 
         $imageName = null;
         if ($request->hasFile('gambar')) {
-            $fileName = time() . '_' . $request->file('gambar')->getClientOriginalName();
-            $filePath = $request->file('gambar')->storeAs('public/carousel', $fileName);
+            $originalName = $request->file('gambar')->getClientOriginalName();
+            $fileName = time() . '_' . pathinfo($originalName, PATHINFO_FILENAME) . '.webp';
             $imageName = 'carousel/' . $fileName;
+            $storagePath = storage_path('app/public/' . $imageName);
+
+            // Pastikan direktori tujuan ada
+            if (!file_exists(dirname($storagePath))) {
+                mkdir(dirname($storagePath), 0755, true);
+            }
+
+            // Baca file asli dan simpan sebagai webp
+            $imageFromRequest = $request->file('gambar')->getRealPath();
+
+            Image::read($imageFromRequest)  // Gunakan Intervention Image
+                ->toWebp()
+                ->save($storagePath);
         }
 
         BerandaCarousel::create([
@@ -56,18 +70,38 @@ class AdminCarouselController extends Controller
         $carousel->sub_judul = $request->sub_judul;
 
         if ($request->hasFile('gambar')) {
+            // Hapus gambar lama jika ada
             if ($carousel->gambar && Storage::exists('public/' . $carousel->gambar)) {
                 Storage::delete('public/' . $carousel->gambar);
             }
-            $fileName = time() . '_' . $request->file('gambar')->getClientOriginalName();
-            $filePath = $request->file('gambar')->storeAs('public/carousel', $fileName);
-            $carousel->gambar = 'carousel/' . $fileName;
+
+            // Generate nama baru
+            $originalName = $request->file('gambar')->getClientOriginalName();
+            $fileName = time() . '_' . pathinfo($originalName, PATHINFO_FILENAME) . '.webp';
+            $imagePath = 'carousel/' . $fileName;
+            $storagePath = storage_path('app/public/' . $imagePath);
+
+            // Pastikan folder ada
+            if (!file_exists(dirname($storagePath))) {
+                mkdir(dirname($storagePath), 0755, true);
+            }
+
+            // Konversi dan simpan gambar
+            $imageFromRequest = $request->file('gambar')->getRealPath();
+
+            Image::read($imageFromRequest)
+                ->toWebp()
+                ->save($storagePath);
+
+            $carousel->gambar = $imagePath;
         }
 
         $carousel->save();
-        toast('Berhasil mengubah data!','success');
+
+        toast('Berhasil mengubah data!', 'success');
         return redirect()->back();
     }
+
 
 
     public function destroy($id)
