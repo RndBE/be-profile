@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Klien;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Laravel\Facades\Image;
 
 class AdminKlienController extends Controller
 {
@@ -26,9 +27,22 @@ class AdminKlienController extends Controller
 
         $imageName = null;
         if ($request->hasFile('logo')) {
-            $fileName = time() . '_' . $request->file('logo')->getClientOriginalName();
-            $filePath = $request->file('logo')->storeAs('public/klien', $fileName);
+            $originalName = $request->file('logo')->getClientOriginalName();
+            $fileName = time() . '_' . pathinfo($originalName, PATHINFO_FILENAME) . '.webp';
             $imageName = 'klien/' . $fileName;
+            $storagePath = storage_path('app/public/' . $imageName);
+
+            // Pastikan direktori tujuan ada
+            if (!file_exists(dirname($storagePath))) {
+                mkdir(dirname($storagePath), 0755, true);
+            }
+
+            // Baca file asli dan simpan sebagai webp
+            $imageFromRequest = $request->file('logo')->getRealPath();
+
+            Image::read($imageFromRequest)  // Gunakan Intervention Image
+                ->toWebp()
+                ->save($storagePath);
         }
 
         Klien::create([
@@ -52,12 +66,30 @@ class AdminKlienController extends Controller
         $klien->nama_perusahaan = $request->nama_perusahaan;
 
         if ($request->hasFile('logo')) {
+            // Hapus logo lama jika ada
             if ($klien->logo && Storage::exists('public/' . $klien->logo)) {
                 Storage::delete('public/' . $klien->logo);
             }
-            $fileName = time() . '_' . $request->file('logo')->getClientOriginalName();
-            $filePath = $request->file('logo')->storeAs('public/klien', $fileName);
-            $klien->logo = 'klien/' . $fileName;
+
+            // Generate nama baru
+            $originalName = $request->file('logo')->getClientOriginalName();
+            $fileName = time() . '_' . pathinfo($originalName, PATHINFO_FILENAME) . '.webp';
+            $imagePath = 'klien/' . $fileName;
+            $storagePath = storage_path('app/public/' . $imagePath);
+
+            // Pastikan folder ada
+            if (!file_exists(dirname($storagePath))) {
+                mkdir(dirname($storagePath), 0755, true);
+            }
+
+            // Konversi dan simpan logo
+            $imageFromRequest = $request->file('logo')->getRealPath();
+
+            Image::read($imageFromRequest)
+                ->toWebp()
+                ->save($storagePath);
+
+            $klien->logo = $imagePath;
         }
 
         $klien->save();
