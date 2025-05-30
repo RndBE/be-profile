@@ -42,7 +42,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($projeks as $index => $item)
+                                        @foreach ($projeks as $index => $item)
                                             <tr>
                                                 <td class="text-center">{{ $loop->iteration }}</td>
                                                 <td>
@@ -87,7 +87,7 @@
                                                     </a>
                                                 </td>
                                             </tr>
-                                            @empty
+                                            {{-- @empty
                                             <tr class="bg-white border-bottom">
                                                 <td colspan="7" class="p-4 text-center">
                                                     <svg class="mx-auto mb-2" xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" viewBox="0 0 24 24">
@@ -96,8 +96,8 @@
                                                     <h5 class="mt-3 font-weight-bold text-secondary">Data Tidak Ditemukan!</h5>
                                                     <p class="text-muted">Maaf, data yang Anda cari tidak ada</p>
                                                 </td>
-                                            </tr>
-                                        @endforelse
+                                            </tr> --}}
+                                        @endforeach
                                     </tbody>
                                 </table>
                                 {{-- <div class="px-6 py-4">
