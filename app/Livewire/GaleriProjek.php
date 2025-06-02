@@ -70,7 +70,7 @@ class GaleriProjek extends Component
         $this->popularTags = KeywordProjek::whereRaw('LENGTH(keyword) >= 3')->orderBy('count', 'desc')->limit(10)->get();
 
         // Ambil data projek dengan paginasi
-        $projeks = $query->orderBy('waktu', 'desc')->orderBy('updated_at', 'desc')->paginate(6);
+        $projeks = $query->orderBy('waktu', 'desc')->orderBy('created_at', 'desc')->paginate(6);
 
         return view('livewire.galeri-projek', [
             'projeks' => $projeks,
