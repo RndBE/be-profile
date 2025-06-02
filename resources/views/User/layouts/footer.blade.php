@@ -1,82 +1,82 @@
 {{-- <footer> --}}
     <!-- call-back-area -->
-    <section class="call-back-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="call-back-content">
-                        <div class="section-title white-title mb-10 tg-heading-subheading animation-style3">
-                            <h2 class="title tg-element-title">PUNYA PERTANYAAN?</h2>
-                        </div>
-                        <p>Kirim pertanyaanmu dan tunggu ahli kami menjawab apapun yang ingin kamu tahu.</p>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    {{-- <div class="call-back-form">
-                        <form id="whatsappForm" action="{{ route('send.whatsapp') }}" method="POST">
-                            @csrf
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-grp">
-                                        <input type="text" id="nama" name="nama" placeholder="*Nama lengkap" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-grp">
-                                        <input type="number" id="phone" name="phone" placeholder="*No. Telp" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-grp">
-                                        <input type="text" id="question" name="question" placeholder="*Pertanyaan" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <button type="submit">Kirim</button>
-                                </div>
-                            </div>
-                        </form>
+    <!--<section class="call-back-area">-->
+    <!--    <div class="container">-->
+    <!--        <div class="row">-->
+    <!--            <div class="col-lg-6">-->
+    <!--                <div class="call-back-content">-->
+    <!--                    <div class="section-title white-title mb-10 tg-heading-subheading animation-style3">-->
+    <!--                        <h2 class="title tg-element-title">PUNYA PERTANYAAN?</h2>-->
+    <!--                    </div>-->
+    <!--                    <p>Kirim pertanyaanmu dan tunggu ahli kami menjawab apapun yang ingin kamu tahu.</p>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--            <div class="col-lg-6">-->
+    <!--                {{-- <div class="call-back-form">-->
+    <!--                    <form id="whatsappForm" action="{{ route('send.whatsapp') }}" method="POST">-->
+    <!--                        @csrf-->
+    <!--                        <div class="row">-->
+    <!--                            <div class="col-md-6">-->
+    <!--                                <div class="form-grp">-->
+    <!--                                    <input type="text" id="nama" name="nama" placeholder="*Nama lengkap" required>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                            <div class="col-md-6">-->
+    <!--                                <div class="form-grp">-->
+    <!--                                    <input type="number" id="phone" name="phone" placeholder="*No. Telp" required>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                            <div class="col-md-6">-->
+    <!--                                <div class="form-grp">-->
+    <!--                                    <input type="text" id="question" name="question" placeholder="*Pertanyaan" required>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                            <div class="col-md-6">-->
+    <!--                                <button type="submit">Kirim</button>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </form>-->
 
-                    </div> --}}
-                    <div class="contact__form-wrap">
-                        <form id="contact-form" method="POST" action="{{ route('contact.send') }}">
-                            @csrf
-                            <div class="form-grp">
-                                <textarea style="color: #2e2e4d" name="message" placeholder="Message" required></textarea>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-grp">
-                                        <input style="color: #2e2e4d" type="text" name="name" placeholder="Name" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-grp">
-                                        <input style="color: #2e2e4d" type="email" name="email" placeholder="Email" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-grp">
-                                        <input style="color: #2e2e4d" type="number" name="phone" placeholder="Phone" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn">Submit</button>
-                        </form>
-                        @if(session('success'))
-                            <div class="alert alert-success mt-3" id="success-alert">
-                                {{ session('success') }}
-                            </div>
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="blog-shape-wrap">
-            <img src="{{ asset('asset/img/images/blog_shape04-new.png') }}" style="opacity: 0.2" alt="" data-aos="fade-left" data-aos-delay="400">
-            <img src="{{ asset('asset/img/images/blog_shape03-new.png') }}" style="opacity: 0.2" alt="" data-aos="fade-right" data-aos-delay="400">
-        </div>
-    </section>
+    <!--                </div> --}}-->
+    <!--                <div class="contact__form-wrap">-->
+    <!--                    <form id="contact-form" method="POST" action="{{ route('contact.send') }}">-->
+    <!--                        @csrf-->
+    <!--                        <div class="form-grp">-->
+    <!--                            <textarea style="color: #2e2e4d" name="message" placeholder="Message" required></textarea>-->
+    <!--                        </div>-->
+    <!--                        <div class="row">-->
+    <!--                            <div class="col-md-4">-->
+    <!--                                <div class="form-grp">-->
+    <!--                                    <input style="color: #2e2e4d" type="text" name="name" placeholder="Name" required>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                            <div class="col-md-4">-->
+    <!--                                <div class="form-grp">-->
+    <!--                                    <input style="color: #2e2e4d" type="email" name="email" placeholder="Email" required>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                            <div class="col-md-4">-->
+    <!--                                <div class="form-grp">-->
+    <!--                                    <input style="color: #2e2e4d" type="number" name="phone" placeholder="Phone" required>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                        <button type="submit" class="btn">Submit</button>-->
+    <!--                    </form>-->
+    <!--                    @if(session('success'))-->
+    <!--                        <div class="alert alert-success mt-3" id="success-alert">-->
+    <!--                            {{ session('success') }}-->
+    <!--                        </div>-->
+    <!--                    @endif-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--    <div class="blog-shape-wrap">-->
+    <!--        <img src="{{ asset('asset/img/images/blog_shape04-new.png') }}" style="opacity: 0.2" alt="" data-aos="fade-left" data-aos-delay="400">-->
+    <!--        <img src="{{ asset('asset/img/images/blog_shape03-new.png') }}" style="opacity: 0.2" alt="" data-aos="fade-right" data-aos-delay="400">-->
+    <!--    </div>-->
+    <!--</section>-->
     <!-- call-back-area-end -->
     <div class="footer-area">
         <div class="footer-top">
@@ -150,7 +150,7 @@
                             <h4 class="fw-title">Instagram Posts</h4>
                             <div class="footer-instagram">
                                 <ul class="list-wrap">
-                                    {{-- @foreach ($instagramFeeds ?? [] as $feed)
+                                    @foreach ($instagramFeeds ?? [] as $feed)
                                         @php
                                             $imageUrl = $feed['media_type'] === 'VIDEO'
                                                 ? ($feed['thumbnail_url'] ?? $feed['media_url']) // fallback ke media_url kalau thumbnail gak ada
@@ -161,7 +161,7 @@
                                                 <img src="{{ $imageUrl }}" alt="Instagram Feed" loading="lazy">
                                             </a>
                                         </li>
-                                    @endforeach --}}
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
