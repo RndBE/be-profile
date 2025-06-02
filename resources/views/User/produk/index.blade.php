@@ -1,5 +1,7 @@
 @extends('User.layouts.app')
-@section('title', 'Detail Produk | BE Profile')
+@section('title', (isset($produk) ? e($produk->nama_produk) : 'Detail Produk') . ' | Beacon Engineering')
+@section('description', isset($produk) ? Str::limit(strip_tags($produk->deskripsi_produk), 160, '...') : 'Lihat detail produk Beacon Engineering.')
+@section('image', isset($produk) ? asset($produk->gambar_produk) : asset('asset/img/project/bg.png'))
 @section('content')
         <!-- breadcrumb-area -->
         <section class="breadcrumb__area breadcrumb__bg" data-background="{{ asset('asset/img/project/bg.png') }}">

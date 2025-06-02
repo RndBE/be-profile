@@ -1,5 +1,7 @@
 @extends('User.layouts.app')
-@section('title', 'Tentang Kami | BE Profile')
+@section('title', 'Tentang Kami | Beacon Engineering')
+@section('description', 'MENGENAL LEBIH JAUH BEACON ENGINEERING Kami menyediakan solusi berupa penyediaan perangkat telemetri')
+@section('image', asset('asset/img/project/bg.png'))
 @section('content')
         <!-- breadcrumb-area -->
         <section class="breadcrumb__area breadcrumb__bg" data-background="{{ asset('asset/img/project/bg.png') }}">
@@ -274,7 +276,7 @@
                                 @endif
                             </div>
                             <div class="team__content-four">
-                                <h2 class="title">NOFIYANTO, S.T.</h2>
+                                <h2 class="title">NOFIYANTO, S.Kom.</h2>
                                 <span>Manager Software</span>
                             </div>
                         </div>

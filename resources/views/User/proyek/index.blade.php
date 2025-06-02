@@ -1,5 +1,7 @@
 @extends('User.layouts.app')
-@section('title', 'Galeri Proyek | BE Profile')
+@section('title', 'Galeri Proyek | Beacon Engineering')
+@section('description', 'Lihat berbagai dokumentasi proyek unggulan Beacon Engineering yang menunjukkan penerapan teknologi telemetri di berbagai sektor industri.')
+@section('image', asset('asset/img/project/bg.png'))
 @section('content')
         <!-- breadcrumb-area -->
         <section class="breadcrumb__area breadcrumb__bg" data-background="{{ asset('asset/img/project/bg.png') }}">

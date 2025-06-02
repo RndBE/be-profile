@@ -1,5 +1,8 @@
 @extends('User.layouts.app')
-@section('title', 'Sertifikasi | BE Profile')
+@section('title', 'Sertifikasi | Beacon Engineering')
+@section('description', 'Sertifikasi adalah bentuk kepercayaan yang terbangun dan kualitas yang teruji.')
+@section('image', asset('asset/img/project/bg.png'))
+
 @section('content')
         <!-- breadcrumb-area -->
         <section class="breadcrumb__area breadcrumb__bg" data-background="{{ asset('asset/img/project/bg.png') }}">

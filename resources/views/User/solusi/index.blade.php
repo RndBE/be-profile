@@ -1,5 +1,21 @@
 @extends('User.layouts.app')
-@section('title', 'Solusi | BE Profile')
+@section('title',
+    (isset($solution) ? $solution->nama : 'Solusi') .
+    (isset($subSolution) ? ' - ' . $subSolution->nama : '') .
+    ' | Beacon Engineering'
+)
+
+@section('description',
+    isset($subSolution)
+        ? Str::limit(strip_tags($subSolution->description1 ?? ''), 160)
+        : 'Jelajahi solusi kami bersama Beacon Engineering.'
+)
+
+@section('image',
+    isset($subSolution) && !empty($subSolution->gambar[0]->gambar)
+        ? asset('storage/' . $subSolution->gambar[0]->gambar)
+        : asset('asset/img/images/no-image1.png')
+)
 @section('content')
         <!-- breadcrumb-area -->
         <section class="breadcrumb__area breadcrumb__bg" data-background="{{ asset('asset/img/project/bg.png') }}">
@@ -170,8 +186,8 @@
                                     </div>
                                 </div> --}}
                                 <div class="sidebar__widget sidebar__widget-two">
-                                    <div class="sidebar__contact sidebar__contact-two" data-background="{{ asset('asset/img/services/sidebar_contact_bg.png') }}">
-                                        <h2 class="title">Konsultasi apa saja, kami siap membantu!</h2>
+                                    <div class="sidebar__contact sidebar__contact-two" data-background="{{ asset('asset/img/services/KONSUL5.png') }}">
+                                        <h2 class="title" style="color:#2E2E4D;">Konsultasi apa saja, kami siap membantu!</h2>
                                         {{-- <a href="tel:0123456789" class="btn"><i class="flaticon-phone-call"></i>+91 705 2101 786</a> --}}
                                         <a href="https://wa.me/628112632151" target="_blank" class="btn"><i class="flaticon-phone-call"></i>+62 811 2632 151</a>
                                     </div>
@@ -293,8 +309,8 @@
                     new Swiper('.produk-slider', {
                         slidesPerView: slidesPerView,
                         spaceBetween: 20,
-                        loop: loopMode,   // 🛠️ Loop aktif atau tidak tergantung jumlah
-                        autoplay: loopMode ? {   // 🛠️ Autoplay juga nyala hanya kalau loop nyala
+                        loop: loopMode,   // ЁЯЫая╕П Loop aktif atau tidak tergantung jumlah
+                        autoplay: loopMode ? {   // ЁЯЫая╕П Autoplay juga nyala hanya kalau loop nyala
                             delay: 3000,
                             disableOnInteraction: false,
                         } : false,

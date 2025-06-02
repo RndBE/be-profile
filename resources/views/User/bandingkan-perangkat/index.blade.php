@@ -1,5 +1,8 @@
 @extends('User.layouts.app')
-@section('title', 'Bandingkan Perangkat | BE Profile')
+@section('title', 'Bandingkan Perangkat | Beacon Engineering')
+@section('description', 'Temukan spesifikasi terbaik untuk solusi terbaik. Pilih Kategori Perangkat, Pilih produk untuk dibandingkan!')
+@section('image', asset('asset/img/project/bg.png'))
+
 @section('content')
         <!-- breadcrumb-area -->
         <section class="breadcrumb__area breadcrumb__bg" data-background="{{ asset('asset/img/project/bg.png') }}">
@@ -46,7 +49,7 @@
                 });
             });
         </script>
-        
+
 @endsection
 
 

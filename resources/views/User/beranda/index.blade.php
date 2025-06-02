@@ -40,7 +40,8 @@
                     @foreach ($kliens as $klien)
                         <div class="swiper-slide">
                             <div class="brand-item">
-                                <img loading="lazy" src="{{ asset('storage/' . $klien->logo) }}" alt="{{ $klien->nama }}">
+                                <img class="swiper-lazy" src="{{ asset('storage/' . $klien->logo) }}" alt="{{ $klien->nama }}">
+                                <div class="swiper-lazy-preloader"></div> <!-- spinner loading -->
                             </div>
                             <div>
                                 <p>{{ $klien->nama_perusahaan }}</p>
@@ -71,11 +72,11 @@
                                 <a href="{{ route('solusi.show', Str::slug($solution->nama)) }}" class="services-link">
                                     <div class="services-item equal-box shine-animate-item">
                                         <div class="services-thumb">
-                                            <img loading="lazy" src="{{ asset('asset/img/images/Topologi.png') }}" alt="">
+                                            <img loading="lazy" src="{{ asset($solution->thumbnail) }}" alt="">
                                         </div>
                                         <div class="services-content">
                                             <div class="icon">
-                                                <img loading="lazy" src="{{ asset('asset/img/images/Topologi.png') }}" alt="">
+                                                <img loading="lazy" src="{{ asset($solution->icon) }}" alt="">
                                             </div>
                                             <h4 class="title">{{ $solution->nama }}</h4>
                                             <p>{{ $solution->description }}</p>
@@ -114,7 +115,7 @@
             list-style: none;
             padding: 0;
         }
-        .devices li{
+        .devices li {
             background: #2e2e4d;
             color: #fff;
             padding: 8px 12px;
@@ -1082,7 +1083,8 @@
                             <div class="project-item">
                                 <div class="project-thumb">
                                     <a href="{{ route('proyek.show', $projek->slug) }}">
-                                        <img loading="lazy" src="{{ asset('storage/' . $projek->thumbnail) }}" alt="">
+                                        <img class="swiper-lazy" src="{{ asset('storage/' . $projek->thumbnail) }}" alt="">
+                                        <div class="swiper-lazy-preloader"></div> <!-- spinner loading -->
                                     </a>
                                 </div>
                                 <div class="project-content">
@@ -1158,7 +1160,8 @@
                                 <div class="testimonial-item">
                                     <div class="testimonial-info">
                                         <div class="icon">
-                                            <img loading="lazy" src="{{ asset('storage/' . $testimoni->projek->klien->logo ) }}" alt="Logo" class="user-image">
+                                            <img class="swiper-lazy" src="{{ asset('storage/' . $testimoni->projek->klien->logo ) }}" alt="Logo" class="user-image">
+                                            <div class="swiper-lazy-preloader"></div> <!-- spinner loading -->
                                         </div>
                                         <div class="text-info">
                                             <h4 class="title">{{ $testimoni->nama_user }}</h4>
@@ -1260,6 +1263,9 @@
                     delay: 3000,
                     disableOnInteraction: false,
                 },
+                lazy: {
+                    loadPrevNext: true,
+                },
                 breakpoints: {
                     640: { slidesPerView: 2 },
                     768: { slidesPerView: 3 },
@@ -1278,6 +1284,9 @@
                 autoplay: {
                     delay: 3000,
                     disableOnInteraction: false,
+                },
+                lazy: {
+                    loadPrevNext: true,
                 },
                 breakpoints: {
                     640: { slidesPerView: 1 },
@@ -1301,6 +1310,9 @@
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true,
+                },
+                lazy: {
+                    loadPrevNext: true,
                 },
                 breakpoints: {
                     640: { slidesPerView: 1 },

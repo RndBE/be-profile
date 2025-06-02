@@ -150,7 +150,7 @@
                             <h4 class="fw-title">Instagram Posts</h4>
                             <div class="footer-instagram">
                                 <ul class="list-wrap">
-                                    @foreach ($instagramFeeds ?? [] as $feed)
+                                    {{-- @foreach ($instagramFeeds ?? [] as $feed)
                                         @php
                                             $imageUrl = $feed['media_type'] === 'VIDEO'
                                                 ? ($feed['thumbnail_url'] ?? $feed['media_url']) // fallback ke media_url kalau thumbnail gak ada
@@ -161,7 +161,7 @@
                                                 <img src="{{ $imageUrl }}" alt="Instagram Feed" loading="lazy">
                                             </a>
                                         </li>
-                                    @endforeach
+                                    @endforeach --}}
                                 </ul>
                             </div>
                         </div>

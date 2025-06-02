@@ -1,6 +1,8 @@
 <!-- resources/views/User/publikasi/searchall.blade.php -->
 @extends('User.layouts.app')
-@section('title', 'Beacon Search | BE Profile')
+@section('title', 'Beacon Search | Beacon Engineering')
+@section('description', 'Tambah wawasan soal teknologi telemetri dan berkembang bersama Beacon Engineering mulai hari ini!')
+@section('image', asset('asset/img/project/bg.png'))
 @section('content')
     <!-- breadcrumb-area -->
     <section class="breadcrumb__area breadcrumb__bg" data-background="{{ asset('asset/img/project/bg.png') }}">

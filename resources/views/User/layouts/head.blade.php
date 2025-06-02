@@ -4,8 +4,8 @@
     <title>@yield('title', 'Beacon Engineering | PT. Arta Teknologi Comunindo')</title>
 
     {{-- SEO Meta Tags --}}
-    <meta name="description" content="PT. Arta Teknologi Comunindo (Beacon Engineering) adalah perusahaan manufaktur perangkat data logger dan software STESY untuk smart monitoring di bidang klimatologi, hidrologi, irigasi, geoteknik, dan geothermal.">
-    <meta name="keywords" content="Beacon Engineering, PT. Arta Teknologi Comunindo, data logger, STESY, telemetri, monitoring, hidrologi, klimatologi, irigasi, geoteknik, geothermal, smart monitoring, IoT Indonesia, DAQ, sistem pemantauan online, AWLR, AWR, AVWR, AWGC, AFMR, ADR, AWQR, ARR, EWS BL-1100, BL-110">
+    <meta name="description" content="PT. Arta Teknologi Comunindo (Beacon Engineering) adalah perusahaan manufaktur perangkat data logger dan software Smart Telemetry Systems (STESY) STESY untuk smart monitoring di bidang klimatologi, hidrologi, irigasi, geoteknik, dan geothermal.">
+    <meta name="keywords" content="Beacon Engineering, PT. Arta Teknologi Comunindo, data logger, Smart Telemetry Systems (STESY), telemetri, monitoring, hidrologi, klimatologi, irigasi, geoteknik, geothermal, smart monitoring, IoT Indonesia, DAQ, sistem pemantauan online, AWLR, AWR, AVWR, AWGC, AFMR, ADR, AWQR, ARR, EWS BL-1100, BL-110">
     <meta name="author" content="PT. Arta Teknologi Comunindo">
     <meta name="robots" content="index, follow">
 
@@ -16,11 +16,16 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- Open Graph (Facebook, LinkedIn, WhatsApp) --}}
-    <meta property="og:title" content="Beacon Engineering | PT. Arta Teknologi Comunindo">
-    <meta property="og:description" content="Perusahaan manufaktur perangkat data logger dan software STESY berbasis IoT untuk sistem monitoring klimatologi, hidrologi, dan lainnya.">
-    <meta property="og:image" content="{{ asset('assets/dist/img/logo.png') }}">
+    <!--<meta property="og:title" content="Beacon Engineering | PT. Arta Teknologi Comunindo">-->
+    <!--<meta property="og:description" content="Perusahaan manufaktur perangkat data logger dan software STESY berbasis IoT untuk sistem monitoring klimatologi, hidrologi, dan lainnya.">-->
+    <!--<meta property="og:image" content="{{ asset('assets/dist/img/logo.png') }}">-->
+    <!--<meta property="og:url" content="{{ url()->current() }}">-->
+    <!--<meta property="og:type" content="website">-->
+    <meta property="og:title" content="@yield('title', 'Beacon Engineering | PT. Arta Teknologi Comunindo')">
+    <meta property="og:description" content="@yield('description', 'Perusahaan manufaktur perangkat data logger dan software STESY berbasis IoT untuk sistem monitoring klimatologi, hidrologi, dan lainnya.')">
+    <meta property="og:image" content="@yield('image', asset('assets/dist/img/logo.png'))">
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="@yield('type', 'website')">
 
     {{-- Twitter Card --}}
     <meta name="twitter:card" content="summary_large_image">
@@ -36,31 +41,8 @@
 
     {{-- Favicon --}}
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/dist/img/title.ico') }}">
-
-    <!-- Menambahkan JSON-LD untuk Schema.org -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "PT. Arta Teknologi Comunindo",
-      "url": "https://www.be-jogja.com",
-      "logo": "https://www.be-jogja.com/assets/dist/img/logo.png",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+62-274-4986899",
-        "contactType": "customer service",
-        "email": "info@bejogja.com"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Kadirojo I, Purwomartani, Kalasan",
-        "addressLocality": "Sleman",
-        "addressRegion": "DI Yogyakarta",
-        "postalCode": "55571",
-        "addressCountry": "ID"
-      }
-    }
-    </script>
+    {{-- mencegah duplikat konten dan memberitahu mesin pencari URL utama --}}
+    <link rel="canonical" href="{{ url()->current() }}">
 
     {{-- CSS Files --}}
     <link rel="stylesheet" href="{{ asset('asset/css/bootstrap.min.css') }}">
@@ -75,9 +57,6 @@
     <link rel="stylesheet" href="{{ asset('asset/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    {{-- CKEditor --}}
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 
     {{-- Cegah download gambar --}}
     <style>

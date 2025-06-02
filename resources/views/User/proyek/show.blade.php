@@ -1,5 +1,7 @@
 @extends('User.layouts.app')
-@section('title', 'Detail Proyek | BE Profile')
+@section('title', e($projek->nama_projek) . ' | Beacon Engineering')
+@section('description', Str::limit(strip_tags($projek->deskripsi1), 160)) {{-- Optional: Meta Description --}}
+@section('image', asset('storage/' . ($projek->gambar[0]->gambar ?? 'asset/img/images/no-image1.png')))
 @section('content')
     <!-- breadcrumb-area -->
     <section class="breadcrumb__area breadcrumb__bg" data-background="{{ asset('asset/img/project/bg.png') }}">
@@ -93,7 +95,7 @@
                             </div>
                             <div class="project__details-inner">
                                 <div class="row">
-                                    <div class="col-lg-4 order-0 order-lg-2">
+                                    <div class="col-lg-4 order-0 order-lg-2 ps-lg-5">
                                         <div class="project__details-inner-img">
                                             <img src="{{ asset('storage/' . $projek->gambar_proyek) }}" alt="gambar proyek">
                                         </div>
@@ -169,7 +171,7 @@
                 <div class="col-lg-6 col-md-8 kolom-widya">
                     <div class="testimonial-img-wrap-project">
                         <div class="icon">
-                            <img src="{{ asset('asset/img/images/widya2.png') }}" alt="">
+                            <img src="{{ asset('asset/img/images/Foto Pendapat Mitra (7).png') }}" alt="">
                         </div>
                         <div class="img-shape">
                             <img src="{{ asset('asset/img/images/bgwidya2.png') }}" class="bgwidya" alt="">
