@@ -1,40 +1,4 @@
-/*============================================
 
-   Theme Name: Apexa - Multipurpose Business Consulting HTML Template
-   Author : alithemes
-   Support: https://alithemes.ticksy.com
-   Description: Apexa - Multipurpose Business Consulting HTML Template
-   Version: 1.0
-
-==============================================*/
-/* CSS Index
-==============================================
-
-    01. Theme Default CSS
-    02. Header
-    03. Mobile Menu
-    04. Banner
-    05. Slider
-    06. About
-    07. Services
-    08. Choose
-    09. Project
-    10. Pricing
-    11. Request
-    12. Consulting
-    13. Testimonial
-    14. Features
-    15. Marquee
-    16. Fact
-    17. Team
-    18. Call-back
-    19. Blog
-    20. Contact
-    21. Brand
-    22. 404 Error
-    23. Footer
-
-==============================================*/
 /*============================================
 /*  01. Theme Default CSS
 ==============================================*/
@@ -223,7 +187,6 @@ button {
   -o-transition: all 0.3s ease-out 0s;
   transition: all 0.3s ease-out 0s;
 }
-
 a:focus,
 .btn:focus,
 .button:focus {
@@ -1204,8 +1167,8 @@ textarea {
   line-height: 40px;
   text-align: center;
   position: fixed;
-  bottom: -10%;
-  right: 50px;
+  top: 75%;
+  right: 0px;
   font-size: 16px;
   border-radius: 4px;
   z-index: 5;
@@ -1218,18 +1181,18 @@ textarea {
 }
 @media (max-width: 1199.98px) {
   .scroll__top {
-    right: 25px;
-    bottom: 25px;
+    right: 0px;
+    top: 75%;
   }
 }
 @media (max-width: 991.98px) {
   .scroll__top {
-    right: 30px;
+    right: 0px;
   }
 }
 @media (max-width: 767.98px) {
   .scroll__top {
-    right: 15px;
+    right: 0px;
     width: 30px;
     height: 30px;
     line-height: 30px;
@@ -1237,11 +1200,11 @@ textarea {
   }
 }
 .scroll__top.open {
-  bottom: 30px;
+  top: 75%;
 }
 @media (max-width: 767.98px) {
   .scroll__top.open {
-    bottom: 15px;
+    top: 75%;
   }
 }
 .scroll__top::after {
@@ -9697,7 +9660,6 @@ textarea {
     display: block;
   }
 
-
 .link-arrow a {
   width: 50px;
   height: 50px;
@@ -10701,7 +10663,7 @@ textarea {
     text-align: center;
 }
 .testimonial-img-wrap-project .icon img {
-    padding-right: 90px;
+    padding-right: 50px;
 }
 .testimonial-img-wrap-project .img-shape img {
     position: absolute;
@@ -11192,7 +11154,7 @@ textarea {
 .testimonial-img-wrap .icon img {
     height: 420px;
     width: 415px;
-    padding-left: 90px;
+    padding-left: 70px;
 }
 
 .testimonial-img-wrap .img-shape img {
@@ -16018,7 +15980,7 @@ blockquote p {
   -o-border-radius: 8px;
   -ms-border-radius: 8px;
   border-radius: 8px;
-  /* padding: 35px 40px 40px; */
+  /*padding: 35px 40px 40px;*/
   margin-left: 30px;
   color: #2e2e4d;
 }
@@ -16029,7 +15991,7 @@ blockquote p {
 
 @media (max-width: 1199.98px) {
   .contact__form-wrap {
-    /* padding: 35px 20px 40px; */
+    /*padding: 35px 20px 40px;*/
     margin-left: 0;
   }
 }
@@ -18883,8 +18845,8 @@ blockquote p {
 }
 
 .produk-item .produk-content .deskripsi-content {
-    padding-top: 15px;
     font-size: 14px;
+     padding-top: 15px;
     line-height: 1.5;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -18901,10 +18863,10 @@ blockquote p {
 }
 
 
-/* .produk-item .produk-content span {
-    font-size: 14px;
-    color: var(--tg-color-red-1);
-} */
+/*.produk-item .produk-content span {*/
+/*    font-size: 14px;*/
+/*    color: var(--tg-color-red-1);*/
+/*}*/
 
 .produk-item .produk-content ul {
     font-size: 14px;
