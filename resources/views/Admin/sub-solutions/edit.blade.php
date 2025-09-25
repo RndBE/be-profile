@@ -133,6 +133,34 @@
                                                 @enderror
                                             </div>
 
+                                            <div class="mb-3">
+                                                <label for="file_3d" class="form-label">File 3D</label>
+                                                <div class="input-group mb-1">
+                                                    <input type="file"
+                                                        class="form-control"
+                                                        name="file_3d"
+                                                        id="file_3d"
+                                                        aria-describedby="inputGroupFileAddon05"
+                                                        accept=".html,.htm">
+                                                </div>
+                                                @error('file_3d')
+                                                    <p class="text-red-500 text-sm mt-1 error-message">{{ $message }}</p>
+                                                @enderror
+
+                                                @if(!empty($subSolution->file_3d))
+                                                    <div class="mt-2">
+                                                        <small class="d-block mb-1">File saat ini:</small>
+                                                        <div class="mt-2 border rounded" style="height:400px; overflow:hidden;">
+                                                            <iframe src="{{ asset($subSolution->file_3d) }}"
+                                                                    width="100%"
+                                                                    height="100%"
+                                                                    style="border:0;"
+                                                                    title="3D Preview"></iframe>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            </div>
+
                                             <label for="description1" class="form-label">Deskripsi 1</label>
                                             <textarea class="ckeditor form-control" name="description1" id="description1" rows="3">{{ old('description1', $subSolution->description1) }}</textarea>
                                             @error('description1')

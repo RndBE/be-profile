@@ -113,6 +113,21 @@
                                                 @enderror
                                             </div>
 
+                                            <div class="mb-3">
+                                                <label for="file_3d" class="form-label">File 3D</label>
+                                                <div class="input-group mb-1">
+                                                    <input type="file"
+                                                        class="form-control"
+                                                        name="file_3d"
+                                                        id="file_3d"
+                                                        aria-describedby="inputGroupFileAddon05"
+                                                        accept=".html,.htm">
+                                                </div>
+                                                @error('file_3d')
+                                                    <p class="text-red-500 text-sm mt-1 error-message">{{ $message }}</p>
+                                                @enderror
+                                            </div>
+
                                             <label for="description1" class="form-label">Deskripsi 1</label>
                                             <textarea class="ckeditor form-control" name="description1" id="description1" rows="3">{{ old('description1') }}</textarea>
                                             @error('description1')

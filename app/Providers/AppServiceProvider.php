@@ -34,7 +34,6 @@ class AppServiceProvider extends ServiceProvider
             $latestToken = InstagramToken::latest()->first();
 
             $accessToken = $latestToken?->access_token;
-
             $feeds = [];
 
             if ($accessToken) {
@@ -44,11 +43,25 @@ class AppServiceProvider extends ServiceProvider
                 ]);
 
                 if ($response->successful()) {
-                    $feeds = collect($response->json()['data'] ?? [])->map(function ($item) {
-                        // Jika tipe video, ganti media_url dengan thumbnail_url
+                    $feeds = collect($response->json()['data'] ?? [])->map(function ($item) use ($accessToken) {
+                        // Handle VIDEO: gunakan thumbnail_url jika ada
                         if ($item['media_type'] === 'VIDEO') {
-                            $item['media_url'] = $item['thumbnail_url'] ?? $item['media_url'];
+                            $item['media_url'] = $item['thumbnail_url'] ?? $item['media_url'] ?? '';
                         }
+
+                        // Handle IMAGE: jika media_url kosong, ambil dari API individual
+                        if ($item['media_type'] === 'IMAGE' && empty($item['media_url'])) {
+                            $detailResponse = Http::withOptions(['verify' => false])->get("https://graph.instagram.com/{$item['id']}", [
+                                'fields' => 'id,media_url,thumbnail_url,permalink',
+                                'access_token' => $accessToken,
+                            ]);
+
+                            if ($detailResponse->successful()) {
+                                $detailData = $detailResponse->json();
+                                $item['media_url'] = $detailData['media_url'] ?? '';
+                            }
+                        }
+
                         return $item;
                     })->take(6);
                 }
