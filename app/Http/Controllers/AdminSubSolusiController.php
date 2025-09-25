@@ -42,6 +42,7 @@ class AdminSubSolusiController extends Controller
             'gambar' => 'nullable|array',
             'gambar.*' => 'image|mimes:jpeg,png,jpg|max:2048',
             'icon' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'file_3d' => 'nullable|mimes:html,htm',
         ]);
 
         $iconPath = null;
@@ -51,6 +52,26 @@ class AdminSubSolusiController extends Controller
             $iconPath = 'subsolution_images/icon/' . $fileName;
         }
 
+        $basePublicPath = base_path('../public_html/uploads');
+        // Menangani Icon
+        $file3DPath = null;
+        if ($request->hasFile('icon')) {
+            $fileName = time() . '_' . $request->file('icon')->getClientOriginalName();
+            $destinationPath = $basePublicPath . '/subsolution_files';
+
+            // Pastikan foldernya ada
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            // Simpan file
+            $request->file('icon')->move($destinationPath, $fileName);
+
+            // Simpan path relatif ke database
+            $file3DPath = 'konten/subsolution_files/' . $fileName;
+        }
+
+
         $subsolution = SubSolutions::create([
             'nama' => $request->input('nama'),
             'solution_id' => $request->input('solution_id'),
@@ -59,6 +80,7 @@ class AdminSubSolusiController extends Controller
             'description3' => $request->input('description3'),
             'video' => $request->input('video'),
             'icon' => $iconPath,
+            'file_3d' => $file3DPath,
         ]);
 
         if ($request->hasFile('gambar')) {
@@ -90,6 +112,7 @@ class AdminSubSolusiController extends Controller
 
     public function update(Request $request, $id)
     {
+        // dd($request->all());
         $subSolution = SubSolutions::with('gambar')->findOrFail($id);
 
         $request->validate([
@@ -101,6 +124,7 @@ class AdminSubSolusiController extends Controller
             'video' => 'nullable|string',
             'gambar.*' => 'image|mimes:jpeg,png,jpg|max:2048',
             'icon' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'file_3d' => 'nullable|mimes:html,htm',
         ]);
 
         if ($request->hasFile('icon')) {
@@ -113,6 +137,35 @@ class AdminSubSolusiController extends Controller
             $filePath = $request->file('icon')->storeAs('public/subsolution_images/icon', $fileName);
             $subSolution->icon = 'subsolution_images/icon/' . $fileName;
         }
+
+        $basePublicPath = base_path('../public_html/uploads');
+
+        if ($request->hasFile('file_3d')) {
+            // Hapus file lama kalau ada
+            $oldThumbPath = base_path('../public_html/' . $subSolution->file_3d);
+            if ($subSolution->file_3d && file_exists($oldThumbPath)) {
+                unlink($oldThumbPath);
+            }
+
+            $destinationPath = $basePublicPath . '/subsolution_files';
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            // Ambil nama asli file
+            $originalName = $request->file('file_3d')->getClientOriginalName();
+            $originalName = preg_replace('/\s+/', '_', $originalName); // hapus spasi biar aman
+
+            // Tambahkan timestamp biar unik
+            $fileName = time() . '_' . $originalName;
+
+            // Pindahkan file ke folder tujuan
+            $request->file('file_3d')->move($destinationPath, $fileName);
+
+            // Simpan path di database
+            $subSolution->file_3d = 'uploads/subsolution_files/' . $fileName;
+        }
+
 
         $subSolution->update($request->only([
             'nama', 'solution_id', 'description1', 'description2', 'description3', 'video'
@@ -154,6 +207,13 @@ class AdminSubSolusiController extends Controller
 
         if ($subSolution->icon && Storage::exists('public/' . $subSolution->icon)) {
             Storage::delete('public/' . $subSolution->icon);
+        }
+
+        if ($subSolution->file_3d) {
+            $file3DPath = base_path('../public_html/' . $subSolution->file_3d);
+            if (file_exists($file3DPath)) {
+                unlink($file3DPath);
+            }
         }
 
         foreach ($subSolution->gambar as $image) {
