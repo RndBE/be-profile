@@ -59,24 +59,90 @@
                         <div class="col-70 order-0 order-lg-2">
                             <div class="services__details-content services__details-content-two">
                                 <div class="project__details-thumb swiper-container slider-project-banner">
-                                    <div class="swiper-wrapper">
-                                        @if($subSolution && $subSolution->gambar)
-                                            @forelse($subSolution->gambar as $gambar)
-                                                <div class="swiper-slide">
-                                                    <img src="{{ asset('storage/' . $gambar->gambar) }}" alt="gambar">
-                                                </div>
-                                            @empty
-                                                <div class="swiper-slide">
-                                                    <img style="width: 100%;height: 600px;" src="{{ asset('asset/img/images/no-image1.png') }}" alt="default">
-                                                </div>
-                                            @endforelse
-                                        @else
-                                            <div class="swiper-slide">
-                                                <img style="width: 100%;height: 600px;" src="{{ asset('asset/img/images/no-image1.png') }}" alt="default">
-                                            </div>
-                                        @endif
-                                    </div>
-                                    <div class="swiper-pagination swiper-pagination-project"></div>
+                                    <!--{{-- <div class="swiper-wrapper">-->
+                                    <!--    @if($subSolution && $subSolution->gambar)-->
+                                    <!--        @forelse($subSolution->gambar as $gambar)-->
+                                    <!--            <div class="swiper-slide">-->
+                                    <!--                <img src="{{ asset('storage/' . $gambar->gambar) }}" alt="gambar">-->
+                                    <!--            </div>-->
+                                    <!--        @empty-->
+                                    <!--            <div class="swiper-slide">-->
+                                    <!--                <img style="width: 100%;height: 600px;" src="{{ asset('asset/img/images/no-image1.png') }}" alt="default">-->
+                                    <!--            </div>-->
+                                    <!--        @endforelse-->
+                                    <!--    @else-->
+                                    <!--        <div class="swiper-slide">-->
+                                    <!--            <img style="width: 100%;height: 600px;" src="{{ asset('asset/img/images/no-image1.png') }}" alt="default">-->
+                                    <!--        </div>-->
+                                    <!--    @endif-->
+                                    <!--</div>-->
+                                    <!--<div class="swiper-pagination swiper-pagination-project"></div> --}}-->
+                                    @if($subSolution && $subSolution->file_3d)
+                                        <div class="relative" style="width:100%; height:600px; border-radius:20px; overflow:hidden;">
+
+                                            <!-- Iframe -->
+                                            <iframe id="iframe3d"
+                                                src="{{ asset($subSolution->file_3d) }}"
+                                                width="100%"
+                                                height="100%"
+                                                style="border:0; display:block; z-index:1; position:relative;"
+                                                title="3D View">
+                                            </iframe>
+
+                                            <img src="{{ asset('assets/img/rotate.svg') }}"
+                                             alt="Rotate"
+                                             title="Rotate"
+                                             onclick="rotateIframe()"
+                                             style="
+                                                position: absolute;
+                                                top: 10px;
+                                                right: 10px;
+                                                z-index: 9999;
+                                                width: 80px;
+                                                height: 80px;
+                                                cursor: pointer;
+                                                border-radius: 30%;
+                                                padding: 8px;
+                                                opacity: 0.7;
+                                                transition: opacity 0.2s ease, transform 0.2s ease;
+                                             ">
+
+                                            <!-- Fullscreen Button -->
+                                            <button type="button"
+                                                onclick="openFullscreen()"
+                                                style="
+                                                    position: absolute;
+                                                    bottom: 10px;
+                                                    right: 10px;
+                                                    z-index: 9999; /* pastikan selalu di atas */
+                                                    background: rgba(0,0,0,0.6);
+                                                    color: #fff;
+                                                    border: none;
+                                                    padding: 6px 12px;
+                                                    border-radius: 6px;
+                                                    cursor: pointer;
+                                                ">
+                                                ⛶ Fullscreen
+                                            </button>
+                                        </div>
+                                    @else
+                                        <p>-</p>
+                                    @endif
+
+                                    <script>
+                                        function openFullscreen() {
+                                            let iframe = document.getElementById("iframe3d");
+                                            if (iframe && iframe.requestFullscreen) {
+                                                iframe.requestFullscreen();
+                                            } else if (iframe && iframe.mozRequestFullScreen) {
+                                                iframe.mozRequestFullScreen();
+                                            } else if (iframe && iframe.webkitRequestFullscreen) {
+                                                iframe.webkitRequestFullscreen();
+                                            } else if (iframe && iframe.msRequestFullscreen) {
+                                                iframe.msRequestFullscreen();
+                                            }
+                                        }
+                                    </script>
                                 </div>
                                 @if($subSolution)
                                 <span class="project-artikel__details-inner-content">{!! $subSolution->description1 !!}</p>
@@ -351,7 +417,7 @@
                 });
             });
         </script>
-        <script>
+        {{-- <script>
             // Inisialisasi Swiper
             document.addEventListener('DOMContentLoaded', () => {
                 new Swiper('.slider-project-banner', {
@@ -375,7 +441,7 @@
                     }
                 });
             });
-        </script>
+        </script> --}}
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 let produkItems = document.querySelectorAll(".produk-item");
