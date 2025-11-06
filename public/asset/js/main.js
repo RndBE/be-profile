@@ -5,14 +5,14 @@
         =    		 Preloader			      =
     =============================================*/
     function preloader() {
-        $('#preloader').delay(0).fadeOut();
+        $('#preloader').fadeOut(200);
     };
 
     $(window).on('load', function () {
         preloader();
         wowAnimation();
         aosAnimation();
-        tg_title_animation();
+        // tg_title_animation();
     });
 
 

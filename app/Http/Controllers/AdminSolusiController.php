@@ -27,45 +27,45 @@ class AdminSolusiController extends Controller
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
-        // Menangani Icon
         $iconPath = null;
         if ($request->hasFile('icon')) {
-            $fileName = time() . '_' . $request->file('icon')->getClientOriginalName();
+            $originalName = $request->file('icon')->getClientOriginalName();
+            $fileName = time() . '_' . pathinfo($originalName, PATHINFO_FILENAME) . '.webp';
+            $iconPath = 'konten/solutions/icon/' . $fileName;
+            $storagePath = storage_path('app/public/' . $iconPath);
 
-            // Arahkan ke public_html (keluar dari Laravel folder)
-            $destinationPath = base_path('../public_html/konten/solutions/icon');
-
-            if (!file_exists($destinationPath)) {
-                mkdir($destinationPath, 0755, true);
+            // Pastikan direktori tujuan ada
+            if (!file_exists(dirname($storagePath))) {
+                mkdir(dirname($storagePath), 0755, true);
             }
 
-            $request->file('icon')->move($destinationPath, $fileName);
+            // Baca file asli dan simpan sebagai webp
+            $imageFromRequest = $request->file('icon')->getRealPath();
 
-            // URL relatif dari domain (akses via browser)
-            $iconPath = 'konten/solutions/icon/' . $fileName;
+            Image::read($imageFromRequest)  // Gunakan Intervention Image
+                ->toWebp()
+                ->save($storagePath);
         }
 
-        // Menangani Thumbnail
         $thumbnailPath = null;
         if ($request->hasFile('thumbnail')) {
-            $fileName = time() . '.webp';
-            $destinationPath = base_path('../public_html/konten/solutions/thumbnail');
+            $originalName = $request->file('thumbnail')->getClientOriginalName();
+            $fileName = time() . '_' . pathinfo($originalName, PATHINFO_FILENAME) . '.webp';
+            $thumbnailPath = 'konten/solutions/thumbnail/' . $fileName;
+            $storagePath = storage_path('app/public/' . $thumbnailPath);
 
-            if (!file_exists($destinationPath)) {
-                mkdir($destinationPath, 0755, true);
+            // Pastikan direktori tujuan ada
+            if (!file_exists(dirname($storagePath))) {
+                mkdir(dirname($storagePath), 0755, true);
             }
 
-            $imageFromStorage = $request->file('thumbnail')->getRealPath();
-            $fullPath = $destinationPath . '/' . $fileName;
+            // Baca file asli dan simpan sebagai webp
+            $imageFromRequest = $request->file('thumbnail')->getRealPath();
 
-            Image::read($imageFromStorage)
+            Image::read($imageFromRequest)  // Gunakan Intervention Image
                 ->toWebp()
-                ->save($fullPath);
-
-            $thumbnailPath = 'konten/solutions/thumbnail/' . $fileName;
+                ->save($storagePath);
         }
-
-
 
         // Simpan data ke database
         Solutions::create([
@@ -91,51 +91,59 @@ class AdminSolusiController extends Controller
         ]);
         // Cari data yang akan diupdate berdasarkan ID
         $solution = Solutions::findOrFail($id);
-        // Menangani Icon
+
         if ($request->hasFile('icon')) {
             // Hapus icon lama jika ada
-            if ($solution->icon) {
-                $oldIconPath = base_path('../public_html/' . $solution->icon);
-                if (file_exists($oldIconPath)) {
-                    unlink($oldIconPath);
-                }
+            if ($solution->icon && Storage::exists('public/' . $solution->icon)) {
+                Storage::delete('public/' . $solution->icon);
             }
 
-            // Simpan icon baru
-            $fileName = time() . '_' . $request->file('icon')->getClientOriginalName();
-            $destinationPath = base_path('../public_html/konten/solutions/icon');
-            if (!file_exists($destinationPath)) {
-                mkdir($destinationPath, 0755, true);
+            // Generate nama baru
+            $originalName = $request->file('icon')->getClientOriginalName();
+            $fileName = time() . '_' . pathinfo($originalName, PATHINFO_FILENAME) . '.webp';
+            $imagePath = 'konten/solutions/icon/' . $fileName;
+            $storagePath = storage_path('app/public/' . $imagePath);
+
+            // Pastikan folder ada
+            if (!file_exists(dirname($storagePath))) {
+                mkdir(dirname($storagePath), 0755, true);
             }
-            $request->file('icon')->move($destinationPath, $fileName);
-            $solution->icon = 'konten/solutions/icon/' . $fileName;
+
+            // Konversi dan simpan icon
+            $imageFromRequest = $request->file('icon')->getRealPath();
+
+            Image::read($imageFromRequest)
+                ->toWebp()
+                ->save($storagePath);
+
+            $solution->icon = $imagePath;
         }
 
-        // Menangani thumbnail
         if ($request->hasFile('thumbnail')) {
             // Hapus thumbnail lama jika ada
-            if ($solution->thumbnail) {
-                $oldThumbPath = base_path('../public_html/' . $solution->thumbnail);
-                if (file_exists($oldThumbPath)) {
-                    unlink($oldThumbPath);
-                }
+            if ($solution->thumbnail && Storage::exists('public/' . $solution->thumbnail)) {
+                Storage::delete('public/' . $solution->thumbnail);
             }
 
-            // Simpan thumbnail baru (konversi ke .webp)
-            $fileName = time() . '.webp';
-            $thumbnailPath = 'konten/solutions/thumbnail/' . $fileName;
-            $fullSavePath = base_path('../public_html/' . $thumbnailPath);
-            $thumbDir = dirname($fullSavePath);
-            if (!file_exists($thumbDir)) {
-                mkdir($thumbDir, 0755, true);
+            // Generate nama baru
+            $originalName = $request->file('thumbnail')->getClientOriginalName();
+            $fileName = time() . '_' . pathinfo($originalName, PATHINFO_FILENAME) . '.webp';
+            $imagePath = 'konten/solutions/thumbnail/' . $fileName;
+            $storagePath = storage_path('app/public/' . $imagePath);
+
+            // Pastikan folder ada
+            if (!file_exists(dirname($storagePath))) {
+                mkdir(dirname($storagePath), 0755, true);
             }
 
-            $imageFromStorage = $request->file('thumbnail')->getRealPath();
-            Image::read($imageFromStorage)
+            // Konversi dan simpan thumbnail
+            $imageFromRequest = $request->file('thumbnail')->getRealPath();
+
+            Image::read($imageFromRequest)
                 ->toWebp()
-                ->save($fullSavePath);
+                ->save($storagePath);
 
-            $solution->thumbnail = $thumbnailPath;
+            $solution->thumbnail = $imagePath;
         }
 
         // Update data ke database
@@ -152,20 +160,15 @@ class AdminSolusiController extends Controller
     public function destroy($id)
     {
         $solution = Solutions::findOrFail($id);
-        // Hapus icon jika ada
-        if ($solution->icon) {
-            $iconPath = base_path('../public_html/' . $solution->icon);
-            if (file_exists($iconPath)) {
-                unlink($iconPath);
-            }
+
+        if ($solution->icon && Storage::exists('public/' . $solution->icon)) {
+            Storage::delete('public/' . $solution->icon);
         }
-        // Hapus thumbnail jika ada
-        if ($solution->thumbnail) {
-            $thumbnailPath = base_path('../public_html/' . $solution->thumbnail);
-            if (file_exists($thumbnailPath)) {
-                unlink($thumbnailPath);
-            }
+
+        if ($solution->thumbnail && Storage::exists('public/' . $solution->thumbnail)) {
+            Storage::delete('public/' . $solution->thumbnail);
         }
+
         // Hapus data dari database
         $solution->delete();
         toast('Berhasil menghapus data!', 'success');

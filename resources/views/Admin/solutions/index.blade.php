@@ -50,12 +50,12 @@
                                                 <td>{{ $item->description }}</td>
                                                 <td>
                                                     @if ($item->icon)
-                                                        <img src="{{ asset($item->icon) }}" alt="Image" style="width: 100px; height: auto;">
+                                                        <img src="{{ asset('storage/' . $item->icon) }}" alt="Image" style="width: 100px; height: auto;">
                                                     @endif
                                                 </td>
                                                 <td>
                                                     @if ($item->thumbnail)
-                                                        <img src="{{ asset($item->thumbnail) }}" alt="Image" style="width: 100px; height: auto;">
+                                                        <img src="{{ asset('storage/' . $item->thumbnail) }}" alt="Image" style="width: 100px; height: auto;">
                                                     @endif
                                                 </td>
                                                 <td>

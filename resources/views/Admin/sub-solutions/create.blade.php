@@ -112,7 +112,7 @@
                                                     <p class="text-red-500 text-sm mt-1 error-message">{{ $message }}</p>
                                                 @enderror
                                             </div>
-
+                                            
                                             <div class="mb-3">
                                                 <label for="file_3d" class="form-label">File 3D</label>
                                                 <div class="input-group mb-1">

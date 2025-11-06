@@ -101,11 +101,11 @@
                                                 <a href="https://api.whatsapp.com/send?text={{ urlencode('*' . $artikel->judul . "*\n\nKlik untuk baca: \n" . url('publikasi/' . $artikel->slug)) }}" target="_blank">
                                                     <img src="{{ asset('asset/img/icon/WhatsApp.png') }}" alt="Bagikan ke WhatsApp">
                                                 </a>
-
+                                                
                                                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url('publikasi/' . $artikel->slug)) }}" target="_blank">
                                                     <img src="{{ asset('asset/img/icon/Facebook.png') }}" alt="Bagikan ke Facebook">
                                                 </a>
-
+                                                
                                                 <a id="copyButton" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to copy URL" class="copy-link" data-link="{{ url('publikasi/' . $artikel->slug) }}">
                                                     <img src="{{ asset('asset/img/icon/Link.png') }}" alt="Salin Link">
                                                 </a>

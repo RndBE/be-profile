@@ -27,7 +27,7 @@
                             </div>
                         @endif
                         <div class="input-group mb-1">
-                            <input type="file" class="form-control" name="logo" id="logo{{ $item->id }}" aria-describedby="inputGroupFileAddon04" accept=".png, .jpg, .jpeg, .webp">
+                            <input type="file" class="form-control" name="logo" id="logo{{ $item->id }}" aria-describedby="inputGroupFileAddon04" accept=".png, .jpg, .jpeg">
                         </div>
                         @error('logo')
                             <p class="text-danger text-sm mt-1">{{ $message }}</p>

@@ -266,7 +266,7 @@
 
     document.addEventListener('DOMContentLoaded', initSwiper);
 
-    Livewire.hook('message.processed', (message, component) => {
-        initSwiper(); // Re-inisialisasi Swiper setelah Livewire merender ulang
-    });
+    // Livewire.hook('message.processed', (message, component) => {
+    //     initSwiper(); // Re-inisialisasi Swiper setelah Livewire merender ulang
+    // });
 </script>

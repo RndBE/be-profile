@@ -97,11 +97,9 @@ class AdminCarouselController extends Controller
         }
 
         $carousel->save();
-
-        toast('Berhasil mengubah data!', 'success');
+        toast('Berhasil mengubah data!','success');
         return redirect()->back();
     }
-
 
 
     public function destroy($id)

@@ -59,7 +59,7 @@ class AdminProdukController extends Controller
         if ($request->hasFile('gambar_thumbnail_produk')) {
             $fileName = time() . '.webp';
             $thumbnailProdukPath = 'konten/produk/gambar_thumbnail_produk/' . $fileName;
-            $destinationPath = base_path('../public_html/' . dirname($thumbnailProdukPath));
+            $destinationPath = storage_path('app/public/' . dirname($thumbnailProdukPath));
 
             if (!file_exists($destinationPath)) {
                 mkdir($destinationPath, 0755, true);
@@ -68,14 +68,14 @@ class AdminProdukController extends Controller
             $imageFromStorage = $request->file('gambar_thumbnail_produk')->getRealPath();
             Image::read($imageFromStorage)
                 ->toWebp()
-                ->save(base_path('../public_html/' . $thumbnailProdukPath));
+                ->save(storage_path('app/public/' . $thumbnailProdukPath));
         }
 
         $produkPath = null;
         if ($request->hasFile('gambar_produk')) {
             $fileName = time() . '.webp';
             $produkPath = 'konten/produk/gambar_produk/' . $fileName;
-            $destinationPath = base_path('../public_html/' . dirname($produkPath));
+            $destinationPath = storage_path('app/public/' . dirname($produkPath));
 
             if (!file_exists($destinationPath)) {
                 mkdir($destinationPath, 0755, true);
@@ -84,14 +84,14 @@ class AdminProdukController extends Controller
             $imageFromStorage = $request->file('gambar_produk')->getRealPath();
             Image::read($imageFromStorage)
                 ->toWebp()
-                ->save(base_path('../public_html/' . $produkPath));
+                ->save(storage_path('app/public/' . $produkPath));
         }
 
         $brosurName = null;
         if ($request->hasFile('brosur')) {
             $fileName = time() . '_' . $request->file('brosur')->getClientOriginalName();
             $brosurName = 'konten/produk/brosur/' . $fileName;
-            $destinationPath = base_path('../public_html/konten/produk/brosur');
+            $destinationPath = storage_path('app/public/konten/produk/brosur');
 
             if (!file_exists($destinationPath)) {
                 mkdir($destinationPath, 0755, true);
@@ -173,7 +173,7 @@ class AdminProdukController extends Controller
         if ($request->hasFile('gambar_thumbnail_produk')) {
             // Hapus file lama
             if ($produk->gambar_thumbnail_produk) {
-                $oldPath = base_path('../public_html/' . $produk->gambar_thumbnail_produk);
+                $oldPath = storage_path('app/public/' . $produk->gambar_thumbnail_produk);
                 if (file_exists($oldPath)) {
                     unlink($oldPath);
                 }
@@ -181,7 +181,7 @@ class AdminProdukController extends Controller
 
             $fileName = time() . '.webp';
             $gambar_thumbnail_produkPath = 'konten/produk/gambar_thumbnail_produk/' . $fileName;
-            $destinationPath = base_path('../public_html/' . dirname($gambar_thumbnail_produkPath));
+            $destinationPath = storage_path('app/public/' . dirname($gambar_thumbnail_produkPath));
 
             if (!file_exists($destinationPath)) {
                 mkdir($destinationPath, 0755, true);
@@ -190,7 +190,7 @@ class AdminProdukController extends Controller
             $imageFromStorage = $request->file('gambar_thumbnail_produk')->getRealPath();
             Image::read($imageFromStorage)
                 ->toWebp()
-                ->save(base_path('../public_html/' . $gambar_thumbnail_produkPath));
+                ->save(storage_path('app/public/' . $gambar_thumbnail_produkPath));
 
             $produk->gambar_thumbnail_produk = $gambar_thumbnail_produkPath;
         }
@@ -198,7 +198,7 @@ class AdminProdukController extends Controller
         // Update Gambar Produk
         if ($request->hasFile('gambar_produk')) {
             if ($produk->gambar_produk) {
-                $oldPath = base_path('../public_html/' . $produk->gambar_produk);
+                $oldPath = storage_path('app/public/' . $produk->gambar_produk);
                 if (file_exists($oldPath)) {
                     unlink($oldPath);
                 }
@@ -206,7 +206,7 @@ class AdminProdukController extends Controller
 
             $fileName = time() . '.webp';
             $gambar_produkPath = 'konten/produk/gambar_produk/' . $fileName;
-            $destinationPath = base_path('../public_html/' . dirname($gambar_produkPath));
+            $destinationPath = storage_path('app/public/' . dirname($gambar_produkPath));
 
             if (!file_exists($destinationPath)) {
                 mkdir($destinationPath, 0755, true);
@@ -215,7 +215,7 @@ class AdminProdukController extends Controller
             $imageFromStorage = $request->file('gambar_produk')->getRealPath();
             Image::read($imageFromStorage)
                 ->toWebp()
-                ->save(base_path('../public_html/' . $gambar_produkPath));
+                ->save(storage_path('app/public/' . $gambar_produkPath));
 
             $produk->gambar_produk = $gambar_produkPath;
         }
@@ -223,7 +223,7 @@ class AdminProdukController extends Controller
         // Update Brosur
         if ($request->hasFile('brosur')) {
             if ($produk->brosur) {
-                $oldPath = base_path('../public_html/' . $produk->brosur);
+                $oldPath = storage_path('app/public/' . $produk->brosur);
                 if (file_exists($oldPath)) {
                     unlink($oldPath);
                 }
@@ -231,7 +231,7 @@ class AdminProdukController extends Controller
 
             $fileName = time() . '_' . $request->file('brosur')->getClientOriginalName();
             $brosurPath = 'konten/produk/brosur/' . $fileName;
-            $destinationPath = base_path('../public_html/' . dirname($brosurPath));
+            $destinationPath = storage_path('app/public/' . dirname($brosurPath));
 
             if (!file_exists($destinationPath)) {
                 mkdir($destinationPath, 0755, true);
@@ -254,7 +254,7 @@ class AdminProdukController extends Controller
         $produk = Produk::findOrFail($id);
         // Hapus gambar_thumbnail_produk jika ada
         if ($produk->gambar_thumbnail_produk) {
-            $path = base_path('../public_html/' . $produk->gambar_thumbnail_produk);
+            $path = storage_path('app/public/' . $produk->gambar_thumbnail_produk);
             if (file_exists($path)) {
                 unlink($path);
             }
@@ -262,7 +262,7 @@ class AdminProdukController extends Controller
 
         // Hapus gambar_produk jika ada
         if ($produk->gambar_produk) {
-            $path = base_path('../public_html/' . $produk->gambar_produk);
+            $path = storage_path('app/public/' . $produk->gambar_produk);
             if (file_exists($path)) {
                 unlink($path);
             }
@@ -270,7 +270,7 @@ class AdminProdukController extends Controller
 
         // Hapus brosur jika ada
         if ($produk->brosur) {
-            $path = base_path('../public_html/' . $produk->brosur);
+            $path = storage_path('app/public/' . $produk->brosur);
             if (file_exists($path)) {
                 unlink($path);
             }

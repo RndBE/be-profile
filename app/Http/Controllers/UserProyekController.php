@@ -34,7 +34,7 @@ class UserProyekController extends Controller
     {
 
         $projek = Projek::where('slug', $slug)->with('gambar')->firstOrFail();
-
+        
         
         $data = [
             'kliens' => Klien::orderBy('created_at', 'desc')->get(),

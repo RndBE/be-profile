@@ -1,6 +1,22 @@
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
+    <!-- Google Tag Manager -->
+    {{-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MTQWD9MT');</script> --}}
+    <!-- End Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+    {{-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-6JSP4BZ625"></script> --}}
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-6JSP4BZ625');
+    </script>
     @include('User.layouts.head')
     @livewireStyles
 </head>
@@ -15,9 +31,9 @@
     </div>
     <!--Preloader-end -->
     <!-- Scroll-top -->
-    <button class="scroll__top scroll-to-target" data-target="html">
-        <i class="fas fa-angle-up"></i>
-    </button>
+    <!--<button class="scroll__top scroll-to-target" data-target="html">-->
+    <!--    <i class="fas fa-angle-up"></i>-->
+    <!--</button>-->
     <!-- Scroll-top-end-->
 
     <header class="transparent-header">
@@ -34,7 +50,7 @@
     @livewireScripts
 
     <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         (function(){
         var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -44,7 +60,7 @@
         s1.setAttribute('crossorigin','*');
         s0.parentNode.insertBefore(s1,s0);
         })();
-    </script>
+    </script> --}}
     <!--End of Tawk.to Script-->
 
     <!-- Menambahkan JSON-LD untuk Schema.org -->
@@ -77,10 +93,10 @@
     <script src="{{ asset('asset/js/jquery.magnific-popup.min.js') }}" defer></script>
     <script src="{{ asset('asset/js/jquery.odometer.min.js') }}" defer></script>
     <script src="{{ asset('asset/js/jquery.appear.js') }}" defer></script>
-    <script src="{{ asset('asset/js/gsap.js') }}" defer></script>
-    <script src="{{ asset('asset/js/ScrollTrigger.js') }}" defer></script>
+    <!--<script src="{{ asset('asset/js/gsap.js') }}" defer></script>-->
+    <!--<script src="{{ asset('asset/js/ScrollTrigger.js') }}" defer></script>-->
     <script src="{{ asset('asset/js/SplitText.js') }}" defer></script>
-    <script src="{{ asset('asset/js/gsap-animation.js') }}" defer></script>
+    <!--<script src="{{ asset('asset/js/gsap-animation.js') }}" defer></script>-->
     <script src="{{ asset('asset/js/jquery.parallaxScroll.min.js') }}" defer></script>
     <script src="{{ asset('asset/js/swiper-bundle.js') }}" defer></script>
     <script src="{{ asset('asset/js/ajax-form.js') }}" defer></script>
@@ -102,6 +118,11 @@
             element[i].style.transform = "rotate(" + i * 17 + "deg)"
         }
     </script> --}}
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MTQWD9MT"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     {{-- CKEditor --}}
     <!--<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>-->

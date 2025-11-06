@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Klien;
 use Illuminate\Http\Request;
+use App\Models\Klien;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Laravel\Facades\Image;
 

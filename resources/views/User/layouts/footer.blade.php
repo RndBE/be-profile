@@ -93,6 +93,11 @@
                                     <ul class="list-wrap">
                                         <li><a href="https://www.youtube.com/@beacon_engineering" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a></li>
                                         <li><a href="https://www.instagram.com/beacon_engineering" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a></li>
+                                        <li>
+                                            <a href="https://www.linkedin.com/company/beaconen-gineering" target="_blank" rel="noopener noreferrer">
+                                                <i class="fab fa-linkedin"></i>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -150,18 +155,15 @@
                             <h4 class="fw-title">Instagram Posts</h4>
                             <div class="footer-instagram">
                                 <ul class="list-wrap">
-                                    @foreach ($instagramFeeds ?? [] as $feed)
-                                        @php
-                                            $imageUrl = $feed['media_type'] === 'VIDEO'
-                                                ? ($feed['thumbnail_url'] ?? $feed['media_url']) // fallback ke media_url kalau thumbnail gak ada
-                                                : $feed['media_url'];
-                                        @endphp
-                                        <li>
-                                            <a href="{{ $feed['permalink'] }}" target="_blank" rel="noopener noreferrer">
-                                                <img src="{{ $imageUrl }}" alt="Instagram Feed" loading="lazy">
-                                            </a>
-                                        </li>
-                                    @endforeach
+                                   {{-- @foreach ($instagramFeeds ?? [] as $feed)
+                                        @if (!empty($feed['media_url']))
+                                            <li>
+                                                <a href="{{ $feed['permalink'] }}" target="_blank" rel="noopener noreferrer">
+                                                    <img src="{{ $feed['media_url'] }}" alt="Instagram Feed" loading="lazy">
+                                                </a>
+                                            </li>
+                                        @endif
+                                    @endforeach --}}
                                 </ul>
                             </div>
                         </div>

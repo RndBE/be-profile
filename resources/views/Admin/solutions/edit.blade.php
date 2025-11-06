@@ -30,7 +30,7 @@
                         <label for="icon{{ $item->id }}" class="form-label">Icon</label>
                         @if ($item->icon)
                             <div class="mb-2">
-                                <img src="{{ asset($item->icon) }}" alt="Image" style="width: 100px; height: auto;">
+                                <img src="{{ asset('storage/' .$item->icon) }}" alt="Image" style="width: 100px; height: auto;">
                             </div>
                         @endif
                         <div class="input-group mb-1">
@@ -45,7 +45,7 @@
                         <label for="thumbnail{{ $item->id }}" class="form-label">Thumbnail</label>
                         @if ($item->thumbnail)
                             <div class="mb-2">
-                                <img src="{{ asset($item->thumbnail) }}" alt="Image" style="width: 100px; height: auto;">
+                                <img src="{{ asset('storage/' .$item->thumbnail) }}" alt="Image" style="width: 100px; height: auto;">
                             </div>
                         @endif
                         <div class="input-group mb-1">

@@ -122,7 +122,7 @@
                                         <label for="gambar_thumbnail_produk" class="mr-3">Upload Gambar Thumbnail Produk</label>
                                         @if ($produk->gambar_thumbnail_produk)
                                             <div class="mb-2">
-                                                <img src="{{ asset($produk->gambar_thumbnail_produk) }}" alt="Image" style="width: 100px; height: auto;">
+                                                <img src="{{ asset('storage/' .$produk->gambar_thumbnail_produk) }}" alt="Image" style="width: 100px; height: auto;">
                                             </div>
                                         @endif
                                         <div class="input-group mb-1">
@@ -135,7 +135,7 @@
                                         <label for="gambar_produk" class="mr-3">Upload Gambar Produk</label>
                                         @if ($produk->gambar_produk)
                                             <div class="mb-2">
-                                                <img src="{{ asset($produk->gambar_produk) }}" alt="Image" style="width: 100px; height: auto;">
+                                                <img src="{{ asset('storage/' .$produk->gambar_produk) }}" alt="Image" style="width: 100px; height: auto;">
                                             </div>
                                         @endif
                                         <div class="input-group mb-1">

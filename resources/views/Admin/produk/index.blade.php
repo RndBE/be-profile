@@ -50,7 +50,7 @@
                                                 <td class="text-center">{{ $loop->iteration }}</td>
                                                 <td>
                                                     @if ($item->gambar_thumbnail_produk)
-                                                        <img src="{{ asset($item->gambar_thumbnail_produk) }}" alt="Image" style="width: 100px; height: auto;">
+                                                        <img src="{{ asset('storage/' .$item->gambar_thumbnail_produk) }}" alt="Image" style="width: 100px; height: auto;">
                                                     @else
                                                     -
                                                     @endif
@@ -60,7 +60,7 @@
                                                 <td>{{ $item->subSolution->nama ?? 'N/A' }}</td>
                                                 <td>
                                                     @if ($item->gambar_produk)
-                                                        <img src="{{ asset($item->gambar_produk) }}" alt="Image" style="width: 100px; height: auto;">
+                                                        <img src="{{ asset('storage/' .$item->gambar_produk) }}" alt="Image" style="width: 100px; height: auto;">
                                                     @else
                                                     -
                                                     @endif
@@ -78,11 +78,13 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="{{ $item->brosur }}"
+                                                    @if(!empty($item->brosur) && Storage::disk('public')->exists($item->brosur))
+                                                        <a href="{{ asset('storage/' . $item->brosur) }}"
                                                         target="_blank"
                                                         class="btn btn-info">
-                                                        <i class="fa-regular fa-file"></i>
-                                                    </a>
+                                                            <i class="fa-regular fa-file"></i>
+                                                        </a>
+                                                    @endif
                                                 </td>
                                                 <td>
                                                     <div class="btn-group">

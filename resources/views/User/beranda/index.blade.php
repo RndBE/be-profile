@@ -40,8 +40,8 @@
                     @foreach ($kliens as $klien)
                         <div class="swiper-slide">
                             <div class="brand-item">
-                                <img class="swiper-lazy" src="{{ asset('storage/' . $klien->logo) }}" alt="{{ $klien->nama }}">
-                                <div class="swiper-lazy-preloader"></div> <!-- spinner loading -->
+                                <img loading="lazy" class="swiper-lazy" src="{{ asset('storage/' . $klien->logo) }}" alt="{{ $klien->nama }}">
+                                <div class="swiper-lazy-preloader"></div>
                             </div>
                             <div>
                                 <p>{{ $klien->nama_perusahaan }}</p>
@@ -72,11 +72,11 @@
                                 <a href="{{ route('solusi.show', Str::slug($solution->nama)) }}" class="services-link">
                                     <div class="services-item equal-box shine-animate-item">
                                         <div class="services-thumb">
-                                            <img loading="lazy" src="{{ asset($solution->thumbnail) }}" alt="">
+                                            <img loading="lazy" src="{{ asset('storage/'.$solution->thumbnail) }}" alt="">
                                         </div>
                                         <div class="services-content">
                                             <div class="icon">
-                                                <img loading="lazy" src="{{ asset($solution->icon) }}" alt="">
+                                                <img loading="lazy" src="{{ asset('storage/'.$solution->icon) }}" alt="">
                                             </div>
                                             <h4 class="title">{{ $solution->nama }}</h4>
                                             <p>{{ $solution->description }}</p>
@@ -92,807 +92,6 @@
         </div>
     </section>
     <!-- services-area-end -->
-    <style>
-        .topology-diagram {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            color: #2b2b2b;
-            position: relative;
-        }
-        .cloud-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            position: relative;
-            flex-wrap: wrap;
-        }
-        .devices {
-            width: 25%;
-            position: relative;
-        }
-        .devices ul {
-            list-style: none;
-            padding: 0;
-        }
-        .devices li {
-            background: #2e2e4d;
-            color: #fff;
-            padding: 8px 12px;
-            margin: 12px 0;
-            border-radius: 6px;
-            font-size: 12px;
-            position: relative;
-            height: 70px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .devices li a{
-            background: #2e2e4d;
-            color: #fff;
-            padding: 8px 12px;
-            margin: 12px 0;
-            border-radius: 6px;
-            font-size: 12px;
-            position: relative;
-            height: 70px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .cloud {
-            width: 35%;
-            position: relative;
-        }
-        .cloud img {
-            max-width: 100%;
-            height: auto;
-        }
-        .monitoring img {
-            max-width: 20%;
-            height: auto;
-        }
-        .desc {
-            font-size: 13px;
-            max-width: 700px;
-            margin: 0px auto;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .devices.left {
-            position: relative;
-        }
-
-        .devices.left::before {
-            content: "";
-            position: absolute;
-            top: 20px;
-            right: -40px;
-            width: 2px;
-            height: 79%;
-            background-color: #2e2e4d;
-            z-index: -1;
-        }
-
-        .devices.left::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: -58px;
-            width: 20px;
-            height: 20px;
-            border-bottom: 2px solid #2e2e4d;
-            border-right: 2px solid #2e2e4d;
-            border-bottom-right-radius: 20px;
-            background: none;
-            z-index: -1;
-            transform: rotate(-90deg) scaleY(-1);
-        }
-
-        .devices.left .arrow-up {
-            content: "";
-            position: absolute;
-            top: -2px;
-            right: -65px;
-            width: 0;
-            height: 0;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-bottom: 6px solid #2e2e4d;
-            z-index: -1;
-            transform: rotate(90deg)
-        }
-
-        .devices.left li::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            right: -10px;
-            width: 10px;
-            height: 10px;
-            background-color: #2e2e4d;
-            border-radius: 50%;
-            transform: translateY(-50%);
-            z-index: 1;
-        }
-        .devices.left li::after {
-            content: "";
-            position: absolute;
-            top: 38%;
-            right: -40px;
-            width: 40px;
-            height: 20px;
-            background: none;
-            border-top: 2px solid #2e2e4d;
-            border-right: 2px solid #2e2e4d;
-            border-top-right-radius: 20px;
-            transform: translateY(-50%) scaleY(-1);
-        }
-
-        .devices.right {
-            position: relative;
-        }
-
-        .devices.right::before {
-            content: "";
-            position: absolute;
-            top: 20px;
-            left: -40px;
-            width: 2px;
-            height: 80%;
-            background-color: #2e2e4d;
-            z-index: -1;
-        }
-
-        .devices.right::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -58px;
-            width: 20px;
-            height: 20px;
-            border-bottom: 2px solid #2e2e4d;
-            border-left: 2px solid #2e2e4d;
-            border-bottom-left-radius: 20px;
-            background: none;
-            z-index: -1;
-            transform: rotate(90deg) scaleY(-1);
-        }
-
-        .devices.right .arrow-up {
-            content: "";
-            position: absolute;
-            top: -2px;
-            left: -65px;
-            width: 0;
-            height: 0;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-top: 6px solid #2e2e4d;
-            z-index: -1;
-            transform: rotate(90deg);
-        }
-
-        .devices.right li::before {
-            content: "";
-            position: absolute;
-            top: 55%;
-            left: -10px;
-            width: 10px;
-            height: 10px;
-            background-color: #2e2e4d;
-            border-radius: 50%;
-            transform: translateY(-50%);
-            z-index: 1;
-        }
-
-        .devices.right li::after {
-            content: "";
-            position: absolute;
-            top: 40%;
-            left: -40px;
-            width: 40px;
-            height: 20px;
-            background: none;
-            border-top: 2px solid #2e2e4d;
-            border-left: 2px solid #2e2e4d;
-            border-top-left-radius: 20px;
-            transform: translateY(-50%) scaleY(-1);
-        }
-
-        /* Mobile responsive */
-        @media (max-width: 834px) {
-            .cloud-section {
-                flex-direction: column-reverse;
-            }
-
-            .devices, .cloud {
-                width: 90%;
-            }
-
-            .cloud img {
-                max-width: 50%;
-                height: auto;
-            }
-
-            .cloud {
-                order: 0; /* tampilkan cloud di atas */
-            }
-
-            .devices.left {
-                order: -1; /* di bawah cloud */
-            }
-
-            .devices.right {
-                order: -1; /* paling bawah */
-            }
-
-            .monitoring img {
-                max-width: 40%;
-                height: auto;
-            }
-
-            .devices.left {
-                position: relative;
-            }
-
-            .devices.left::before {
-                content: "";
-                position: absolute;
-                top: -880px;
-                right: -20px;
-                width: 2px;
-                height: 1240px;
-                background-color: #2e2e4d;
-                z-index: -1;
-            }
-
-            .devices.left::after {
-                content: "";
-                position: absolute;
-                top: -898px;
-                right: -20px;
-                width: 20px;
-                height: 20px;
-                border-bottom: 2px solid #2e2e4d;
-                border-right: 2px solid #2e2e4d;
-                border-bottom-right-radius: 20px;
-                background: none;
-                z-index: -1;
-                transform: rotate(-90deg) scaleY(1);
-            }
-
-            .devices.left .arrow-up {
-                content: "";
-                position: absolute;
-                top: -899px;
-                right: -5px;
-                width: 0;
-                height: 0;
-                border-left: 5px solid transparent;
-                border-right: 5px solid transparent;
-                border-bottom: 6px solid #2e2e4d;
-                z-index: -1;
-                transform: rotate(-90deg);
-            }
-
-            .devices.left li::before {
-                content: "";
-                position: absolute;
-                top: 50%;
-                right: -10px;
-                width: 10px;
-                height: 10px;
-                background-color: #2e2e4d;
-                border-radius: 50%;
-                transform: translateY(-50%);
-                z-index: 1;
-            }
-            .devices.left li::after {
-                content: "";
-                position: absolute;
-                top: 38%;
-                right: -20px;
-                width: 20px;
-                height: 20px;
-                background: none;
-                border-top: 2px solid #2e2e4d;
-                border-right: 2px solid #2e2e4d;
-                border-top-right-radius: 20px;
-                transform: translateY(-50%) scaleY(-1);
-            }
-
-            .devices.right {
-                position: relative;
-            }
-
-            .devices.right::before {
-                content: "";
-                position: absolute;
-                top: -450px;
-                left: -20px;
-                width: 2px;
-                height: 815px;
-                background-color: #2e2e4d;
-                z-index: -1;
-            }
-
-            .devices.right::after {
-                content: "";
-                position: absolute;
-                top: -470px;
-                left: -20px;
-                width: 20px;
-                height: 20px;
-                border-bottom: 2px solid #2e2e4d;
-                border-left: 2px solid #2e2e4d;
-                border-bottom-left-radius: 20px;
-                background: none;
-                z-index: -1;
-                transform: rotate(90deg) scaleY(1);
-            }
-
-            .devices.right .arrow-up {
-                content: "";
-                position: absolute;
-                top: -472px;
-                left: -5px;
-                width: 0;
-                height: 0;
-                border-left: 5px solid transparent;
-                border-right: 5px solid transparent;
-                border-top: 6px solid #2e2e4d;
-                z-index: -1;
-                transform: rotate(-90deg);
-            }
-
-            .devices.right li::before {
-                content: "";
-                position: absolute;
-                top: 55%;
-                left: -10px;
-                width: 10px;
-                height: 10px;
-                background-color: #2e2e4d;
-                border-radius: 50%;
-                transform: translateY(-50%);
-                z-index: 1;
-            }
-
-            .devices.right li::after {
-                content: "";
-                position: absolute;
-                top: 45%;
-                left: -20px;
-                width: 20px;
-                height: 20px;
-                background: none;
-                border-top: 2px solid #2e2e4d;
-                border-left: 2px solid #2e2e4d;
-                border-top-left-radius: 20px;
-                transform: translateY(-50%) scaleY(-1);
-            }
-        }
-
-        @media (max-width: 440px) {
-            .devices.left::before {
-                content: "";
-                position: absolute;
-                top: -670px;
-                right: -20px;
-                width: 2px;
-                height: 1028px;
-                background-color: #2e2e4d;
-                z-index: -1;
-            }
-
-            .devices.left::after {
-                content: "";
-                position: absolute;
-                top: -690px;
-                right: -20px;
-                width: 20px;
-                height: 20px;
-                border-bottom: 2px solid #2e2e4d;
-                border-right: 2px solid #2e2e4d;
-                border-bottom-right-radius: 20px;
-                background: none;
-                z-index: -1;
-                transform: rotate(-90deg) scaleY(1);
-            }
-
-            .devices.left .arrow-up {
-                content: "";
-                position: absolute;
-                top: -692px;
-                right: -5px;
-                width: 0;
-                height: 0;
-                border-left: 5px solid transparent;
-                border-right: 5px solid transparent;
-                border-bottom: 6px solid #2e2e4d;
-                z-index: -1;
-                transform: rotate(-90deg);
-            }
-
-            .devices.right::before {
-                content: "";
-                position: absolute;
-                top: -245px;
-                left: -20px;
-                width: 2px;
-                height: 610px;
-                background-color: #2e2e4d;
-                z-index: -1;
-            }
-
-            .devices.right::after {
-                content: "";
-                position: absolute;
-                top: -265px;
-                left: -20px;
-                width: 20px;
-                height: 20px;
-                border-bottom: 2px solid #2e2e4d;
-                border-left: 2px solid #2e2e4d;
-                border-bottom-left-radius: 20px;
-                background: none;
-                z-index: -1;
-                transform: rotate(90deg) scaleY(1);
-            }
-
-            .devices.right .arrow-up {
-                content: "";
-                position: absolute;
-                top: -266px;
-                left: -5px;
-                width: 0;
-                height: 0;
-                border-left: 5px solid transparent;
-                border-right: 5px solid transparent;
-                border-top: 6px solid #2e2e4d;
-                z-index: -1;
-                transform: rotate(-90deg);
-            }
-        }
-
-        @media (max-width: 375px) {
-            .devices.left::before {
-                content: "";
-                position: absolute;
-                top: -645px;
-                right: -20px;
-                width: 2px;
-                height: 1005px;
-                background-color: #2e2e4d;
-                z-index: -1;
-            }
-
-            .devices.left::after {
-                content: "";
-                position: absolute;
-                top: -665px;
-                right: -20px;
-                width: 20px;
-                height: 20px;
-                border-bottom: 2px solid #2e2e4d;
-                border-right: 2px solid #2e2e4d;
-                border-bottom-right-radius: 20px;
-                background: none;
-                z-index: -1;
-                transform: rotate(-90deg) scaleY(1);
-            }
-
-            .devices.left .arrow-up {
-                content: "";
-                position: absolute;
-                top: -667px;
-                right: -5px;
-                width: 0;
-                height: 0;
-                border-left: 5px solid transparent;
-                border-right: 5px solid transparent;
-                border-bottom: 6px solid #2e2e4d;
-                z-index: -1;
-                transform: rotate(-90deg);
-            }
-
-            .devices.right::before {
-                content: "";
-                position: absolute;
-                top: -220px;
-                left: -20px;
-                width: 2px;
-                height: 582px;
-                background-color: #2e2e4d;
-                z-index: -1;
-            }
-
-            .devices.right::after {
-                content: "";
-                position: absolute;
-                top: -240px;
-                left: -20px;
-                width: 20px;
-                height: 20px;
-                border-bottom: 2px solid #2e2e4d;
-                border-left: 2px solid #2e2e4d;
-                border-bottom-left-radius: 20px;
-                background: none;
-                z-index: -1;
-                transform: rotate(90deg) scaleY(1);
-            }
-
-            .devices.right .arrow-up {
-                content: "";
-                position: absolute;
-                top: -242px;
-                left: -5px;
-                width: 0;
-                height: 0;
-                border-left: 5px solid transparent;
-                border-right: 5px solid transparent;
-                border-top: 6px solid #2e2e4d;
-                z-index: -1;
-                transform: rotate(-90deg);
-            }
-        }
-
-        @media (max-width: 320px) {
-            .devices.left::before {
-                content: "";
-                position: absolute;
-                top: -615px;
-                right: -20px;
-                width: 2px;
-                height: 975px;
-                background-color: #2e2e4d;
-                z-index: -1;
-            }
-
-            .devices.left::after {
-                content: "";
-                position: absolute;
-                top: -635px;
-                right: -20px;
-                width: 20px;
-                height: 20px;
-                border-bottom: 2px solid #2e2e4d;
-                border-right: 2px solid #2e2e4d;
-                border-bottom-right-radius: 20px;
-                background: none;
-                z-index: -1;
-                transform: rotate(-90deg) scaleY(1);
-            }
-
-            .devices.left .arrow-up {
-                content: "";
-                position: absolute;
-                top: -637px;
-                right: -5px;
-                width: 0;
-                height: 0;
-                border-left: 5px solid transparent;
-                border-right: 5px solid transparent;
-                border-bottom: 6px solid #2e2e4d;
-                z-index: -1;
-                transform: rotate(-90deg);
-            }
-
-            .devices.right::before {
-                content: "";
-                position: absolute;
-                top: -190px;
-                left: -20px;
-                width: 2px;
-                height: 555px;
-                background-color: #2e2e4d;
-                z-index: -1;
-            }
-
-            .devices.right::after {
-                content: "";
-                position: absolute;
-                top: -210px;
-                left: -20px;
-                width: 20px;
-                height: 20px;
-                border-bottom: 2px solid #2e2e4d;
-                border-left: 2px solid #2e2e4d;
-                border-bottom-left-radius: 20px;
-                background: none;
-                z-index: -1;
-                transform: rotate(90deg) scaleY(1);
-            }
-
-            .devices.right .arrow-up {
-                content: "";
-                position: absolute;
-                top: -212px;
-                left: -5px;
-                width: 0;
-                height: 0;
-                border-left: 5px solid transparent;
-                border-right: 5px solid transparent;
-                border-top: 6px solid #2e2e4d;
-                z-index: -1;
-                transform: rotate(-90deg);
-            }
-        }
-
-        @media (max-width: 1114px) and (min-width: 835px) {
-            .devices {
-                width: 22%;
-                position: relative;
-            }
-
-            .devices li {
-                background: #2e2e4d;
-                color: #fff;
-                padding: 8px 12px;
-                margin: 12px 0;
-                border-radius: 6px;
-                font-size: 8px;
-                position: relative;
-                height: 55px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-            }
-
-            .devices.left {
-                position: relative;
-            }
-
-            .devices.left::before {
-                content: "";
-                position: absolute;
-                bottom: 0px;
-                right: -40px;
-                width: 2px;
-                height: 78%;
-                background-color: #2e2e4d;
-                z-index: -1;
-            }
-
-            .devices.left::after {
-                content: "";
-                position: absolute;
-                top: 0;
-                right: -58px;
-                width: 20px;
-                height: 20px;
-                border-bottom: 2px solid #2e2e4d;
-                border-right: 2px solid #2e2e4d;
-                border-bottom-right-radius: 20px;
-                background: none;
-                z-index: -1;
-                transform: rotate(-90deg) scaleY(-1);
-            }
-
-            .devices.left .arrow-up {
-                content: "";
-                position: absolute;
-                top: -2px;
-                right: -65px;
-                width: 0;
-                height: 0;
-                border-left: 5px solid transparent;
-                border-right: 5px solid transparent;
-                border-bottom: 6px solid #2e2e4d;
-                z-index: -1;
-                transform: rotate(90deg)
-            }
-
-            .devices.left li::before {
-                content: "";
-                position: absolute;
-                top: 55%;
-                right: -10px;
-                width: 10px;
-                height: 10px;
-                background-color: #2e2e4d;
-                border-radius: 50%;
-                transform: translateY(-50%);
-                z-index: 1;
-            }
-            .devices.left li::after {
-                content: "";
-                position: absolute;
-                top: 38%;
-                right: -40px;
-                width: 40px;
-                height: 20px;
-                background: none;
-                border-top: 2px solid #2e2e4d;
-                border-right: 2px solid #2e2e4d;
-                border-top-right-radius: 20px;
-                transform: translateY(-50%) scaleY(-1);
-            }
-
-            .devices.right {
-                position: relative;
-            }
-
-            .devices.right::before {
-                content: "";
-                position: absolute;
-                bottom: 0px;
-                left: -40px;
-                width: 2px;
-                height: 78%;
-                background-color: #2e2e4d;
-                z-index: -1;
-            }
-
-            .devices.right::after {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: -58px;
-                width: 20px;
-                height: 20px;
-                border-bottom: 2px solid #2e2e4d;
-                border-left: 2px solid #2e2e4d;
-                border-bottom-left-radius: 20px;
-                background: none;
-                z-index: -1;
-                transform: rotate(90deg) scaleY(-1);
-            }
-
-            .devices.right .arrow-up {
-                content: "";
-                position: absolute;
-                top: -2px;
-                left: -65px;
-                width: 0;
-                height: 0;
-                border-left: 5px solid transparent;
-                border-right: 5px solid transparent;
-                border-top: 6px solid #2e2e4d;
-                z-index: -1;
-                transform: rotate(90deg);
-            }
-
-            .devices.right li::before {
-                content: "";
-                position: absolute;
-                top: 55%;
-                left: -10px;
-                width: 10px;
-                height: 10px;
-                background-color: #2e2e4d;
-                border-radius: 50%;
-                transform: translateY(-50%);
-                z-index: 1;
-            }
-
-            .devices.right li::after {
-                content: "";
-                position: absolute;
-                top: 40%;
-                left: -40px;
-                width: 40px;
-                height: 20px;
-                background: none;
-                border-top: 2px solid #2e2e4d;
-                border-left: 2px solid #2e2e4d;
-                border-top-left-radius: 20px;
-                transform: translateY(-50%) scaleY(-1);
-            }
-        }
-    </style>
-
     <!-- about-area -->
     <section id="about" class="about-area pt-120 pb-120">
         <div class="container">
@@ -919,7 +118,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="https://be-jogja.com/solusi/geothermal-measurement/automatic-pressure-level-recorder">
+                                        <a href="https://be-jogja.com/solusi/pressure-measurement/automatic-pressure-level-recorder">
                                             AUTOMATIC PRESSURE LEVEL RECORDER <strong>(APLR)</strong>
                                         </a>
                                     </li>
@@ -960,7 +159,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="https://be-jogja.com/solusi/early-warning-system/early-warning-system">
+                                        <a href="https://be-jogja.com/solusi/early-warning/early-warning-system">
                                             EARLY WARNING SYSTEM <strong>(EWS)</strong>
                                         </a>
                                     </li>
@@ -1001,8 +200,8 @@
             <div class="row align-items-center">
                 <div class="col-lg-4 order-0 order-lg-2">
                     <div class="choose-img-wrap">
-                        <img loading="lazy" src="{{ asset('asset/img/images/Foto-Harapan.webp') }}" alt="">
-                        <img loading="lazy" src="{{ asset('asset/img/images/Group-34.webp') }}" class="shadow-image" alt="" data-parallax='{"x" : 50 }'>
+                        <img loading="lazy" src="{{ asset('asset/img/images/Foto-Harapan.webp') }}" alt="Simulasi penggunaan alat telemetri">
+                        <img loading="lazy" src="{{ asset('asset/img/images/Group-34.webp') }}" class="shadow-image" alt="Perusahaan telemetri berpengalaman" data-parallax='{"x" : 50 }'>
                     </div>
                 </div>
                 <div class="col-lg-8">
@@ -1083,7 +282,7 @@
                             <div class="project-item">
                                 <div class="project-thumb">
                                     <a href="{{ route('proyek.show', $projek->slug) }}">
-                                        <img class="swiper-lazy" src="{{ asset('storage/' . $projek->thumbnail) }}" alt="">
+                                        <img loading="lazy" class="swiper-lazy" src="{{ asset('storage/' . $projek->thumbnail) }}" alt="{{ $projek->nama_projek }}">
                                         <div class="swiper-lazy-preloader"></div> <!-- spinner loading -->
                                     </a>
                                 </div>
@@ -1137,7 +336,7 @@
                             </div>
                         </div>
                         <div class="consulting-img shine-animate">
-                            <img loading="lazy" src="{{ asset('asset/img/images/valveIKN.jpeg') }}" alt="">
+                            <img loading="lazy" src="{{ asset('asset/img/images/valveIKN.jpeg') }}" alt="Valve IKN">
                         </div>
                         <div class="consulting-shape">
                             {{-- <img loading="lazy" src="{{ asset('asset/img/images/consulting_shape.png') }}" alt=""> --}}
@@ -1160,7 +359,7 @@
                                 <div class="testimonial-item">
                                     <div class="testimonial-info">
                                         <div class="icon">
-                                            <img class="swiper-lazy" src="{{ asset('storage/' . $testimoni->projek->klien->logo ) }}" alt="Logo" class="user-image">
+                                            <img loading="lazy" class="swiper-lazy" src="{{ asset('storage/' . $testimoni->projek->klien->logo ) }}" alt="{{ $testimoni->projek->klien->nama_perusahaan }}" class="user-image">
                                             <div class="swiper-lazy-preloader"></div> <!-- spinner loading -->
                                         </div>
                                         <div class="text-info">
@@ -1184,13 +383,13 @@
                 <div class="col-lg-6 col-md-8 kolom-widya">
                     <div class="testimonial-img-wrap">
                         <div class="icon">
-                            <img loading="lazy" src="{{ asset('asset/img/images/Foto Pendapat Mitra.png') }}" alt="">
+                            <img loading="lazy" src="{{ asset('asset/img/images/Foto Pendapat Mitra.png') }}" alt="Pendapat Mitra">
                         </div>
                         <div class="img-shape">
-                            <img loading="lazy" src="{{ asset('asset/img/images/testimonial_bgwidya1.png') }}" class="bgwidya" alt="">
+                            <img loading="lazy" src="{{ asset('asset/img/images/testimonial_bgwidya1.png') }}" class="bgwidya" alt="background">
                             <img loading="lazy" src="" alt="" class="rightToLeft">
-                            <img loading="lazy" src="{{ asset('asset/img/images/testimonial_shape1.png') }}" alt="" data-parallax='{"y" : 80 }'>
-                            <img loading="lazy" src="{{ asset('asset/img/images/testimonial_shape2.png') }}" alt="" class="alltuchtopdown">
+                            <img loading="lazy" src="{{ asset('asset/img/images/testimonial_shape1.png') }}" alt="testimonial_shape1" data-parallax='{"y" : 80 }'>
+                            <img loading="lazy" src="{{ asset('asset/img/images/testimonial_shape2.png') }}" alt="testimonial_shape2" class="alltuchtopdown">
                         </div>
                     </div>
                 </div>
