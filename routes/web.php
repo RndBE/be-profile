@@ -74,7 +74,7 @@ Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.
 // Route::get('/instagram-feed', [InstagramFeedController::class, 'index']);
 
 Route::get('/login', function () {
-    return redirect('/');
+    return abort(404);
 });
 
 Route::get('/openbeacon', [CustomLoginController::class, 'showLoginForm'])->name('openbeacon');
