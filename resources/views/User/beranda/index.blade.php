@@ -289,7 +289,7 @@
                                 <div class="project-content">
                                     <div class="left-side-content">
                                         <h4 class="title">
-                                            <a href="{{ route('proyek.show', $projek->slug) }}">{{ $projek->nama_projek }}</a>
+                                            <a href="{{ route('proyek.show', $projek->slug) }}" aria-label="Lihat detail proyek {{ $projek->slug }}">{{ $projek->nama_projek }}</a>
                                         </h4>
                                         <span>Tahun {{ $projek->waktu }}</span>
                                     </div>
