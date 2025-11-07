@@ -7,7 +7,7 @@
                 <div class="col-xl-4 col-lg-4 col-md-6">
                     <div class="footer-widget">
                         <div class="fw-logo mb-25">
-                            <a href="#"><img src="{{ asset('assets/dist/img/logo_be2.png') }}" alt=""></a>
+                            <a href="/"><img src="{{ asset('assets/dist/img/logo_be2.png') }}" alt=""></a>
                         </div>
                         <div class="footer-content">
                             <p>PT Arta Teknologi Comunindo dengan merk dagang Beacon Engineering merupakan perusahaan yang bergerak dibidang produksi dan pengadaan perangkat telemetri.</p>
@@ -83,8 +83,8 @@
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="copyright-text text-center">
-                    <p>Copyright © <a href="#">Beacon Engineering</a> | All Right Reserved</p>
-                    <a href="#">Support Terms & Conditions Privacy Policy.</a>
+                    <p>Copyright © <a href="/">Beacon Engineering</a> | All Right Reserved</p>
+                    <a href="/">Support Terms & Conditions Privacy Policy.</a>
                 </div>
             </div>
         </div>
