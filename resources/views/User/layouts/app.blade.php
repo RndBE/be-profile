@@ -23,13 +23,13 @@
 </head>
 <body>
     <!--Preloader-->
-    <div id="preloader">
+    {{-- <div id="preloader">
         <div id="loader" class="loader">
             <div class="loader-container">
                 <div class="loader-icon"><img src="{{ asset('assets/dist/img/title.ico') }}" alt="Preloader"></div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!--Preloader-end -->
     <!-- Scroll-top -->
     <!--<button class="scroll__top scroll-to-target" data-target="html">-->
