@@ -22,7 +22,7 @@
                     Maaf, halaman yang Anda cari tidak tersedia.
                 </p>
 
-                <a href="{{ route('user.home') }}" class="btn px-4 py-2" style="background-color:#b40404;color:#fff;">
+                <a href="/" class="btn px-4 py-2" style="background-color:#b40404;color:#fff;">
                     <i class="bi bi-house-door me-1"></i> Kembali ke Home
                 </a>
             </div>

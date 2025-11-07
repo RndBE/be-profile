@@ -14,7 +14,7 @@
                 <p class="text-muted mb-4 px-3">
                     Maaf, Anda tidak memiliki izin untuk mengakses halaman ini.
                 </p>
-                <a href="{{ route('user.home') }}" class="btn px-4 py-2" style="background-color:#b40404;color:#fff;">
+                <a href="/" class="btn px-4 py-2" style="background-color:#b40404;color:#fff;">
                     <i class="bi bi-arrow-left me-1"></i> Kembali ke Home
                 </a>
             </div>
