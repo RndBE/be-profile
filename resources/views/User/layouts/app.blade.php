@@ -18,7 +18,6 @@
       gtag('config', 'G-6JSP4BZ625');
     </script>
 
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="562b5854-647d-4944-80c1-8e9eecfd6051" data-blockingmode="auto" type="text/javascript"></script>
     @include('User.layouts.head')
     @livewireStyles
 </head>
