@@ -100,10 +100,10 @@
     <script src="{{ asset('asset/js/SplitText.js') }}" defer></script>
     <script src="{{ asset('asset/js/gsap-animation.js') }}" defer></script>
     <script src="{{ asset('asset/js/jquery.parallaxScroll.min.js') }}" defer></script>
-    {{-- <script src="{{ asset('asset/js/swiper-bundle.js') }}" defer></script> --}}
+    <script src="{{ asset('asset/js/swiper-bundle.js') }}" defer></script>
     {{-- <script src="{{ asset('asset/js/ajax-form.js') }}" defer></script> --}}
-    {{-- <script src="{{ asset('asset/js/wow.min.js') }}" defer></script> --}}
-    {{-- <script src="{{ asset('asset/js/aos.js') }}" defer></script> --}}
+    <script src="{{ asset('asset/js/wow.min.js') }}" defer></script>
+    <script src="{{ asset('asset/js/aos.js') }}" defer></script>
     {{-- <script src="{{ asset('asset/js/main.js') }}" defer></script> --}}
     <!-- jQuery -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" defer></script>
@@ -129,13 +129,13 @@
     {{-- <script src="https://cdn.jsdelivr.net/npm/jquery-parallax-scroll@1.0.0/js/jquery.parallax-scroll.min.js"></script> --}}
 
     <!-- Swiper -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script> --}}
 
     <!-- WOW.js -->
-    <script src="https://cdn.jsdelivr.net/npm/wowjs@1.1.3/dist/wow.min.js" defer></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/wowjs@1.1.3/dist/wow.min.js" defer></script> --}}
 
     <!-- AOS (Animate On Scroll) -->
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script> --}}
 
     <!-- ajax-form.js dan main.js (file lokal custom kamu) -->
     <script src="{{ asset('asset/js/ajax-form.js') }}" defer></script>
