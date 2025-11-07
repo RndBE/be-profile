@@ -40,7 +40,7 @@
                     @foreach ($kliens as $klien)
                         <div class="swiper-slide">
                             <div class="brand-item">
-                                <img loading="lazy" class="swiper-lazy" src="{{ asset('storage/' . $klien->logo) }}" alt="{{ $klien->nama }}">
+                                <img loading="lazy" class="swiper-lazy" src="{{ asset('storage/' . $klien->logo) }}" alt="{{ $klien->nama_perusahaan }}">
                                 <div class="swiper-lazy-preloader"></div>
                             </div>
                             <div>
