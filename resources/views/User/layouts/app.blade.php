@@ -17,6 +17,8 @@
 
       gtag('config', 'G-6JSP4BZ625');
     </script>
+
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="562b5854-647d-4944-80c1-8e9eecfd6051" data-blockingmode="auto" type="text/javascript"></script>
     @include('User.layouts.head')
     @livewireStyles
 </head>
@@ -88,21 +90,21 @@
     }
     </script>
     <!-- JS here -->
-    {{-- <script src="{{ asset('asset/js/vendor/jquery-3.6.0.min.js') }}" defer></script>
-    <script src="{{ asset('asset/js/bootstrap.bundle.min.js') }}" defer></script>
-    <script src="{{ asset('asset/js/jquery.magnific-popup.min.js') }}" defer></script>
-    <script src="{{ asset('asset/js/jquery.odometer.min.js') }}" defer></script>
-    <script src="{{ asset('asset/js/jquery.appear.js') }}" defer></script>
+    {{-- <script src="{{ asset('asset/js/vendor/jquery-3.6.0.min.js') }}" defer></script> --}}
+    {{-- <script src="{{ asset('asset/js/bootstrap.bundle.min.js') }}" defer></script> --}}
+    {{-- <script src="{{ asset('asset/js/jquery.magnific-popup.min.js') }}" defer></script> --}}
+    {{-- <script src="{{ asset('asset/js/jquery.odometer.min.js') }}" defer></script> --}}
+    {{-- <script src="{{ asset('asset/js/jquery.appear.js') }}" defer></script> --}}
     <script src="{{ asset('asset/js/gsap.js') }}" defer></script>
     <script src="{{ asset('asset/js/ScrollTrigger.js') }}" defer></script>
     <script src="{{ asset('asset/js/SplitText.js') }}" defer></script>
     <script src="{{ asset('asset/js/gsap-animation.js') }}" defer></script>
     <script src="{{ asset('asset/js/jquery.parallaxScroll.min.js') }}" defer></script>
-    <script src="{{ asset('asset/js/swiper-bundle.js') }}" defer></script>
-    <script src="{{ asset('asset/js/ajax-form.js') }}" defer></script>
-    <script src="{{ asset('asset/js/wow.min.js') }}" defer></script>
-    <script src="{{ asset('asset/js/aos.js') }}" defer></script>
-    <script src="{{ asset('asset/js/main.js') }}" defer></script> --}}
+    {{-- <script src="{{ asset('asset/js/swiper-bundle.js') }}" defer></script> --}}
+    {{-- <script src="{{ asset('asset/js/ajax-form.js') }}" defer></script> --}}
+    {{-- <script src="{{ asset('asset/js/wow.min.js') }}" defer></script> --}}
+    {{-- <script src="{{ asset('asset/js/aos.js') }}" defer></script> --}}
+    {{-- <script src="{{ asset('asset/js/main.js') }}" defer></script> --}}
     <!-- jQuery -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" defer></script>
 
@@ -119,12 +121,12 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery.appear@1.0.1/jquery.appear.min.js" defer></script>
 
     <!-- GSAP + Plugins -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script> --}}
 
     <!-- Parallax Scroll -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery-parallax-scroll@1.0.0/js/jquery.parallax-scroll.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/jquery-parallax-scroll@1.0.0/js/jquery.parallax-scroll.min.js"></script> --}}
 
     <!-- Swiper -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
