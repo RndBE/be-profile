@@ -79,7 +79,7 @@
                                         @endphp
                                         @if ($produkTerpilih && !empty($produkTerpilih->gambar_produk))
                                             <div class="text-center">
-                                                <img src="{{ asset($produkTerpilih->gambar_produk) }}"
+                                                <img src="{{ asset('storage/' .$produkTerpilih->gambar_produk) }}"
                                                     class="img-fluid rounded shadow-sm"
                                                     style="max-width: 300px; height: auto;"
                                                     alt="Gambar {{ $produkTerpilih->nama_produk }}">
