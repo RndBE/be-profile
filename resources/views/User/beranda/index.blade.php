@@ -10,7 +10,17 @@
                     <div class="swiper-wrapper">
                         @foreach ($carousels as $carousel)
                         <div class="swiper-slide">
-                            <section class="banner-area banner-bg" data-background="{{ asset('storage/' . $carousel->gambar) }}">
+                            <section class="banner-area banner-bg position-relative">
+                                <img
+                                    src="{{ asset('storage/' . $carousel->gambar) }}"
+                                    alt="{{ $carousel->judul ?? 'Banner Beacon Engineering' }}"
+                                    fetchpriority="high"
+                                    decoding="async"
+                                    width="1920"
+                                    height="1080"
+                                    class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover"
+                                    style="z-index: -1;"
+                                >
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-lg-6">
