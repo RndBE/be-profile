@@ -1,13 +1,13 @@
 @extends('User.layouts.app')
 
-@section('title', 'Kesalahan Server | CV Arta Solusindo')
+@section('title', 'Kesalahan Server | PT Arta Teknologi Comunindo')
 
 @section('content')
 <section class="section py-5 text-center d-flex align-items-center" style="min-height: 80vh;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-6">
-                <img src="{{ asset('assets/img/500.png') }}" alt="500 Server Error"
+                <img src="{{ asset('asset/img/500.png') }}" alt="500 Server Error"
                     class="img-fluid mx-auto d-block mb-4"
                     style="max-width: 100%; height: auto; width: clamp(250px, 80%, 450px);">
                 <h2 class="fw-bold mb-3">Terjadi Kesalahan di Server</h2>
