@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 
 class CustomLoginController extends Controller
 {
@@ -32,6 +35,8 @@ class CustomLoginController extends Controller
     // }
     public function login(Request $request)
     {
+        $this->checkTooManyLoginAttempts($request); // cek batas percobaan
+
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -40,7 +45,7 @@ class CustomLoginController extends Controller
             'g-recaptcha-response.required' => 'Mohon centang verifikasi reCAPTCHA.',
         ]);
 
-        // Verifikasi token ke Google
+        // Verifikasi reCAPTCHA ke Google
         $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
             'secret' => config('services.recaptcha.secret_key'),
             'response' => $request->input('g-recaptcha-response'),
@@ -55,16 +60,40 @@ class CustomLoginController extends Controller
             ])->withInput();
         }
 
-        // Lanjut login
+        // Jika login berhasil
         if (Auth::attempt($request->only('email', 'password'))) {
+            RateLimiter::clear($this->throttleKey($request)); // reset hitungan percobaan
             $request->session()->regenerate();
             return redirect()->intended('/admin/dashboard');
         }
+
+        // Login gagal → tambah hitungan
+        RateLimiter::hit($this->throttleKey($request));
 
         return back()->withErrors([
             'email' => 'Email atau password salah.',
         ])->withInput($request->only('email'));
     }
+
+    protected function throttleKey(Request $request)
+    {
+        return Str::lower($request->input('email')) . '|' . $request->ip();
+    }
+
+    protected function checkTooManyLoginAttempts(Request $request)
+    {
+        $maxAttempts = 3; // maksimal percobaan
+        $decayMinutes = 1; // waktu tunggu (1 menit)
+
+        if (RateLimiter::tooManyAttempts($this->throttleKey($request), $maxAttempts)) {
+            $seconds = RateLimiter::availableIn($this->throttleKey($request));
+
+            throw ValidationException::withMessages([
+                'email' => "Terlalu banyak percobaan login. Silakan coba lagi dalam " . ceil($seconds / 60) . " menit.",
+            ]);
+        }
+    }
+
 
 
     public function logout(Request $request)
