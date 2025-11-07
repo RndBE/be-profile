@@ -54,7 +54,7 @@
                                             <li><a href="about-4.html">Digital agency About</a></li>
                                         </ul>
                                     </li> --}}
-                                    <li class="menu-item-has-children"><a href="#">Tentang Kami</a>
+                                    <li class="menu-item-has-children"><a href="/">Tentang Kami</a>
                                         <ul class="sub-menu">
                                             <li class="{{ Request::is('tentang-kami') ? 'active' : '' }}">
                                                 <a href="/tentang-kami">Tentang Beacon</a>
@@ -69,7 +69,7 @@
 
                             <div class="tgmenu__action d-none d-md-block">
                                 <ul class="list-wrap">
-                                    <li class="header-btn"><a href="https://wa.me/628112632151" target="_blank" class="btn">Kontak Kami</a></li>
+                                    <li class="header-btn"><a href="https://wa.me/628112632151" aria-label="Whatsapp PT Arta Teknologi Comunindo" target="_blank" class="btn">Kontak Kami</a></li>
                                 </ul>
                             </div>
                             <div class="mobile-nav-toggler">
@@ -92,7 +92,7 @@
                         <nav class="tgmobile__menu-box">
                             <div class="close-btn"><i class="fas fa-times"></i></div>
                             <div class="nav-logo">
-                                <a href="index.html"><img src="{{ asset('assets/dist/img/logo_be2.png') }}" alt="Logo"></a>
+                                <a href="/" aria-label="Logo PT Arta Teknologi Comunindo"><img src="{{ asset('assets/dist/img/logo_be2.png') }}" alt="Logo"></a>
                             </div>
                             <div class="tgmobile__search">
                                 {{-- <form action="#">
@@ -106,15 +106,15 @@
                             <div class="tgmobile__menu-bottom">
                                 <div class="contact-info">
                                     <ul class="list-wrap">
-                                        <li><a href="mailto:info@apexa.com">info@bejogja.com</a></li>
-                                        <li><a href="tel:02744986899">(0274) 4986899</a></li>
+                                        <li><a href="mailto:info@bejogja.com" aria-label="Email PT Arta Teknologi Comunindo">info@bejogja.com</a></li>
+                                        <li><a href="tel:02744986899" aria-label="Telepon PT Arta Teknologi Comunindo">(0274) 4986899</a></li>
                                     </ul>
                                 </div>
                                 <div class="social-links">
                                     <ul class="list-wrap">
-                                        <li><a href="https://www.instagram.com/beacon_engineering" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                                        <li><a href="https://www.linkedin.com/company/beaconen-gineering" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                                        <li><a href="https://www.youtube.com/@beacon_engineering" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                                        <li><a href="https://www.instagram.com/beacon_engineering" aria-label="Akun instagram PT Arta Teknologi Comunindo" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                        <li><a href="https://www.linkedin.com/company/beaconen-gineering" aria-label="Akun linkedin PT Arta Teknologi Comunindo" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                                        <li><a href="https://www.youtube.com/@beacon_engineering" aria-label="Akun youtube PT Arta Teknologi Comunindo" target="_blank"><i class="fab fa-youtube"></i></a></li>
                                     </ul>
                                 </div>
                             </div>

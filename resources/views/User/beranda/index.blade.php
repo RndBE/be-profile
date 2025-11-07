@@ -80,7 +80,7 @@
                                             </div>
                                             <h4 class="title">{{ $solution->nama }}</h4>
                                             <p>{{ $solution->description }}</p>
-                                            <span class="btn">Pelajari</span>
+                                            <span class="btn" style="color: #2e2e4d">Pelajari</span>
                                         </div>
                                     </div>
                                 </a>

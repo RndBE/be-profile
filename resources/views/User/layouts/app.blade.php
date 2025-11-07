@@ -1,6 +1,9 @@
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
+    <meta http-equiv="Content-Security-Policy"
+        content="script-src 'self' https://www.googletagmanager.com https://embed.tawk.to https://cdn.jsdelivr.net https://code.jquery.com 'unsafe-inline' 'unsafe-eval';">
+
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -51,7 +54,7 @@
     @livewireScripts
 
     <!-- jQuery -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
