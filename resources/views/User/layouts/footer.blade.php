@@ -155,7 +155,7 @@
                             <h4 class="fw-title">Instagram Posts</h4>
                             <div class="footer-instagram">
                                 <ul class="list-wrap">
-                                   {{-- @foreach ($instagramFeeds ?? [] as $feed)
+                                    @foreach ($instagramFeeds ?? [] as $feed)
                                         @if (!empty($feed['media_url']))
                                             <li>
                                                 <a href="{{ $feed['permalink'] }}" target="_blank" rel="noopener noreferrer">
@@ -163,7 +163,7 @@
                                                 </a>
                                             </li>
                                         @endif
-                                    @endforeach --}}
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
