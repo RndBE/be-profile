@@ -88,7 +88,7 @@
     }
     </script>
     <!-- JS here -->
-    <script src="{{ asset('asset/js/vendor/jquery-3.6.0.min.js') }}" defer></script>
+    {{-- <script src="{{ asset('asset/js/vendor/jquery-3.6.0.min.js') }}" defer></script>
     <script src="{{ asset('asset/js/bootstrap.bundle.min.js') }}" defer></script>
     <script src="{{ asset('asset/js/jquery.magnific-popup.min.js') }}" defer></script>
     <script src="{{ asset('asset/js/jquery.odometer.min.js') }}" defer></script>
@@ -102,7 +102,44 @@
     <script src="{{ asset('asset/js/ajax-form.js') }}" defer></script>
     <script src="{{ asset('asset/js/wow.min.js') }}" defer></script>
     <script src="{{ asset('asset/js/aos.js') }}" defer></script>
+    <script src="{{ asset('asset/js/main.js') }}" defer></script> --}}
+    <!-- jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" defer></script>
+
+    <!-- Bootstrap Bundle (dengan Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+
+    <!-- Magnific Popup -->
+    <script src="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/jquery.magnific-popup.min.js" defer></script>
+
+    <!-- Odometer -->
+    <script src="https://cdn.jsdelivr.net/npm/odometer@0.4.8/odometer.min.js" defer></script>
+
+    <!-- jQuery Appear -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery.appear@1.0.1/jquery.appear.min.js" defer></script>
+
+    <!-- GSAP + Plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+
+    <!-- Parallax Scroll -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery-parallax-scroll@1.0.0/js/jquery.parallax-scroll.min.js"></script>
+
+    <!-- Swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+    <!-- WOW.js -->
+    <script src="https://cdn.jsdelivr.net/npm/wowjs@1.1.3/dist/wow.min.js" defer></script>
+
+    <!-- AOS (Animate On Scroll) -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+
+    <!-- ajax-form.js dan main.js (file lokal custom kamu) -->
+    <script src="{{ asset('asset/js/ajax-form.js') }}" defer></script>
     <script src="{{ asset('asset/js/main.js') }}" defer></script>
+
+
     <script>
         document.addEventListener('contextmenu', function (e) {
             if (e.target.tagName === 'IMG') {
