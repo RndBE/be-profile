@@ -112,11 +112,9 @@
                                 </div>
                                 <div class="social-links">
                                     <ul class="list-wrap">
-                                        {{-- <li><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a></li> --}}
-                                        {{-- <li><a href="javascript:void(0)"><i class="fab fa-twitter"></i></a></li> --}}
-                                        <li><a href="javascript:void(0)"><i class="fab fa-instagram"></i></a></li>
-                                        {{-- <li><a href="javascript:void(0)"><i class="fab fa-linkedin-in"></i></a></li> --}}
-                                        <li><a href="javascript:void(0)"><i class="fab fa-youtube"></i></a></li>
+                                        <li><a href="https://www.instagram.com/beacon_engineering" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                        <li><a href="https://www.linkedin.com/company/beaconen-gineering" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                                        <li><a href="https://www.youtube.com/@beacon_engineering" target="_blank"><i class="fab fa-youtube"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -129,7 +127,7 @@
         </div>
     </div>
     <!-- header-search -->
-    <div class="search__popup">
+    {{-- <div class="search__popup">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -161,10 +159,10 @@
             </div>
         </div>
     </div>
-    <div class="search-popup-overlay"></div>
+    <div class="search-popup-overlay"></div> --}}
     <!-- header-search-end -->
     <!-- offCanvas-menu -->
-    <div class="offCanvas__info">
+    {{-- <div class="offCanvas__info">
         <div class="offCanvas__close-icon menu-close">
             <button><i class="far fa-window-close"></i></button>
         </div>
@@ -194,6 +192,6 @@
             <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
         </div>
     </div>
-    <div class="offCanvas__overly"></div>
+    <div class="offCanvas__overly"></div> --}}
     <!-- offCanvas-menu-end -->
 {{-- </header> --}}

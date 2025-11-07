@@ -50,6 +50,9 @@
     </footer>
     @livewireScripts
 
+    <!-- jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" defer></script>
+
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -97,15 +100,14 @@
     <script src="{{ asset('asset/js/gsap.js') }}" defer></script>
     <script src="{{ asset('asset/js/ScrollTrigger.js') }}" defer></script>
     <script src="{{ asset('asset/js/SplitText.js') }}" defer></script>
-    <script src="{{ asset('asset/js/gsap-animation.js') }}" defer></script>
+    {{-- <script src="{{ asset('asset/js/gsap-animation.js') }}" defer></script>--}}
     <script src="{{ asset('asset/js/jquery.parallaxScroll.min.js') }}" defer></script>
     <script src="{{ asset('asset/js/swiper-bundle.js') }}" defer></script>
     {{-- <script src="{{ asset('asset/js/ajax-form.js') }}" defer></script> --}}
     <script src="{{ asset('asset/js/wow.min.js') }}" defer></script>
     <script src="{{ asset('asset/js/aos.js') }}" defer></script>
     {{-- <script src="{{ asset('asset/js/main.js') }}" defer></script> --}}
-    <!-- jQuery -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" defer></script>
+
 
     <!-- Bootstrap Bundle (dengan Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
@@ -148,14 +150,14 @@
             }
         });
     </script>
-    <script>
+    {{-- <script>
         const text = document.querySelector('.circle');
         text.innerHTML = text.textContent.replace(/\S/g, "<span>$&</span>");
         const element = document.querySelectorAll('.circle span');
         for (let i = 0; i < element.length; i++) {
             element[i].style.transform = "rotate(" + i * 17 + "deg)"
         }
-    </script>
+    </script> --}}
 
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MTQWD9MT"
