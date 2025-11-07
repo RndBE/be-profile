@@ -18,7 +18,7 @@
                                                 <span class="sub-title" data-aos="fade-up" data-aos-delay="0">Selamat datang di Beacon Engineering!</span>
                                                 <h2 class="title" data-aos="fade-up" data-aos-delay="200">{!! $carousel->judul !!}</h2>
                                                 <p class="sub_judul" data-aos="fade-up" data-aos-delay="400">{{ $carousel->sub_judul }}</p>
-                                                <a href="#services" class="btn" data-aos="fade-up" data-aos-delay="600">Pelajari selengkapnya ok!</a>
+                                                <a href="#services" class="btn" data-aos="fade-up" data-aos-delay="600">Pelajari selengkapnya!</a>
                                             </div>
                                         </div>
                                     </div>
