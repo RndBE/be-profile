@@ -1,62 +1,71 @@
 <!doctype html>
 <html class="no-js" lang="en">
-<head>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Content Security Policy -->
     <meta http-equiv="Content-Security-Policy"
-        content="script-src 'self' https://www.googletagmanager.com https://embed.tawk.to https://cdn.jsdelivr.net https://code.jquery.com 'unsafe-inline' 'unsafe-eval';">
+            content="script-src 'self' https://www.googletagmanager.com https://embed.tawk.to https://cdn.jsdelivr.net https://code.jquery.com 'unsafe-inline' 'unsafe-eval';">
+
+    <!-- Preconnect untuk resource eksternal -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+    <!-- Preload CSS penting -->
+    <link rel="preload" href="{{ asset('asset/css/bootstrap.min.css') }}" as="style" onload="this.rel='stylesheet'">
+    <link rel="preload" href="{{ asset('asset/css/main.css') }}" as="style" onload="this.rel='stylesheet'">
+
+    <!-- Fallback untuk browser lama -->
+    <noscript>
+        <link rel="stylesheet" href="{{ asset('asset/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('asset/css/main.css') }}">
+    </noscript>
+
+    <!-- CSS sekunder (tidak blokir render) -->
+    <link rel="preload" href="{{ asset('asset/css/swiper-bundle.css') }}" as="style" onload="this.rel='stylesheet'">
+    <link rel="preload" href="{{ asset('asset/css/aos.css') }}" as="style" onload="this.rel='stylesheet'">
+    <link rel="preload" href="{{ asset('asset/css/animate.min.css') }}" as="style" onload="this.rel='stylesheet'">
+    <link rel="preload" href="{{ asset('asset/css/flaticon.css') }}" as="style" onload="this.rel='stylesheet'">
+
+    <!-- Google Font dengan teknik non-blocking -->
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap"
+            rel="stylesheet" media="print" onload="this.media='all'">
 
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-MTQWD9MT');</script>
-    <!-- End Google Tag Manager -->
-    <!-- Google tag (gtag.js) -->
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+        f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MTQWD9MT');
+    </script>
+
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6JSP4BZ625"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-6JSP4BZ625');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6JSP4BZ625');
     </script>
 
     @include('User.layouts.head')
     @livewireStyles
-</head>
-<body>
-    <!--Preloader-->
-    {{-- <div id="preloader">
-        <div id="loader" class="loader">
-            <div class="loader-container">
-                <div class="loader-icon"><img src="{{ asset('assets/dist/img/title.ico') }}" alt="Preloader"></div>
-            </div>
-        </div>
-    </div> --}}
-    <!--Preloader-end -->
-    <!-- Scroll-top -->
-    <!--<button class="scroll__top scroll-to-target" data-target="html">-->
-    <!--    <i class="fas fa-angle-up"></i>-->
-    <!--</button>-->
-    <!-- Scroll-top-end-->
+    </head>
 
-    <header class="transparent-header">
-        @include('User.layouts.header')
-    </header>
-    <main class="fix">
-        @yield('content')
-    </main>
-
-
-    <footer>
-        @include('User.layouts.footer')
-    </footer>
+    <body>
+    <header class="transparent-header">@include('User.layouts.header')</header>
+    <main class="fix">@yield('content')</main>
+    <footer>@include('User.layouts.footer')</footer>
     @livewireScripts
 
     <!-- jQuery -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" defer></script>
 
-    <!--Start of Tawk.to Script-->
+    <!-- Tawk.to -->
     <script type="text/javascript">
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         (function(){
@@ -68,103 +77,58 @@
         s0.parentNode.insertBefore(s1,s0);
         })();
     </script>
-    <!--End of Tawk.to Script-->
 
-    <!-- Menambahkan JSON-LD untuk Schema.org -->
+    <!-- JSON-LD Schema -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "PT. Arta Teknologi Comunindo",
-      "url": "https://www.be-jogja.com",
-      "logo": "https://www.be-jogja.com/assets/dist/img/logo.png",
-      "contactPoint": {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "PT. Arta Teknologi Comunindo",
+        "url": "https://www.be-jogja.com",
+        "logo": "https://www.be-jogja.com/assets/dist/img/logo.png",
+        "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+62-274-4986899",
         "contactType": "customer service",
         "email": "info@bejogja.com"
-      },
-      "address": {
+        },
+        "address": {
         "@type": "PostalAddress",
         "streetAddress": "Kadirojo I, Purwomartani, Kalasan",
         "addressLocality": "Sleman",
         "addressRegion": "DI Yogyakarta",
         "postalCode": "55571",
         "addressCountry": "ID"
-      }
+        }
     }
     </script>
-    <!-- JS here -->
-    {{-- <script src="{{ asset('asset/js/vendor/jquery-3.6.0.min.js') }}" defer></script> --}}
-    {{-- <script src="{{ asset('asset/js/bootstrap.bundle.min.js') }}" defer></script> --}}
-    {{-- <script src="{{ asset('asset/js/jquery.magnific-popup.min.js') }}" defer></script> --}}
-    {{-- <script src="{{ asset('asset/js/jquery.odometer.min.js') }}" defer></script> --}}
-    {{-- <script src="{{ asset('asset/js/jquery.appear.js') }}" defer></script> --}}
+
+    <!-- JS Lokal dengan defer -->
     <script src="{{ asset('asset/js/gsap.js') }}" defer></script>
     <script src="{{ asset('asset/js/ScrollTrigger.js') }}" defer></script>
     <script src="{{ asset('asset/js/SplitText.js') }}" defer></script>
-    {{-- <script src="{{ asset('asset/js/gsap-animation.js') }}" defer></script>--}}
     <script src="{{ asset('asset/js/jquery.parallaxScroll.min.js') }}" defer></script>
     <script src="{{ asset('asset/js/swiper-bundle.js') }}" defer></script>
-    {{-- <script src="{{ asset('asset/js/ajax-form.js') }}" defer></script> --}}
     <script src="{{ asset('asset/js/wow.min.js') }}" defer></script>
     <script src="{{ asset('asset/js/aos.js') }}" defer></script>
-    {{-- <script src="{{ asset('asset/js/main.js') }}" defer></script> --}}
-
-
-    <!-- Bootstrap Bundle (dengan Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
-
-    <!-- Magnific Popup -->
-    <script src="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/jquery.magnific-popup.min.js" defer></script>
-
-    <!-- Odometer -->
-    <script src="https://cdn.jsdelivr.net/npm/odometer@0.4.8/odometer.min.js" defer></script>
-
-    <!-- jQuery Appear -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery.appear@1.0.1/jquery.appear.min.js" defer></script>
-
-    <!-- GSAP + Plugins -->
-    {{-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script> --}}
-
-    <!-- Parallax Scroll -->
-    {{-- <script src="https://cdn.jsdelivr.net/npm/jquery-parallax-scroll@1.0.0/js/jquery.parallax-scroll.min.js"></script> --}}
-
-    <!-- Swiper -->
-    {{-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script> --}}
-
-    <!-- WOW.js -->
-    {{-- <script src="https://cdn.jsdelivr.net/npm/wowjs@1.1.3/dist/wow.min.js" defer></script> --}}
-
-    <!-- AOS (Animate On Scroll) -->
-    {{-- <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script> --}}
-
-    <!-- ajax-form.js dan main.js (file lokal custom kamu) -->
     <script src="{{ asset('asset/js/ajax-form.js') }}" defer></script>
     <script src="{{ asset('asset/js/main.js') }}" defer></script>
 
+    <!-- CDN Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/jquery.magnific-popup.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/odometer@0.4.8/odometer.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.appear@1.0.1/jquery.appear.min.js" defer></script>
 
+    <!-- Disable klik kanan gambar -->
     <script>
         document.addEventListener('contextmenu', function (e) {
-            if (e.target.tagName === 'IMG') {
-                e.preventDefault();
-            }
+        if (e.target.tagName === 'IMG') e.preventDefault();
         });
     </script>
-    {{-- <script>
-        const text = document.querySelector('.circle');
-        text.innerHTML = text.textContent.replace(/\S/g, "<span>$&</span>");
-        const element = document.querySelectorAll('.circle span');
-        for (let i = 0; i < element.length; i++) {
-            element[i].style.transform = "rotate(" + i * 17 + "deg)"
-        }
-    </script> --}}
 
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MTQWD9MT"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-</body>
+    </body>
 </html>
