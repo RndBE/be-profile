@@ -9433,9 +9433,9 @@ textarea {
 }
 
 .project__details-thumb .swiper-pagination-bullet {
-  width: 12px;
+  width: 14px;
   height: 12px;
-  margin: 0 4px;
+  margin: 0 6px;
   background-color: transparent;
   border: 2px solid rgba(0, 0, 0, 0.5);
   border-radius: 50%; /* Bentuk bulat */

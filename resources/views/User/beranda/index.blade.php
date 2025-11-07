@@ -78,7 +78,7 @@
                                             <div class="icon">
                                                 <img loading="lazy" src="{{ asset('storage/'.$solution->icon) }}" alt="">
                                             </div>
-                                            <h4 class="title">{{ $solution->nama }}</h4>
+                                            <h3 class="title">{{ $solution->nama }}</h3>
                                             <p>{{ $solution->description }}</p>
                                             <span class="btn" style="color: #2e2e4d">Pelajari</span>
                                         </div>
@@ -218,7 +218,7 @@
                                         <img loading="lazy" src="{{ asset('asset/img/icon/AI.webp') }}" alt="Telemetri Berbasis AI">
                                     </div>
                                     <div class="content">
-                                        <h4 class="title">Telemetri Berbasis AI</h4>
+                                        <h3 class="title">Telemetri Berbasis AI</h3>
                                         <p>Mengumpulkan data lebih cepat dan akurat, serta analisa dan komparasi data hasil pengukuran.</p>
                                     </div>
                                 </div>
@@ -227,7 +227,7 @@
                                         <img loading="lazy" src="{{ asset('asset/img/icon/GARANSI.webp') }}" alt="Garansi Maintenance">
                                     </div>
                                     <div class="content">
-                                        <h4 class="title">Garansi Maintenance</h4>
+                                        <h3 class="title">Garansi Maintenance</h3>
                                         <p>Garansi pengecekan teknis, pemeriksaan visual dan kebersihan, penggantian suku cadang, kalibrasi, serta uji fungsional.</p>
                                     </div>
                                 </div>
@@ -236,7 +236,7 @@
                                         <img loading="lazy" src="{{ asset('asset/img/icon/MONITORING.webp') }}" alt="Monitoring Terintegrasi">
                                     </div>
                                     <div class="content">
-                                        <h4 class="title">Monitoring Terintegrasi</h4>
+                                        <h3 class="title">Monitoring Terintegrasi</h3>
                                         <p>Akses mudah dengan aplikasi STESY (Smart Telemetry System) yang hemat waktu dan efisien.</p>
                                     </div>
                                 </div>
@@ -245,7 +245,7 @@
                                         <img loading="lazy" src="{{ asset('asset/img/icon/LAYANAN.webp') }}" alt="Layanan Konsultasi">
                                     </div>
                                     <div class="content">
-                                        <h4 class="title">Layanan Konsultasi</h4>
+                                        <h3 class="title">Layanan Konsultasi</h3>
                                         <p>Mengumpulkan data lebih cepat dan akurat, serta analisa dan komparasi data hasil pengukuran.</p>
                                     </div>
                                 </div>
@@ -288,9 +288,9 @@
                                 </div>
                                 <div class="project-content">
                                     <div class="left-side-content">
-                                        <h4 class="title">
+                                        <h3 class="title">
                                             <a href="{{ route('proyek.show', $projek->slug) }}" aria-label="Lihat detail proyek {{ $projek->slug }}">{{ $projek->nama_projek }}</a>
-                                        </h4>
+                                        </h3>
                                         <span>Tahun {{ $projek->waktu }}</span>
                                     </div>
                                     <div class="link-arrow">
@@ -327,11 +327,11 @@
                     <div class="consulting-inner-wrap shine-animate-item">
                         <div class="consulting-content">
                             <div class="content-left">
-                                <h2 class="title">300+</h2>
+                                <h3 class="title">300+</h3>
                                 <span>Proyek <br> di Indonesia</span>
                             </div>
                             <div class="content-right">
-                                <h2 class="title">Pendapat Mitra</h2>
+                                <h3 class="title">Pendapat Mitra</h3>
                                 <p>Cari tahu pengalaman berkembang bersama Beacon Engineering melalui pendapat mitra kami!</p>
                             </div>
                         </div>
@@ -363,7 +363,7 @@
                                             <div class="swiper-lazy-preloader"></div> <!-- spinner loading -->
                                         </div>
                                         <div class="text-info">
-                                            <h4 class="title">{{ $testimoni->nama_user }}</h4>
+                                            <h3 class="title">{{ $testimoni->nama_user }}</h3>
                                             <span class="sub-title">{{ $testimoni->jabatan }}</span>
                                         </div>
                                     </div>
@@ -420,9 +420,9 @@
                                 </a>
                             </div>
                             <div class="artikel-post-content">
-                                <h2 class="title">
+                                <h3 class="title">
                                     <a href="{{ route('publikasi.show', $artikel->slug) }}">{{ $artikel->judul }}</a>
-                                </h2>
+                                </h3>
                                 <div class="artikel-avatar">
                                     <div class="avatar-thumb">
                                         <img loading="lazy" src="{{ asset('asset/img/blog/calendar1.png') }}" alt="">
@@ -433,7 +433,9 @@
                                 </div>
                                 <div class="artikel-post-meta">
                                     <ul class="list-wrap">
-                                        <a href="{{ route('publikasi.show', $artikel->slug) }}" class="btn-two">Baca selengkapnya</a>
+                                        <li>
+                                            <a href="{{ route('publikasi.show', $artikel->slug) }}" class="btn-two">Baca selengkapnya</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
