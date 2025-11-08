@@ -1,8 +1,7 @@
 @extends('adminlte.layouts.app')
 @section('title', 'Poster Iklan | BE Profile')
 @section('content')
-    <div class="content-wrapper">
-        <div class="content-header">
+        <div class="app-content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
@@ -33,7 +32,7 @@
         @endif
 
         </div>
-        <div class="content">
+        <div class="app-content">
             <div class="container-fluid">
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800"></h1>
@@ -90,7 +89,6 @@
                 </div>
             </div>
         </div>
-    </div>
     @include('Admin.iklan.create')
     @include('Admin.iklan.edit')
     @include('Admin.iklan.delete', ['iklans' => $iklans])

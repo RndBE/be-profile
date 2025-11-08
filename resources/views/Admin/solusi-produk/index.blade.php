@@ -1,8 +1,7 @@
 @extends('adminlte.layouts.app')
 @section('title', 'Solusi Produk | BE Profile')
 @section('content')
-    <div class="content-wrapper">
-        <div class="content-header">
+    <div class="app-content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
@@ -16,52 +15,51 @@
                 </div>
             </div>
         </div>
-        </div>
-        <div class="content">
-            <div class="container-fluid">
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800"></h1>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahModelSolusiProduk">
-                        Tambah
-                    </button>
-                </div>
-                <div class="row">
-                    <div class="col-lg">
-                        @include('sweetalert::alert')
-                        <div class="card">
-                            <div class="card-body table-responsive">
-                                <table id="example" class="table table-bordered">
-                                    <thead>
+    </div>
+    <div class="app-content">
+        <div class="container-fluid">
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h1 class="h3 mb-0 text-gray-800"></h1>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahModelSolusiProduk">
+                    Tambah
+                </button>
+            </div>
+            <div class="row">
+                <div class="col-lg">
+                    @include('sweetalert::alert')
+                    <div class="card">
+                        <div class="card-body table-responsive">
+                            <table id="example" class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="text-center">No</th>
+                                        <th scope="col">Nama</th>
+                                        <th scope="col">Icon</th>
+                                        <th scope="col">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($solusiproduks as $index => $item)
                                         <tr>
-                                            <th scope="col" class="text-center">No</th>
-                                            <th scope="col">Nama</th>
-                                            <th scope="col">Icon</th>
-                                            <th scope="col">Aksi</th>
+                                            <td class="text-center">{{ $loop->iteration }}</td>
+                                            <td>{{ $item->nama }}</td>
+                                            <td>
+                                                @if ($item->icon)
+                                                    <img src="{{ asset('storage/' . $item->icon) }}" alt="Image" style="width: 100px; height: auto;">
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editSolusiProdukModal{{ $item->id }}">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <a type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteSolusiProdukModal{{ $item->id }}">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($solusiproduks as $index => $item)
-                                            <tr>
-                                                <td class="text-center">{{ $loop->iteration }}</td>
-                                                <td>{{ $item->nama }}</td>
-                                                <td>
-                                                    @if ($item->icon)
-                                                        <img src="{{ asset('storage/' . $item->icon) }}" alt="Image" style="width: 100px; height: auto;">
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    <a type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editSolusiProdukModal{{ $item->id }}">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-                                                    <a type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteSolusiProdukModal{{ $item->id }}">
-                                                        <i class="fas fa-trash"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

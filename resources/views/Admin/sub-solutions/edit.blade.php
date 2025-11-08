@@ -39,8 +39,7 @@
             justify-content: center;
         }
     </style>
-    <div class="content-wrapper">
-        <div class="content-header">
+    <div class="app-content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
@@ -55,137 +54,136 @@
                 </div>
             </div>
         </div>
-        </div>
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg">
-                        @include('sweetalert::alert')
-                        <div class="card">
-                            <div class="card-body">
-                                <form action="{{ route('sub-solutions.update', $subSolution->id) }}" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    @method('PUT')
-                                    <div class="row">
-                                        <div class="col-md-12 ml-auto">
-                                            <label for="nama" class="form-label">Nama</label>
-                                            <input name="nama" class="form-control mb-1" id="nama" rows="3" value="{{ old('nama', $subSolution->nama) }}">
-                                            @error('nama')
-                                                <p class="text-red-500 text-sm mt-1 error-message">{{ $message }}</p>
-                                            @enderror
+    </div>
+    <div class="app-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg">
+                    @include('sweetalert::alert')
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="{{ route('sub-solutions.update', $subSolution->id) }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+                                <div class="row">
+                                    <div class="col-md-12 ml-auto">
+                                        <label for="nama" class="form-label">Nama</label>
+                                        <input name="nama" class="form-control mb-1" id="nama" rows="3" value="{{ old('nama', $subSolution->nama) }}">
+                                        @error('nama')
+                                            <p class="text-red-500 text-sm mt-1 error-message">{{ $message }}</p>
+                                        @enderror
 
-                                            <label for="solution_id" class="form-label">Kategori Solusi</label>
-                                            <div class="input-group mb-1">
-                                                <select name="solution_id" class="custom-select" id="solution_id">
-                                                    <option selected disabled>Pilih Solusi...</option>
-                                                    @foreach ($solutions as $solusi)
-                                                        <option value="{{ $solusi->id }}" {{ old('solution_id', $subSolution->solution_id) == $solusi->id ? 'selected' : '' }}>{{ $solusi->nama }}</option>
+                                        <label for="solution_id" class="form-label">Kategori Solusi</label>
+                                        <div class="input-group mb-1">
+                                            <select name="solution_id" class="custom-select" id="solution_id">
+                                                <option selected disabled>Pilih Solusi...</option>
+                                                @foreach ($solutions as $solusi)
+                                                    <option value="{{ $solusi->id }}" {{ old('solution_id', $subSolution->solution_id) == $solusi->id ? 'selected' : '' }}>{{ $solusi->nama }}</option>
 
-                                                    @endforeach
-                                                </select>
-                                                @error('solution_id')
-                                                    <p class="text-danger text-sm mt-1">{{ $message }}</p>
-                                                @enderror
-                                            </div>
-
-                                            <label for="video" class="form-label">Video</label>
-                                            <input name="video" class="form-control mb-1" id="video" rows="3" value="{{ old('video', $subSolution->video) }}">
-                                            @error('video')
-                                                <p class="text-red-500 text-sm mt-1 error-message">{{ $message }}</p>
-                                            @enderror
-
-                                            <div class="form-group">
-                                                <label for="gambar" class="mr-3">Upload gambar</label>
-                                                <div class="input-group mb-1">
-                                                    <input type="file" class="form-control" name="gambar[]" id="gambar" multiple accept=".png, .jpg, .jpeg">
-                                                </div>
-
-                                                <div class="image-preview" id="imagePreview">
-                                                    @if($subSolution->gambar && $subSolution->gambar->isNotEmpty())
-                                                        @foreach ($subSolution->gambar as $image)
-                                                            <div class="preview-item existing-image" data-id="{{ $image->id }}">
-                                                                <img src="{{ asset('storage/' . $image->gambar) }}" alt="Existing Image">
-                                                                <button type="button" class="remove-btn" onclick="removeExistingImage({{ $image->id }})">x</button>
-                                                            </div>
-                                                        @endforeach
-                                                    @else
-                                                        <p>No images available.</p>
-                                                    @endif
-                                                </div>
-
-                                                @error('gambar')
-                                                    <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
-                                                @enderror
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <label for="icon{{ $subSolution->id }}" class="form-label">Icon</label>
-                                                @if ($subSolution->icon)
-                                                    <div class="mb-2">
-                                                        <img src="{{ asset('storage/' . $subSolution->icon) }}" alt="Image" style="width: 100px; height: auto;">
-                                                    </div>
-                                                @endif
-                                                <div class="input-group mb-1">
-                                                    <input type="file" class="form-control" name="icon" id="icon{{ $subSolution->id }}" aria-describedby="inputGroupFileAddon04" accept=".png, .jpg, .jpeg">
-                                                </div>
-                                                @error('icon')
-                                                    <p class="text-danger text-sm mt-1">{{ $message }}</p>
-                                                @enderror
-                                            </div>
-                                            
-                                            <div class="mb-3">
-                                                <label for="file_3d" class="form-label">File 3D</label>
-                                                <div class="input-group mb-1">
-                                                    <input type="file"
-                                                        class="form-control"
-                                                        name="file_3d"
-                                                        id="file_3d"
-                                                        aria-describedby="inputGroupFileAddon05"
-                                                        accept=".html,.htm">
-                                                </div>
-                                                @error('file_3d')
-                                                    <p class="text-red-500 text-sm mt-1 error-message">{{ $message }}</p>
-                                                @enderror
-
-                                                @if(!empty($subSolution->file_3d))
-                                                    <div class="mt-2">
-                                                        <small class="d-block mb-1">File saat ini:</small>
-                                                        <div class="mt-2 border rounded" style="height:400px; overflow:hidden;">
-                                                            <iframe src="{{ asset($subSolution->file_3d) }}"
-                                                                    width="100%"
-                                                                    height="100%"
-                                                                    style="border:0;"
-                                                                    title="3D Preview"></iframe>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                            </div>
-
-                                            <label for="description1" class="form-label">Deskripsi 1</label>
-                                            <textarea class="ckeditor form-control" name="description1" id="description1" rows="3">{{ old('description1', $subSolution->description1) }}</textarea>
-                                            @error('description1')
-                                                <p class="text-red-500 text-sm mt-1 error-message">{{ $message }}</p>
-                                            @enderror
-
-                                            <label for="description2" class="form-label">Deskripsi 2</label>
-                                            <textarea class="ckeditor form-control" name="description2" id="description2" rows="3">{{ old('description2', $subSolution->description2) }}</textarea>
-                                            @error('description2')
-                                                <p class="text-red-500 text-sm mt-1 error-message">{{ $message }}</p>
-                                            @enderror
-
-                                            <label for="description3" class="form-label">Deskripsi 3</label>
-                                            <textarea class="ckeditor form-control" name="description3" id="description3" rows="3">{{ old('description3', $subSolution->description3) }}</textarea>
-                                            @error('description3')
-                                                <p class="text-red-500 text-sm mt-1 error-message">{{ $message }}</p>
+                                                @endforeach
+                                            </select>
+                                            @error('solution_id')
+                                                <p class="text-danger text-sm mt-1">{{ $message }}</p>
                                             @enderror
                                         </div>
+
+                                        <label for="video" class="form-label">Video</label>
+                                        <input name="video" class="form-control mb-1" id="video" rows="3" value="{{ old('video', $subSolution->video) }}">
+                                        @error('video')
+                                            <p class="text-red-500 text-sm mt-1 error-message">{{ $message }}</p>
+                                        @enderror
+
+                                        <div class="form-group">
+                                            <label for="gambar" class="mr-3">Upload gambar</label>
+                                            <div class="input-group mb-1">
+                                                <input type="file" class="form-control" name="gambar[]" id="gambar" multiple accept=".png, .jpg, .jpeg">
+                                            </div>
+
+                                            <div class="image-preview" id="imagePreview">
+                                                @if($subSolution->gambar && $subSolution->gambar->isNotEmpty())
+                                                    @foreach ($subSolution->gambar as $image)
+                                                        <div class="preview-item existing-image" data-id="{{ $image->id }}">
+                                                            <img src="{{ asset('storage/' . $image->gambar) }}" alt="Existing Image">
+                                                            <button type="button" class="remove-btn" onclick="removeExistingImage({{ $image->id }})">x</button>
+                                                        </div>
+                                                    @endforeach
+                                                @else
+                                                    <p>No images available.</p>
+                                                @endif
+                                            </div>
+
+                                            @error('gambar')
+                                                <p class="text-danger text-sm mt-1 error-message">{{ $message }}</p>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="icon{{ $subSolution->id }}" class="form-label">Icon</label>
+                                            @if ($subSolution->icon)
+                                                <div class="mb-2">
+                                                    <img src="{{ asset('storage/' . $subSolution->icon) }}" alt="Image" style="width: 100px; height: auto;">
+                                                </div>
+                                            @endif
+                                            <div class="input-group mb-1">
+                                                <input type="file" class="form-control" name="icon" id="icon{{ $subSolution->id }}" aria-describedby="inputGroupFileAddon04" accept=".png, .jpg, .jpeg">
+                                            </div>
+                                            @error('icon')
+                                                <p class="text-danger text-sm mt-1">{{ $message }}</p>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="file_3d" class="form-label">File 3D</label>
+                                            <div class="input-group mb-1">
+                                                <input type="file"
+                                                    class="form-control"
+                                                    name="file_3d"
+                                                    id="file_3d"
+                                                    aria-describedby="inputGroupFileAddon05"
+                                                    accept=".html,.htm">
+                                            </div>
+                                            @error('file_3d')
+                                                <p class="text-red-500 text-sm mt-1 error-message">{{ $message }}</p>
+                                            @enderror
+
+                                            @if(!empty($subSolution->file_3d))
+                                                <div class="mt-2">
+                                                    <small class="d-block mb-1">File saat ini:</small>
+                                                    <div class="mt-2 border rounded" style="height:400px; overflow:hidden;">
+                                                        <iframe src="{{ asset($subSolution->file_3d) }}"
+                                                                width="100%"
+                                                                height="100%"
+                                                                style="border:0;"
+                                                                title="3D Preview"></iframe>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        </div>
+
+                                        <label for="description1" class="form-label">Deskripsi 1</label>
+                                        <textarea class="ckeditor form-control" name="description1" id="description1" rows="3">{{ old('description1', $subSolution->description1) }}</textarea>
+                                        @error('description1')
+                                            <p class="text-red-500 text-sm mt-1 error-message">{{ $message }}</p>
+                                        @enderror
+
+                                        <label for="description2" class="form-label">Deskripsi 2</label>
+                                        <textarea class="ckeditor form-control" name="description2" id="description2" rows="3">{{ old('description2', $subSolution->description2) }}</textarea>
+                                        @error('description2')
+                                            <p class="text-red-500 text-sm mt-1 error-message">{{ $message }}</p>
+                                        @enderror
+
+                                        <label for="description3" class="form-label">Deskripsi 3</label>
+                                        <textarea class="ckeditor form-control" name="description3" id="description3" rows="3">{{ old('description3', $subSolution->description3) }}</textarea>
+                                        @error('description3')
+                                            <p class="text-red-500 text-sm mt-1 error-message">{{ $message }}</p>
+                                        @enderror
                                     </div>
-                                    <div class="modal-footer mt-2">
-                                        <a href="{{ route('sub-solutions.index') }}" class="btn btn-danger">Kembali</a>
-                                        <button type="submit" class="btn btn-primary">Simpan</button>
-                                    </div>
-                                </form>
-                            </div>
+                                </div>
+                                <div class="modal-footer mt-2">
+                                    <a href="{{ route('sub-solutions.index') }}" class="btn btn-danger">Kembali</a>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
