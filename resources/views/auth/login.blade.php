@@ -158,10 +158,14 @@ body {
                         class="@error('email') is-invalid @enderror">
             </div>
             @error('email')
-                <div class="invalid-feedback d-block">
-                    {{ $message }}
-                </div>
-            @enderror
+    <div class="invalid-feedback d-block text-center" id="login-error">
+        {{ $message }}
+        @if (session('lockout_seconds'))
+            <br><span id="countdown" data-seconds="{{ session('lockout_seconds') }}"></span>
+        @endif
+    </div>
+@enderror
+
 
             <!-- Password -->
             <div class="form-field">
@@ -187,14 +191,6 @@ body {
             @enderror
 
             <button type="submit" class="btn">Login</button>
-            @if(session('lockout_time'))
-    <div class="text-danger text-center mt-2" id="lockout-message">
-        Terlalu banyak percobaan login. Silakan coba lagi dalam
-        <span id="countdown">{{ session('lockout_time') }}</span> detik.
-    </div>
-@endif
-
-
         </form>
     </div>
     <!-- Tambahkan script ini di bawah form -->
@@ -222,31 +218,32 @@ body {
             this.classList.toggle('fa-eye-slash');
         });
         });
+    </script>
 
-
-        <script>
+    <script>
 document.addEventListener("DOMContentLoaded", function () {
-    const countdownElement = document.getElementById('countdown');
-    const lockoutMessage = document.getElementById('lockout-message');
+    const countdownEl = document.getElementById("countdown");
 
-    if (countdownElement) {
-        let timeLeft = parseInt(countdownElement.textContent);
+    if (countdownEl) {
+        let seconds = parseInt(countdownEl.dataset.seconds);
 
         const timer = setInterval(() => {
-            timeLeft--;
-            countdownElement.textContent = timeLeft;
-
-            if (timeLeft <= 0) {
+            if (seconds <= 0) {
                 clearInterval(timer);
-                lockoutMessage.textContent = 'Anda bisa mencoba login kembali sekarang.';
-                lockoutMessage.classList.remove('text-danger');
-                lockoutMessage.classList.add('text-success');
+                countdownEl.innerHTML = "Silakan coba lagi sekarang.";
+                countdownEl.style.color = "green";
+                return;
             }
+
+            // Format menit:detik
+            const m = Math.floor(seconds / 60);
+            const s = seconds % 60;
+            countdownEl.innerHTML = `Coba lagi dalam ${m}:${s.toString().padStart(2, '0')} detik`;
+            seconds--;
         }, 1000);
     }
 });
 </script>
 
-    </script>
 </body>
 @endsection

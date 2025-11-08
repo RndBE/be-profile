@@ -83,19 +83,21 @@ class CustomLoginController extends Controller
 protected function checkTooManyLoginAttempts(Request $request)
 {
     $maxAttempts = 3; // maksimal percobaan
-    $decayMinutes = 1; // waktu tunggu (1 menit)
+    $decayMinutes = 1; // waktu tunggu 1 menit
 
     if (RateLimiter::tooManyAttempts($this->throttleKey($request), $maxAttempts)) {
         $seconds = RateLimiter::availableIn($this->throttleKey($request));
 
-        // simpan sisa waktu ke session agar bisa ditampilkan di view
-        session(['lockout_time' => $seconds]);
+        // Simpan waktu tunggu ke session agar bisa dibaca di view
+        session(['lockout_seconds' => $seconds]);
 
         throw ValidationException::withMessages([
             'email' => "Terlalu banyak percobaan login. Silakan coba lagi dalam {$seconds} detik.",
         ]);
     }
 }
+
+
 
 
     public function logout(Request $request)
