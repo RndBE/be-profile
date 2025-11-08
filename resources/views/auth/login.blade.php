@@ -205,8 +205,11 @@ document.addEventListener("DOMContentLoaded", function () {
     if (errors.length > 0) {
         setTimeout(() => {
             errors.forEach(el => {
+                el.style.transition = "opacity 0.5s, margin 0.3s, padding 0.3s";
                 el.style.opacity = '0';
-                setTimeout(() => el.style.display = 'none', 500);
+                el.style.margin = '0';
+                el.style.padding = '0';
+                setTimeout(() => el.remove(), 500); // elemen dihapus total agar jarak hilang
             });
         }, 3000);
     }
@@ -237,6 +240,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 </script>
+
 
 
 </body>
