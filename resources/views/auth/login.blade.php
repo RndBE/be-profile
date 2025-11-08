@@ -187,54 +187,58 @@ body {
             @enderror
 
             <button type="submit" class="btn">Login</button>
-            @if (session('login_wait_seconds'))
-    <div id="countdown-container" class="mt-3 text-center text-danger fw-bold">
-        Silakan tunggu <span id="countdown">{{ session('login_wait_seconds') }}</span> detik sebelum mencoba lagi.
-    </div>
-@endif
+            @if (session('lockout_time'))
+                <div id="lockoutMessage" class="alert alert-danger text-center mt-3">
+                    Terlalu banyak percobaan login.<br>
+                    Coba lagi dalam <span id="countdown">{{ session('lockout_time') }}</span> detik.
+                </div>
+            @endif
 
         </form>
     </div>
     <!-- Tambahkan script ini di bawah form -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const errors = document.querySelectorAll('.invalid-feedback');
-    if (errors.length > 0) {
-        setTimeout(() => {
+    // Fade-out pesan error setelah 3 detik
+    document.addEventListener("DOMContentLoaded", function () {
+        const errors = document.querySelectorAll('.invalid-feedback');
+        if (errors.length > 0) {
+            setTimeout(() => {
             errors.forEach(el => {
                 el.style.opacity = '0';
                 setTimeout(() => el.style.display = 'none', 500);
             });
-        }, 3000);
-    }
+            }, 3000);
+        }
 
-    // Toggle show/hide password
-    const togglePassword = document.getElementById('togglePassword');
-    const passwordInput = document.getElementById('password');
-    togglePassword.addEventListener('click', function () {
-        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordInput.setAttribute('type', type);
-        this.classList.toggle('fa-eye-slash');
-    });
+      // Toggle show/hide password
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
 
-    // Countdown timer untuk waktu tunggu login
-    const countdownEl = document.getElementById('countdown');
-    if (countdownEl) {
-        let timeLeft = parseInt(countdownEl.textContent);
-        const container = document.getElementById('countdown-container');
-        const interval = setInterval(() => {
-            timeLeft--;
-            if (timeLeft <= 0) {
-                clearInterval(interval);
-                container.textContent = 'Silakan refresh halaman untuk mencoba login kembali.';
-            } else {
+        togglePassword.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.classList.toggle('fa-eye-slash');
+        });
+        });
+
+
+        // Countdown lockout timer
+        const countdownEl = document.getElementById('countdown');
+        if (countdownEl) {
+            let timeLeft = parseInt(countdownEl.textContent);
+
+            const timer = setInterval(() => {
+                timeLeft--;
                 countdownEl.textContent = timeLeft;
-            }
-        }, 1000);
-    }
-});
-</script>
 
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    // Refresh otomatis supaya user bisa login lagi
+                    location.reload();
+                }
+            }, 1000);
+        }
+    </script>
 </body>
 @endsection
