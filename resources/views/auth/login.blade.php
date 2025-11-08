@@ -187,12 +187,13 @@ body {
             @enderror
 
             <button type="submit" class="btn">Login</button>
-            @if (session('lockout_time'))
-                <div id="lockoutMessage" class="alert alert-danger text-center mt-3">
-                    Terlalu banyak percobaan login.<br>
-                    Coba lagi dalam <span id="countdown">{{ session('lockout_time') }}</span> detik.
-                </div>
-            @endif
+            @if(session('lockout_time'))
+    <div class="text-danger text-center mt-2" id="lockout-message">
+        Terlalu banyak percobaan login. Silakan coba lagi dalam
+        <span id="countdown">{{ session('lockout_time') }}</span> detik.
+    </div>
+@endif
+
 
         </form>
     </div>
@@ -223,22 +224,29 @@ body {
         });
 
 
-        // Countdown lockout timer
-        const countdownEl = document.getElementById('countdown');
-        if (countdownEl) {
-            let timeLeft = parseInt(countdownEl.textContent);
+        <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const countdownElement = document.getElementById('countdown');
+    const lockoutMessage = document.getElementById('lockout-message');
 
-            const timer = setInterval(() => {
-                timeLeft--;
-                countdownEl.textContent = timeLeft;
+    if (countdownElement) {
+        let timeLeft = parseInt(countdownElement.textContent);
 
-                if (timeLeft <= 0) {
-                    clearInterval(timer);
-                    // Refresh otomatis supaya user bisa login lagi
-                    location.reload();
-                }
-            }, 1000);
-        }
+        const timer = setInterval(() => {
+            timeLeft--;
+            countdownElement.textContent = timeLeft;
+
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                lockoutMessage.textContent = 'Anda bisa mencoba login kembali sekarang.';
+                lockoutMessage.classList.remove('text-danger');
+                lockoutMessage.classList.add('text-success');
+            }
+        }, 1000);
+    }
+});
+</script>
+
     </script>
 </body>
 @endsection
