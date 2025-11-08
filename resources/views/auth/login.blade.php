@@ -158,14 +158,10 @@ body {
                         class="@error('email') is-invalid @enderror">
             </div>
             @error('email')
-    <div class="invalid-feedback d-block text-center" id="login-error">
-        {{ $message }}
-        @if (session('lockout_seconds'))
-            <br><span id="countdown" data-seconds="{{ session('lockout_seconds') }}"></span>
-        @endif
-    </div>
-@enderror
-
+                <div class="invalid-feedback d-block">
+                    {{ $message }}
+                </div>
+            @enderror
 
             <!-- Password -->
             <div class="form-field">
@@ -191,6 +187,13 @@ body {
             @enderror
 
             <button type="submit" class="btn">Login</button>
+            @if ($errors->has('lockout_time'))
+    <div id="lockout-message" class="invalid-feedback d-block text-center mb-3">
+        <strong>Terlalu banyak percobaan login.</strong><br>
+        Silakan coba lagi dalam <span id="countdown">{{ ceil($errors->first('lockout_time')) }}</span> detik.
+    </div>
+@endif
+
         </form>
     </div>
     <!-- Tambahkan script ini di bawah form -->
@@ -219,27 +222,21 @@ body {
         });
         });
     </script>
-
     <script>
 document.addEventListener("DOMContentLoaded", function () {
-    const countdownEl = document.getElementById("countdown");
-
-    if (countdownEl) {
-        let seconds = parseInt(countdownEl.dataset.seconds);
+    const countdownElement = document.getElementById("countdown");
+    if (countdownElement) {
+        let timeLeft = parseInt(countdownElement.textContent);
 
         const timer = setInterval(() => {
-            if (seconds <= 0) {
+            if (timeLeft > 1) {
+                timeLeft--;
+                countdownElement.textContent = timeLeft;
+            } else {
                 clearInterval(timer);
-                countdownEl.innerHTML = "Silakan coba lagi sekarang.";
-                countdownEl.style.color = "green";
-                return;
+                document.getElementById("lockout-message").innerHTML =
+                    "<strong>Silakan refresh halaman untuk mencoba login kembali.</strong>";
             }
-
-            // Format menit:detik
-            const m = Math.floor(seconds / 60);
-            const s = seconds % 60;
-            countdownEl.innerHTML = `Coba lagi dalam ${m}:${s.toString().padStart(2, '0')} detik`;
-            seconds--;
         }, 1000);
     }
 });
