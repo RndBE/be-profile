@@ -62,10 +62,12 @@ class CustomLoginController extends Controller
 
         // Jika login berhasil
         if (Auth::attempt($request->only('email', 'password'))) {
-            RateLimiter::clear($this->throttleKey($request)); // reset hitungan percobaan
-            $request->session()->regenerate();
-            return redirect()->intended('/admin/dashboard');
-        }
+    RateLimiter::clear($this->throttleKey($request));
+    session()->forget('login_wait_seconds'); // reset waktu tunggu
+    $request->session()->regenerate();
+    return redirect()->intended('/admin/dashboard');
+}
+
 
         // Login gagal → tambah hitungan
         RateLimiter::hit($this->throttleKey($request));
@@ -81,18 +83,22 @@ class CustomLoginController extends Controller
     }
 
     protected function checkTooManyLoginAttempts(Request $request)
-    {
-        $maxAttempts = 3; // maksimal percobaan
-        $decayMinutes = 1; // waktu tunggu (1 menit)
+{
+    $maxAttempts = 3; // maksimal percobaan
+    $decayMinutes = 1; // waktu tunggu (1 menit)
 
-        if (RateLimiter::tooManyAttempts($this->throttleKey($request), $maxAttempts)) {
-            $seconds = RateLimiter::availableIn($this->throttleKey($request));
+    if (RateLimiter::tooManyAttempts($this->throttleKey($request), $maxAttempts)) {
+        $seconds = RateLimiter::availableIn($this->throttleKey($request));
 
-            throw ValidationException::withMessages([
-                'email' => "Terlalu banyak percobaan login. Silakan coba lagi dalam " . ceil($seconds / 60) . " menit.",
-            ]);
-        }
+        // Simpan waktu tunggu di session agar bisa ditampilkan di frontend
+        session()->put('login_wait_seconds', $seconds);
+
+        throw ValidationException::withMessages([
+            'email' => "Terlalu banyak percobaan login. Silakan coba lagi dalam $seconds detik.",
+        ]);
     }
+}
+
 
 
 
