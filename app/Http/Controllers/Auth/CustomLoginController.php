@@ -80,25 +80,22 @@ class CustomLoginController extends Controller
         return Str::lower($request->input('email')) . '|' . $request->ip();
     }
 
-protected function checkTooManyLoginAttempts(Request $request)
-{
-    $maxAttempts = 1; // maksimal percobaan
-    $decayMinutes = 1; // waktu tunggu (1 menit)
+    protected function checkTooManyLoginAttempts(Request $request)
+    {
+        $maxAttempts = 1; // maksimal percobaan
+        $decayMinutes = 1; // waktu tunggu (1 menit)
 
-    if (RateLimiter::tooManyAttempts($this->throttleKey($request), $maxAttempts)) {
-        $seconds = RateLimiter::availableIn($this->throttleKey($request));
+        if (RateLimiter::tooManyAttempts($this->throttleKey($request), $maxAttempts)) {
+            $seconds = RateLimiter::availableIn($this->throttleKey($request));
 
-        // kirim nilai detik ke view
-        throw ValidationException::withMessages([
-            'lockout_time' => $seconds, // kirim waktu tunggu ke view
-            'email' => "Terlalu banyak percobaan login. Tunggu sebelum mencoba lagi.",
-        ]);
+            // kirim nilai detik ke view
+            throw ValidationException::withMessages([
+                'lockout_time' => $seconds, // kirim waktu tunggu ke view
+                'email' => "Terlalu banyak percobaan login. Tunggu sebelum mencoba lagi.",
+            ]);
+        }
     }
-}
-
-
-
-
+    
     public function logout(Request $request)
     {
         Auth::logout();

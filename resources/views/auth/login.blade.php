@@ -188,60 +188,57 @@ body {
 
             <button type="submit" class="btn">Login</button>
             @if ($errors->has('lockout_time'))
-    <div id="lockout-message" class="invalid-feedback d-block text-center mb-3">
-        <strong>Terlalu banyak percobaan login.</strong><br>
-        Silakan coba lagi dalam <span id="countdown">{{ ceil($errors->first('lockout_time')) }}</span> detik.
-    </div>
-@endif
+                <div id="lockout-message" class="invalid-feedback d-block text-center mt-3 mb-3">
+                    <strong>Terlalu banyak percobaan login.</strong><br>
+                    Silakan coba lagi dalam <span id="countdown">{{ ceil($errors->first('lockout_time')) }}</span> detik.
+                </div>
+            @endif
 
         </form>
     </div>
     <!-- Tambahkan script ini di bawah form -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    // Fade-out hanya untuk pesan error biasa, bukan countdown
-    const errors = document.querySelectorAll('.invalid-feedback:not(#lockout-message)');
-    if (errors.length > 0) {
-        setTimeout(() => {
-            errors.forEach(el => {
-                el.style.transition = "opacity 0.5s, margin 0.3s, padding 0.3s";
-                el.style.opacity = '0';
-                el.style.margin = '0';
-                el.style.padding = '0';
-                setTimeout(() => el.remove(), 500); // elemen dihapus total agar jarak hilang
-            });
-        }, 3000);
-    }
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Fade-out hanya untuk pesan error biasa, bukan countdown
+        const errors = document.querySelectorAll('.invalid-feedback:not(#lockout-message)');
+        if (errors.length > 0) {
+            setTimeout(() => {
+                errors.forEach(el => {
+                    el.style.transition = "opacity 0.5s, margin 0.3s, padding 0.3s";
+                    el.style.opacity = '0';
+                    el.style.margin = '0';
+                    el.style.padding = '0';
+                    setTimeout(() => el.remove(), 500); // elemen dihapus total agar jarak hilang
+                });
+            }, 3000);
+        }
 
-    // Toggle show/hide password
-    const togglePassword = document.getElementById('togglePassword');
-    const passwordInput = document.getElementById('password');
-    togglePassword.addEventListener('click', function () {
-        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordInput.setAttribute('type', type);
-        this.classList.toggle('fa-eye-slash');
-    });
+        // Toggle show/hide password
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+        togglePassword.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.classList.toggle('fa-eye-slash');
+        });
 
-    // Countdown untuk lockout
-    const countdownElement = document.getElementById("countdown");
-    if (countdownElement) {
-        let timeLeft = parseInt(countdownElement.textContent);
-        const timer = setInterval(() => {
-            if (timeLeft > 1) {
-                timeLeft--;
-                countdownElement.textContent = timeLeft;
-            } else {
-                clearInterval(timer);
-                const msg = document.getElementById("lockout-message");
-                msg.innerHTML = "<strong>Silakan refresh halaman untuk mencoba login kembali.</strong>";
+        // Countdown untuk lockout
+        const countdownElement = document.getElementById("countdown");
+            if (countdownElement) {
+                let timeLeft = parseInt(countdownElement.textContent);
+                const timer = setInterval(() => {
+                    if (timeLeft > 1) {
+                        timeLeft--;
+                        countdownElement.textContent = timeLeft;
+                    } else {
+                        clearInterval(timer);
+                        const msg = document.getElementById("lockout-message");
+                        msg.innerHTML = "<strong>Silakan refresh halaman untuk mencoba login kembali.</strong>";
+                    }
+                }, 1000);
             }
-        }, 1000);
-    }
-});
-</script>
-
-
-
+        });
+    </script>
 </body>
 @endsection
