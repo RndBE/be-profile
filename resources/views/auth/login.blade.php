@@ -198,49 +198,46 @@ body {
     </div>
     <!-- Tambahkan script ini di bawah form -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script>
-    // Fade-out pesan error setelah 3 detik
-    document.addEventListener("DOMContentLoaded", function () {
-        const errors = document.querySelectorAll('.invalid-feedback');
-        if (errors.length > 0) {
-            setTimeout(() => {
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Fade-out hanya untuk pesan error biasa, bukan countdown
+    const errors = document.querySelectorAll('.invalid-feedback:not(#lockout-message)');
+    if (errors.length > 0) {
+        setTimeout(() => {
             errors.forEach(el => {
                 el.style.opacity = '0';
                 setTimeout(() => el.style.display = 'none', 500);
             });
-            }, 3000);
-        }
+        }, 3000);
+    }
 
-      // Toggle show/hide password
-        const togglePassword = document.getElementById('togglePassword');
-        const passwordInput = document.getElementById('password');
+    // Toggle show/hide password
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+    togglePassword.addEventListener('click', function () {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        this.classList.toggle('fa-eye-slash');
+    });
 
-        togglePassword.addEventListener('click', function () {
-            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordInput.setAttribute('type', type);
-            this.classList.toggle('fa-eye-slash');
-        });
-        });
-    </script>
-    <script>
-document.addEventListener("DOMContentLoaded", function () {
+    // Countdown untuk lockout
     const countdownElement = document.getElementById("countdown");
     if (countdownElement) {
         let timeLeft = parseInt(countdownElement.textContent);
-
         const timer = setInterval(() => {
             if (timeLeft > 1) {
                 timeLeft--;
                 countdownElement.textContent = timeLeft;
             } else {
                 clearInterval(timer);
-                document.getElementById("lockout-message").innerHTML =
-                    "<strong>Silakan refresh halaman untuk mencoba login kembali.</strong>";
+                const msg = document.getElementById("lockout-message");
+                msg.innerHTML = "<strong>Silakan refresh halaman untuk mencoba login kembali.</strong>";
             }
         }, 1000);
     }
 });
 </script>
+
 
 </body>
 @endsection
