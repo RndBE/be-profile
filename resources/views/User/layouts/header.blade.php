@@ -69,7 +69,7 @@
 
                             <div class="tgmenu__action d-none d-md-block">
                                 <ul class="list-wrap">
-                                    <li class="header-btn"><a href="https://wa.me/628112632151" aria-label="Whatsapp PT Arta Teknologi Comunindo" target="_blank" class="btn">Kontak Kami</a></li>
+                                    <li class="header-btn"><a href="https://wa.me/6281128509986" aria-label="Whatsapp PT Arta Teknologi Comunindo" target="_blank" class="btn">Kontak Kami</a></li>
                                 </ul>
                             </div>
                             <div class="mobile-nav-toggler">
