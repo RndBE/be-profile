@@ -39,12 +39,12 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="{{ Request::is('proyek') ? 'active' : '' }}">
+                                    {{-- <li class="{{ Request::is('proyek') ? 'active' : '' }}">
                                         <a href="/proyek">Proyek</a>
                                     </li>
                                     <li class="{{ Request::is('publikasi') ? 'active' : '' }}">
                                         <a href="/publikasi">Publikasi</a>
-                                    </li>
+                                    </li> --}}
                                     {{-- <li class="menu-item-has-children"><a href="#">Publikasi</a>
                                         <ul class="sub-menu">
                                             <li><a href="about.html">Business About</a></li>
