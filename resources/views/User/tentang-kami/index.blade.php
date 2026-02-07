@@ -229,7 +229,7 @@
                 </div>
                 <div class="team__content-four-direksi">
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-8">
+                <div class="col-lg-3 col-md-6 col-sm-8">
                     <div class="team__item-four shine-animate-item">
                         <div class="team__thumb-four shine-animate">
                             @if ($tentangKami)
@@ -247,7 +247,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-8">
+                <div class="col-lg-3 col-md-6 col-sm-8">
                     <div class="team__item-four shine-animate-item">
                         <div class="team__thumb-four shine-animate">
                             @if ($tentangKami)
@@ -265,7 +265,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-8">
+                <div class="col-lg-3 col-md-6 col-sm-8">
                     <div class="team__item-four shine-animate-item">
                         <div class="team__thumb-four shine-animate">
                             @if ($tentangKami)
