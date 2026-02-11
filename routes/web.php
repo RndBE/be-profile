@@ -125,6 +125,5 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 });
 
 Route::fallback(function () {
-    return abort(404);
+    return response()->view('errors.404', [], 404);
 });
-

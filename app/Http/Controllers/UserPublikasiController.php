@@ -37,7 +37,10 @@ class UserPublikasiController extends Controller
     public function show($slug)
     {
 
-        $artikel = Artikel::where('slug', $slug)->with('gambar')->where('status', 'published')->first();
+        $artikel = Artikel::where('slug', $slug)
+            ->with('gambar')
+            ->where('status', 'published')
+            ->firstOrFail();
 
         $data = [
             'kategori_topiks' => KategoriTopik::all(),

@@ -40,7 +40,11 @@ class UserSolusiController extends Controller
             ->firstOrFail();
 
         // Jika $subSlug kosong, arahkan ke subSolution pertama
-        if (is_null($subSlug) && $solution->subSolutions->isNotEmpty()) {
+        if (is_null($subSlug)) {
+            if ($solution->subSolutions->isEmpty()) {
+                return abort(404);
+            }
+
             $firstSubSolution = $solution->subSolutions->first();
             return redirect()->route('solusi.show', [
                 Str::slug($solution->nama),
@@ -53,6 +57,10 @@ class UserSolusiController extends Controller
             ->whereRaw("LOWER(REPLACE(nama, ' ', '-')) = ?", [Str::lower($subSlug)])
             ->with('fiturSubSolutions')
             ->first();
+
+        if (!$subSolution) {
+            return abort(404);
+        }
 
         $produks = Produk::where('sub_solution_id', $subSolution->id)->get();
         // Siapkan data untuk view
