@@ -2,7 +2,10 @@
 @section('title', (isset($solution) ? $solution->nama : 'Solusi') . (isset($subSolution) ? ' - ' . $subSolution->nama :
     '') . ' | Beacon Engineering')
 
-@section('description', isset($subSolution) ? Str::limit(strip_tags($subSolution->description1 ?? ''), 160) : 'Jelajahi
+@section('description',
+    isset($subSolution)
+    ? Str::limit(strip_tags($subSolution->description1 ?? ''), 160)
+    : 'Jelajahi
     solusi kami bersama Beacon Engineering.')
 
 @section('image', isset($subSolution) && !empty($subSolution->gambar[0]->gambar) ? asset('storage/' .
@@ -202,11 +205,13 @@
                                     </div>
                                 </div> --}}
                             {{-- <div class="sidebar__widget sidebar__widget-two">
-                                    <div class="sidebar__contact sidebar__contact-two" data-background="{{ asset('asset/img/services/KONSUL5.png') }}">
-                                        <h2 class="title" style="color:#2E2E4D;">Konsultasi apa saja, kami siap membantu!</h2>
-                                        <a href="https://wa.me/628112632151" target="_blank" class="btn"><i class="flaticon-phone-call"></i>+62 811 2632 151</a>
-                                    </div>
-                                </div> --}}
+                                <div class="sidebar__contact sidebar__contact-two"
+                                    data-background="{{ asset('asset/img/services/KONSUL5.png') }}">
+                                    <h2 class="title" style="color:#2E2E4D;">Konsultasi apa saja, kami siap membantu!</h2>
+                                    <a href="https://wa.me/628112632151" target="_blank" class="btn"><i
+                                            class="flaticon-phone-call"></i>+62 811 2632 151</a>
+                                </div>
+                            </div> --}}
                         </aside>
                     </div>
                 </div>
@@ -289,88 +294,6 @@
             </div>
         </div>
     </section>
-    <!-- brand-area -->
-    <!--<script>
-        -- >
-        <
-        !--document.addEventListener('DOMContentLoaded', () => {
-            -- >
-            <
-            !--new Swiper('.produk-slider', {
-                -- >
-                <
-                !--slidesPerView: 1,
-                -- >
-                <
-                !--spaceBetween: 20,
-                -- >
-                <
-                !--loop: true,
-                -- >
-                <
-                !--autoplay: {
-                    -- >
-                    <
-                    !--delay: 3000,
-                    -- >
-                    <
-                    !--disableOnInteraction: false,
-                    -- >
-                    <
-                    !--
-                },
-                -- >
-                <
-                !--navigation: {
-                    -- >
-                    <
-                    !--prevEl: '.button-swiper-prev',
-                    -- >
-                    <
-                    !--nextEl: '.button-swiper-next',
-                    -- >
-                    <
-                    !--
-                },
-                -- >
-                <
-                !--breakpoints: {
-                    -- >
-                    <
-                    !--640: {
-                        slidesPerView: 1
-                    },
-                    -- >
-                    <
-                    !--992: {
-                        slidesPerView: 1
-                    },
-                    -- >
-                    <
-                    !--1024: {
-                        slidesPerView: 2
-                    },
-                    -- >
-                    <
-                    !--1500: {
-                        slidesPerView: 3
-                    },
-                    -- >
-                    <
-                    !--
-                },
-                -- >
-                <
-                !--
-            });
-            -- >
-            <
-            !--
-        });
-        -- >
-        <
-        !--
-    </script>-->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const swiperContainer = document.querySelector('.produk-slider');
@@ -449,83 +372,7 @@
             });
         });
     </script>
-    <!--<script>
-        -- >
-        <
-        !-- // Inisialisasi Swiper-->
-        <
-        !--document.addEventListener('DOMContentLoaded', () => {
-            -- >
-            <
-            !--new Swiper('.slider-project-banner', {
-                -- >
-                <
-                !--loop: true, // Loop untuk memutar gambar-->
-                <
-                !--pagination: {
-                    -- >
-                    <
-                    !--el: '.swiper-pagination-project',
-                    -- >
-                    <
-                    !--clickable: true,
-                    -- >
-                    <
-                    !--
-                },
-                -- >
-                <
-                !--speed: 1000,
-                -- >
-                <
-                !--autoplay: {
-                    -- >
-                    <
-                    !--delay: 3000,
-                    -- >
-                    <
-                    !--
-                },
-                -- >
-                <
-                !--slidesPerView: 1,
-                -- >
-                <
-                !--breakpoints: {
-                    -- >
-                    <
-                    !--768: {
-                        -- >
-                        <
-                        !--slidesPerView: 1,
-                        -- >
-                        <
-                        !--
-                    },
-                    -- >
-                    <
-                    !--1024: {
-                        -- >
-                        <
-                        !--slidesPerView: 1,
-                        -- >
-                        <
-                        !--
-                    }-- >
-                    <
-                    !--
-                }-- >
-                <
-                !--
-            });
-            -- >
-            <
-            !--
-        });
-        -- >
-        <
-        !--
-    </script>-->
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             let produkItems = document.querySelectorAll(".produk-item");
