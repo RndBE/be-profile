@@ -15,7 +15,7 @@ class InstagramFeedController extends Controller
             $response = Http::withOptions([
                 'verify' => false,
                 'curl' => [
-                    CURLOPT_IPRESOLVE => CURL_IPRESOLVE_V4,
+                    CURLOPT_SSLVERSION => CURL_SSLVERSION_TLSv1_2,
                     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                 ],
             ])
