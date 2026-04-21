@@ -17,9 +17,12 @@ use App\Models\KategoriTopik;
 use App\Models\KategoriProjek;
 use App\Models\GambarSubsolution;
 use Illuminate\Support\Facades\Storage;
+use App\Traits\ClearBerandaCache;
 
 class AdminPublikasiController extends Controller
 {
+    use ClearBerandaCache;
+
     public function index()
     {
         $data = [
@@ -91,6 +94,7 @@ class AdminPublikasiController extends Controller
         }
 
         toast('Berhasil menambahkan data!', 'success');
+        $this->clearBerandaCache('artikels');
         return redirect()->route('artikel.index')->with('success', 'Sub Solutions berhasil ditambahkan.');
     }
 
@@ -168,6 +172,7 @@ class AdminPublikasiController extends Controller
         $artikels->save();
 
         toast('Berhasil mengubah data!', 'success');
+        $this->clearBerandaCache('artikels');
         return redirect()->back()->with('success', 'Sub Solutions berhasil diubah.');
     }
 
@@ -201,6 +206,7 @@ class AdminPublikasiController extends Controller
 
         $artikels->delete();
         toast('Berhasil menghapus data!', 'success');
+        $this->clearBerandaCache('artikels');
         return redirect()->back();
     }
 

@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Laravel\Facades\Image;
+use App\Traits\ClearBerandaCache;
 
 class AdminSolusiController extends Controller
 {
+    use ClearBerandaCache;
+
     public function index()
     {
         $data = [
@@ -76,6 +79,7 @@ class AdminSolusiController extends Controller
         ]);
 
         toast('Berhasil menambahkan data!', 'success');
+        $this->clearBerandaCache('solutions');
         return redirect()->back();
     }
 
@@ -152,6 +156,7 @@ class AdminSolusiController extends Controller
         $solution->save(); // Menyimpan perubahan ke database
 
         toast('Berhasil mengupdate data!', 'success');
+        $this->clearBerandaCache('solutions');
         return redirect()->back();
     }
 
@@ -172,6 +177,7 @@ class AdminSolusiController extends Controller
         // Hapus data dari database
         $solution->delete();
         toast('Berhasil menghapus data!', 'success');
+        $this->clearBerandaCache('solutions');
         return redirect()->back();
     }
 

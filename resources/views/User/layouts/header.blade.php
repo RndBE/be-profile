@@ -6,7 +6,7 @@
                     <div class="tgmenu__wrap">
                         <nav class="tgmenu__nav">
                             <div class="logo">
-                                <a href="/"><img src="{{ asset('assets/dist/img/logo_be2.png') }}" alt="Logo"></a>
+                                <a href="/"><img src="{{ asset('assets/dist/img/logo_be2.png') }}" alt="Logo" width="180" height="50"></a>
                             </div>
                             <div class="tgmenu__navbar-wrap tgmenu__main-menu d-none d-lg-flex">
                                 <ul class="navigation">
@@ -17,7 +17,7 @@
                                             @foreach($solutionss as $solution)
                                                 <li class="{{ Request::is('solusi/' . Str::slug($solution->nama) . '*') ? 'active' : '' }}">
                                                     <a href="{{ route('solusi.show', Str::slug($solution->nama)) }}" class="{{ Request::is('solusi/' . Str::slug($solution->nama)) ? 'active' : '' }}">
-                                                        <img src="{{ asset('storage/'.$solution->icon) }}" alt="" style="width: 20px; height: 20px; margin-right: 5px;">
+                                                        <img src="{{ asset('storage/'.$solution->icon) }}" alt="{{ $solution->nama }}" width="20" height="20" style="margin-right: 5px;">
                                                         {{ $solution->nama }}
                                                     </a>
                                                     @if($solution->subSolutions->count() > 0)
@@ -25,7 +25,7 @@
                                                             @foreach($solution->subSolutions as $subSolution)
                                                                 <li class="{{ Request::is('solusi/' . Str::slug($solution->nama) . '/' . Str::slug($subSolution->nama)) ? 'active' : '' }}">
                                                                     <a href="{{ route('solusi.show', [Str::slug($solution->nama), Str::slug($subSolution->nama)]) }}" class="{{ Request::is('solusi/' . Str::slug($solution->nama) . '/' . Str::slug($subSolution->nama)) ? 'active' : '' }}">
-                                                                        <img src="{{ asset('asset/img/images/mingcute_right-line.png') }}" alt="">
+                                                                        <img src="{{ asset('asset/img/images/mingcute_right-line.png') }}" alt="" width="12" height="12">
                                                                         {{ $subSolution->nama }}
                                                                     </a>
                                                                 </li>
@@ -92,7 +92,7 @@
                         <nav class="tgmobile__menu-box">
                             <div class="close-btn"><i class="fas fa-times"></i></div>
                             <div class="nav-logo">
-                                <a href="/" aria-label="Logo PT Arta Teknologi Comunindo"><img src="{{ asset('assets/dist/img/logo_be2.png') }}" alt="Logo"></a>
+                                <a href="/" aria-label="Logo PT Arta Teknologi Comunindo"><img src="{{ asset('assets/dist/img/logo_be2.png') }}" alt="Logo" width="180" height="50"></a>
                             </div>
                             <div class="tgmobile__search">
                                 {{-- <form action="#">

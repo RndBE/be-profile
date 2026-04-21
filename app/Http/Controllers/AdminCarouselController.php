@@ -6,9 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\BerandaCarousel;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Laravel\Facades\Image;
+use App\Traits\ClearBerandaCache;
 
 class AdminCarouselController extends Controller
 {
+    use ClearBerandaCache;
+
     public function index()
     {
         $data = [
@@ -53,6 +56,7 @@ class AdminCarouselController extends Controller
         ]);
 
         toast('Berhasil menambahkan data!','success');
+        $this->clearBerandaCache('carousels');
         return redirect()->back();
     }
 
@@ -98,6 +102,7 @@ class AdminCarouselController extends Controller
 
         $carousel->save();
         toast('Berhasil mengubah data!','success');
+        $this->clearBerandaCache('carousels');
         return redirect()->back();
     }
 
@@ -113,6 +118,7 @@ class AdminCarouselController extends Controller
         $carousel->delete();
 
         toast('Berhasil menghapus data!','success');
+        $this->clearBerandaCache('carousels');
         return redirect()->back();
     }
 

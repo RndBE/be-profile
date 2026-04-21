@@ -7,7 +7,7 @@
                 <div class="col-xl-4 col-lg-4 col-md-6">
                     <div class="footer-widget">
                         <div class="fw-logo mb-25">
-                            <a href="/" aria-label="Logo PT Arta Teknologi Comunindo"><img src="{{ asset('assets/dist/img/logo_be2.png') }}" alt=""></a>
+                            <a href="/" aria-label="Logo PT Arta Teknologi Comunindo"><img src="{{ asset('assets/dist/img/logo_be2.png') }}" alt="Logo Beacon Engineering" width="180" height="50"></a>
                         </div>
                         <div class="footer-content">
                             <p>PT Arta Teknologi Comunindo dengan merk dagang Beacon Engineering merupakan perusahaan yang bergerak dibidang produksi dan pengadaan perangkat telemetri.</p>
@@ -32,7 +32,7 @@
                             <ul class="list-wrap">
                                 <li>
                                     <div class="icon">
-                                        <img src="{{ asset('asset/img/images/telp.png') }}" alt="">
+                                        <img src="{{ asset('asset/img/images/telp.png') }}" alt="Telepon" width="24" height="24">
                                     </div>
                                     <div class="content">
                                         <a href="tel:02744986899" aria-label="No telepon PT Arta Teknologi Comunindo">(0274) 4986899</a>
@@ -40,7 +40,7 @@
                                 </li>
                                 <li>
                                     <div class="icon">
-                                        <img src="{{ asset('asset/img/images/email.png') }}" alt="">
+                                        <img src="{{ asset('asset/img/images/email.png') }}" alt="Email" width="24" height="24">
                                     </div>
                                     <div class="content">
                                         <a href="mailto:info@bejogja.com" aria-label="Email PT Arta Teknologi Comunindo">info@bejogja.com</a>
@@ -48,7 +48,7 @@
                                 </li>
                                 <li>
                                     <div class="icon-loc">
-                                        <img src="{{ asset('asset/img/images/location.png') }}" alt="">
+                                        <img src="{{ asset('asset/img/images/location.png') }}" alt="Lokasi" width="24" height="24">
                                     </div>
                                     <div class="content">
                                         <a href="https://maps.app.goo.gl/iSEeHkWqByRoxwxA8" aria-label="Alamat kantor PT Arta Teknologi Comunindo" target="__blank">Kadirojo I, Purwomartani, Kec. Kalasan, Kabupaten Sleman, Daerah Istimewa Yogyakarta</a>
@@ -67,7 +67,7 @@
                                     @if (!empty($feed['media_url']))
                                         <li>
                                             <a href="{{ $feed['permalink'] }}" target="_blank" rel="noopener noreferrer">
-                                                <img src="{{ $feed['media_url'] }}" alt="Instagram Feed" loading="lazy">
+                                                <img src="{{ $feed['media_url'] }}" alt="Instagram Feed" loading="lazy" width="100" height="100">
                                             </a>
                                         </li>
                                     @endif
@@ -108,6 +108,3 @@
         }
     });
 </script>
-
-
-

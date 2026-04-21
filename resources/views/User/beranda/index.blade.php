@@ -50,7 +50,7 @@
                     @foreach ($kliens as $klien)
                         <div class="swiper-slide">
                             <div class="brand-item">
-                                <img loading="lazy" class="swiper-lazy" src="{{ asset('storage/' . $klien->logo) }}" alt="{{ $klien->nama_perusahaan }}">
+                                <img loading="lazy" class="swiper-lazy" src="{{ asset('storage/' . $klien->logo) }}" alt="{{ $klien->nama_perusahaan }}" width="150" height="80">
                                 <div class="swiper-lazy-preloader"></div>
                             </div>
                             <div>
@@ -82,11 +82,11 @@
                                 <a href="{{ route('solusi.show', Str::slug($solution->nama)) }}" class="services-link">
                                     <div class="services-item equal-box shine-animate-item">
                                         <div class="services-thumb">
-                                            <img loading="lazy" src="{{ asset('storage/'.$solution->thumbnail) }}" alt="">
+                                            <img loading="lazy" src="{{ asset('storage/'.$solution->thumbnail) }}" alt="{{ $solution->nama }}" width="400" height="260">
                                         </div>
                                         <div class="services-content">
                                             <div class="icon">
-                                                <img loading="lazy" src="{{ asset('storage/'.$solution->icon) }}" alt="">
+                                                <img loading="lazy" src="{{ asset('storage/'.$solution->icon) }}" alt="{{ $solution->nama }} icon" width="60" height="60">
                                             </div>
                                             <h3 class="title">{{ $solution->nama }}</h3>
                                             <p>{{ $solution->description }}</p>
@@ -141,8 +141,8 @@
                             </div>
 
                             <div class="cloud">
-                                <img loading="lazy" src="{{ asset('asset/img/images/cloud.png') }}" alt="Cloud">
-                                <img loading="lazy" src="{{ asset('asset/img/images/sistem monitoring.png') }}" alt="Sistem Monitoring">
+                                <img loading="lazy" src="{{ asset('asset/img/images/cloud.png') }}" alt="Cloud" width="200" height="120">
+                                <img loading="lazy" src="{{ asset('asset/img/images/sistem monitoring.png') }}" alt="Sistem Monitoring" width="180" height="100">
                             </div>
 
                             <div class="devices right">
@@ -178,7 +178,7 @@
                         </div>
 
                         <div class="monitoring">
-                            <img loading="lazy" src="{{ asset('asset/img/images/App.png') }}" alt="App">
+                            <img loading="lazy" src="{{ asset('asset/img/images/App.png') }}" alt="App" width="600" height="350">
                             <p class="desc">
                                 Seluruh sistem monitoring dan kontrol perangkat telemetri <strong>BEACON ENGINEERING</strong>
                                 telah dirancang untuk beroperasi secara optimal di berbagai platform, termasuk
@@ -210,8 +210,8 @@
             <div class="row align-items-center">
                 <div class="col-lg-4 order-0 order-lg-2">
                     <div class="choose-img-wrap">
-                        <img loading="lazy" src="{{ asset('asset/img/images/Foto-Harapan.webp') }}" alt="Simulasi penggunaan alat telemetri">
-                        <img loading="lazy" src="{{ asset('asset/img/images/Group-34.webp') }}" class="shadow-image" alt="Perusahaan telemetri berpengalaman" data-parallax='{"x" : 50 }'>
+                        <img loading="lazy" src="{{ asset('asset/img/images/Foto-Harapan.webp') }}" alt="Simulasi penggunaan alat telemetri" width="400" height="500">
+                        <img loading="lazy" src="{{ asset('asset/img/images/Group-34.webp') }}" class="shadow-image" alt="Perusahaan telemetri berpengalaman" width="200" height="150" data-parallax='{"x" : 50 }'>
                     </div>
                 </div>
                 <div class="col-lg-8">
@@ -225,7 +225,7 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div class="icon">
-                                        <img loading="lazy" src="{{ asset('asset/img/icon/AI.webp') }}" alt="Telemetri Berbasis AI">
+                                        <img loading="lazy" src="{{ asset('asset/img/icon/AI.webp') }}" alt="Telemetri Berbasis AI" width="60" height="60">
                                     </div>
                                     <div class="content">
                                         <h3 class="title">Telemetri Berbasis AI</h3>
@@ -234,7 +234,7 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="icon">
-                                        <img loading="lazy" src="{{ asset('asset/img/icon/GARANSI.webp') }}" alt="Garansi Maintenance">
+                                        <img loading="lazy" src="{{ asset('asset/img/icon/GARANSI.webp') }}" alt="Garansi Maintenance" width="60" height="60">
                                     </div>
                                     <div class="content">
                                         <h3 class="title">Garansi Maintenance</h3>
@@ -243,7 +243,7 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="icon">
-                                        <img loading="lazy" src="{{ asset('asset/img/icon/MONITORING.webp') }}" alt="Monitoring Terintegrasi">
+                                        <img loading="lazy" src="{{ asset('asset/img/icon/MONITORING.webp') }}" alt="Monitoring Terintegrasi" width="60" height="60">
                                     </div>
                                     <div class="content">
                                         <h3 class="title">Monitoring Terintegrasi</h3>
@@ -252,7 +252,7 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="icon">
-                                        <img loading="lazy" src="{{ asset('asset/img/icon/LAYANAN.webp') }}" alt="Layanan Konsultasi">
+                                        <img loading="lazy" src="{{ asset('asset/img/icon/LAYANAN.webp') }}" alt="Layanan Konsultasi" width="60" height="60">
                                     </div>
                                     <div class="content">
                                         <h3 class="title">Layanan Konsultasi</h3>
@@ -267,7 +267,7 @@
             </div>
         </div>
         <div class="choose-shape-wrap">
-            <img loading="lazy" src="{{ asset('asset/img/images/blog_shape031.webp') }}" alt="" data-aos="fade-left" data-aos-delay="400">
+            <img loading="lazy" src="{{ asset('asset/img/images/blog_shape031.webp') }}" alt="" width="200" height="200" data-aos="fade-left" data-aos-delay="400">
         </div>
     </section>
     <!-- choose-area-end -->
@@ -292,7 +292,7 @@
                             <div class="project-item">
                                 <div class="project-thumb">
                                     <a href="{{ route('proyek.show', $projek->slug) }}">
-                                        <img loading="lazy" class="swiper-lazy" src="{{ asset('storage/' . $projek->thumbnail) }}" alt="{{ $projek->nama_projek }}">
+                                        <img loading="lazy" class="swiper-lazy" src="{{ asset('storage/' . $projek->thumbnail) }}" alt="{{ $projek->nama_projek }}" width="600" height="400">
                                         <div class="swiper-lazy-preloader"></div> <!-- spinner loading -->
                                     </a>
                                 </div>
@@ -305,7 +305,7 @@
                                     </div>
                                     <div class="link-arrow">
                                         <a href="{{ route('proyek.show', $projek->slug) }}" aria-label="Lihat detail proyek {{ $projek->slug }}">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 15" fill="none">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 15" fill="none" width="18" height="15">
                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M17.6293 3.27957C17.7117 2.80341 17.4427 2.34763 17.0096 2.17812C16.9477 2.15385 16.8824 2.13552 16.8144 2.12376L6.96081 0.419152C6.41654 0.325049 5.89911 0.689856 5.80491 1.23411C5.71079 1.77829 6.07564 2.29578 6.61982 2.38993L14.0946 3.68295L1.36574 12.6573C0.914365 12.9756 0.806424 13.5995 1.12467 14.0509C1.44292 14.5022 2.06682 14.6102 2.51819 14.2919L15.247 5.31753L13.954 12.7923C13.8598 13.3365 14.2247 13.854 14.7689 13.9482C15.3131 14.0422 15.8305 13.6774 15.9248 13.1332L17.6293 3.27957Z" fill="currentcolor" />
                                             </svg>
                                         </a>
@@ -346,7 +346,7 @@
                             </div>
                         </div>
                         <div class="consulting-img shine-animate">
-                            <img loading="lazy" src="{{ asset('asset/img/images/valveIKN.jpeg') }}" alt="Valve IKN">
+                            <img loading="lazy" src="{{ asset('asset/img/images/valveIKN.jpeg') }}" alt="Valve IKN" width="600" height="400">
                         </div>
                         <div class="consulting-shape">
                             {{-- <img loading="lazy" src="{{ asset('asset/img/images/consulting_shape.png') }}" alt=""> --}}
@@ -369,7 +369,7 @@
                                 <div class="testimonial-item">
                                     <div class="testimonial-info">
                                         <div class="icon">
-                                            <img loading="lazy" class="swiper-lazy" src="{{ asset('storage/' . $testimoni->projek->klien->logo ) }}" alt="{{ $testimoni->projek->klien->nama_perusahaan }}" class="user-image">
+                                            <img loading="lazy" class="swiper-lazy" src="{{ asset('storage/' . $testimoni->projek->klien->logo ) }}" alt="{{ $testimoni->projek->klien->nama_perusahaan }}" width="60" height="60">
                                             <div class="swiper-lazy-preloader"></div> <!-- spinner loading -->
                                         </div>
                                         <div class="text-info">
@@ -378,8 +378,8 @@
                                         </div>
                                     </div>
                                     <div class="testimonial-content">
-                                        <p>“{{ $testimoni->testimoni }}”</p>
-                                        <div class="icon"><img loading="lazy" src="{{ asset('asset/img/images/petik.png') }}" alt=""></div>
+                                        <p>"{{ $testimoni->testimoni }}"</p>
+                                        <div class="icon"><img loading="lazy" src="{{ asset('asset/img/images/petik.png') }}" alt="" width="30" height="24"></div>
                                     </div>
                                     <div class="testimonial-content1">
                                         <div class="icon1">{{ $testimoni->projek->nama_projek }}</div>
@@ -393,13 +393,13 @@
                 <div class="col-lg-6 col-md-8 kolom-widya">
                     <div class="testimonial-img-wrap">
                         <div class="icon">
-                            <img loading="lazy" src="{{ asset('asset/img/images/Foto Pendapat Mitra.png') }}" alt="Pendapat Mitra">
+                            <img loading="lazy" src="{{ asset('asset/img/images/Foto Pendapat Mitra.png') }}" alt="Pendapat Mitra" width="500" height="600">
                         </div>
                         <div class="img-shape">
-                            <img loading="lazy" src="{{ asset('asset/img/images/testimonial_bgwidya1.png') }}" class="bgwidya" alt="background">
-                            <img loading="lazy" src="" alt="" class="rightToLeft">
-                            <img loading="lazy" src="{{ asset('asset/img/images/testimonial_shape1.png') }}" alt="testimonial_shape1" data-parallax='{"y" : 80 }'>
-                            <img loading="lazy" src="{{ asset('asset/img/images/testimonial_shape2.png') }}" alt="testimonial_shape2" class="alltuchtopdown">
+                            <img loading="lazy" src="{{ asset('asset/img/images/testimonial_bgwidya1.png') }}" class="bgwidya" alt="background" width="400" height="400">
+                            <img loading="lazy" src="" alt="" class="rightToLeft" width="1" height="1">
+                            <img loading="lazy" src="{{ asset('asset/img/images/testimonial_shape1.png') }}" alt="testimonial_shape1" width="80" height="80" data-parallax='{"y" : 80 }'>
+                            <img loading="lazy" src="{{ asset('asset/img/images/testimonial_shape2.png') }}" alt="testimonial_shape2" width="60" height="60" class="alltuchtopdown">
                         </div>
                     </div>
                 </div>
@@ -426,7 +426,7 @@
                             style="cursor: pointer;">
                             <div class="artikel-post-thumb">
                                 <a href="{{ route('publikasi.show', $artikel->slug) }}" class="shine-animate">
-                                    <img loading="lazy" src="{{ asset('storage/' . $artikel->thumbnail) }}" alt="{{ $artikel->judul }}">
+                                    <img loading="lazy" src="{{ asset('storage/' . $artikel->thumbnail) }}" alt="{{ $artikel->judul }}" width="400" height="260">
                                 </a>
                             </div>
                             <div class="artikel-post-content">
@@ -435,7 +435,7 @@
                                 </h3>
                                 <div class="artikel-avatar">
                                     <div class="avatar-thumb">
-                                        <img loading="lazy" src="{{ asset('asset/img/blog/calendar1.png') }}" alt="">
+                                        <img loading="lazy" src="{{ asset('asset/img/blog/calendar1.png') }}" alt="calendar" width="16" height="16">
                                     </div>
                                     <div class="avatar-content">
                                         <p>{{ $artikel->created_at->translatedFormat('l, d F Y') }}</p>
@@ -463,9 +463,11 @@
         </div>
     </section>
     <!-- artikel-post-area-end -->
+
+    {{-- ✅ Konsolidasi semua Swiper init menjadi satu block script --}}
     <script>
-        // Inisialisasi Swiper
         document.addEventListener('DOMContentLoaded', () => {
+            // Brand slider
             new Swiper('.brand-active', {
                 slidesPerView: 3,
                 spaceBetween: 30,
@@ -483,11 +485,8 @@
                     1024: { slidesPerView: 5 },
                 }
             });
-        });
-    </script>
-    <script>
-        // Inisialisasi Swiper
-        document.addEventListener('DOMContentLoaded', () => {
+
+            // Project slider
             new Swiper('.project-slider', {
                 slidesPerView: 1,
                 spaceBetween: 20,
@@ -505,11 +504,8 @@
                     1024: { slidesPerView: 5 },
                 }
             });
-        });
-    </script>
-    <script>
-        // Inisialisasi Swiper
-        document.addEventListener('DOMContentLoaded', () => {
+
+            // Testimonial slider
             new Swiper('.testimonial-active', {
                 slidesPerView: 1,
                 spaceBetween: 20,

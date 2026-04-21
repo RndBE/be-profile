@@ -9,9 +9,12 @@ use App\Models\GambarProjek;
 use Illuminate\Http\Request;
 use App\Models\KategoriProjek;
 use Illuminate\Support\Facades\Storage;
+use App\Traits\ClearBerandaCache;
 
 class AdminProjekController extends Controller
 {
+    use ClearBerandaCache;
+
     public function index()
     {
         $data = [
@@ -102,6 +105,7 @@ class AdminProjekController extends Controller
         }
 
         toast('Berhasil menambahkan data!', 'success');
+        $this->clearBerandaCache('projeks');
         return redirect()->route('projek.index')->with('success', 'Projek berhasil ditambahkan.');
     }
 
@@ -183,6 +187,7 @@ class AdminProjekController extends Controller
         $projek->save();
 
         toast('Berhasil mengubah data!', 'success');
+        $this->clearBerandaCache('projeks');
         return redirect()->back()->with('success', 'Projek berhasil diubah.');
     }
 
@@ -215,6 +220,7 @@ class AdminProjekController extends Controller
         }
         $projek->delete();
         toast('Berhasil menghapus data!', 'success');
+        $this->clearBerandaCache('projeks');
         return redirect()->back();
     }
 

@@ -6,9 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\Klien;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Laravel\Facades\Image;
+use App\Traits\ClearBerandaCache;
 
 class AdminKlienController extends Controller
 {
+    use ClearBerandaCache;
+
     public function index()
     {
         $data = [
@@ -51,6 +54,7 @@ class AdminKlienController extends Controller
         ]);
 
         toast('Berhasil menambahkan data!','success');
+        $this->clearBerandaCache('kliens');
         return redirect()->back();
     }
 
@@ -94,6 +98,7 @@ class AdminKlienController extends Controller
 
         $klien->save();
         toast('Berhasil mengubah data!','success');
+        $this->clearBerandaCache('kliens');
         return redirect()->back();
     }
 
@@ -109,6 +114,7 @@ class AdminKlienController extends Controller
         $klien->delete();
 
         toast('Berhasil menghapus data!','success');
+        $this->clearBerandaCache('kliens');
         return redirect()->back();
     }
 

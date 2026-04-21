@@ -9,9 +9,12 @@ use Illuminate\Http\Request;
 use App\Models\KategoriProjek;
 use App\Models\Testimoni;
 use Illuminate\Support\Facades\Storage;
+use App\Traits\ClearBerandaCache;
 
 class AdminTestimoniController extends Controller
 {
+    use ClearBerandaCache;
+
     public function index()
     {
         $projects = Projek::all();
@@ -47,6 +50,7 @@ class AdminTestimoniController extends Controller
         ]);
 
         toast('Testimoni berhasil disimpan!', 'success');
+        $this->clearBerandaCache('testimonis');
         return redirect()->route('testimoni.index');
     }
 
@@ -76,6 +80,7 @@ class AdminTestimoniController extends Controller
 
         $testimoni->save();
         toast('Berhasil mengubah data!', 'success');
+        $this->clearBerandaCache('testimonis');
         return redirect()->route('testimoni.index');
     }
 
@@ -91,6 +96,7 @@ class AdminTestimoniController extends Controller
         $testimoni->delete();
 
         toast('Testimoni berhasil dihapus!', 'success');
+        $this->clearBerandaCache('testimonis');
         return redirect()->route('testimoni.index');
     }
 
