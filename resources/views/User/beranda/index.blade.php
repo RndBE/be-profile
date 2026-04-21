@@ -1,6 +1,22 @@
 @extends('User.layouts.app')
 {{-- @section('title', 'Testimoni | BE Profile') --}}
+<style>
+    .logo-box {
+        width: 150px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
+    .logo-klien {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+    }
+</style>
 @section('content')
     <!-- banner-area -->
     <section class="w-screen" id="home">
@@ -51,8 +67,10 @@
                     @foreach ($kliens as $klien)
                         <div class="swiper-slide">
                             <div class="brand-item">
-                                <img loading="lazy" class="swiper-lazy" src="{{ asset('storage/' . $klien->logo) }}"
-                                    alt="{{ $klien->nama_perusahaan }}" width="150" height="auto">
+                                <div class="logo-box">
+                                    <img loading="lazy" class="swiper-lazy logo-klien"
+                                        src="{{ asset('storage/' . $klien->logo) }}" alt="{{ $klien->nama_perusahaan }}">
+                                </div>
                                 <div class="swiper-lazy-preloader"></div>
                             </div>
                             <div>
