@@ -6,7 +6,7 @@
                     <div class="tgmenu__wrap">
                         <nav class="tgmenu__nav">
                             <div class="logo">
-                                <a href="/"><img src="{{ asset('assets/dist/img/logo_be2.png') }}" alt="Logo" width="180" height="50"></a>
+                                <a href="/"><img src="{{ asset('assets/dist/img/logo_be2.png') }}" alt="Logo" width="180" height="auto"></a>
                             </div>
                             <div class="tgmenu__navbar-wrap tgmenu__main-menu d-none d-lg-flex">
                                 <ul class="navigation">
@@ -92,7 +92,7 @@
                         <nav class="tgmobile__menu-box">
                             <div class="close-btn"><i class="fas fa-times"></i></div>
                             <div class="nav-logo">
-                                <a href="/" aria-label="Logo PT Arta Teknologi Comunindo"><img src="{{ asset('assets/dist/img/logo_be2.png') }}" alt="Logo" width="180" height="50"></a>
+                                <a href="/" aria-label="Logo PT Arta Teknologi Comunindo"><img src="{{ asset('assets/dist/img/logo_be2.png') }}" alt="Logo" width="180" height="auto"></a>
                             </div>
                             <div class="tgmobile__search">
                                 {{-- <form action="#">

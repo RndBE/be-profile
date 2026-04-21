@@ -7,7 +7,7 @@
                 <div class="col-xl-4 col-lg-4 col-md-6">
                     <div class="footer-widget">
                         <div class="fw-logo mb-25">
-                            <a href="/" aria-label="Logo PT Arta Teknologi Comunindo"><img src="{{ asset('assets/dist/img/logo_be2.png') }}" alt="Logo Beacon Engineering" width="180" height="50"></a>
+                            <a href="/" aria-label="Logo PT Arta Teknologi Comunindo"><img src="{{ asset('assets/dist/img/logo_be2.png') }}" alt="Logo Beacon Engineering" width="180" height="auto"></a>
                         </div>
                         <div class="footer-content">
                             <p>PT Arta Teknologi Comunindo dengan merk dagang Beacon Engineering merupakan perusahaan yang bergerak dibidang produksi dan pengadaan perangkat telemetri.</p>
