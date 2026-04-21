@@ -67,10 +67,8 @@
                     @foreach ($kliens as $klien)
                         <div class="swiper-slide">
                             <div class="brand-item">
-                                <div class="logo-box">
-                                    <img loading="lazy" class="swiper-lazy logo-klien"
-                                        src="{{ asset('storage/' . $klien->logo) }}" alt="{{ $klien->nama_perusahaan }}">
-                                </div>
+                                <img loading="lazy" class="swiper-lazy" src="{{ asset('storage/' . $klien->logo) }}"
+                                    alt="{{ $klien->nama_perusahaan }}" width="80" height="80">
                                 <div class="swiper-lazy-preloader"></div>
                             </div>
                             <div>
