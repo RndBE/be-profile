@@ -6,7 +6,7 @@
                     <div class="tgmenu__wrap">
                         <nav class="tgmenu__nav">
                             <div class="logo">
-                                <a href="/"><img src="{{ asset('assets/dist/img/logo_be2.png') }}" alt="Logo" width="180" style="height: auto;"></a>
+                                <a href="/"><img src="{{ asset('assets/dist/img/logo_be2.png') }}" alt="Logo" width="100" style="height: auto;"></a>
                             </div>
                             <div class="tgmenu__navbar-wrap tgmenu__main-menu d-none d-lg-flex">
                                 <ul class="navigation">
