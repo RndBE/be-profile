@@ -537,6 +537,38 @@
     {{-- ✅ Konsolidasi semua Swiper init menjadi satu block script --}}
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Homepage Banner Slider
+            new Swiper('.slider-homepage-banner', {
+                spaceBetween: 0,
+                loop: true,
+                speed: 1000,
+                autoplay: { delay: 3000 },
+                navigation: {
+                    nextEl: '.project-button-next',
+                    prevEl: '.project-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination-testimonials',
+                    clickable: true,
+                },
+            });
+
+            // Choose List Slider
+            new Swiper('.choose-list', {
+                spaceBetween: 0,
+                loop: true,
+                speed: 1000,
+                autoplay: { delay: 3000 },
+                navigation: {
+                    nextEl: '.project-button-next',
+                    prevEl: '.project-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination-choose',
+                    clickable: true,
+                },
+            });
+
             // Brand slider
             new Swiper('.brand-active', {
                 slidesPerView: 3,
