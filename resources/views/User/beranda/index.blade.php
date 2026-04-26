@@ -19,10 +19,8 @@
 </style>
 @section('content')
     <!-- banner-area -->
-    <section class="w-screen" id="home">
-        <div class="row">
-            <div class="col-12">
-                <div class="swiper-container slider-homepage-banner">
+    <section class="w-100" id="home">
+        <div class="swiper-container slider-homepage-banner">
                     <div class="swiper-wrapper">
                         @foreach ($carousels as $carousel)
                             <div class="swiper-slide">
@@ -55,8 +53,6 @@
                         @endforeach
                     </div>
                 </div>
-            </div>
-        </div>
     </section>
     <!-- banner-area-end -->
     <!-- brand-area -->
@@ -66,8 +62,8 @@
                 <div class="swiper-wrapper">
                     @foreach ($kliens as $klien)
                         <div class="swiper-slide">
-                            <div class="brand-item">
-                                <img loading="lazy" class="swiper-lazy" src="{{ asset('storage/' . $klien->logo) }}"
+                            <div class="brand-item logo-box">
+                                <img loading="lazy" class="swiper-lazy logo-klien" src="{{ asset('storage/' . $klien->logo) }}"
                                     alt="{{ $klien->nama_perusahaan }}" width="80" height="80">
                                 <div class="swiper-lazy-preloader"></div>
                             </div>
@@ -102,7 +98,7 @@
                                     <div class="services-item equal-box shine-animate-item">
                                         <div class="services-thumb">
                                             <img loading="lazy" src="{{ asset('storage/' . $solution->thumbnail) }}"
-                                                alt="{{ $solution->nama }}" width="400" height="260">
+                                                alt="{{ $solution->nama }}" width="400" height="260" style="object-fit: cover; height: 260px; width: 100%;">
                                         </div>
                                         <div class="services-content">
                                             <div class="icon">
@@ -340,7 +336,7 @@
                                         <a href="{{ route('proyek.show', $projek->slug) }}">
                                             <img loading="lazy" class="swiper-lazy"
                                                 src="{{ asset('storage/' . $projek->thumbnail) }}"
-                                                alt="{{ $projek->nama_projek }}" width="600" height="400">
+                                                alt="{{ $projek->nama_projek }}" width="600" height="400" style="object-fit: cover; height: 400px; width: 100%;">
                                             <div class="swiper-lazy-preloader"></div> <!-- spinner loading -->
                                         </a>
                                     </div>
@@ -491,9 +487,9 @@
                             onclick="window.location='{{ route('publikasi.show', $artikel->slug) }}'" style="cursor: pointer;">
                             <div class="artikel-post-thumb">
                                 <a href="{{ route('publikasi.show', $artikel->slug) }}" class="shine-animate">
-                                    <img loading="lazy" src="{{ asset('storage/' . $artikel->thumbnail) }}"
-                                        alt="{{ $artikel->judul }}" width="400" height="260">
-                                </a>
+                                            <img loading="lazy" src="{{ asset('storage/' . $artikel->thumbnail) }}"
+                                                alt="{{ $artikel->judul }}" width="400" height="260" style="object-fit: cover; height: 260px; width: 100%;">
+                                        </a>
                             </div>
                             <div class="artikel-post-content">
                                 <h3 class="title">
@@ -538,6 +534,7 @@
             // Homepage Banner Slider
             new Swiper('.slider-homepage-banner', {
                 spaceBetween: 0,
+                autoHeight: true,
                 loop: true,
                 speed: 1000,
                 autoplay: { delay: 3000 },
@@ -554,6 +551,7 @@
             // Choose List Slider
             new Swiper('.choose-list', {
                 spaceBetween: 0,
+                autoHeight: true,
                 loop: true,
                 speed: 1000,
                 autoplay: { delay: 3000 },
@@ -571,6 +569,7 @@
             new Swiper('.brand-active', {
                 slidesPerView: 3,
                 spaceBetween: 30,
+                autoHeight: true,
                 loop: true,
                 autoplay: {
                     delay: 3000,
@@ -590,6 +589,7 @@
             new Swiper('.project-slider', {
                 slidesPerView: 1,
                 spaceBetween: 20,
+                autoHeight: true,
                 loop: true,
                 autoplay: {
                     delay: 3000,
@@ -609,6 +609,7 @@
             new Swiper('.testimonial-active', {
                 slidesPerView: 1,
                 spaceBetween: 20,
+                autoHeight: true,
                 loop: true,
                 autoplay: {
                     delay: 5000,
