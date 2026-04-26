@@ -10,9 +10,11 @@ use App\Models\BerandaCarousel;
 use App\Models\SertifikasiAtas;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Laravel\Facades\Image;
+use App\Traits\ConvertsToWebp;
 
 class IklanController extends Controller
 {
+    use ConvertsToWebp;
     public function index()
     {
         $data = [
@@ -37,8 +39,7 @@ class IklanController extends Controller
 
         // Upload gambar jika ada
         if ($request->hasFile('gambar')) {
-            $gambarPath = $request->file('gambar')->store('iklan', 'public');
-            $iklans->gambar = $gambarPath;
+            $iklans->gambar = $this->convertAndStoreWebp($request->file('gambar'), 'iklan');
         }
 
         // Simpan data lainnya
@@ -72,8 +73,7 @@ class IklanController extends Controller
             if ($iklans->gambar && Storage::exists('public/' . $iklans->gambar)) {
                 Storage::delete('public/' . $iklans->gambar);
             }
-            $gambarPath = $request->file('gambar')->store('iklan', 'public');
-            $iklans->gambar = $gambarPath;
+            $iklans->gambar = $this->convertAndStoreWebp($request->file('gambar'), 'iklan');
         }
 
         // Update data lainnya

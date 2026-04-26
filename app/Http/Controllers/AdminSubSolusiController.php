@@ -11,9 +11,11 @@ use App\Models\SubSolutions;
 use Illuminate\Http\Request;
 use App\Models\KategoriProjek;
 use Illuminate\Support\Facades\Storage;
+use App\Traits\ConvertsToWebp;
 
 class AdminSubSolusiController extends Controller
 {
+    use ConvertsToWebp;
     public function index()
     {
         $data = [
@@ -40,16 +42,14 @@ class AdminSubSolusiController extends Controller
             'description3' => 'nullable|string',
             'video' => 'nullable|string',
             'gambar' => 'nullable|array',
-            'gambar.*' => 'image|mimes:jpeg,png,jpg|max:2048',
-            'icon' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'gambar.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
+            'icon' => 'nullable|image|mimes:jpeg,png,jpg,svg,webp|max:2048',
             'file_3d' => 'nullable|mimes:html,htm',
         ]);
 
         $iconPath = null;
         if ($request->hasFile('icon')) {
-            $fileName = time() . '_' . $request->file('icon')->getClientOriginalName();
-            $filePath = $request->file('icon')->storeAs('public/subsolution_images/icon', $fileName);
-            $iconPath = 'subsolution_images/icon/' . $fileName;
+            $iconPath = $this->convertAndStoreWebp($request->file('icon'), 'subsolution_images/icon');
         }
 
         $basePublicPath = base_path('../public_html/uploads');
@@ -85,9 +85,7 @@ class AdminSubSolusiController extends Controller
 
         if ($request->hasFile('gambar')) {
             foreach ($request->file('gambar') as $image) {
-                $fileName = time() . '_' . $image->getClientOriginalName();
-                $imagePath = $image->storeAs('public/subsolution_images', $fileName);
-                $imageName = 'subsolution_images/' . $fileName;
+                $imageName = $this->convertAndStoreWebp($image, 'subsolution_images');
 
                 GambarSubsolution::create([
                     'subsolution_id' => $subsolution->id,
@@ -122,8 +120,8 @@ class AdminSubSolusiController extends Controller
             'description2' => 'nullable|string',
             'description3' => 'nullable|string',
             'video' => 'nullable|string',
-            'gambar.*' => 'image|mimes:jpeg,png,jpg|max:2048',
-            'icon' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'gambar.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
+            'icon' => 'nullable|image|mimes:jpeg,png,jpg,svg,webp|max:2048',
             'file_3d' => 'nullable|mimes:html,htm',
         ]);
 
@@ -132,10 +130,8 @@ class AdminSubSolusiController extends Controller
             if ($subSolution->icon && Storage::exists('public/' . $subSolution->icon)) {
                 Storage::delete('public/' . $subSolution->icon);
             }
-            // Simpan icon baru
-            $fileName = time() . '_' . $request->file('icon')->getClientOriginalName();
-            $filePath = $request->file('icon')->storeAs('public/subsolution_images/icon', $fileName);
-            $subSolution->icon = 'subsolution_images/icon/' . $fileName;
+            // Simpan icon baru sebagai WebP
+            $subSolution->icon = $this->convertAndStoreWebp($request->file('icon'), 'subsolution_images/icon');
         }
 
         $basePublicPath = base_path('../public_html/uploads');
@@ -173,8 +169,7 @@ class AdminSubSolusiController extends Controller
 
         if ($request->hasFile('gambar')) {
             foreach ($request->file('gambar') as $file) {
-                $fileName = time() . '_' . $file->getClientOriginalName();
-                $imagePath = $file->storeAs('subsolution_images', $fileName, 'public');
+                $imagePath = $this->convertAndStoreWebp($file, 'subsolution_images');
                 GambarSubsolution::create([
                     'subsolution_id' => $subSolution->id,
                     'gambar' => $imagePath,

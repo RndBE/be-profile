@@ -9,9 +9,11 @@ use App\Models\BerandaCarousel;
 use App\Models\SertifikasiAtas;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Laravel\Facades\Image;
+use App\Traits\ConvertsToWebp;
 
 class SertifikasiController extends Controller
 {
+    use ConvertsToWebp;
     public function index()
     {
         $data = [
@@ -36,14 +38,12 @@ class SertifikasiController extends Controller
 
         // Upload gambar jika ada
         if ($request->hasFile('gambar')) {
-            $gambarPath = $request->file('gambar')->store('sertifikasi', 'public');
-            $sertifikasi->gambar = $gambarPath;
+            $sertifikasi->gambar = $this->convertAndStoreWebp($request->file('gambar'), 'sertifikasi');
         }
 
         // Upload icon jika ada
         if ($request->hasFile('icon')) {
-            $iconPath = $request->file('icon')->store('sertifikasi/icons', 'public');
-            $sertifikasi->icon = $iconPath;
+            $sertifikasi->icon = $this->convertAndStoreWebp($request->file('icon'), 'sertifikasi/icons');
         }
 
         // Simpan data lainnya
@@ -74,8 +74,7 @@ class SertifikasiController extends Controller
             if ($sertifikasi->gambar && Storage::exists('public/' . $sertifikasi->gambar)) {
                 Storage::delete('public/' . $sertifikasi->gambar);
             }
-            $gambarPath = $request->file('gambar')->store('sertifikasi', 'public');
-            $sertifikasi->gambar = $gambarPath;
+            $sertifikasi->gambar = $this->convertAndStoreWebp($request->file('gambar'), 'sertifikasi');
         }
 
         // Update icon jika ada file baru
@@ -84,8 +83,7 @@ class SertifikasiController extends Controller
             if ($sertifikasi->icon && Storage::exists('public/' . $sertifikasi->icon)) {
                 Storage::delete('public/' . $sertifikasi->icon);
             }
-            $iconPath = $request->file('icon')->store('sertifikasi/icons', 'public');
-            $sertifikasi->icon = $iconPath;
+            $sertifikasi->icon = $this->convertAndStoreWebp($request->file('icon'), 'sertifikasi/icons');
         }
 
         // Update data lainnya

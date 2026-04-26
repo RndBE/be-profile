@@ -9,9 +9,11 @@ use App\Models\BerandaCarousel;
 use App\Models\SertifikasiAtas;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Laravel\Facades\Image;
+use App\Traits\ConvertsToWebp;
 
 class SertifikasiAtasController extends Controller
 {
+    use ConvertsToWebp;
     public function store(Request $request)
     {
         // Validasi input
@@ -27,14 +29,12 @@ class SertifikasiAtasController extends Controller
 
         // Upload gambar_satu jika ada
         if ($request->hasFile('gambar_satu')) {
-            $gambar_satuPath = $request->file('gambar_satu')->store('sertifikasi/gambar_satu', 'public');
-            $sertifikasi->gambar_satu = $gambar_satuPath;
+            $sertifikasi->gambar_satu = $this->convertAndStoreWebp($request->file('gambar_satu'), 'sertifikasi/gambar_satu');
         }
 
         // Upload gambar_dua jika ada
         if ($request->hasFile('gambar_dua')) {
-            $gambar_duaPath = $request->file('gambar_dua')->store('sertifikasi/gambar_dua', 'public');
-            $sertifikasi->gambar_dua = $gambar_duaPath;
+            $sertifikasi->gambar_dua = $this->convertAndStoreWebp($request->file('gambar_dua'), 'sertifikasi/gambar_dua');
         }
 
         // Simpan data lainnya
@@ -65,8 +65,7 @@ class SertifikasiAtasController extends Controller
             if ($sertifikasi->gambar_satu && Storage::exists('public/' . $sertifikasi->gambar_satu)) {
                 Storage::delete('public/' . $sertifikasi->gambar_satu);
             }
-            $gambarPath = $request->file('gambar_satu')->store('sertifikasi/gambar_satu', 'public');
-            $sertifikasi->gambar_satu = $gambarPath;
+            $sertifikasi->gambar_satu = $this->convertAndStoreWebp($request->file('gambar_satu'), 'sertifikasi/gambar_satu');
         }
 
         // Update icon jika ada file baru
@@ -75,8 +74,7 @@ class SertifikasiAtasController extends Controller
             if ($sertifikasi->gambar_dua && Storage::exists('public/' . $sertifikasi->gambar_dua)) {
                 Storage::delete('public/' . $sertifikasi->gambar_dua);
             }
-            $iconPath = $request->file('gambar_dua')->store('sertifikasi/gambar_dua', 'public');
-            $sertifikasi->gambar_dua = $iconPath;
+            $sertifikasi->gambar_dua = $this->convertAndStoreWebp($request->file('gambar_dua'), 'sertifikasi/gambar_dua');
         }
 
         // Update data lainnya

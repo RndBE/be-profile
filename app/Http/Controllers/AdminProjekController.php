@@ -10,10 +10,12 @@ use Illuminate\Http\Request;
 use App\Models\KategoriProjek;
 use Illuminate\Support\Facades\Storage;
 use App\Traits\ClearBerandaCache;
+use App\Traits\ConvertsToWebp;
 
 class AdminProjekController extends Controller
 {
     use ClearBerandaCache;
+    use ConvertsToWebp;
 
     public function index()
     {
@@ -47,24 +49,20 @@ class AdminProjekController extends Controller
             'deskripsi2' => 'nullable|string',
             'waktu' => 'nullable|integer|min:0',
             'white_paper' => 'nullable|string',
-            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'gambar_proyek' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'gambar_proyek' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'gambar' => 'nullable|array',
-            'gambar.*' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'gambar.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
 
         $thumbnailName = null;
         if ($request->hasFile('thumbnail')) {
-            $fileName = time() . '_' . $request->file('thumbnail')->getClientOriginalName();
-            $thumbnailPath = $request->file('thumbnail')->storeAs('public/projek_thumbnails', $fileName);
-            $thumbnailName = 'projek_thumbnails/' . $fileName;
+            $thumbnailName = $this->convertAndStoreWebp($request->file('thumbnail'), 'projek_thumbnails');
         }
 
         $gambar_proyekName = null;
         if ($request->hasFile('gambar_proyek')) {
-            $fileName = time() . '_' . $request->file('gambar_proyek')->getClientOriginalName();
-            $gambar_proyekPath = $request->file('gambar_proyek')->storeAs('public/projek_gambar_proyeks', $fileName);
-            $gambar_proyekName = 'projek_gambar_proyeks/' . $fileName;
+            $gambar_proyekName = $this->convertAndStoreWebp($request->file('gambar_proyek'), 'projek_gambar_proyeks');
         }
 
         // Buat slug berdasarkan nama_projek
@@ -93,9 +91,7 @@ class AdminProjekController extends Controller
 
         if ($request->hasFile('gambar')) {
             foreach ($request->file('gambar') as $image) {
-                $fileName = time() . '_' . $image->getClientOriginalName();
-                $imagePath = $image->storeAs('public/projek_images', $fileName);
-                $imageName = 'projek_images/' . $fileName;
+                $imageName = $this->convertAndStoreWebp($image, 'projek_images');
 
                 GambarProjek::create([
                     'projek_id' => $projek->id,
@@ -135,9 +131,9 @@ class AdminProjekController extends Controller
             'white_paper' => 'nullable|string',
             'deskripsi1' => 'nullable|string',
             'deskripsi2' => 'nullable|string',
-            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'gambar_proyek' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'gambar.*' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'gambar_proyek' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'gambar.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
 
         if ($request->input('nama_projek') !== $projek->nama_projek) {
@@ -160,22 +156,19 @@ class AdminProjekController extends Controller
             if ($projek->thumbnail) {
                 Storage::disk('public')->delete($projek->thumbnail);
             }
-            $thumbnailPath = $request->file('thumbnail')->store('projek_thumbnails', 'public');
-            $projek->thumbnail = $thumbnailPath;
+            $projek->thumbnail = $this->convertAndStoreWebp($request->file('thumbnail'), 'projek_thumbnails');
         }
 
         if ($request->hasFile('gambar_proyek')) {
             if ($projek->gambar_proyek) {
                 Storage::disk('public')->delete($projek->gambar_proyek);
             }
-            $gambar_proyekPath = $request->file('gambar_proyek')->store('projek_gambar_proyeks', 'public');
-            $projek->gambar_proyek = $gambar_proyekPath;
+            $projek->gambar_proyek = $this->convertAndStoreWebp($request->file('gambar_proyek'), 'projek_gambar_proyeks');
         }
 
         if ($request->hasFile('gambar')) {
             foreach ($request->file('gambar') as $file) {
-                $fileName = time() . '_' . $file->getClientOriginalName();
-                $imagePath = $file->storeAs('projek_images', $fileName, 'public');
+                $imagePath = $this->convertAndStoreWebp($file, 'projek_images');
                 GambarProjek::create([
                     'projek_id' => $projek->id,
                     'gambar' => $imagePath,

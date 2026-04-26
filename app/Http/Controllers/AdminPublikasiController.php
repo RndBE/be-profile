@@ -18,10 +18,12 @@ use App\Models\KategoriProjek;
 use App\Models\GambarSubsolution;
 use Illuminate\Support\Facades\Storage;
 use App\Traits\ClearBerandaCache;
+use App\Traits\ConvertsToWebp;
 
 class AdminPublikasiController extends Controller
 {
     use ClearBerandaCache;
+    use ConvertsToWebp;
 
     public function index()
     {
@@ -48,8 +50,8 @@ class AdminPublikasiController extends Controller
             'status' => 'nullable|string|in:draft,published,archived',
             'slug' => 'nullable|string',
             'gambar' => 'nullable|array',
-            'gambar.*' => 'image|mimes:jpeg,png,jpg|max:2048',
-            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'gambar.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,svg,webp|max:2048',
         ]);
 
         // Buat slug berdasarkan judul
@@ -63,9 +65,7 @@ class AdminPublikasiController extends Controller
 
         $thumbnailPath = null;
         if ($request->hasFile('thumbnail')) {
-            $fileName = time() . '_' . $request->file('thumbnail')->getClientOriginalName();
-            $filePath = $request->file('thumbnail')->storeAs('public/artikel/thumbnail', $fileName);
-            $thumbnailPath = 'artikel/thumbnail/' . $fileName;
+            $thumbnailPath = $this->convertAndStoreWebp($request->file('thumbnail'), 'artikel/thumbnail');
         }
 
         $tanggalPublikasi = $request->input('status') === 'published' ? Carbon::now('Asia/Jakarta')  : null;
@@ -82,9 +82,7 @@ class AdminPublikasiController extends Controller
 
         if ($request->hasFile('gambar')) {
             foreach ($request->file('gambar') as $image) {
-                $fileName = time() . '_' . $image->getClientOriginalName();
-                $imagePath = $image->storeAs('public/artikel', $fileName);
-                $imageName = 'artikel/' . $fileName;
+                $imageName = $this->convertAndStoreWebp($image, 'artikel');
 
                 GambarArtikel::create([
                     'artikel_id' => $artikels->id,
@@ -119,8 +117,8 @@ class AdminPublikasiController extends Controller
             'status' => 'nullable|string|in:draft,published,archived',
             'slug' => 'nullable|string',
             'gambar' => 'nullable|array',
-            'gambar.*' => 'image|mimes:jpeg,png,jpg|max:2048',
-            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'gambar.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,svg,webp|max:2048',
         ]);
 
         if ($request->input('judul') !== $artikels->judul) {
@@ -140,10 +138,8 @@ class AdminPublikasiController extends Controller
             if ($artikels->thumbnail && Storage::exists('public/' . $artikels->thumbnail)) {
                 Storage::delete('public/' . $artikels->thumbnail);
             }
-            // Simpan thumbnail baru
-            $fileName = time() . '_' . $request->file('thumbnail')->getClientOriginalName();
-            $filePath = $request->file('thumbnail')->storeAs('public/artikel/thumbnail', $fileName);
-            $artikels->thumbnail = 'artikel/thumbnail/' . $fileName;
+            // Simpan thumbnail baru sebagai WebP
+            $artikels->thumbnail = $this->convertAndStoreWebp($request->file('thumbnail'), 'artikel/thumbnail');
         }
 
         if ($request->input('status') === 'published' && $artikels->status !== 'published') {
@@ -160,8 +156,7 @@ class AdminPublikasiController extends Controller
 
         if ($request->hasFile('gambar')) {
             foreach ($request->file('gambar') as $file) {
-                $fileName = time() . '_' . $file->getClientOriginalName();
-                $imagePath = $file->storeAs('artikel', $fileName, 'public');
+                $imagePath = $this->convertAndStoreWebp($file, 'artikel');
                 GambarArtikel::create([
                     'artikel_id' => $artikels->id,
                     'gambar' => $imagePath,
