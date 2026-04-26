@@ -152,7 +152,7 @@
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
-                                    <div class="tab-pane fade " id="komponen-tab-pane" role="tabpanel" aria-labelledby="komponen-tab" tabindex="0">
+                                    <div class="tab-pane fade show active" id="komponen-tab-pane" role="tabpanel" aria-labelledby="komponen-tab" tabindex="0">
                                         <div class="choose__tab-content text-center">
                                             @if ($komponen)
                                                 <div class="komponen-item text-center mt-4">
